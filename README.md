@@ -1,6 +1,10 @@
-# @gotrash/webapp
+# GoTrash UK
 
-## Project setup
+## Vue.JS Web App
+
+This is the frontend web app for [GoTrash](https://gotrash.co.uk).
+
+### Project setup
 ```
 npm install
 ```
