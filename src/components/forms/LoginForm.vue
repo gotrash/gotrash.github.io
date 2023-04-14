@@ -1,6 +1,6 @@
 <template>
   <b-form @submit.prevent="onSubmit" class="rounded bg-light border p-4 mb-3">
-    <b-form-group label="Username" label-for="username-input">
+    <b-form-group :label="$t('AUTH.LABEL.USERNAME')" label-for="username-input">
       <b-form-input
         id="username-input"
         :state="validateState('username')"
@@ -8,12 +8,11 @@
         aria-describedby="username-input-feedback"
       ></b-form-input>
 
-      <b-form-invalid-feedback id="username-input-feedback"
-        >Username is required and must be 4 or more
-        characters</b-form-invalid-feedback
-      >
+      <b-form-invalid-feedback id="username-input-feedback">{{
+        $t("AUTH.ERROR.USERNAME")
+      }}</b-form-invalid-feedback>
     </b-form-group>
-    <b-form-group label="Password" label-for="password-input">
+    <b-form-group :label="$t('AUTH.LABEL.PASSWORD')" label-for="password-input">
       <b-form-input
         id="password-input"
         v-model="form.password"
@@ -22,10 +21,9 @@
         aria-describedby="password-input-feedback"
       ></b-form-input>
 
-      <b-form-invalid-feedback id="password-input-feedback"
-        >Password is required and must be at least 8
-        characters</b-form-invalid-feedback
-      >
+      <b-form-invalid-feedback id="password-input-feedback">{{
+        $t("AUTH.ERROR.PASSWORD")
+      }}</b-form-invalid-feedback>
     </b-form-group>
     <div class="d-flex flex-column flex-md-row justify-content-between">
       <b-btn
@@ -33,7 +31,7 @@
         class="mb-3 mb-md-0"
         type="reset"
         @click.stop.prevent="onReset"
-        >Reset</b-btn
+        >{{ $t("GENERAL.LABEL.RESET") }}</b-btn
       >
       <div class="d-flex flex-column d-md-block">
         <b-btn
@@ -42,9 +40,11 @@
           class="mb-3 mb-md-0 mr-md-2"
           @click.stop.prevent="onCancel"
         >
-          Cancel
+          {{ $t("GENERAL.LABEL.CANCEL") }}
         </b-btn>
-        <b-btn type="submit" variant="outline-primary">Submit</b-btn>
+        <b-btn type="submit" variant="outline-primary">
+          {{ $t("GENERAL.LABEL.SUBMIT") }}
+        </b-btn>
       </div>
     </div>
   </b-form>
