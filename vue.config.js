@@ -8,10 +8,8 @@ module.exports = defineConfig({
       locale: "en",
       fallbackLocale: "en",
       localeDir: "locales",
-      enableLegacy: true,
-      runtimeOnly: false,
-      compositionOnly: true,
-      fullInstall: true,
+      enableInSFC: true,
+      enableBridge: false,
     },
   },
   css: {
@@ -23,22 +21,5 @@ module.exports = defineConfig({
         additionalData: [...bootstrapSassAbstractsImports, ""].join(";\n"),
       },
     },
-  },
-  chainWebpack: (config) => {
-    config.resolve.alias.set("vue", "@vue/compat");
-
-    config.module
-      .rule("vue")
-      .use("vue-loader")
-      .tap((options) => {
-        return {
-          ...options,
-          compilerOptions: {
-            compatConfig: {
-              MODE: 2,
-            },
-          },
-        };
-      });
   },
 });
