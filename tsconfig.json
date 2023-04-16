@@ -1,8 +1,0 @@
-{
-  "compilerOptions": {
-    "types": [
-      "@nuxt/types",
-      "@nuxtjs/i18n",
-    ]
-  }
-}
