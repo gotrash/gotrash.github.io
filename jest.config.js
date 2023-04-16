@@ -17,5 +17,8 @@ module.exports = {
   testEnvironment: "jsdom",
   verbose: true,
   transformIgnorePatterns: ["node_modules/(?!(nuxt-i18n)/)", "node_modules/(?!(nuxt-test-utils)/)"],
-  preset: "@nuxt/test-utils"
+  preset: "@nuxt/test-utils",
+  testEnvironmentOptions: {
+    customExportConditions: ["node", "node-addons"]
+  }
 };
