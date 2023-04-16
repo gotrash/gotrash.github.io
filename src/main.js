@@ -3,6 +3,7 @@ import "mutationobserver-shim";
 import Vue from "vue";
 import axios from "./plugins/axios";
 import "./plugins/bootstrap-vue";
+import "./plugins/meta";
 import "./plugins/vuelidate";
 import App from "./App.vue";
 import "./registerServiceWorker";
@@ -18,5 +19,5 @@ new Vue({
   router,
   store,
   i18n,
-  render: (h) => h(App),
+  render: h => h(App)
 }).$mount("#app");

@@ -1,4 +1,4 @@
 export default {
-  baseURL: '/',
-  retry: { retries: 10 },
-}
+  baseURL: "/",
+  retry: { retries: 10 }
+};

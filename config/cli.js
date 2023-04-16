@@ -1,3 +1,3 @@
 export default {
-  badgeMessages: ['GoTrash', 'Web App'],
-}
+  badgeMessages: ["GoTrash", "Web App"]
+};

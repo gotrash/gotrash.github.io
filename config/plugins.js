@@ -1,1 +1,1 @@
-export default ['~/plugins/router']
+export default ["~/plugins/router"];

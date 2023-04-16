@@ -5,8 +5,8 @@ export default {
     app.prototype.$axios = axios.create({
       baseURL: options?.baseUrl || null,
       headers: {
-        Authorization: options?.token ? `Bearer ${options.token}` : "",
-      },
+        Authorization: options?.token ? `Bearer ${options.token}` : ""
+      }
     });
-  },
+  }
 };

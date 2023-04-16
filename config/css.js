@@ -1,1 +1,1 @@
-export default ['~/assets/scss/app.scss']
+export default ["~/assets/scss/app.scss"];

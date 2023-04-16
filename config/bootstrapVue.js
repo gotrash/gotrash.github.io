@@ -1,1 +1,1 @@
-export default { bootstrapCSS: false, bootstrapVueCSS: false }
+export default { bootstrapCSS: false, bootstrapVueCSS: false };
