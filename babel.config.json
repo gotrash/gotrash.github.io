@@ -3,5 +3,41 @@
     "test": {
       "presets": ["@babel/preset-env"]
     }
-  }
+  },
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["."],
+        "alias": {
+          "@": ".",
+          "~": "."
+        }
+      }
+    ]
+  ],
+  "presets": [
+    "@babel/preset-env",
+    [
+      "@nuxt/babel-preset-app",
+      {
+        "corejs": 3,
+        "loose": true,
+        "targets": {
+          "browsers": ["last 2 versions"],
+          "node": "current"
+        },
+        "useBuiltIns": "usage",
+        "polyfills": [
+          "es.array.iterator",
+          "es.array.from",
+          "es.promise",
+          "es.promise.finally",
+          "es.object.assign",
+          "es.object.entries",
+          "es.map"
+        ]
+      }
+    ]
+  ]
 }

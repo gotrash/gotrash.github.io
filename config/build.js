@@ -2,49 +2,49 @@ import Fiber from "fibers";
 import Sass from "sass";
 
 export default {
-  analyze: false,
+  analyze: true,
   babel: {
-    // babelrc: false,
-    // plugins: [
-    //   [
-    //     "module-resolver",
-    //     {
-    //       root: ["."],
-    //       alias: {
-    //         "@": ".",
-    //         "~": "."
-    //       }
-    //     }
-    //   ]
-    // ],
+    plugins: [
+      [
+        "module-resolver",
+        {
+          root: ["."],
+          alias: {
+            "@": ".",
+            "~": "."
+          }
+        }
+      ]
+    ],
 
-    // presets(env, [preset, options]) {
-    //   const envTargets = {
-    //     client: { browsers: ["last 2 versions"] },
-    //     server: { node: "current" }
-    //   };
+    presets(env) {
+      const envTargets = {
+        client: { browsers: ["last 2 versions"], ie: 10 },
+        server: { node: "current" }
+      };
 
-    //   return [
-    //     [
-    //       "@nuxt/babel-preset-app",
-    //       {
-    //         corejs: 3,
-    //         loose: true,
-    //         targets: envTargets[env.envName],
-    //         useBuiltIns: "usage",
-    //         polyfills: [
-    //           "es.array.iterator",
-    //           "es.array.from",
-    //           "es.promise",
-    //           "es.promise.finally",
-    //           "es.object.assign",
-    //           "es.object.entries",
-    //           "es.map"
-    //         ]
-    //       }
-    //     ]
-    //   ];
-    // }
+      return [
+        [
+          "@nuxt/babel-preset-app",
+          {
+            corejs: 3,
+            loose: true,
+            targets: envTargets[env.envName],
+            debug: !!process.env.BABEL_DEBUG,
+            useBuiltIns: "usage",
+            polyfills: [
+              "es.array.iterator",
+              "es.array.from",
+              "es.promise",
+              "es.promise.finally",
+              "es.object.assign",
+              "es.object.entries",
+              "es.map"
+            ]
+          }
+        ]
+      ];
+    }
   },
   html: {
     minify: {
@@ -77,4 +77,4 @@ export default {
       fs: "empty"
     };
   }
-}
+};
