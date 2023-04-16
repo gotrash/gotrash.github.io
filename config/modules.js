@@ -5,11 +5,21 @@ const communityModules = [
 ];
 
 // Official Nuxt modules
-const nuxtModules = ["auth", "axios", "i18n", "pwa", "style-resources", "svg", "toast", "universal-storage", "sentry"];
+const nuxtModules = [
+  "auth",
+  "axios",
+  "i18n",
+  "pwa",
+  "style-resources",
+  // "svg",
+  "toast",
+  "universal-storage"
+  // "sentry"
+];
 
 export default [
   ...nuxtModules.map(module => `@nuxtjs/${module}`),
-  ...communityModules,
+  ...communityModules
   // https://go.nuxtjs.dev/content
-  "@nuxt/content"
+  // "@nuxt/content"
 ];
