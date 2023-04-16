@@ -1,29 +1,25 @@
 module.exports = {
   root: true,
   env: {
+    browser: true,
+    'jest/globals': true,
     node: true,
   },
-  extends: [
-    "plugin:vue/essential",
-    "eslint:recommended",
-    "plugin:prettier/recommended",
-  ],
   parserOptions: {
-    parser: "@babel/eslint-parser",
+    parser: '@babel/eslint-parser',
+    requireConfigFile: false,
   },
+  extends: ['@nuxtjs', 'plugin:nuxt/recommended', 'prettier', "plugin:prettier/recommended"],
+  plugins: ["prettier", 'jest'],
+  // add your custom rules here
   rules: {
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    "import/no-named-as-default-member": "off",
+    "vue/no-unused-components": "off",
+    "vue/no-mutating-props": "off",
+    "vue/require-component-is": "off",
+    "no-unreachable": "warn",
+    "no-lonely-if": "warn",
+    "no-console": "off"
   },
-  overrides: [
-    {
-      files: [
-        "**/__tests__/*.{j,t}s?(x)",
-        "**/tests/unit/**/*.spec.{j,t}s?(x)",
-      ],
-      env: {
-        jest: true,
-      },
-    },
-  ],
-};
+  reportUnusedDisableDirectives: true
+}

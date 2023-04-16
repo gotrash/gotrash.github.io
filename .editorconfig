@@ -1,0 +1,19 @@
+# This is not the root .editorconfig file
+root = false
+
+# All Files
+[*]
+end_of_line = lf
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = true
+
+# Matches multiple files with brace expansion notation
+# Set default charset
+[*.{js,css,scss,sass,vue,html}]
+indent_style = space
+indent_size = 2
+tab_width = 2
+continuation_indent_size = 4
