@@ -1,0 +1,15 @@
+// Bootstrap SCSS functions must be imported first
+@import "~bootstrap/scss/functions";
+
+// Now we get our Bootstrap variables, in order of presedence and after functions
+@import "~admin-lte/build/scss/bootstrap-variables";
+@import "~admin-lte/build/scss/variables";
+@import "~admin-lte/build/scss/variables-alt";
+
+@import "variables";
+
+// Now we get our Bootstrap variables, in order of presedence and after functions
+@import "~bootstrap/scss/variables";
+
+// Bootstrap mixins, must be loaded after variables
+@import "~bootstrap/scss/mixins";
