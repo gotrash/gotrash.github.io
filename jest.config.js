@@ -6,17 +6,19 @@ module.exports = {
   },
   moduleFileExtensions: ["js", "vue", "json"],
   modulePaths: ["<rootDir>/components", "<rootDir>/layouts", "<rootDir>/pages"],
-  // modulePathIgnorePatterns: ["<rootDir>/pages/debug/"],
   transform: {
     "^.+\\.js$": "babel-jest",
-    "^.+\\.scss$": "<rootDir>/node_modules/jest-scss-transform",
-    ".*\\.(vue)$": "vue-jest"
+    "^.+\\.vue$": "@vue/vue2-jest"
   },
   collectCoverage: true,
-  collectCoverageFrom: ["<rootDir>/global/**/*.vue", "<rootDir>/utils/**/*.js"],
+  collectCoverageFrom: ["<rootDir>/layouts/**/*.vue", "<rootDir>/modules/**/*.js", "<rootDir>/plugins/**/*.js"],
   testEnvironment: "jsdom",
   verbose: true,
-  transformIgnorePatterns: ["node_modules/(?!(nuxt-i18n)/)", "node_modules/(?!(nuxt-test-utils)/)"],
+  transformIgnorePatterns: [
+    "node_modules/(?!(@nuxtjs/i18n)/)",
+    "node_modules/(?!(@nuxtjs/style-resources)/)",
+    "node_modules/(?!(nuxt-i18n)/)"
+  ],
   preset: "@nuxt/test-utils",
   testEnvironmentOptions: {
     customExportConditions: ["node", "node-addons"]
