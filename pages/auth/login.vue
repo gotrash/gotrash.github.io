@@ -1,43 +1,63 @@
 <template>
-  <b-container>
-    <b-row>
-      <b-col>
-        <h1 class="my-3">{{ $t("PAGE_TITLE__LOGIN") }}</h1>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col sm="12" md="10" offset-md="1" lg="8" offset-lg="2" xl="6" offset-xl="3">
-        <div class="login-box">
-          <b-alert :show="error != null" variant="info" dismissible>
-            {{ error }}
-          </b-alert>
+  <div class="login-box">
+    <b-alert :show="error != null" variant="info" dismissible>
+      {{ error }}
+    </b-alert>
+    <b-card no-body class="card-outline card-primary">
+      <auth-card-header />
+      <b-card-body>
+        <p class="login-box-msg">{{ $t("AUTH.MESSAGE.SIGN_IN") }}</p>
 
-          <b-card variant="outline card-lightblue" no-body>
-            <b-card-header> Header </b-card-header>
-            <b-card-body> Body </b-card-body>
-          </b-card>
+        <login-form v-model="form" class="mb-3" @cancel="onCancel" @reset="onReset" @submit="onSubmit" />
 
-          <login-form v-model="form" @cancel="onCancel" @reset="onReset" @submit="onSubmit" />
+        <div class="d-none social-auth-links text-center mt-2 mb-3">
+          <a href="#" class="btn btn-block btn-primary">
+            <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+          </a>
+          <a href="#" class="btn btn-block btn-danger">
+            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+          </a>
         </div>
-      </b-col>
-    </b-row>
-  </b-container>
+
+        <p class="mb-1 text-center">
+          <b-link :to="{ name: 'auth-forgot-password' }">{{ $t("AUTH.LABEL.FORGOT_PASSWORD") }}</b-link>
+        </p>
+        <p class="mb-0 text-center">
+          <b-link :to="{ name: 'auth-sign-up' }">{{ $t("AUTH.LABEL.SIGN_UP") }}</b-link>
+        </p>
+      </b-card-body>
+      <b-card-footer v-show="false"></b-card-footer>
+    </b-card>
+  </div>
 </template>
 
 <script>
-  import LoginForm from "@/components/forms/LoginForm";
-
   export default {
     name: "LoginPage",
-    components: { LoginForm },
+    components: {
+      AuthCardHeader: () => import("~/components/global/AuthCardHeader"),
+      LoginForm: () => import("~/components/forms/LoginForm")
+    },
+    layout: "auth",
     data() {
       return {
         error: null,
         form: {
           username: "",
-          password: ""
+          password: "",
+          rememberMe: true
         }
       };
+    },
+    watch: {
+      "form.rememberMe": {
+        handler(rememberMe) {
+          this.$storage.setUniversal("rememberMe", rememberMe);
+        }
+      }
+    },
+    mounted() {
+      this.form.rememberMe = this.$storage.getUniversal("rememberMe");
     },
     methods: {
       onCancel() {
