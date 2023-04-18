@@ -13,8 +13,8 @@ const nuxtModules = [
   "style-resources",
   // "svg",
   "toast",
-  "universal-storage"
-  // "sentry"
+  "universal-storage",
+  "sentry"
 ];
 
 export default [

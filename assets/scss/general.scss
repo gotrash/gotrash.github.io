@@ -13,3 +13,6 @@
 
 // Bootstrap mixins, must be loaded after variables
 @import "~bootstrap/scss/mixins";
+@import "~admin-lte/build/scss/mixins";
+
+@import "~bootstrap-vue/src/variables";
