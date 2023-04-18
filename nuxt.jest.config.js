@@ -15,6 +15,9 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     "@nuxtjs/stylelint-module"
   ],
+  storage: {
+    initialState: { rememberMe: false }
+  },
   cli: {
     badgeMessages: ["GoTrash", "Web App"]
   },
