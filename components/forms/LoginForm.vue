@@ -1,5 +1,5 @@
 <template>
-  <b-form class="rounded bg-light border p-4 mb-3" @submit.prevent="onSubmit">
+  <b-form @submit.prevent="onSubmit">
     <b-form-group :label="$t('AUTH.LABEL.USERNAME')" label-for="username-input">
       <b-form-input
         id="username-input"
@@ -21,7 +21,24 @@
 
       <b-form-invalid-feedback id="password-input-feedback">{{ $t("AUTH.ERROR.PASSWORD") }}</b-form-invalid-feedback>
     </b-form-group>
-    <div class="d-flex flex-column flex-md-row justify-content-between">
+
+    <div class="row">
+      <div class="col-12 col-sm-8">
+        <div class="icheck-primary mt-1 mb-3">
+          <b-form-checkbox id="login-remember-me-checkbox" v-model="form.rememberMe">
+            {{ $t("AUTH.LABEL.REMEMBER_ME") }}</b-form-checkbox
+          >
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-4">
+        <button type="submit" class="btn btn-primary btn-block">
+          {{ $t("AUTH.LABEL.SIGN_IN") }}
+        </button>
+      </div>
+    </div>
+
+    <div class="d-none flex-column flex-md-row justify-content-between">
       <b-btn variant="outline-danger" class="mb-3 mb-md-0" type="reset" @click.stop.prevent="onReset">{{
         $t("GENERAL.LABEL.RESET")
       }}</b-btn>
@@ -49,16 +66,11 @@
         type: Object,
         required: true,
         validator: obj =>
-          Object.prototype.hasOwnProperty.call(obj, "username") && Object.prototype.hasOwnProperty.call(obj, "password")
+          Object.prototype.hasOwnProperty.call(obj, "username") &&
+          Object.prototype.hasOwnProperty.call(obj, "password") &&
+          ((Object.prototype.hasOwnProperty.call(obj, "rememberMe") && typeof obj.rememberMe === "boolean") ||
+            obj.rememberMe === null)
       }
-    },
-    data() {
-      return {
-        data: {
-          username: "",
-          password: ""
-        }
-      };
     },
     computed: {
       form: {
