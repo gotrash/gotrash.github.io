@@ -2,7 +2,7 @@ import Fiber from "fibers";
 import Sass from "sass";
 
 export default {
-  analyze: true,
+  analyze: false,
   babel: {
     plugins: [
       [
@@ -69,8 +69,8 @@ export default {
       additionalData: '@use "sass:math";'
     }
   },
-  parallel: false || true,
-  profile: false || true,
+  parallel: true,
+  profile: false,
   // transpile: [/^vue2-google-maps($|\/)/, "vuejs-datepicker", "pdfjs-dist"],
   extend(config, ctx) {
     config.node = {
