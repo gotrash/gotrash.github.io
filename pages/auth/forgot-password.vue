@@ -6,39 +6,7 @@
       <b-card-body>
         <p class="login-box-msg" v-text="$t('AUTH.MESSAGE.FORGOT_PASSWORD')"></p>
 
-        <b-form @submit.stop.prevent="onSubmit">
-          <b-input-group class="mb-3">
-            <template #append>
-              <b-input-group-text>
-                <fa-icon icon="envelope" />
-              </b-input-group-text>
-            </template>
-
-            <b-form-input
-              id="forgot-password-email-input"
-              ref="email-input"
-              v-model="form.email"
-              name="email"
-              type="email"
-              :placeholder="$t('AUTH.LABEL.EMAIL')"
-            />
-          </b-input-group>
-
-          <b-form-row>
-            <b-col>
-              <b-btn type="button" variant="outline-primary" block @click.stop.prevent="onCancel">{{
-                $t("GENERAL.LABEL.CANCEL")
-              }}</b-btn>
-              <b-btn type="submit" variant="primary" block>{{ $t("AUTH.LABEL.REQUEST_NEW_PASSWORD") }}</b-btn>
-            </b-col>
-          </b-form-row>
-        </b-form>
-
-        <p class="mt-3 mb-1 text-center">
-          <b-link :to="{ name: 'auth-login' }">
-            {{ $t("AUTH.LABEL.LOGIN") }}
-          </b-link>
-        </p>
+        <forgot-password-form v-model="form" @cancel="onCancel" @submit="onSubmit" />
       </b-card-body>
     </b-card>
   </div>
@@ -48,7 +16,8 @@
   export default {
     name: "ForgotPasswordPage",
     components: {
-      AuthCardHeader: () => import("~/components/global/AuthCardHeader")
+      AuthCardHeader: () => import("~/components/global/AuthCardHeader"),
+      ForgotPasswordForm: () => import("~/components/forms/ForgotPasswordForm")
     },
     layout: "auth",
     data() {
@@ -61,7 +30,7 @@
     },
     methods: {
       onCancel() {
-        this.$router.go(-1);
+        this.$router.push({ name: "auth-login" });
       },
       onSubmit() {
         const { form } = this;
