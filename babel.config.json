@@ -11,7 +11,7 @@
             "corejs": "3.30",
             "modules": "commonjs",
             "useBuiltIns": "usage",
-            "debug": true
+            "debug": false
           }
         ]
       ]
