@@ -10,6 +10,7 @@
 
       <b-form-invalid-feedback id="username-input-feedback">{{ $t("AUTH.ERROR.USERNAME") }}</b-form-invalid-feedback>
     </b-form-group>
+
     <b-form-group :label="$t('AUTH.LABEL.PASSWORD')" label-for="password-input">
       <b-form-input
         id="password-input"
