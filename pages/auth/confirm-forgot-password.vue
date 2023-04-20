@@ -24,7 +24,7 @@
   export default {
     name: "ConfirmForgotPasswordPage",
     components: {
-      AuthCardHeader: () => import("~/components/global/AuthCardHeader")
+      AuthCardHeader: () => import("~/components/headers/AuthCardHeader")
     },
     layout: "auth"
   };

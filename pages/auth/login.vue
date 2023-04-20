@@ -35,7 +35,7 @@
   export default {
     name: "LoginPage",
     components: {
-      AuthCardHeader: () => import("~/components/global/AuthCardHeader"),
+      AuthCardHeader: () => import("~/components/headers/AuthCardHeader"),
       LoginForm: () => import("~/components/forms/LoginForm")
     },
     layout: "auth",

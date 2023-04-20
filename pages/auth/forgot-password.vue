@@ -16,7 +16,7 @@
   export default {
     name: "ForgotPasswordPage",
     components: {
-      AuthCardHeader: () => import("~/components/global/AuthCardHeader"),
+      AuthCardHeader: () => import("~/components/headers/AuthCardHeader"),
       ForgotPasswordForm: () => import("~/components/forms/ForgotPasswordForm")
     },
     layout: "auth",

@@ -11,7 +11,7 @@
   export default {
     name: "SignupPage",
     components: {
-      AuthCardHeader: () => import("~/components/global/AuthCardHeader")
+      AuthCardHeader: () => import("~/components/headers/AuthCardHeader")
     },
     layout: "auth"
   };
