@@ -16,6 +16,8 @@ export default {
   // Auth
   "AUTH.ERROR.PASSWORD": "Password is required and must be at least 8 characters",
   "AUTH.ERROR.USERNAME": "Username is required and must be 4 or more characters",
+  "AUTH.LABEL.CHANGE_PASSWORD": "Change Password",
+  "AUTH.LABEL.UPDATE_PASSWORD": "Update Password",
   "AUTH.LABEL.CONFIRM_PASSWORD": "Confirm Password",
   "AUTH.LABEL.EMAIL": "Email",
   "AUTH.LABEL.FORGOT_PASSWORD": "Forgot Password",
@@ -39,6 +41,8 @@ export default {
   `,
   "AUTH.MESSAGE.FORGOT_PASSWORD": "You forgot your password? Here you can easily retrieve a new password.",
   "AUTH.MESSAGE.SIGN_IN": "Sign in to start your session",
+  "AUTH.MESSAGE.RECOVER_PASSWORD":
+    "You are only one step a way from your new password.  Reset it now by entering and confirming your new password below.",
   // General
   "GENERAL.LABEL.CANCEL": "Cancel",
   "GENERAL.LABEL.RESET": "Reset",
