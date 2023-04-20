@@ -55,12 +55,12 @@
 </template>
 
 <script>
-  import { validationMixin } from "vuelidate";
   import { required, minLength } from "vuelidate/lib/validators";
+  import IsFormComponent from "~/mixins/IsFormComponent";
 
   export default {
     name: "LoginForm",
-    mixins: [validationMixin],
+    mixins: [IsFormComponent],
     props: {
       value: {
         type: Object,
@@ -70,16 +70,6 @@
           Object.prototype.hasOwnProperty.call(obj, "password") &&
           ((Object.prototype.hasOwnProperty.call(obj, "rememberMe") && typeof obj.rememberMe === "boolean") ||
             obj.rememberMe === null)
-      }
-    },
-    computed: {
-      form: {
-        get() {
-          return this.value;
-        },
-        set(form) {
-          this.$emit("input", form);
-        }
       }
     },
     validations: {
@@ -92,32 +82,6 @@
           required,
           minLength: minLength(8)
         }
-      }
-    },
-    methods: {
-      validateState(name) {
-        const { $dirty, $error } = this.$v.form[name];
-
-        return $dirty ? !$error : null;
-      },
-      onCancel() {
-        this.$emit("cancel");
-      },
-      onReset() {
-        this.$nextTick(() => {
-          this.$v.$reset();
-        });
-
-        this.$emit("reset");
-      },
-      onSubmit() {
-        this.$v.form.$touch();
-
-        if (this.$v.form.$anyError) {
-          return;
-        }
-
-        this.$emit("submit");
       }
     }
   };
