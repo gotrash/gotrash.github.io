@@ -9,7 +9,7 @@
   export default {
     name: "DefaultLayout",
     components: {
-      SiteNavbar: () => import("~/components/global/SiteNavbar")
+      SiteNavbar: () => import("~/components/navbars/SiteNavbar")
     },
     computed: {
       /**

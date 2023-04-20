@@ -7,7 +7,7 @@
   export default {
     name: "AuthLayout",
     components: {
-      SiteNavbar: () => import("~/components/global/SiteNavbar.vue")
+      SiteNavbar: () => import("~/components/navbars/SiteNavbar.vue")
     }
   };
 </script>

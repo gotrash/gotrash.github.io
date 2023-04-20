@@ -1,7 +1,8 @@
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <b-navbar>
     <b-navbar-brand>
-      {{ $t("APP_NAME") }}
+      <span v-html="$t('APP_NAME')"></span>
     </b-navbar-brand>
     <b-navbar-nav>
       <b-nav-item :to="{ name: 'index' }">{{ $t("NAV__HOME") }}</b-nav-item>
