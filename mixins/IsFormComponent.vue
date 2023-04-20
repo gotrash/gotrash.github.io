@@ -13,10 +13,6 @@
         }
       }
     },
-    mounted() {
-      console.log("Form Mounted: %s", this.$options.name);
-      console.log("Options: %o", this);
-    },
     methods: {
       onCancel() {
         this.$emit("cancel");
