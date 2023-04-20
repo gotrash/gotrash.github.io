@@ -11,7 +11,12 @@ module.exports = {
     "^.+\\.vue$": "@vue/vue2-jest"
   },
   collectCoverage: true,
-  collectCoverageFrom: ["<rootDir>/layouts/**/*.vue", "<rootDir>/modules/**/*.js", "<rootDir>/plugins/**/*.js"],
+  collectCoverageFrom: [
+    "<rootDir>/components/**/*.vue",
+    "<rootDir>/layouts/**/*.vue",
+    "<rootDir>/modules/**/*.js",
+    "<rootDir>/plugins/**/*.js"
+  ],
   testEnvironment: "jsdom",
   verbose: true,
   transformIgnorePatterns: [
