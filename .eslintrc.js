@@ -17,6 +17,7 @@ module.exports = {
     // "import/no-named-as-default-member": "off",
     "vue/no-unused-components": "off",
     "vue/no-mutating-props": "off",
+    "vue/no-v-html": "off",
     "vue/require-component-is": "off",
     "no-unreachable": "warn",
     "no-lonely-if": "warn",
