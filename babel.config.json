@@ -6,12 +6,8 @@
           "@babel/preset-env",
           {
             "targets": {
-              "node": "14.21.3"
-            },
-            "corejs": "3.30",
-            "modules": "commonjs",
-            "useBuiltIns": "usage",
-            "debug": false
+              "node": "current"
+            }
           }
         ]
       ]
@@ -28,31 +24,6 @@
         }
       }
     ]
-    // "transform-es2015-modules-commonjs",
-    // "babel-plugin-dynamic-import-node"
   ],
-  "presets": [
-    "@babel/preset-env",
-    [
-      "@nuxt/babel-preset-app",
-      {
-        "corejs": 3,
-        "loose": true,
-        "targets": {
-          "browsers": ["last 2 versions"],
-          "node": "14.21.3"
-        },
-        "useBuiltIns": "usage",
-        "polyfills": [
-          "es.array.iterator",
-          "es.array.from",
-          "es.promise",
-          "es.promise.finally",
-          "es.object.assign",
-          "es.object.entries",
-          "es.map"
-        ]
-      }
-    ]
-  ]
+  "presets": ["@babel/preset-env", "@nuxt/babel-preset-app"]
 }
