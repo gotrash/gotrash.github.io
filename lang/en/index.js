@@ -1,6 +1,6 @@
 export default {
   // General
-  APP_NAME: "GoTrash",
+  APP_NAME: "<b>Go</b>Trash",
   APP_NAME_LONG: "GoTrash UK",
   // Nav Links
   NAV__HOME: "Home",
@@ -14,7 +14,15 @@ export default {
   PAGE_TITLE__FORGOT_PASSWORD: "Forgot Password",
   message: "hello i18n !!",
   // Auth
+  "AUTH.ERROR.FORGOT_PASSWORD_EMAIL_REQUIRED":
+    "An email address is required so we can locate your account and send a password reset link",
+  "AUTH.ERROR.FORGOT_PASSWORD_EMAIL_INVALID":
+    "This must be an email address so we can locate your account and send a password reset link",
   "AUTH.ERROR.PASSWORD": "Password is required and must be at least 8 characters",
+  "AUTH.ERROR.PASSWORD_STRENGTH": "The password requires an uppercase, lowercase, number and special character",
+  "AUTH.ERROR.LOGIN_EMAIL": "Email is required to login",
+  "AUTH.ERROR.LOGIN_MISSING_PASSWORD": "You must enter a password to login",
+  "AUTH.ERROR.LOGIN_WRONG_PASSWORD": "You must enter a password to login",
   "AUTH.ERROR.USERNAME": "Username is required and must be 4 or more characters",
   "AUTH.LABEL.CHANGE_PASSWORD": "Change Password",
   "AUTH.LABEL.UPDATE_PASSWORD": "Update Password",
