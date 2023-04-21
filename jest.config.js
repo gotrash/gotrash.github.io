@@ -5,7 +5,7 @@ module.exports = {
     "^vue$": "vue/dist/vue.common.js"
   },
   moduleFileExtensions: ["js", "vue", "json"],
-  modulePaths: ["<rootDir>/components", "<rootDir>/layouts", "<rootDir>/pages"],
+  // modulePaths: ["<rootDir>/components", "<rootDir>/layouts", "<rootDir>/pages"],
   transform: {
     "^.+\\.js$": "babel-jest",
     "^.+\\.vue$": "@vue/vue2-jest"
@@ -22,7 +22,8 @@ module.exports = {
   transformIgnorePatterns: [
     "node_modules/(?!(@nuxtjs/i18n)/)",
     "node_modules/(?!(@nuxtjs/style-resources)/)",
-    "node_modules/(?!(nuxt-i18n)/)"
+    "node_modules/(?!(nuxt-i18n)/)",
+    "node_modules/(?!(vuelidate)/)"
   ],
   preset: "@nuxt/test-utils",
   testEnvironmentOptions: {
