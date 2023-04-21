@@ -3,12 +3,12 @@ root = false
 
 # All Files
 [*]
-end_of_line = lf
 indent_style = space
 indent_size = 2
-insert_final_newline = true
+end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
+insert_final_newline = true
 
 # Matches multiple files with brace expansion notation
 # Set default charset
@@ -17,3 +17,6 @@ indent_style = space
 indent_size = 2
 tab_width = 2
 continuation_indent_size = 4
+
+[*.md]
+trim_trailing_whitespace = false
