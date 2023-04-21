@@ -9,7 +9,7 @@
     </b-navbar-nav>
     <b-navbar-nav class="ml-auto">
       <b-nav-item :to="{ name: 'auth-login' }">{{ $t("NAV__LOGIN") }}</b-nav-item>
-      <b-nav-item :to="{ name: 'auth-signup' }">{{ $t("NAV__SIGNUP") }}</b-nav-item>
+      <b-nav-item :to="{ name: 'auth-sign-up' }">{{ $t("NAV__SIGNUP") }}</b-nav-item>
       <b-nav-dropdown v-if="showLanguageSwitcher" id="nav--lang-dropdown" toggle-class="nav-link-custom" right>
         <template slot="text">
           {{ $t("NAV__LANG") }}
