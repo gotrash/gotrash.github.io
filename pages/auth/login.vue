@@ -3,6 +3,7 @@
     <b-alert :show="error != null" variant="info" dismissible>
       {{ error }}
     </b-alert>
+
     <b-card no-body class="card-outline card-primary">
       <auth-card-header />
       <b-card-body>
@@ -32,48 +33,43 @@
 </template>
 
 <script>
+  import HasFormData from "~/mixins/HasFormData";
+  import AuthDto from "~/dto/AuthDto";
+
   export default {
     name: "LoginPage",
     components: {
       AuthCardHeader: () => import("~/components/headers/AuthCardHeader"),
       LoginForm: () => import("~/components/forms/LoginForm")
     },
+    mixins: [HasFormData],
+    Dto: AuthDto,
     layout: "auth",
-    data() {
-      return {
-        error: null,
-        form: {
-          username: "",
-          password: "",
-          rememberMe: true
-        }
-      };
-    },
-    watch: {
-      "form.rememberMe": {
-        handler(rememberMe) {
-          this.$storage.setUniversal("rememberMe", rememberMe);
-        }
-      }
-    },
-    mounted() {
-      this.form.rememberMe = this.$storage.getUniversal("rememberMe");
-    },
+    // watch: {
+    //   "form.rememberMe": {
+    //     handler(rememberMe) {
+    //       this.$storage.setUniversal("rememberMe", rememberMe);
+    //     }
+    //   }
+    // },
+    // mounted() {
+    //   this.form.rememberMe = this.$storage.getUniversal("rememberMe");
+    // },
     methods: {
       onCancel() {
-        this.$router.push({ name: "home" });
+        this.onReset();
+
+        this.$router.push({ name: "index" });
       },
       onReset() {
-        this.form = {
-          username: null,
-          password: null
-        };
+        // const { Dto } = this.$options;
+        // this.form = new Dto();
       },
       onSubmit() {
-        const { username, password } = this.form;
+        const { email, password } = this.form;
 
         this.$axios
-          .post("/login", { username, password })
+          .post("/login", { username: email, password })
           .then(res => {
             console.log(res);
           })
