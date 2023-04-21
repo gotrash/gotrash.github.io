@@ -14,12 +14,22 @@
       }
     },
     methods: {
-      async onCancel() {
+      async onCancel(evt) {
+        if (evt) {
+          evt.stopPropagation();
+          evt.preventDefault();
+        }
+
         await this.onReset();
 
         this.$emit("cancel");
       },
-      async onReset() {
+      async onReset(evt) {
+        if (evt) {
+          evt.stopPropagation();
+          evt.preventDefault();
+        }
+
         await new Promise(resolve => {
           this.$nextTick(() => {
             this.$v.$reset();
@@ -30,7 +40,12 @@
 
         this.$emit("reset");
       },
-      onSubmit() {
+      onSubmit(evt) {
+        if (evt) {
+          evt.stopPropagation();
+          evt.preventDefault();
+        }
+
         this.$v.form.$touch();
 
         if (this.$v.form.$anyError) {
