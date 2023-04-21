@@ -20,7 +20,7 @@
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     -ms-flex-pack: center;
     justify-content: center;
   }
