@@ -14,12 +14,18 @@
       }
     },
     methods: {
-      onCancel() {
+      async onCancel() {
+        await this.onReset();
+
         this.$emit("cancel");
       },
-      onReset() {
-        this.$nextTick(() => {
-          this.$v.$reset();
+      async onReset() {
+        await new Promise(resolve => {
+          this.$nextTick(() => {
+            this.$v.$reset();
+
+            resolve();
+          });
         });
 
         this.$emit("reset");
