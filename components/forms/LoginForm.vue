@@ -1,14 +1,14 @@
 <template>
   <b-form @submit.prevent="onSubmit">
-    <b-form-group :label="$t('AUTH.LABEL.USERNAME')" label-for="username-input">
+    <b-form-group :label="$t('AUTH.LABEL.EMAIL')" label-for="email-input">
       <b-form-input
-        id="username-input"
-        v-model="form.username"
-        :state="validateState('username')"
-        aria-describedby="username-input-feedback"
+        id="email-input"
+        v-model="form.email"
+        :state="validateState('email')"
+        aria-describedby="email-input-feedback"
       ></b-form-input>
 
-      <b-form-invalid-feedback id="username-input-feedback">{{ $t("AUTH.ERROR.USERNAME") }}</b-form-invalid-feedback>
+      <b-form-invalid-feedback id="email-input-feedback">{{ $t("AUTH.ERROR.LOGIN_EMAIL") }}</b-form-invalid-feedback>
     </b-form-group>
 
     <b-form-group :label="$t('AUTH.LABEL.PASSWORD')" label-for="password-input">
@@ -20,7 +20,13 @@
         aria-describedby="password-input-feedback"
       ></b-form-input>
 
-      <b-form-invalid-feedback id="password-input-feedback">{{ $t("AUTH.ERROR.PASSWORD") }}</b-form-invalid-feedback>
+      <b-form-invalid-feedback id="password-input-feedback">
+        <template v-if="!$v.form.password.required">Missing</template>
+        <template v-else-if="!$v.form.password.minLength">Too Short</template>
+        <template v-else-if="!$v.form.password.maxLength">Too Long</template>
+        <template v-else-if="!$v.form.password.passwordStrength">Not strong enough</template>
+        <template v-else>Some other password-related error</template>
+      </b-form-invalid-feedback>
     </b-form-group>
 
     <div class="row">
@@ -38,52 +44,40 @@
         </button>
       </div>
     </div>
-
-    <div class="d-none flex-column flex-md-row justify-content-between">
-      <b-btn variant="outline-danger" class="mb-3 mb-md-0" type="reset" @click.stop.prevent="onReset">{{
-        $t("GENERAL.LABEL.RESET")
-      }}</b-btn>
-      <div class="d-flex flex-column d-md-block">
-        <b-btn type="cancel" variant="outline-warning" class="mb-3 mb-md-0 mr-md-2" @click.stop.prevent="onCancel">
-          {{ $t("GENERAL.LABEL.CANCEL") }}
-        </b-btn>
-        <b-btn type="submit" variant="outline-primary">
-          {{ $t("GENERAL.LABEL.SUBMIT") }}
-        </b-btn>
-      </div>
-    </div>
   </b-form>
 </template>
 
 <script>
-  import { required, minLength } from "vuelidate/lib/validators";
+  import AuthDto from "~/dto/AuthDto";
+  import { Form, ModelValidator, Validations } from "~/forms/LoginForm";
   import IsFormComponent from "~/mixins/IsFormComponent";
 
   export default {
     name: "LoginForm",
+    dto: AuthDto,
     mixins: [IsFormComponent],
+    Form,
     props: {
       value: {
         type: Object,
         required: true,
-        validator: obj =>
-          Object.prototype.hasOwnProperty.call(obj, "username") &&
-          Object.prototype.hasOwnProperty.call(obj, "password") &&
-          ((Object.prototype.hasOwnProperty.call(obj, "rememberMe") && typeof obj.rememberMe === "boolean") ||
-            obj.rememberMe === null)
+        validator: v => ModelValidator(v)
       }
     },
-    validations: {
-      form: {
-        username: {
-          required,
-          minLength: minLength(4)
-        },
-        password: {
-          required,
-          minLength: minLength(8)
+    computed: {
+      vForm() {
+        const vForm = { ...this.$v.form };
+
+        delete vForm.$model;
+        delete vForm.$params;
+
+        for (const field of Object.keys(vForm).filter(f => !f.includes("$"))) {
+          delete vForm[field].$params;
         }
+
+        return vForm;
       }
-    }
+    },
+    validations: Validations
   };
 </script>
