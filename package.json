@@ -16,7 +16,12 @@
     "lint:js:fix": "npm run lint:js -- --fix",
     "lint:prettier:fix": "prettier --write --list-different .",
     "prepare": "husky install",
-    "test": "jest"
+    "test": "jest",
+    "test:components": "jest ./test/components",
+    "test:layouts": "jest ./test/layout",
+    "test:modules": "jest ./test/modules",
+    "test:pages": "jest ./test/pages",
+    "test:plugins": "jest ./test/plugins"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint --cache",
