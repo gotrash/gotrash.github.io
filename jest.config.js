@@ -6,6 +6,7 @@ module.exports = {
   },
   moduleFileExtensions: ["js", "vue", "json"],
   // modulePaths: ["<rootDir>/components", "<rootDir>/layouts", "<rootDir>/pages"],
+  modulePaths: [],
   transform: {
     "^.+\\.js$": "babel-jest",
     "^.+\\.vue$": "@vue/vue2-jest"
