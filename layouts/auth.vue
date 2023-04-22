@@ -5,10 +5,7 @@
 </template>
 <script>
   export default {
-    name: "AuthLayout",
-    components: {
-      SiteNavbar: () => import("~/components/navbars/SiteNavbar.vue")
-    }
+    name: "AuthLayout"
   };
 </script>
 <style lang="scss">
