@@ -6,7 +6,7 @@ The GoTrash web app is based on Nuxt.JS v2. For further information, please cons
 
 ### Build Setup
 
-To build the GoTrash app, the Node Package Manager (NPM) dependencies need to be installed first.  To do so, run the following command:
+To build the GoTrash app, the Node Package Manager (NPM) dependencies need to be installed first. To do so, run the following command:
 
 ```bash
 # install dependencies
@@ -20,7 +20,7 @@ To start a development server, then we run the following:
 $ npm run dev
 ```
 
-Building for production is a 2-step process, no matter what mode your generating the site in.  Irregardless of what mode your building the app for, you need to run the following:
+Building for production is a 2-step process, no matter what mode your generating the site in. Irregardless of what mode your building the app for, you need to run the following:
 
 ```bash
 # build for production
@@ -43,7 +43,7 @@ $ npm run generate
 
 ### Lint Scripts
 
-The following scripts are used for linting and fixing any lint errors that are picked up by the lint tools.  Linting is required for code to be submitted to the repository and any pull requests will not me approved if any lint errors are picked up.
+The following scripts are used for linting and fixing any lint errors that are picked up by the lint tools. Linting is required for code to be submitted to the repository and any pull requests will not me approved if any lint errors are picked up.
 
 ```bash
 # Lint All
@@ -69,7 +69,7 @@ $ npm run lint:prettier
 
 Use the following command to run the unit tests for the app.
 
-Tests are implemented using Jest and live in the `./tests` folder (funnily enough).  Any tasks completed should ideally include tests and all tests should pass.
+Tests are implemented using Jest and live in the `./tests` folder (funnily enough). Any tasks completed should ideally include tests and all tests should pass.
 
 ```bash
 # test script
@@ -83,7 +83,6 @@ You can create the following extra directories, some of which have special behav
 ### `assets`
 
 The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
 
 ### `components`
 
