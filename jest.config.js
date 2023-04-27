@@ -29,5 +29,6 @@ module.exports = {
   preset: "@nuxt/test-utils",
   testEnvironmentOptions: {
     customExportConditions: ["node", "node-addons"]
-  }
+  },
+  setupFiles: ["<rootDir>/jest.init.js"]
 };
