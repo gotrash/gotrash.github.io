@@ -1,5 +1,6 @@
 import Fiber from "fibers";
 import Sass from "sass";
+import i18n from "~/lang/config";
 
 // Community & 3rd-party modules
 const communityModules = [
@@ -21,7 +22,7 @@ const nuxtModules = [
 ];
 
 export default {
-  auth: {},
+  // auth: {},
   axios: {
     baseURL: process.env.AXIOS_BASE_URL || "http://localhost:9000",
     progress: true,
@@ -31,60 +32,64 @@ export default {
   build: {
     analyze: false,
     babel: {
-      plugins: [
-        [
-          "module-resolver",
-          {
-            root: ["."],
-            alias: {
-              "@": ".",
-              "~": "."
-            }
-          }
-        ]
-      ],
+      babelrc: false
+      //     plugins: [
+      //       [
+      //         "module-resolver",
+      //         {
+      //           root: ["."],
+      //           alias: {
+      //             "@": ".",
+      //             "~": "."
+      //           }
+      //         }
+      //       ]
+      //     ],
 
-      presets(env) {
-        const envTargets = {
-          client: { browsers: ["last 2 versions"], ie: 10 },
-          server: { node: "current" }
-        };
+      //     presets(env) {
+      //       // const envTargets = {
+      //       //   client: { browsers: ["last 2 versions"], ie: 10 },
+      //       //   server: { node: "current" }
+      //       // };
 
-        return [
-          [
-            "@nuxt/babel-preset-app",
-            {
-              corejs: 3,
-              loose: true,
-              targets: envTargets[env.envName],
-              debug: !!process.env.BABEL_DEBUG,
-              useBuiltIns: "usage",
-              polyfills: [
-                "es.array.iterator",
-                "es.array.from",
-                "es.promise",
-                "es.promise.finally",
-                "es.object.assign",
-                "es.object.entries",
-                "es.map"
-              ]
-            }
-          ]
-        ];
-      }
+      //       return [
+      //         "@babel/preset-env",
+      //         [
+      //           "@nuxt/babel-preset-app",
+      //           {
+      //             corejs: 2,
+      //             loose: true,
+      //             targets: {
+      //               browsers: ["last 2 versions"],
+      //               node: "current"
+      //             },
+      //             useBuiltIns: "usage",
+      //             polyfills: [
+      //               "es.array.iterator",
+      //               "es.array.from",
+      //               "es.promise",
+      //               "es.promise.finally",
+      //               "es.object.assign",
+      //               "es.object.entries",
+      //               "es.map"
+      //             ]
+      //           }
+      //         ]
+      //       ];
+      //     }
     },
     html: {
-      minify: {
-        collapseBooleanAttributes: true,
-        decodeEntities: true,
-        minifyCSS: true,
-        minifyJS: true,
-        processConditionalComments: true,
-        removeEmptyAttributes: false,
-        removeRedundantAttributes: true,
-        trimCustomFragments: true,
-        useShortDoctype: true
-      }
+      // minify: {
+      //   collapseBooleanAttributes: true,
+      //   decodeEntities: true,
+      //   minifyCSS: true,
+      //   minifyJS: true,
+      //   processConditionalComments: true,
+      //   removeEmptyAttributes: false,
+      //   removeRedundantAttributes: true,
+      //   trimCustomFragments: true,
+      //   useShortDoctype: true
+      // }
     },
     loaders: {
       scss: {
@@ -255,29 +260,7 @@ export default {
       // }
     ]
   },
-  i18n: {
-    locales: [
-      {
-        code: "en",
-        iso: "en-GB",
-        file: "en",
-        name: "EN"
-      }
-    ],
-    defaultLocale: "en",
-    strategy: "no_prefix",
-    detectBrowserLanguage: {
-      alwaysRedirect: true,
-      useCookie: false,
-      redirectOn: "no_prefix"
-    },
-    vueI18n: {
-      fallbackLocale: "en"
-    },
-    lazy: true,
-    langDir: "lang/",
-    skipSettingLocaleOnNavigate: true
-  },
+  i18n,
   modules: [
     ...nuxtModules.map(module => `@nuxtjs/${module}`),
     ...communityModules

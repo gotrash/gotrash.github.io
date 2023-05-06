@@ -1,7 +1,7 @@
 import { mount, shallowMount } from "@vue/test-utils";
 import { BDropdown, BNavItem, BNavbar, BNavbarBrand, BNavbarNav } from "bootstrap-vue";
 import DefaultLayout from "~/layouts/default.vue";
-import i18nConfig from "~/config/i18n";
+import i18n from "~/lang/config";
 import lang from "~/lang/en/index";
 import NuxtLogo from "~/components/NuxtLogo";
 import SiteNavbar from "~/components/navbars/SiteNavbar";
@@ -11,7 +11,7 @@ const componentDefaults = {
   mocks: {
     $t,
     $i18n: {
-      locales: [...i18nConfig.locales, ...i18nConfig.locales]
+      locales: [...i18n.locales, ...i18n.locales]
     }
   },
   stubs: {

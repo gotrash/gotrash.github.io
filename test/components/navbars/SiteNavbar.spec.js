@@ -1,7 +1,7 @@
 import { BDropdown, BNavItem, BNavbar, BNavbarBrand, BNavbarNav } from "bootstrap-vue";
 import { mount } from "@vue/test-utils";
 import SiteNavbar from "@/components/navbars/SiteNavbar.vue";
-import i18nConfig from "~/config/i18n";
+import i18n from "~/lang/config";
 import lang from "~/lang/en/index";
 
 const $t = msg => lang[msg];
@@ -10,7 +10,7 @@ const componentDefaults = {
   mocks: {
     $t,
     $i18n: {
-      locales: [...i18nConfig.locales, ...i18nConfig.locales]
+      locales: [...i18n.locales, ...i18n.locales]
     }
   },
   stubs: {
