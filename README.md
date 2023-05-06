@@ -1,5 +1,7 @@
 # GoTrash Web App
 
+[![ci](https://github.com/gotrash/gotrash-webapp/actions/workflows/ci.yml/badge.svg)](https://github.com/gotrash/gotrash-webapp/actions/workflows/ci.yml)
+
 The GoTrash web app is based on Nuxt.JS v2. For further information, please consult the [Nuxt Docs](https://nuxtjs.org/docs/), [Vue.JS Guide](https://v2.vuejs.org/v2/guide/) and [Vue.JS API Docs](https://v2.vuejs.org/v2/api/).
 
 ## Development & Deployment
