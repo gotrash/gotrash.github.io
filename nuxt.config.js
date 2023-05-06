@@ -1,6 +1,6 @@
 import Fiber from "fibers";
 import Sass from "sass";
-import i18n from "~/lang/config";
+import i18n from "./lang/config";
 
 // Community & 3rd-party modules
 const communityModules = [
