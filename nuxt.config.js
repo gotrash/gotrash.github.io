@@ -46,6 +46,12 @@ export default {
           logout: { url: "/logout", method: "post" },
           user: { url: "/user", method: "get" }
         },
+        redirect: {
+          login: "/auth/login",
+          logout: "/",
+          callback: "/auth/login",
+          home: "/"
+        },
         scheme: "refresh"
       }
     }
@@ -359,6 +365,9 @@ export default {
         }
       ]
     }
+  },
+  router: {
+    middleware: ["auth"]
   },
   sentry: {
     dsn:

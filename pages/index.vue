@@ -6,6 +6,7 @@
 
 <script>
   export default {
-    name: "IndexPage"
+    name: "IndexPage",
+    auth: false
   };
 </script>
