@@ -6,6 +6,7 @@ export default {
   NAV__HOME: "Home",
   NAV__LANG: "Lang",
   NAV__LOGIN: "Login",
+  NAV__LOGOUT: "Logout",
   NAV__SIGNUP: "Signup",
   NAV__USER: "User",
   // Page Titles

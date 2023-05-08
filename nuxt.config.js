@@ -52,9 +52,11 @@ export default {
           callback: "/auth/login",
           home: "/"
         },
-        scheme: "refresh"
+        scheme: "refresh",
+        resetOnError: true
       }
-    }
+    },
+    resetOnError: true
   },
   axios: {
     baseURL: process.env.AXIOS_BASE_URL || "http://localhost:9000",

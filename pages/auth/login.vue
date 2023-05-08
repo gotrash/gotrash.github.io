@@ -44,6 +44,7 @@
     },
     mixins: [HasFormData],
     layout: "auth",
+    auth: "guest",
     Dto: AuthDto,
     // watch: {
     //   "form.rememberMe": {
