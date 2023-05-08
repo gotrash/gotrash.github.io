@@ -8,6 +8,7 @@
       <b-nav-item :to="{ name: 'index' }">{{ $t("NAV__HOME") }}</b-nav-item>
     </b-navbar-nav>
     <b-navbar-nav class="ml-auto">
+      <b-nav-item :to="{ name: 'user' }">{{ $t("NAV__USER") }}</b-nav-item>
       <b-nav-item :to="{ name: 'auth-login' }">{{ $t("NAV__LOGIN") }}</b-nav-item>
       <b-nav-item :to="{ name: 'auth-sign-up' }">{{ $t("NAV__SIGNUP") }}</b-nav-item>
       <b-nav-dropdown v-if="showLanguageSwitcher" id="nav--lang-dropdown" toggle-class="nav-link-custom" right>
