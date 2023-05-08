@@ -10,7 +10,7 @@ const communityModules = [
 
 // Official Nuxt modules
 const nuxtModules = [
-  "auth",
+  "auth-next",
   "axios",
   "i18n",
   "pwa",
@@ -22,7 +22,42 @@ const nuxtModules = [
 ];
 
 export default {
-  // auth: {},
+  auth: {
+    plugins: [{ src: "~/plugins/axios", mode: "client" }, "~/plugins/auth.js"],
+    strategies: {
+      local: {
+        token: {
+          property: "accessToken",
+          global: true,
+          maxAge: 180000000,
+          type: "Bearer"
+        },
+        refreshToken: {
+          property: "refreshToken",
+          data: "refreshToken",
+          maxAge: 180000000
+        },
+        user: {
+          property: false,
+          autoFetch: true
+        },
+        endpoints: {
+          login: { url: "/login", method: "post" },
+          logout: { url: "/logout", method: "post" },
+          user: { url: "/user", method: "get" }
+        },
+        redirect: {
+          login: "/auth/login",
+          logout: "/",
+          callback: "/auth/login",
+          home: "/"
+        },
+        scheme: "refresh",
+        resetOnError: true
+      }
+    },
+    resetOnError: true
+  },
   axios: {
     baseURL: process.env.AXIOS_BASE_URL || "http://localhost:9000",
     progress: true,
@@ -332,6 +367,9 @@ export default {
         }
       ]
     }
+  },
+  router: {
+    middleware: ["auth"]
   },
   sentry: {
     dsn:
