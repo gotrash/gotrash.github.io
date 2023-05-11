@@ -43,20 +43,21 @@ export default {
         },
         endpoints: {
           login: { url: "/login", method: "post" },
-          logout: { url: "/logout", method: "post" },
+          logout: false,
+          refresh: { url: "/refresh", method: "post" },
           user: { url: "/user", method: "get" }
-        },
-        redirect: {
-          login: "/auth/login",
-          logout: "/",
-          callback: "/auth/login",
-          home: "/"
         },
         scheme: "refresh",
         resetOnError: true
       }
     },
-    resetOnError: true
+    resetOnError: true,
+    redirect: {
+      login: "/auth/login",
+      logout: "/",
+      callback: "/auth/login",
+      home: "/"
+    }
   },
   axios: {
     baseURL: process.env.AXIOS_BASE_URL || "http://localhost:9000",
