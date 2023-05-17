@@ -14,6 +14,11 @@
 
 <script>
   export default {
-    name: "CurrentUserPage"
+    name: "CurrentUserPage",
+    mounted() {
+      this.$axios.get("/user").then(res => {
+        console.log(res.data);
+      });
+    }
   };
 </script>
