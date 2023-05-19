@@ -287,17 +287,7 @@ export default {
       }
     ],
     title: "GoTrash",
-    titleTemplate: `%s - GoTrash`,
-    script: [
-      // {
-      //   src: "/js/jquery.min.js",
-      //   type: "text/javascript"
-      // },
-      // {
-      //   src: "/js/adminlte.js",
-      //   type: "text/javascript"
-      // }
-    ]
+    titleTemplate: `%s - GoTrash`
   },
   i18n,
   modules: [
