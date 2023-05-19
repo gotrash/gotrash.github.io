@@ -7,6 +7,9 @@ export default {
   NAV__LANG: "Lang",
   NAV__LOGIN: "Login",
   NAV__LOGOUT: "Logout",
+  NAV__MESSAGES: "Messages",
+  NAV__OAUTH: "OAuth",
+  NAV__REGISTERED_CLIENTS: "Registered Clients",
   NAV__SIGNUP: "Signup",
   NAV__USER: "User",
   // Page Titles
@@ -38,6 +41,7 @@ export default {
   "AUTH.LABEL.SIGN_IN": "Sign In",
   "AUTH.LABEL.SIGN_UP": "Sign Up",
   "AUTH.LABEL.USERNAME": "Username",
+  "AUTH.MESSAGE.AUTHORIZING": "Authorizing",
   "AUTH.MESSAGE.CONFIRM_FORGOT_PASSWORD": `
     <p class="lead">
       If we've found an account associated with the email address provided, then you will receive a password reset link
@@ -57,5 +61,6 @@ export default {
   "GENERAL.LABEL.CANCEL": "Cancel",
   "GENERAL.LABEL.RESET": "Reset",
   "GENERAL.LABEL.SUBMIT": "Submit",
-  "GENERAL.MESSAGE.THANK_YOU": "Thank You!!"
+  "GENERAL.MESSAGE.THANK_YOU": "Thank You!!",
+  "GENERAL.MESSAGE.LOADING": "Loading"
 };
