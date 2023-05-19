@@ -16,6 +16,7 @@ const nuxtModules = [
   "pwa",
   "style-resources",
   // "svg",
+  "proxy",
   "toast",
   "universal-storage",
   "sentry"
@@ -63,6 +64,7 @@ export default {
   axios: {
     baseURL: process.env.AXIOS_BASE_URL || "http://localhost:9000",
     progress: true,
+    proxy: true,
     retry: { retries: 10 }
   },
   bootstrapVue: { bootstrapCSS: false, bootstrapVueCSS: false },
@@ -311,6 +313,13 @@ export default {
     },
     googleAnalytics: {
       id: process.env.GA_TRACKING_ID
+    }
+  },
+  proxy: {
+    // see Proxy section
+    // Proxies /foo to http://example.com/foo
+    "/.well-known/openid-configuration": {
+      target: "http://localhost:9000/.well-known/openid-configuration"
     }
   },
   publicRuntimeConfig: {
