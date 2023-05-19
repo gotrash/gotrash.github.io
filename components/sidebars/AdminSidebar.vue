@@ -71,6 +71,26 @@
               </li>
             </ul>
           </li>
+          <li :class="['nav-item', { active: $route.name === 'menu-open' }]">
+            <a href="#" :class="['nav-link', { active: $route.name === 'admin-oauth-registered-clients' }]">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                {{ $t("NAV__OAUTH") }}
+                <fa-icon icon="angle-left" class="right" />
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <b-link
+                  :to="{ name: 'admin-oauth-registered-clients' }"
+                  :class="['nav-link', { active: $route.name === 'admin-oauth-registered-clients' }]"
+                >
+                  <fa-icon :icon="['far', 'circle']" class="nav-icon" />
+                  <p>{{ $t("NAV__REGISTERED_CLIENTS") }}</p>
+                </b-link>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
