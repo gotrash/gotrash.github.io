@@ -43,6 +43,23 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
+            <b-link
+              :to="{ name: 'admin-continents' }"
+              :class="['nav-link', { active: $route.name === 'admin-continents' }]"
+            >
+              <i class="nav-icon fas fa-th"></i>
+              <p>{{ $t("NAV__CONTINENTS") }}</p>
+            </b-link>
+          </li>
+          <li class="nav-item">
+            <b-link
+              :to="{ name: 'admin-countries' }"
+              :class="['nav-link', { active: $route.name === 'admin-countries' }]"
+            >
+              <i class="nav-icon fas fa-th"></i>
+              <p>{{ $t("NAV__COUNTRIES") }}</p>
+            </b-link>
+          </li>
             <b-link :to="{ name: 'messages' }" :class="['nav-link', { active: $route.name === 'messages' }]">
               <i class="nav-icon fas fa-th"></i>
               <p>{{ $t("NAV__MESSAGES") }}</p>
