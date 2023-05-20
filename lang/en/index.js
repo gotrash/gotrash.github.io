@@ -3,7 +3,12 @@ export default {
   APP_NAME: "<b>Go</b>Trash",
   APP_NAME_LONG: "GoTrash UK",
   // Nav Links
+  NAV__BIDS: "Bids",
+  NAV__CONTINENTS: "Continents",
+  NAV__COUNTRIES: "Countries",
   NAV__HOME: "Home",
+  NAV__JOBS: "Jobs",
+  NAV__JOB_TYPES: "Job Types",
   NAV__LANG: "Lang",
   NAV__LOGIN: "Login",
   NAV__LOGOUT: "Logout",
@@ -57,10 +62,36 @@ export default {
   "AUTH.MESSAGE.SIGN_IN": "Sign in to start your session",
   "AUTH.MESSAGE.RECOVER_PASSWORD":
     "You are only one step a way from your new password.  Reset it now by entering and confirming your new password below.",
+  // Continents
+  "CONTINENTS.LABEL.CONTINENT_CODE": "Continent Code",
+  "CONTINENTS.LABEL.CONTINENT_NAME": "Continent Name",
+  // Countries
+  "COUNTRIES.LABEL.ID": "ID",
+  "COUNTRIES.LABEL.CONTINENT_CODE": "Continent Code",
+  "COUNTRIES.LABEL.COUNTRY_NAME": "Country Name",
+  "COUNTRIES.LABEL.TWO_LETTER_COUNTRY_CODE": "2-letter Country Code",
+  "COUNTRIES.LABEL.THREE_LETTER_COUNTRY_CODE": "3-letter Country Code",
+  "COUNTRIES.LABEL.COUNTRY_NUMBER": "Country Number",
+  "COUNTRIES.LABEL.ENABLED": "Enabled",
+  "COUNTRIES.LABEL.CREATED_AT": "Created At",
+  "COUNTRIES.LABEL.UPDATED_AT": "Updated At",
   // General
+  "GENERAL.LABEL.ASC": "Asc",
   "GENERAL.LABEL.CANCEL": "Cancel",
+  "GENERAL.LABEL.DESC": "Desc",
+  "GENERAL.LABEL.DISABLED": "Disabled",
+  "GENERAL.LABEL.ENABLED": "Enabled",
+  "GENERAL.LABEL.FILTER": "Filter",
+  "GENERAL.LABEL.FORM_NONE": "--- None ---",
+  "GENERAL.LABEL.INITIAL_SORT": "Initial Sort",
+  "GENERAL.LABEL.PER_PAGE": "Per Page",
   "GENERAL.LABEL.RESET": "Reset",
+  "GENERAL.LABEL.SEARCH": "Search",
+  "GENERAL.LABEL.SORT": "Sort",
+  "GENERAL.LABEL.SORT_BY": "Sort By",
+  "GENERAL.LABEL.SORT_DESC": "Sort Desc",
   "GENERAL.LABEL.SUBMIT": "Submit",
   "GENERAL.MESSAGE.THANK_YOU": "Thank You!!",
-  "GENERAL.MESSAGE.LOADING": "Loading"
+  "GENERAL.MESSAGE.LOADING": "Loading",
+  "GENERAL.PLACEHOLDER.SEARCH": "Type to search"
 };
