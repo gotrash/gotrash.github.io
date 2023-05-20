@@ -1,29 +1,27 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <div>
-    <!-- Navbar -->
-    <b-navbar class="main-header navbar-white" type="light">
-      <!-- Left navbar links -->
-      <b-navbar-nav>
-        <b-nav-item data-widget="pushmenu" href="#" role="button">
-          <fa-icon icon="bars" />
-        </b-nav-item>
-      </b-navbar-nav>
+  <!-- Navbar -->
+  <b-navbar ref="header" class="main-header navbar-white" type="light">
+    <!-- Left navbar links -->
+    <b-navbar-nav>
+      <b-nav-item data-widget="pushmenu" href="#" role="button">
+        <fa-icon icon="bars" />
+      </b-nav-item>
+    </b-navbar-nav>
 
-      <!-- Right navbar links -->
-      <b-navbar-nav class="ml-auto">
-        <fullscreen-navbar-item />
+    <!-- Right navbar links -->
+    <b-navbar-nav class="ml-auto">
+      <fullscreen-navbar-item />
 
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-            <fa-icon icon="th-large" />
-          </a>
-        </li>
-        <logout-navbar-item />
-      </b-navbar-nav>
-    </b-navbar>
-    <!-- /.navbar -->
-  </div>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
+          <fa-icon icon="th-large" />
+        </a>
+      </li>
+      <logout-navbar-item />
+    </b-navbar-nav>
+  </b-navbar>
+  <!-- /.navbar -->
 </template>
 
 <script>
@@ -42,13 +40,52 @@
       availableLocales() {
         return this.$i18n.locales.filter(i => i.code !== this.$i18n.locale || true);
       },
+      headerHeight: {
+        get() {
+          return this.$store.getters("layout/getHeight")("header");
+        },
+        set(height) {
+          this.$store.commit("layout/setHeight", { key: "header", height });
+        }
+      },
+      headerWidth: {
+        get() {
+          return this.$store.getters("layout/getWidth")("width");
+        },
+        set(width) {
+          this.$store.commit("layout/setWidth", { key: "header", width });
+        }
+      },
       showLanguageSwitcher() {
         const { availableLocales } = this;
 
         return availableLocales > 1;
       }
     },
+    mounted() {
+      this.setHeight();
+      this.setWidth();
+
+      this.setupListeners();
+    },
+    unmounted() {
+      this.removeListeners();
+    },
     methods: {
+      setHeight() {
+        this.headerHeight = this.$refs.header.$el.clientHeight + 1;
+      },
+      setWidth() {
+        this.headerWidth = this.$refs.header.$el.clientWidth;
+      },
+      setupListeners() {
+        window.addEventListener("resize", this.setHeight);
+        window.addEventListener("resize", this.setWidth);
+      },
+      removeListeners() {
+        window.removeEventListener("resize", this.setHeight);
+        window.removeEventListener("resize", this.setWidth);
+      },
       /**
        * Generates a display label based off the ISO code for a countries language.
        *
