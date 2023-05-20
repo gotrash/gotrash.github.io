@@ -14,7 +14,7 @@
     </b-link>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div ref="sidebar" class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
@@ -101,6 +101,49 @@
 
 <script>
   export default {
-    name: "AdminSidebar"
+    name: "AdminSidebar",
+    computed: {
+      sidebarHeight: {
+        get() {
+          return this.$store.getters("layout/getHeight")("sidebar");
+        },
+        set(height) {
+          this.$store.commit("layout/setHeight", { key: "sidebar", height });
+        }
+      },
+      sidebarWidth: {
+        get() {
+          return this.$store.getters("layout/getWidth")("sidebar");
+        },
+        set(width) {
+          this.$store.commit("layout/setWidth", { key: "sidebar", width });
+        }
+      }
+    },
+    mounted() {
+      this.setHeight();
+      this.setWidth();
+
+      this.setupListeners();
+    },
+    unmounted() {
+      this.removeListeners();
+    },
+    methods: {
+      removeListeners() {
+        window.removeEventListener("resize", this.setHeight);
+        window.removeEventListener("resize", this.setWidth);
+      },
+      setHeight() {
+        this.sidebarHeight = this.$refs.sidebar.clientHeight;
+      },
+      setWidth() {
+        this.sidebarWidth = this.$refs.sidebar.clientWidth;
+      },
+      setupListeners() {
+        window.addEventListener("resize", this.setHeight);
+        window.addEventListener("resize", this.setWidth);
+      }
+    }
   };
 </script>
