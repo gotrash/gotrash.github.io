@@ -26,40 +26,31 @@ export default {
   auth: {
     plugins: [{ src: "~/plugins/axios", mode: "client" }, "~/plugins/auth.js"],
     strategies: {
-      local: {
-        token: {
-          property: "accessToken",
-          global: true,
-          maxAge: 180000000,
-          type: "Bearer"
-        },
-        refreshToken: {
-          property: "refreshToken",
-          data: "refreshToken",
-          maxAge: 180000000,
-          tokenRequired: true
-        },
-        user: {
-          property: false,
-          autoFetch: true
-        },
+      oidc: {
+        scheme: "openIDConnect",
         endpoints: {
-          login: { url: "/login", method: "post" },
-          logout: false,
-          refresh: { url: "/refresh", method: "post" },
-          user: { url: "/user", method: "get" }
+          configuration: "http://localhost:9000/.well-known/openid-configuration"
         },
-        scheme: "refresh",
-        resetOnError: true
+        clientId: "messaging-client",
+        clientSecret: "secret",
+        grantType: "authorization_code",
+        scope: "openid",
+        // state: "UNIQUE_AND_NON_GUESSABLE",
+        // codeChallengeMethod: "",
+        responseMode: "code",
+        logoutRedirectUri: "http://localhost:3000",
+        // acrValues: "",
+        autoLogout: false
       }
     },
     resetOnError: true,
     redirect: {
-      login: "/auth/login",
+      login: "/login",
       logout: "/",
-      callback: "/auth/login",
+      callback: "/auth/authorized",
       home: "/"
-    }
+    },
+    watchLoggedIn: true
   },
   axios: {
     baseURL: "/",
