@@ -1,6 +1,6 @@
-import BaseDto from "../dto/BaseDto";
+import BaseEntity from "./BaseEntity";
 
-export default class Continent extends BaseDto {
+export default class Continent extends BaseEntity {
   continentCode = null;
   continentName = null;
   createdAt = null;

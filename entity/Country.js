@@ -1,7 +1,7 @@
-import BaseDto from "../dto/BaseDto";
+import BaseEntity from "./BaseEntity";
 import Continent from "./Continent";
 
-export default class Country extends BaseDto {
+export default class Country extends BaseEntity {
   id = null;
   countryName = null;
   twoLetterCountryCode = null;
