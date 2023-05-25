@@ -1,7 +1,7 @@
 <template>
   <!-- /.content-wrapper -->
   <footer ref="footer" class="main-footer">
-    <strong>Copyright &copy; 2023 <a href="http://gotrash.co.uk">GoTrash</a>.</strong>
+    <strong>Copyright &copy; 2023 <b-link href="http://gotrash.co.uk" class="text-success">GoTrash</b-link>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block"><b></b></div>
   </footer>
