@@ -1,4 +1,5 @@
 export default [
+  { icon: "tachometer-alt", route: "admin", text: "NAV__ADMIN_DASHBOARD" },
   { icon: "gavel", route: "admin-bids", text: "NAV__BIDS" },
   { icon: "globe", route: "admin-continents", text: "NAV__CONTINENTS" },
   { icon: "globe-europe", route: "admin-countries", text: "NAV__COUNTRIES" },
@@ -16,20 +17,13 @@ export default [
   //   ]
   // },
   { icon: "photo-video", route: "admin-files", text: "NAV__FILES" },
-  { icon: "trash", route: "admin-jobs", text: "NAV__JOBS" },
-  { icon: "trash", route: "admin-job-items", text: "NAV__JOB_ITEMS" },
-  { icon: "trash-alt", route: "admin-job-types", text: "NAV__JOB_TYPES" },
-  { icon: "unlock", route: "admin-password-reset-tokens", text: "NAV__PASSWORD_RESET_TOKENS" },
-  { icon: "lock", route: "admin-privileges", text: "NAV__PRIVILEGES" },
-  { icon: "lock", route: "admin-privilege-types", text: "NAV__PRIVILEGE_TYPES" },
-  { icon: "users", route: "admin-roles", text: "NAV__ROLES" },
-  { icon: "users", route: "admin-users", text: "NAV__USERS" },
-  { icon: "map-marker", route: "admin-user-locations", text: "NAV__USER_LOCATIONS" },
-  { icon: "user-check", route: "admin-verification-tokens", text: "NAV__VERIFICATION_TOKENS" },
-  { icon: "user", route: "admin-services", text: "NAV__SERVICES" },
-  { icon: "user", route: "admin-service-types", text: "NAV__SERVICE_TYPES" },
+  { icon: "tasks", route: "admin-jobs", text: "NAV__JOBS" },
+  { icon: "list", route: "admin-job-items", text: "NAV__JOB_ITEMS" },
+  { icon: "list-alt", route: "admin-job-types", text: "NAV__JOB_TYPES" },
+  { icon: "concierge-bell", route: "admin-services", text: "NAV__SERVICES" },
+  { icon: "th-list", route: "admin-service-types", text: "NAV__SERVICE_TYPES" },
   { icon: "receipt", route: "admin-invoices", text: "NAV__INVOICES" },
   { icon: "money-check", route: "admin-payments", text: "NAV__PAYMENTS" },
-  { icon: "user", route: "admin-service-providers", text: "NAV__SERVICE_PROVIDERS" },
+  { icon: "building", route: "admin-service-providers", text: "NAV__SERVICE_PROVIDERS" },
   { icon: "network-wired", route: "admin-oauth-clients", text: "NAV__OAUTH_CLIENTS" }
 ];
