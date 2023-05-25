@@ -15,8 +15,9 @@
 <script>
   export default {
     name: "CurrentUserPage",
+    layout: "admin",
     mounted() {
-      this.$axios.get("/user").then(res => {
+      this.$axios.get("http://localhost:9000/userinfo").then(res => {
         console.log(res.data);
       });
     }
