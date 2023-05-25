@@ -127,4 +127,4 @@ nohup.out
 package-lock.json
 yarn.lock
 test/
-static/
+static/js/
