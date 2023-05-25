@@ -90,6 +90,11 @@ export default {
   "AUTH.MESSAGE.SIGN_IN": "Sign in to start your session",
   "AUTH.MESSAGE.RECOVER_PASSWORD":
     "You are only one step a way from your new password.  Reset it now by entering and confirming your new password below.",
+  // Bids
+  "BIDS.LABEL.ID": "ID",
+  "BIDS.LABEL.JOB": "Job",
+  "BIDS.LABEL.SERVICE_PROVIDER": "Service Provider",
+  "BIDS.LABEL.AMOUNT": "Amount",
   // Continents
   "CONTINENTS.LABEL.CONTINENT_CODE": "Continent Code",
   "CONTINENTS.LABEL.CONTINENT_NAME": "Continent Name",
@@ -105,6 +110,10 @@ export default {
   "COUNTRIES.LABEL.CREATED_AT": "Created At",
   "COUNTRIES.LABEL.UPDATED_AT": "Updated At",
   "COUNTRIES.PLACEHOLDER.PICK_A_CONTINENT": "Pick a continent",
+  // Files
+  "FILES.LABEL.ID": "ID",
+  "FILES.LABEL.FILENAME": "Filename",
+  "FILES.LABEL.URL": "URL",
   // General
   "GENERAL.LABEL.ACTIONS": "Actions",
   "GENERAL.LABEL.ASC": "Asc",
@@ -127,6 +136,11 @@ export default {
   "GENERAL.MESSAGE.THANK_YOU": "Thank You!!",
   "GENERAL.MESSAGE.LOADING": "Loading",
   "GENERAL.PLACEHOLDER.SEARCH": "Type to search",
+  // Invoices
+  "INVOICES.LABEL.ID": "ID",
+  "INVOICES.LABEL.JOB": "Job",
+  "INVOICES.LABEL.CREATED_AT": "Created At",
+  "INVOICES.LABEL.UPDATED_AT": "Updated At",
   // OAuth
   "OAUTH.LABEL.AUTHORIZATION_GRANT_TYPES": "Grant Types",
   "OAUTH.LABEL.CLIENT_AUTHENTICATION_METHODS": "Authentication Methods",

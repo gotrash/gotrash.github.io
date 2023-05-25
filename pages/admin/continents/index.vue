@@ -1,27 +1,29 @@
-<template>
-  <b-container fluid>
-    <b-row>
-      <b-col cols="12">
-        <b-card body-bg-variant="white" footer-bg-variant="white" header-bg-variant="white" no-body>
-          <b-card-body>
-            <continents-table />
-          </b-card-body>
-        </b-card>
-      </b-col>
-    </b-row>
-  </b-container>
-</template>
-
 <script>
+  import { PagedJpaTablePage } from "~/mixins";
+
   export default {
-    components: {
-      ContinentsTable: () => import("~/components/tables/ContinentsTable.vue"),
-      MessageSpinner: () => import("~/components/global/MessageSpinner.vue")
-    },
-    layout: "admin",
+    name: "ContinentsIndex",
+    mixins: [PagedJpaTablePage],
+    apiUrl: "/continents",
+    rootRoute: "admin-continents",
+    pageTitleTranslation: "NAV__CONTINENTS",
+    showFilters: false,
     data() {
+      const $t = this.$t.bind(this);
+
       return {
-        busy: true
+        fields: [
+          {
+            key: "continentCode",
+            label: $t("CONTINENTS.LABEL.CONTINENT_CODE")
+          },
+          {
+            key: "continentName",
+            label: $t("CONTINENTS.LABEL.CONTINENT_NAME")
+          }
+        ],
+        perPage: 1000,
+        showAllFields: true
       };
     }
   };
