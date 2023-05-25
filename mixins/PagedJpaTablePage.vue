@@ -216,7 +216,41 @@
           ]
         );
       },
+      renderHeader() {
+        const { currentPage: value, pageTitle, perPage, totalRows } = this;
+        const h = this.$createElement.bind(this);
+
+        const headerComponents = [h("b-card-title", pageTitle)];
+
+        if (totalRows > perPage) {
+          headerComponents.push(
+            h("div", { class: "card-tools" }, [
+              h("b-pagination", {
+                class: "my-0",
+                on: { input: _value => (this.currentPage = _value) },
+                props: {
+                  align: "right",
+                  perPage,
+                  size: "sm",
+                  totalRows,
+                  value,
+                  variant: "success",
+                  lastClass: ""
+                },
+                scopedSlots: {
+                  page: ({ page, active }) => h(active ? "b" : "i", active ? {} : {}, [page])
+                }
+              })
+            ])
+          );
+        }
+
+        return h("b-card-header", {}, [
+          h("div", { class: "d-flex align-items-center justify-content-between" }, headerComponents)
+        ]);
+      },
       renderTable() {
+        const { renderHeader } = this;
         const h = this.$createElement.bind(this);
 
         return h(
@@ -231,29 +265,7 @@
             }
           },
           [
-            h("b-card-header", {}, [
-              h("div", { class: "d-flex align-items-center justify-content-between" }, [
-                h("b-card-title", this.pageTitle),
-                h("div", { class: "card-tools" }, [
-                  h("b-pagination", {
-                    class: "my-0",
-                    on: { input: value => (this.currentPage = value) },
-                    props: {
-                      align: "right",
-                      perPage: this.perPage,
-                      size: "sm",
-                      totalRows: this.totalRows,
-                      value: this.currentPage,
-                      variant: "success",
-                      lastClass: ""
-                    },
-                    scopedSlots: {
-                      page: ({ page, active }) => h(active ? "b" : "i", active ? {} : {}, [page])
-                    }
-                  })
-                ])
-              ])
-            ]),
+            renderHeader(),
             h("b-card-body", { class: "p-0" }, [
               h("b-table", {
                 on: {
