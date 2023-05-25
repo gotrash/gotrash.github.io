@@ -5,9 +5,10 @@
     name: "VerificationTokensIndex",
     mixins: [PagedJpaTablePage],
     apiUrl: "/verification-tokens",
-    rootRoute: "admin-verification-tokens",
+    rootRoute: "users-verification-tokens",
     pageTitleTranslation: "NAV__VERIFICATION_TOKENS",
     showFilters: true,
+    layout: "users",
     data() {
       const $t = this.$t.bind(this);
 

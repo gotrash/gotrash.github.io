@@ -2,12 +2,13 @@
   import { PagedJpaTablePage } from "~/mixins";
 
   export default {
-    name: "UsersLocationsIndex",
+    name: "PasswordResetTokensIndex",
     mixins: [PagedJpaTablePage],
-    apiUrl: "/user-locations",
-    rootRoute: "admin-user-locations",
-    pageTitleTranslation: "NAV__USER_LOCATIONS",
+    apiUrl: "/password-reset-tokens",
+    rootRoute: "users-password-reset-tokens",
+    pageTitleTranslation: "NAV__PASSWORD_RESET_TOKENS",
     showFilters: false,
+    layout: "users",
     data() {
       // const $t = this.$t.bind(this);
 

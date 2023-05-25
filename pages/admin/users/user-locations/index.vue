@@ -2,12 +2,13 @@
   import { PagedJpaTablePage } from "~/mixins";
 
   export default {
-    name: "PrivilegeTypesIndex",
+    name: "UsersLocationsIndex",
     mixins: [PagedJpaTablePage],
-    apiUrl: "/privilege-types",
-    rootRoute: "admin-privilege-types",
-    pageTitleTranslation: "NAV__PRIVILEGE_TYPES",
+    apiUrl: "/user-locations",
+    rootRoute: "users-user-locations",
+    pageTitleTranslation: "NAV__USER_LOCATIONS",
     showFilters: false,
+    layout: "users",
     data() {
       // const $t = this.$t.bind(this);
 

@@ -5,9 +5,10 @@
     name: "RolesIndex",
     mixins: [PagedJpaTablePage],
     apiUrl: "/roles",
-    rootRoute: "admin-roles",
+    rootRoute: "users-roles",
     pageTitleTranslation: "NAV__ROLES",
     showFilters: false,
+    layout: "users",
     data() {
       // const $t = this.$t.bind(this);
 

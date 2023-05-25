@@ -2,12 +2,13 @@
   import { PagedJpaTablePage } from "~/mixins";
 
   export default {
-    name: "PasswordResetTokensIndex",
+    name: "PrivilegeTypesIndex",
     mixins: [PagedJpaTablePage],
-    apiUrl: "/password-reset-tokens",
-    rootRoute: "admin-password-reset-tokens",
-    pageTitleTranslation: "NAV__PASSWORD_RESET_TOKENS",
+    apiUrl: "/privilege-types",
+    rootRoute: "users-privilege-types",
+    pageTitleTranslation: "NAV__PRIVILEGE_TYPES",
     showFilters: false,
+    layout: "users",
     data() {
       // const $t = this.$t.bind(this);
 
