@@ -49,6 +49,119 @@
           .sort((a, b) => (a.label === b.label ? 0 : a.label < b.label ? -1 : 1));
       }
     },
+    watch: {
+      perPage: {
+        handler(newValue, oldValue) {
+          if (newValue !== oldValue && newValue !== 20)
+            this.$router.push({ ...this.$route, query: { ...this.$route.query, perPage: newValue } });
+          else if (newValue !== oldValue && newValue === 20) {
+            const query = { ...this.$route.query };
+            if (Object.keys(query).includes("perPage")) delete query.perPage;
+            this.$router.push({ ...this.$route, query });
+          }
+        }
+      },
+      currentPage: {
+        handler(newValue, oldValue) {
+          if (newValue !== oldValue && Number.isInteger(newValue) && newValue > 1)
+            this.$router.push({ ...this.$route, query: { ...this.$route.query, currentPage: newValue } });
+          else if (newValue !== oldValue && newValue <= 1) {
+            const query = { ...this.$route.query };
+            if (Object.keys(query).includes("currentPage")) delete query.currentPage;
+            this.$router.push({ ...this.$route, query });
+          }
+        }
+      },
+      search: {
+        handler(newValue, oldValue) {
+          if (newValue !== oldValue) {
+            console.log("Sort By: { newValue: %o, oldValue: %o }", newValue, oldValue);
+            if ([null, ""].includes(newValue)) {
+              const query = { ...this.$route.query };
+              if (Object.keys(query).includes("search")) delete query.search;
+              this.$router.push({ ...this.$route, query });
+            } else {
+              this.$router.push({ ...this.$route, query: { ...this.$route.query, search: newValue } });
+            }
+          }
+        }
+      },
+      sortBy: {
+        handler(newValue, oldValue) {
+          if (newValue !== oldValue) {
+            console.log("Sort By: { newValue: %o, oldValue: %o }", newValue, oldValue);
+            if (newValue === null) {
+              const query = { ...this.$route.query };
+              if (Object.keys(query).includes("sortBy")) delete query.sortBy;
+              this.$router.push({ ...this.$route, query });
+            } else {
+              this.$router.push({ ...this.$route, query: { ...this.$route.query, sortBy: newValue } });
+            }
+          }
+        }
+      },
+      sortDesc: {
+        handler(newValue, oldValue) {
+          if (newValue !== oldValue) {
+            console.log("Sort Desc: { newValue: %o, oldValue: %o }", newValue, oldValue);
+            if (newValue === false) {
+              const query = { ...this.$route.query };
+              if (Object.keys(query).includes("sortDesc")) delete query.sortDesc;
+              this.$router.push({ ...this.$route, query });
+            } else {
+              this.$router.push({ ...this.$route, query: { ...this.$route.query, sortDesc: newValue } });
+            }
+          }
+        }
+      },
+      "$route.query.perPage": {
+        handler(newValue, oldValue) {
+          console.log("Per-page query updated: { newValue: %o, oldValue: %o }", newValue, oldValue);
+          if (newValue !== oldValue) this.perPage = newValue || 20;
+        }
+      },
+      "$route.query.search": {
+        handler(newValue, oldValue) {
+          console.log("Search query updated: { newValue: %o, oldValue: %o }", newValue, oldValue);
+          if (newValue !== oldValue) this.search = newValue || null;
+        }
+      },
+      "$route.query.sortBy": {
+        handler(newValue, oldValue) {
+          console.log("Sort-by query updated: { newValue: %o, oldValue: %o }", newValue, oldValue);
+          if (newValue !== oldValue) this.sortBy = newValue || null;
+        }
+      },
+      "$route.query.sortDesc": {
+        handler(newValue, oldValue) {
+          console.log("Sort descending query updated: { newValue: %o, oldValue: %o }", newValue, oldValue);
+          if (newValue !== oldValue) this.sortDesc = newValue || null;
+        }
+      },
+      "$route.query.currentPage": {
+        handler(newValue, oldValue) {
+          console.log("Current Page query updated: { newValue: %o, oldValue: %o }", newValue, oldValue);
+          if (newValue !== oldValue && !newValue) this.currentPage = 1;
+          else if (
+            newValue !== oldValue &&
+            Number.isInteger(parseInt(parseFloat(newValue))) &&
+            parseInt(parseFloat(newValue)) < this.totalRows / this.perPage
+          )
+            this.currentPage = parseInt(parseFloat(newValue));
+        }
+      }
+    },
+    mounted() {
+      const { perPageOptions, sortableFields } = this;
+      const { perPage, currentPage, search, sortBy, sortDesc } = this.$route.query;
+
+      if (currentPage && Number.isInteger(parseInt(parseFloat(currentPage))) && parseInt(parseFloat(currentPage)) > 0)
+        this.currentPage = parseInt(parseFloat(currentPage));
+      if (perPage && perPageOptions.map(v => v.value.toString()).includes(perPage)) this.perPage = perPage;
+      if (search && typeof search === "string" && search.length > 0) this.search = search;
+      if (sortBy && sortableFields.map(sbo => sbo.key).includes(sortBy)) this.sortBy = sortBy;
+      if (sortDesc) this.sortDesc = true;
+    },
     methods: {
       onRowClick(data) {
         this.$router.push({ name: `${this.$options.rootRoute}-id`, params: { id: data.id } });
@@ -58,7 +171,7 @@
           params: {
             page: ctx.currentPage || undefined,
             perPage: ctx.perPage || undefined,
-            search: ctx.search || undefined,
+            search: ctx.filter || undefined,
             sortBy: ctx.sortBy || undefined,
             sortDesc: ctx.sortDesc || undefined
           }
@@ -149,7 +262,7 @@
                           h("b-form-input", {
                             id: "search-input",
                             on: {
-                              input: value => (this.search = value)
+                              update: value => (this.search = value)
                             },
                             props: {
                               debounce: 200,
