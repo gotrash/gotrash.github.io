@@ -7,9 +7,14 @@
     <b-card no-body class="card-outline card-primary">
       <auth-card-header />
       <b-card-body>
+        <b-alert variant="danger" :show="hasErrors">
+          <h2 v-if="$route.query.error">{{ $route.query.error }}</h2>
+          <p v-if="$route.query.error_description">{{ $route.query.error_description }}</p>
+        </b-alert>
         <p class="login-box-msg">{{ $t("AUTH.MESSAGE.SIGN_IN") }}</p>
 
-        <login-form v-model="form" class="mb-3" @cancel="onCancel" @reset="onReset" @submit="onSubmit" />
+        <!-- <login-form v-model="form" class="mb-3" @cancel="onCancel" @reset="onReset" @submit="onSubmit" /> -->
+        <b-btn @click="onSubmit">Submit</b-btn>
 
         <div class="d-none social-auth-links text-center mt-2 mb-3">
           <a href="#" class="btn btn-block btn-primary">
@@ -46,6 +51,14 @@
     layout: "auth",
     auth: "guest",
     Dto: AuthDto,
+    data() {
+      return {};
+    },
+    computed: {
+      hasErrors() {
+        return Object.keys(this.$route.query).some(key => ["error", "error_description"].includes(key));
+      }
+    },
     // watch: {
     //   "form.rememberMe": {
     //     handler(rememberMe) {
@@ -67,17 +80,7 @@
         // this.form = new Dto();
       },
       onSubmit() {
-        const { email, password } = this.form;
-
-        this.$auth
-          .loginWith("local", { data: { username: email, password } })
-          .then(res => {
-            console.log(res);
-          })
-          .catch(err => {
-            // this.$sentry.captureException(err);
-            console.error(err);
-          });
+        this.$auth.loginWith("oidc", { params: { scope: "openid" } });
       }
     }
   };
