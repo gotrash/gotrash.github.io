@@ -6,10 +6,6 @@
 
 <script>
   export default {
-    components: {
-      MessageSpinner: () => import("~/components/global/MessageSpinner.vue")
-    },
     layout: "blank"
-    // auth: "guest"
   };
 </script>

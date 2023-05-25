@@ -296,7 +296,11 @@ export default {
     // https://go.nuxtjs.dev/content
     // "@nuxt/content"
   ],
-  plugins: [{ src: "~/plugins/axios", mode: "client" }, { src: "~/plugins/router" }],
+  plugins: [
+    { src: "~/plugins/axios", mode: "client" },
+    { src: "~/plugins/global-components" },
+    { src: "~/plugins/router" }
+  ],
   privateRuntimeConfig: {
     axios: {
       baseURL: process.env.AXIOS_BASE_URL || "http://localhost:9000"
