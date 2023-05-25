@@ -1,5 +1,5 @@
 <template>
-  <aside class="main-sidebar sidebar-dark-green elevation-4">
+  <aside class="main-sidebar sidebar-light-primary elevation-4">
     <slot name="brand-link" />
     <!-- Sidebar -->
     <div ref="sidebar" class="sidebar">
