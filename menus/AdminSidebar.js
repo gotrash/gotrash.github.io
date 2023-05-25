@@ -3,7 +3,6 @@ export default [
   { icon: "gavel", route: "admin-bids", text: "NAV__BIDS" },
   { icon: "globe", route: "admin-continents", text: "NAV__CONTINENTS" },
   { icon: "globe-europe", route: "admin-countries", text: "NAV__COUNTRIES" },
-
   // {
   //   icon: "map-marker",
   //   isDropdown: true,
