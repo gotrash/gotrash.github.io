@@ -21,9 +21,7 @@
             key: "continentName",
             label: $t("CONTINENTS.LABEL.CONTINENT_NAME")
           }
-        ],
-        perPage: 1000,
-        showAllFields: true
+        ]
       };
     }
   };

@@ -17,9 +17,7 @@
           { key: "job", label: $t("INVOICES.LABEL.JOB") },
           { key: "createdAt", label: $t("INVOICES.LABEL.CREATED_AT") },
           { key: "updatedAt", label: $t("INVOICES.LABEL.UPDATED_AT") }
-        ],
-        perPage: 1000,
-        showAllFields: true
+        ]
       };
     }
   };

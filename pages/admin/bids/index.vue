@@ -29,9 +29,7 @@
             key: "amount",
             label: $t("BIDS.LABEL.AMOUNT")
           }
-        ],
-        perPage: 1000,
-        showAllFields: true
+        ]
       };
     }
   };

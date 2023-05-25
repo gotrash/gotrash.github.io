@@ -53,8 +53,7 @@
             thClass: "text-center",
             sortable: true
           }
-        ],
-        showAllFields: true
+        ]
       };
     }
   };

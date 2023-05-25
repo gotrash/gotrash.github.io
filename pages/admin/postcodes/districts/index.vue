@@ -12,9 +12,7 @@
       // const $t = this.$t.bind(this);
 
       return {
-        fields: [],
-        perPage: 1000,
-        showAllFields: true
+        fields: []
       };
     }
   };

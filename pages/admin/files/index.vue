@@ -16,9 +16,7 @@
           { key: "id", label: $t("FILES.LABEL.ID") },
           { key: "filename", label: $t("FILES.LABEL.FILENAME") },
           { key: "url", label: $t("FILES.LABEL.URL") }
-        ],
-        perPage: 1000,
-        showAllFields: true
+        ]
       };
     }
   };

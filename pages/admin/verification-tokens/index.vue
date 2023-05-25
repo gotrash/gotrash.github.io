@@ -16,8 +16,7 @@
           { label: $t("VERIFICATION_TOKENS.LABEL.ID"), key: "id" },
           { label: $t("VERIFICATION_TOKENS.LABEL.USER_ID"), key: "userId" },
           { label: $t("VERIFICATION_TOKENS.LABEL.EXPIRY_DATE"), key: "expiryDate" }
-        ],
-        perPage: 20
+        ]
       };
     }
   };

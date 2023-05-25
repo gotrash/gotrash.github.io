@@ -46,8 +46,7 @@
             thClass: "text-center",
             tdClass: "text-right"
           }
-        ],
-        showAllFields: true
+        ]
       };
     }
   };

@@ -4,7 +4,7 @@
   export default {
     name: "JobItemsIndex",
     mixins: [PagedJpaTablePage],
-    apiUrl: "/jobs/items",
+    apiUrl: "/job-items",
     rootRoute: "admin-job-items",
     pageTitleTranslation: "NAV__JOB_ITEMS",
     showFilters: false,
@@ -12,9 +12,7 @@
       // const $t = this.$t.bind(this);
 
       return {
-        fields: [],
-        perPage: 1000,
-        showAllFields: true
+        fields: []
       };
     }
   };
