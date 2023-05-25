@@ -1,19 +1,28 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <b-navbar>
-    <b-navbar-brand>
+    <b-navbar-brand :to="{ name: 'index' }">
       <span v-html="$t('APP_NAME')"></span>
     </b-navbar-brand>
     <b-navbar-nav>
       <b-nav-item :to="{ name: 'index' }">{{ $t("NAV__HOME") }}</b-nav-item>
+      <b-nav-item v-if="$auth.loggedIn" :to="{ name: 'admin-messages' }">{{ $t("NAV__MESSAGES") }}</b-nav-item>
+      <b-nav-item v-if="$auth.loggedIn" :to="{ name: 'logo' }">{{ $t("NAV__LOGO") }}</b-nav-item>
     </b-navbar-nav>
     <b-navbar-nav class="ml-auto">
       <template v-if="!$auth.loggedIn">
-        <b-nav-item :to="{ name: 'auth-login' }">{{ $t("NAV__LOGIN") }}</b-nav-item>
+        <b-nav-item
+          @click="
+            () => {
+              $auth.loginWith('oidc');
+            }
+          "
+          >{{ $t("NAV__LOGIN") }}</b-nav-item
+        >
         <b-nav-item :to="{ name: 'auth-sign-up' }">{{ $t("NAV__SIGNUP") }}</b-nav-item>
       </template>
       <template v-else>
-        <b-nav-item :to="{ name: 'user' }">{{ $t("NAV__USER") }}</b-nav-item>
+        <b-nav-item :to="{ name: 'admin-user' }">{{ $t("NAV__USER") }}</b-nav-item>
         <b-nav-item
           @click="
             () => {
