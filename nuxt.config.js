@@ -62,7 +62,8 @@ export default {
     }
   },
   axios: {
-    baseURL: process.env.AXIOS_BASE_URL || "http://localhost:9000",
+    baseURL: "/",
+    browserBaseURL: "http://localhost:8090",
     progress: true,
     proxy: true,
     retry: { retries: 10 }
@@ -303,7 +304,7 @@ export default {
   ],
   privateRuntimeConfig: {
     axios: {
-      baseURL: process.env.AXIOS_BASE_URL || "http://localhost:9000"
+      browserBaseURL: process.env.BROWSER_BASE_URL || "http://localhost:8090"
     },
     googleAnalytics: {
       id: process.env.GA_TRACKING_ID
@@ -318,7 +319,7 @@ export default {
   },
   publicRuntimeConfig: {
     axios: {
-      baseURL: process.env.AXIOS_BASE_URL || "http://localhost:9000"
+      browserBaseURL: process.env.BROWSER_BASE_URL || "http://localhost:8090"
     },
     googleAnalytics: {
       id: process.env.GA_TRACKING_ID
