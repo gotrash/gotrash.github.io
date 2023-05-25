@@ -6,9 +6,9 @@
  * Copyright 2011-2022 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
+// @import "~bootstrap/scss/functions";
+// @import "~bootstrap/scss/variables";
+// @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
 @import "~bootstrap/scss/type";
@@ -27,7 +27,7 @@
 @import "~bootstrap/scss/navbar";
 @import "~bootstrap/scss/card";
 @import "~bootstrap/scss/breadcrumb";
-@import "~bootstrap/scss/pagination";
+@import "./overrides/bootstrap/pagination";
 @import "~bootstrap/scss/badge";
 @import "~bootstrap/scss/jumbotron";
 @import "~bootstrap/scss/alert";
@@ -50,7 +50,7 @@
  *   Website: AdminLTE.io <https://adminlte.io>
  *   License: Open source - MIT <https://opensource.org/licenses/MIT>
  */
-@import "~admin-lte/build/scss/mixins";
+// @import "~admin-lte/build/scss/mixins";
 
 @import "~admin-lte/build/scss/root";
 @import "~admin-lte/build/scss/animation-effects";
@@ -116,3 +116,35 @@
 
 // Include custom SCSS for icons
 @import "~bootstrap-vue/src/icons/index";
+
+// .b-pagination {
+//   li.page-item {
+//     &:not(.active) {
+//       color: $green;
+//     }
+//     &.active {
+//       .page-link {
+//         background-color: $green;
+//       }
+//     }
+//   }
+// }
+html,
+body {
+  height: 100% !important;
+}
+body.full-height {
+  min-height: 100% !important;
+  #__nuxt,
+  #__layout {
+    height: 100% !important;
+  }
+}
+
+#frontend-navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
