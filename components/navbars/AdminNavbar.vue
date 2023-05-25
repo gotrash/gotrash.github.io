@@ -18,6 +18,14 @@
           <fa-icon icon="th-large" />
         </a>
       </li>
+
+      <b-nav-item :label="$t('NAV__MESSAGES')" :to="{ name: 'admin-messages' }">
+        <fa-icon icon="envelope" />
+      </b-nav-item>
+      <b-nav-item :label="$t('NAV__USER')" :to="{ name: 'admin-user' }">
+        <fa-icon icon="user" />
+      </b-nav-item>
+
       <logout-navbar-item />
     </b-navbar-nav>
   </b-navbar>
