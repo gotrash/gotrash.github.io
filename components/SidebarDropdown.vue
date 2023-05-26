@@ -75,13 +75,13 @@
       },
       renderChevron() {
         const { getChevronAttrs } = this;
-        const h = this.$createElement.bind(this);
+        const h = this.$createElement;
 
         return h("fa-icon", getChevronAttrs());
       },
       renderIcon() {
         const { getIconAttrs } = this;
-        const h = this.$createElement.bind(this);
+        const h = this.$createElement;
 
         return h("fa-icon", getIconAttrs());
       },
@@ -90,25 +90,25 @@
 
         if (items === null || items === undefined) throw new TypeError("Must be an array");
 
-        const h = this.$createElement.bind(this);
+        const h = this.$createElement;
 
         return h("ul", { class: "nav nav-treeview" }, items.map(renderSidebarLink));
       },
       renderRootLink() {
         const { getLinkAttrs, renderChevron, renderIcon, renderText } = this;
-        const h = this.$createElement.bind(this);
+        const h = this.$createElement;
 
         return h("a", getLinkAttrs(), [renderIcon(), renderText(), renderChevron()]);
       },
       renderSidebarLink(item) {
         const { getSidebarLinkAttrs } = this;
-        const h = this.$createElement.bind(this);
+        const h = this.$createElement;
 
         return h("sidebar-link", getSidebarLinkAttrs(item));
       },
       renderText() {
         const { text } = this;
-        const h = this.$createElement.bind(this);
+        const h = this.$createElement;
 
         return h("p", text);
       }
