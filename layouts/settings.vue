@@ -44,8 +44,7 @@
     components: {
       AdminFooter: () => import("~/components/footers/AdminFooter"),
       AdminNavbar: () => import("~/components/navbars/AdminNavbar"),
-      SettingsSidebar: () => import("~/components/sidebars/SettingsSidebar"),
-      Breadcrumbs: () => import("~/components/Breadcrumbs")
+      SettingsSidebar: () => import("~/components/sidebars/SettingsSidebar")
     },
     head() {
       return {
