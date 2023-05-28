@@ -2,7 +2,7 @@
 <template>
   <b-navbar>
     <b-navbar-brand :to="{ name: 'index' }">
-      <span v-html="$t('APP_NAME')"></span>
+      <span v-html="$t('APP_NAME_HTML')"></span>
     </b-navbar-brand>
     <b-navbar-nav>
       <b-nav-item :to="{ name: 'index' }">{{ $t("NAV__HOME") }}</b-nav-item>
