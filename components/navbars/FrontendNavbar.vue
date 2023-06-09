@@ -1,7 +1,10 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <b-navbar type="light" variant="light">
-    <b-container>
+    <b-container style="max-height: 60px">
+      <b-navbar-brand class="p-0" :to="{ name: 'index' }">
+        <site-logo color="#28a744" />
+      </b-navbar-brand>
       <b-navbar-nav>
         <b-nav-item v-if="false" :to="{ name: 'index' }">{{ $t("NAV__HOME") }}</b-nav-item>
       </b-navbar-nav>
@@ -14,6 +17,7 @@
   export default {
     name: "SiteNavbar",
     components: {
+      SiteLogo: () => import("~/components/SiteLogo"),
       SecondaryNavbarNav: () => import("./navbar-navs/SecondaryNavbarNav.vue")
     }
   };
