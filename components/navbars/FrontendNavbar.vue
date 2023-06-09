@@ -1,10 +1,12 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <b-navbar type="dark">
-    <b-navbar-nav>
-      <b-nav-item :to="{ name: 'index' }">{{ $t("NAV__HOME") }}</b-nav-item>
-    </b-navbar-nav>
-    <secondary-navbar-nav class="ml-auto" />
+  <b-navbar type="light" variant="light">
+    <b-container>
+      <b-navbar-nav>
+        <b-nav-item v-if="false" :to="{ name: 'index' }">{{ $t("NAV__HOME") }}</b-nav-item>
+      </b-navbar-nav>
+      <secondary-navbar-nav class="ml-auto" />
+    </b-container>
   </b-navbar>
 </template>
 
