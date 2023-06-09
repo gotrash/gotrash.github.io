@@ -35,7 +35,7 @@
         :label="$t('NAV__USER')"
         :to="{ name: 'admin-user' }"
       >
-        <fa-icon icon="user" /><span class="d-none d-md-inline"> {{ $t("NAV__USER_PROFILE") }}</span>
+        <fa-icon icon="user" /><span class="d-none d-md-inline text-dark"> {{ $t("NAV__USER_PROFILE") }}</span>
       </b-nav-item>
       <b-nav-item
         link-classes="text-success"
@@ -43,7 +43,7 @@
         :label="$t('NAV__BUSINESS_PROFILE')"
         :to="{ name: 'business' }"
       >
-        <fa-icon icon="building" /><span class="d-none d-md-inline"> {{ $t("NAV__BUSINESS") }}</span>
+        <fa-icon icon="building" /><span class="d-none d-md-inline text-dark"> {{ $t("NAV__BUSINESS") }}</span>
       </b-nav-item>
       <b-nav-item
         link-classes="text-success"
@@ -52,7 +52,7 @@
         :label="$t('NAV__SETTINGS')"
         :to="{ name: 'admin' }"
       >
-        <fa-icon icon="cog" /><span class="d-none d-md-inline"> {{ $t("NAV__SETTINGS") }}</span>
+        <fa-icon icon="cog" /><span class="d-none d-md-inline text-dark"> {{ $t("NAV__SETTINGS") }}</span>
       </b-nav-item>
       <b-nav-item
         link-classes="text-success"
@@ -60,10 +60,10 @@
         :label="$t('NAV__USERS_DASHBOARD')"
         :to="{ name: 'users' }"
       >
-        <fa-icon icon="users" /><span class="d-none d-md-inline"> {{ $t("NAV__SETTINGS") }}</span>
+        <fa-icon icon="users" /><span class="d-none d-md-inline text-dark"> {{ $t("NAV__SETTINGS") }}</span>
       </b-nav-item>
       <b-nav-item link-classes="text-success" active-class="active" :label="$t('NAV__JOBS')" :to="{ name: 'jobs' }">
-        <fa-icon icon="tasks" /><span class="d-none d-md-inline"> {{ $t("NAV__JOBS") }}</span>
+        <fa-icon icon="tasks" /><span class="d-none d-md-inline text-dark"> {{ $t("NAV__JOBS") }}</span>
       </b-nav-item>
       <b-nav-item
         link-classes="text-success"
@@ -74,7 +74,7 @@
           }
         "
       >
-        <fa-icon icon="sign-out-alt" /><span class="d-none d-md-inline"> {{ $t("NAV__LOGOUT") }}</span>
+        <fa-icon icon="sign-out-alt" /><span class="d-none d-md-inline text-dark"> {{ $t("NAV__LOGOUT") }}</span>
       </b-nav-item>
     </template>
     <b-nav-dropdown v-if="showLanguageSwitcher" id="nav--lang-dropdown" toggle-class="nav-link-custom" right>
