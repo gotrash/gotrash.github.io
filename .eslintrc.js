@@ -15,6 +15,7 @@ module.exports = {
   rules: {
     // "import/no-named-as-default": "off",
     // "import/no-named-as-default-member": "off",
+    "vue/multi-word-component-names": "off",
     "vue/no-unused-components": "off",
     "vue/no-mutating-props": "off",
     "vue/no-v-html": "off",
