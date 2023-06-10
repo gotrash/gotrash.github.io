@@ -3,7 +3,7 @@
   <b-navbar type="light" variant="light">
     <b-container style="max-height: 60px">
       <b-navbar-brand class="p-0" :to="{ name: 'index' }">
-        <site-logo color="#28a744" />
+        <site-logo />
       </b-navbar-brand>
       <b-navbar-nav>
         <b-nav-item v-if="false" :to="{ name: 'index' }">{{ $t("NAV__HOME") }}</b-nav-item>
@@ -24,11 +24,11 @@
 </script>
 
 <style lang="scss">
-  #frontend-navbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-  }
+  // #frontend-navbar {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   background-color: rgba(0, 0, 0, 0.8);
+  // }
 </style>

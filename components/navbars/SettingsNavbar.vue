@@ -4,7 +4,7 @@
   <b-navbar ref="header" class="main-header navbar-white" type="light">
     <!-- Left navbar links -->
     <b-navbar-nav>
-      <b-nav-item data-widget="pushmenu" href="#" role="button">
+      <b-nav-item link-classes="text-success" data-widget="pushmenu" href="#" role="button">
         <fa-icon icon="bars" />
       </b-nav-item>
     </b-navbar-nav>
