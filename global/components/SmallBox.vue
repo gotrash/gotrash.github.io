@@ -1,7 +1,8 @@
 <template>
   <div :class="['small-box', `bg-${bgVariant}`]">
     <div v-if="heading || subHeading" class="inner">
-      <h3 v-if="heading">{{ heading }}</h3>
+      <!-- TODO: Add conditionals, that are true boolean-only, incase of 0 values -->
+      <h3 v-if="_heading">{{ _heading }}</h3>
       <p v-if="subHeading">{{ subHeading }}</p>
     </div>
     <div v-if="icon" class="icon">
@@ -48,14 +49,26 @@
         default: null
       },
       heading: {
-        type: String,
+        type: [Number, String],
         required: false,
         default: null
       },
       subHeading: {
-        type: String,
+        type: [Number, String],
         required: false,
         default: null
+      }
+    },
+    computed: {
+      _heading() {
+        const { heading, valueOrZeroString } = this;
+
+        return valueOrZeroString(heading);
+      }
+    },
+    methods: {
+      valueOrZeroString(v) {
+        return (v || 0).toString();
       }
     }
   };
