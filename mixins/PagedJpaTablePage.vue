@@ -164,7 +164,11 @@
     },
     methods: {
       onRowClick(data) {
-        this.$router.push({ name: `${this.$options.rootRoute}-id`, params: { id: data.id } });
+        const key = this.$options.idKey || "id";
+        this.$router.push({
+          name: `${this.$options.rootRoute}-${key}`,
+          params: { [key]: data[key] }
+        });
       },
       provider(ctx) {
         const promise = this.$axios.get(this.$options.apiUrl, {
@@ -399,6 +403,7 @@
                   perPage: this.perPage
                 },
                 scopedSlots: {
+                  ...(this.scopedTableSlots ? this.scopedTableSlots() : {}),
                   "table-busy": () => h("div", { class: "py-5" }, [h("message-spinner")]),
                   "cell(enabled)": data =>
                     h("b-badge", { class: `bg-${data.value ? "success" : "danger"}` }, [
