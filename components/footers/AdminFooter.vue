@@ -39,8 +39,8 @@
     },
     methods: {
       removeListeners() {
-        window.removeEventListener("resize", this.setHeight);
-        window.removeEventListener("resize", this.setWidth);
+        window.removeEventListener("resize");
+        window.removeEventListener("resize");
       },
       setHeight() {
         this.footerHeight = this.$refs.footer.clientHeight + 1;
@@ -49,8 +49,12 @@
         this.footerWidth = this.$refs.footer.clientWidth;
       },
       setupListeners() {
-        window.addEventListener("resize", this.setHeight);
-        window.addEventListener("resize", this.setWidth);
+        window.addEventListener("resize", () => {
+          this.footerHeight = this.$refs.footer.clientHeight + 1;
+        });
+        window.addEventListener("resize", () => {
+          this.footerWidth = this.$refs.footer.clientWidth;
+        });
       }
     }
   };
