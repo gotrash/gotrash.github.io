@@ -10,9 +10,9 @@ export default [
     text: "NAV__POSTCODES",
     items: [
       { icon: "circle", route: "admin-postcodes-areas", text: "NAV__POSTCODE_AREAS" },
-      { icon: "circle", route: "admin-postcodes-units", text: "NAV__POSTCODE_UNITS" },
+      { icon: "circle", route: "admin-postcodes-districts", text: "NAV__POSTCODE_DISTRICTS" },
       { icon: "circle", route: "admin-postcodes-sectors", text: "NAV__POSTCODE_SECTORS" },
-      { icon: "circle", route: "admin-postcodes-districts", text: "NAV__POSTCODE_DISTRICTS" }
+      { icon: "circle", route: "admin-postcodes-units", text: "NAV__POSTCODE_UNITS" }
     ]
   },
   { icon: "photo-video", route: "admin-files", text: "NAV__FILES" },

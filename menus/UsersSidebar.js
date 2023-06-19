@@ -1,5 +1,6 @@
 export default [
   { icon: "users", route: "users", text: "NAV__USERS_DASHBOARD" },
+  { icon: "users", route: "users-info", text: "NAV__USERS_DASHBOARD" },
   { icon: "unlock", route: "users-password-reset-tokens", text: "NAV__PASSWORD_RESET_TOKENS" },
   { icon: "lock", route: "users-privileges", text: "NAV__PRIVILEGES" },
   { icon: "lock", route: "users-privilege-types", text: "NAV__PRIVILEGE_TYPES" },
