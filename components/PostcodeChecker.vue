@@ -56,15 +56,16 @@
               this.$emit("postcode:checked", data);
 
               if (data) this.$emit("providers-found");
-
-              this.busy = false;
             })
             .catch(err => {
               console.error(err);
               this.busy = false;
+              this.focus();
             })
             .finally(() => {
-              this.focus();
+              this.$nextTick(() => {
+                this.busy = false;
+              });
             });
         });
       },
