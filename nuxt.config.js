@@ -1,12 +1,10 @@
+import Path from "path";
 import Fiber from "fibers";
 import Sass from "sass";
 import i18n from "./lang/config";
 
 // Community & 3rd-party modules
-const communityModules = [
-  // "nuxt-leaflet",
-  "bootstrap-vue/nuxt"
-];
+const communityModules = ["nuxt-leaflet", "bootstrap-vue/nuxt"];
 
 // Official Nuxt modules
 const nuxtModules = [
@@ -140,6 +138,7 @@ export default {
       config.node = {
         fs: "empty"
       };
+      config.resolve.alias.leaflet = Path.join(__dirname, "node_modules/leaflet");
     }
   },
   buildModules: [
