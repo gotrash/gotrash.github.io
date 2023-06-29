@@ -33,9 +33,11 @@
       this.setHeight();
       this.setWidth();
 
-      this.setupListeners();
+      this.$nextTick(() => {
+        this.setupListeners();
+      });
     },
-    unmounted() {
+    beforeDestroy() {
       this.removeListeners();
     },
     destroyed() {
