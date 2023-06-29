@@ -19,11 +19,17 @@
   import ServiceProvider from "~/entity/ServiceProvider";
   export default {
     layout: "business",
+    fetchOnServer: false,
     data() {
       return {
         backup: new ServiceProvider(),
         serviceProvider: new ServiceProvider()
       };
+    },
+    fetch() {
+      this.$axios.get("/provider").then(res => {
+        console.log(res.data);
+      });
     }
   };
 </script>
