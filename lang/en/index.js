@@ -1,4 +1,6 @@
 export default {
+  // Actions
+  ACTION__CREATE_JOB: "Create Job",
   // General
   APP_NAME: "GoTrash",
   APP_NAME_HTML: "<b>Go</b>Trash",
@@ -71,6 +73,10 @@ export default {
   PAGE_TITLE__POSTCODE_UNIT: "Postcode Unit | Postcode Units",
   PAGE_TITLE__FORGOT_PASSWORD: "Forgot Password",
   MSG__CHECK_FOR_PROVIDERS_COVERING_YOUR_AREA: "Check for providers covering your area",
+  "FRONTEND.LABEL.NO_PROVIDERS_ALERT": "No Providers",
+  "FRONTEND.MESSAGE.POSTCODE_CHECKER_SUBMIT_DISABLED": "You must enter a valid UK postcode",
+  "FRONTEND.MESSAGE.POSTCODE_CHECKER_NO_PROVIDERS":
+    "Unfortunately we have no providers covering your area, please try again another time.",
   message: "hello i18n !!",
   // Auth
   "AUTH.ERROR.FORGOT_PASSWORD_EMAIL_REQUIRED":
@@ -157,6 +163,7 @@ export default {
   "GENERAL.LABEL.SORT_DESC": "Sort Desc",
   "GENERAL.LABEL.SORT": "Sort",
   "GENERAL.LABEL.SUBMIT": "Submit",
+  "GENERAL.MESSAGE.DOWNLOAD_FOR_BENEFITS": "Download the app from the app store for job update notifications and more",
   "GENERAL.MESSAGE.LOADING": "Loading",
   "GENERAL.MESSAGE.THANK_YOU": "Thank You!!",
   "GENERAL.PLACEHOLDER.SEARCH": "Type to search",
@@ -202,6 +209,8 @@ export default {
   "PASSWORD_RESET_TOKENS.LABEL.ID": "ID",
   "PASSWORD_RESET_TOKENS.LABEL.TOKEN": "Token",
   "PASSWORD_RESET_TOKENS.LABEL.USER": "User",
+  // Postcodes
+  "POSTCODES.MESSAGE.INVALID_POSTCODE": "The postcode you have provided is not a valid UK postcode",
   // Service Providers
   "SERVICE_PROVIDERS.LABEL.ADDRESS": "Address",
   "SERVICE_PROVIDERS.LABEL.CONTACT_DETAILS": "Contact Details",
