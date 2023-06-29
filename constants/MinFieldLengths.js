@@ -1,3 +1,4 @@
 export default {
-  PASSWORD: 8
+  PASSWORD: 8,
+  POSTCODE: 5
 };
