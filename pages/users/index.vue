@@ -17,11 +17,7 @@
         <small-box icon="cog" :heading="statistics.privileges || 0" :sub-heading="$t('NAV__PRIVILEGES')" />
       </b-col>
       <b-col cols="12" sm="4" md="3">
-        <small-box
-          icon="cog"
-          :heading="statistics.passwordResetTokens || 0"
-          :sub-heading="$t('NAV__PASSWORD_RESET_TOKENS')"
-        />
+        <small-box icon="cog" :heading="statistics.passwordResetTokens || 0" :sub-heading="$t('NAV__RESET_TOKENS')" />
       </b-col>
       <b-col cols="12" sm="4" md="3">
         <small-box
