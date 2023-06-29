@@ -290,6 +290,7 @@ export default {
   ],
   plugins: [
     { src: "~/plugins/axios", mode: "client" },
+    { src: "~/plugins/global-mixins" },
     { src: "~/plugins/global-components" },
     { src: "~/plugins/router" }
   ],
