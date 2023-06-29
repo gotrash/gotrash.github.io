@@ -1,7 +1,8 @@
 <template>
   <div id="default-page-layout">
-    <site-navbar />
+    <FrontendNavbar id="frontend-navbar" icon-classes="text-black" type="light" variant="light" />
     <Nuxt style="min-height: calc(100vh - 56px)" />
+    <site-footer />
   </div>
 </template>
 
@@ -9,7 +10,8 @@
   export default {
     name: "DefaultLayout",
     components: {
-      SiteNavbar: () => import("~/components/navbars/SiteNavbar")
+      FrontendNavbar: () => import("~/components/navbars/FrontendNavbar"),
+      SiteFooter: () => import("~/components/footers/SiteFooter")
     }
   };
 </script>

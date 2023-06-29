@@ -1,24 +1,18 @@
 <template>
-  <div
-    class="h-100 frontend-wrapper"
-    :style="{
-      'background-color': `rgba(127,127,127, 0.5)`,
-      'background-size': 'cover',
-      'background-position': 'top center',
-      'background-repeat': 'no-repeat',
-      'background-attachment': 'fixed'
-    }"
-  >
-    <FrontendNavbar id="frontend-navbar" />
+  <div class="h-100 frontend-wrapper">
+    <FrontendNavbar icon-classes="text-success" logo-color="#f8f9fa" type="dark" />
     <Nuxt />
+    <SiteFooter />
   </div>
 </template>
 
 <script>
+  import FrontendNavbar from "~/components/navbars/FrontendNavbar";
   export default {
     name: "HomeLayout",
     components: {
-      FrontendNavbar: () => import("~/components/navbars/FrontendNavbar")
+      FrontendNavbar,
+      SiteFooter: () => import("~/components/footers/SiteFooter")
     },
     head() {
       return {
@@ -29,3 +23,14 @@
     }
   };
 </script>
+
+<style scoped lang="scss">
+  #frontend-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999999;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+</style>
