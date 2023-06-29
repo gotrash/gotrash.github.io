@@ -30,16 +30,19 @@
     </b-form-group>
 
     <div class="d-flex align-items-center justify-content-end">
-      <div>
-        <b-btn
-          :disabled="disabled"
-          :title="disabled ? $t('FRONTEND.MESSAGE.POSTCODE_CHECKER_SUBMIT_DISABLED') : undefined"
-          type="submit"
-          :variant="disabled ? 'secondary' : 'primary'"
-        >
-          {{ $t("GENERAL.LABEL.SUBMIT") }}
-        </b-btn>
-      </div>
+      <b-btn
+        :disabled="disabled || busy"
+        :title="disabled ? $t('FRONTEND.MESSAGE.POSTCODE_CHECKER_SUBMIT_DISABLED') : undefined"
+        type="submit"
+        :variant="disabled ? (busy ? 'transparent' : 'secondary') : 'primary'"
+      >
+        <transition name="fade" mode="out-in">
+          <fa-icon v-if="busy" icon="spinner" class="fa-fw fa-spin text-success" />
+          <span v-else>
+            {{ $t("GENERAL.LABEL.SUBMIT") }}
+          </span>
+        </transition>
+      </b-btn>
     </div>
   </b-form>
 </template>
@@ -54,6 +57,7 @@
     name: "SimplePostcodeForm",
     mixins: [HasModel, validationMixin],
     props: {
+      busy: Boolean,
       value: {
         type: Object,
         required: true,
