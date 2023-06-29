@@ -51,7 +51,7 @@ export default {
     watchLoggedIn: true
   },
   axios: {
-    baseURL: "/",
+    baseURL: "http://localhost:8090",
     browserBaseURL: "http://localhost:8090",
     progress: true,
     proxy: true,
@@ -294,14 +294,24 @@ export default {
     { src: "~/plugins/global-mixins" },
     { src: "~/plugins/global-components" },
     { src: "~/plugins/vuelidate" },
-    { src: "~/plugins/router" }
+    { src: "~/plugins/router" },
+    // { src: "~/plugins/google-maps.js", ssr: true }
   ],
   privateRuntimeConfig: {
     axios: {
+      baseURL: process.env.BROWSER_BASE_URL || "http://localhost:8090",
       browserBaseURL: process.env.BROWSER_BASE_URL || "http://localhost:8090"
     },
     googleAnalytics: {
       id: process.env.GA_TRACKING_ID
+    },
+    mapbox: {
+      apiKey:
+        process.env.MAPBOX_API_KEY ||
+        "pk.eyJ1IjoiY29kZXRoZW9yaXN0IiwiYSI6ImNrMWY1NzZ0ZDBvNDQzb2xtczczdng4NmgifQ.f81JgmSd4m_haPhqGDOXcA",
+      leafletUrl:
+        process.env.MAPBOX_LEAFLET_URL ||
+        "https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token={accessToken}"
     }
   },
   proxy: {
@@ -313,10 +323,19 @@ export default {
   },
   publicRuntimeConfig: {
     axios: {
+      baseURL: process.env.BROWSER_BASE_URL || "http://localhost:8090",
       browserBaseURL: process.env.BROWSER_BASE_URL || "http://localhost:8090"
     },
     googleAnalytics: {
       id: process.env.GA_TRACKING_ID
+    },
+    mapbox: {
+      apiKey:
+        process.env.MAPBOX_API_KEY ||
+        "pk.eyJ1IjoiY29kZXRoZW9yaXN0IiwiYSI6ImNrMWY1NzZ0ZDBvNDQzb2xtczczdng4NmgifQ.f81JgmSd4m_haPhqGDOXcA",
+      leafletUrl:
+        process.env.MAPBOX_LEAFLET_URL ||
+        "https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?access_token={accessToken}"
     }
   },
   pwa: {
