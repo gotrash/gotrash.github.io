@@ -1,13 +1,18 @@
 <template>
   <div class="text-center text-primary">
-    <fa-icon :icon="icon" :class="[{ 'fa-spin': spinIcon }, 'fa-fw fa-3x mb-4']" />
-    <component :is="messageTag">{{ message }}...</component>
+    <slot v-if="!hideSpinner" name="spinner">
+      <fa-icon :icon="icon" :class="[{ 'fa-spin': spinIcon }, 'fa-fw fa-3x mb-4']" />
+    </slot>
+
+    <component :is="messageTag">{{ message }}<span v-if="!hideEllipsis">...</span></component>
   </div>
 </template>
 
 <script>
   export default {
     props: {
+      hideEllipsis: Boolean,
+      hideSpinner: Boolean,
       icon: {
         type: [Array, String],
         required: false,
@@ -29,7 +34,6 @@
           return "h1";
         }
       },
-      showEllipsis: Boolean,
       spinIcon: {
         type: Boolean,
         required: false,
