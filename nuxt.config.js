@@ -134,6 +134,7 @@ export default {
     },
     parallel: true,
     profile: false,
+    transpile: [/^vue2-google-maps($|\/)/],
     // transpile: [/^vue2-google-maps($|\/)/, "vuejs-datepicker", "pdfjs-dist"],
     extend(config, ctx) {
       config.node = {
