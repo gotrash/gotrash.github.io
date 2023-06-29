@@ -293,6 +293,7 @@ export default {
     { src: "~/plugins/axios", mode: "client" },
     { src: "~/plugins/global-mixins" },
     { src: "~/plugins/global-components" },
+    { src: "~/plugins/vuelidate" },
     { src: "~/plugins/router" }
   ],
   privateRuntimeConfig: {
