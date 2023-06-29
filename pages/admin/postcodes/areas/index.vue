@@ -8,11 +8,16 @@
     rootRoute: "admin-postcodes-areas",
     pageTitleTranslation: "NAV__POSTCODE_AREAS",
     showFilters: false,
+    idKey: "area",
     data() {
       // const $t = this.$t.bind(this);
 
       return {
-        fields: []
+        fields: [
+          { key: "area" },
+          // { key: "coordinates", formatter: v => v.type },
+          { key: "mapitCode" }
+        ]
       };
     }
   };

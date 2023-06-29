@@ -8,11 +8,18 @@
     rootRoute: "admin-postcodes-sectors",
     pageTitleTranslation: "NAV__POSTCODE_SECTORS",
     showFilters: false,
+    idKey: "sector",
     data() {
       // const $t = this.$t.bind(this);
 
       return {
-        fields: []
+        fields: [
+          { key: "sector" },
+          // { key: "district" },
+          // { key: "boundingBox", formatter: v => v.type },
+          // { key: "coordinates", formatter: v => v.type },
+          { key: "mapitCode" }
+        ]
       };
     }
   };

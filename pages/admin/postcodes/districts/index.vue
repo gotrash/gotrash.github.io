@@ -8,11 +8,17 @@
     rootRoute: "admin-postcodes-districts",
     pageTitleTranslation: "NAV__POSTCODE_DISTRICTS",
     showFilters: false,
+    idKey: "district",
     data() {
       // const $t = this.$t.bind(this);
 
       return {
-        fields: []
+        fields: [
+          { key: "district" },
+          // { key: "boundingBox", formatter: v => v.type },
+          // { key: "coordinates", formatter: v => v.type },
+          { key: "mapitCode" }
+        ]
       };
     }
   };
