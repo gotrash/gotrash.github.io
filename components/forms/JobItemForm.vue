@@ -1,5 +1,21 @@
 <template>
-  <b-form></b-form>
+  <b-form>
+    <b-form-group>
+      <b-form-input />
+    </b-form-group>
+    <b-form-group>
+      <b-form-input />
+    </b-form-group>
+    <b-form-group>
+      <b-form-input />
+    </b-form-group>
+    <b-form-group>
+      <b-form-input />
+    </b-form-group>
+    <b-form-group>
+      <b-form-input />
+    </b-form-group>
+  </b-form>
 </template>
 
 <script>
