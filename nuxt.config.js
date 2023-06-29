@@ -22,7 +22,8 @@ const nuxtModules = [
 
 export default {
   auth: {
-    plugins: [{ src: "~/plugins/axios", mode: "client" }, "~/plugins/auth.js"],
+    debug: true,
+    plugins: [{ src: "~/plugins/axios" }, "~/plugins/auth.js"],
     strategies: {
       oidc: {
         scheme: "openIDConnect",
@@ -34,8 +35,8 @@ export default {
         grantType: "authorization_code",
         scope: "openid",
         // state: "UNIQUE_AND_NON_GUESSABLE",
-        // codeChallengeMethod: "",
-        responseMode: "code",
+        codeChallengeMethod: "S256",
+        responseMode: "offline",
         logoutRedirectUri: "http://localhost:3000",
         // acrValues: "",
         autoLogout: false
@@ -294,7 +295,7 @@ export default {
     { src: "~/plugins/global-mixins" },
     { src: "~/plugins/global-components" },
     { src: "~/plugins/vuelidate" },
-    { src: "~/plugins/router" },
+    { src: "~/plugins/router" }
     // { src: "~/plugins/google-maps.js", ssr: true }
   ],
   privateRuntimeConfig: {
