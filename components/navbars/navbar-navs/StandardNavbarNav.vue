@@ -1,5 +1,5 @@
 <template>
-  <b-navbar-nav class="font-weight-bolder">
+  <b-navbar-nav>
     <fullscreen-navbar-item v-if="showFullscreenToggle" />
 
     <li v-if="showSidebarToggle" class="nav-item">
@@ -13,9 +13,9 @@
         <fa-icon icon="th-large" />
       </a>
     </li>
+
     <template v-if="!$auth.loggedIn">
       <b-nav-item
-        link-classes="text-success"
         @click="
           () => {
             $auth.loginWith('oidc');
@@ -23,59 +23,35 @@
         "
         >{{ $t("NAV__LOGIN") }}</b-nav-item
       >
-      <b-nav-item link-classes="text-success" :to="{ name: 'auth-sign-up' }">
+      <b-nav-item :to="{ name: 'auth-sign-up' }">
         {{ $t("NAV__SIGNUP") }}
       </b-nav-item>
     </template>
     <template v-else>
-      <b-nav-item
-        link-classes="text-success"
-        active-class="active"
-        exact
-        :label="$t('NAV__USER')"
+      <standard-nav-item
+        icon="user"
+        :icon-classes="iconClasses"
+        :text="$t('NAV__USER_PROFILE')"
         :to="{ name: 'admin-user' }"
-      >
-        <fa-icon icon="user" /><span class="d-none d-lg-inline text-dark"> {{ $t("NAV__USER_PROFILE") }}</span>
-      </b-nav-item>
-      <b-nav-item
-        link-classes="text-success"
-        active-class="active"
-        :label="$t('NAV__BUSINESS_PROFILE')"
+      />
+      <standard-nav-item
+        icon="building"
+        :icon-classes="iconClasses"
+        :text="$t('NAV__BUSINESS_PROFILE')"
         :to="{ name: 'business' }"
-      >
-        <fa-icon icon="building" /><span class="d-none d-lg-inline text-dark"> {{ $t("NAV__BUSINESS") }}</span>
-      </b-nav-item>
-      <b-nav-item
-        link-classes="text-success"
-        active-class="active"
-        exact
-        :label="$t('NAV__SETTINGS')"
-        :to="{ name: 'admin' }"
-      >
-        <fa-icon icon="cog" /><span class="d-none d-lg-inline text-dark"> {{ $t("NAV__ADMIN") }}</span>
-      </b-nav-item>
-      <b-nav-item
-        link-classes="text-success"
-        active-class="active"
-        :label="$t('NAV__USERS_DASHBOARD')"
-        :to="{ name: 'users' }"
-      >
-        <fa-icon icon="users" /><span class="d-none d-lg-inline text-dark"> {{ $t("NAV__USERS") }}</span>
-      </b-nav-item>
-      <b-nav-item link-classes="text-success" active-class="active" :label="$t('NAV__JOBS')" :to="{ name: 'jobs' }">
-        <fa-icon icon="tasks" /><span class="d-none d-lg-inline text-dark"> {{ $t("NAV__JOBS") }}</span>
-      </b-nav-item>
-      <b-nav-item
-        link-classes="text-success"
-        :title="$t('NAV__LOGOUT')"
+      />
+      <standard-nav-item icon="cog" :icon-classes="iconClasses" :text="$t('NAV__SETTINGS')" :to="{ name: 'admin' }" />
+      <standard-nav-item icon="users" :icon-classes="iconClasses" :text="$t('NAV__USERS')" :to="{ name: 'users' }" />
+      <standard-nav-item
+        icon="sign-out-alt"
+        :text="$t('NAV__LOGOUT')"
+        to="#"
         @click="
           () => {
             $auth.logout();
           }
         "
-      >
-        <fa-icon icon="sign-out-alt" /><span class="d-none d-lg-inline text-dark"> {{ $t("NAV__LOGOUT") }}</span>
-      </b-nav-item>
+      />
     </template>
     <b-nav-dropdown v-if="showLanguageSwitcher" id="nav--lang-dropdown" toggle-class="nav-link-custom" right>
       <template slot="text">
@@ -94,13 +70,17 @@
 </template>
 
 <script>
+  import FullscreenNavbarItem from "../navbar-items/FullscreenNavbarItem";
+  import StandardNavItem from "../StandardNavItem.vue";
+
   export default {
-    name: "SecondaryNavbarNav",
-    components: {
-      FullscreenNavbarItem: () => import("../navbar-items/FullscreenNavbarItem.vue"),
-      LogoutNavbarItem: () => import("../navbar-items/LogoutNavbarItem.vue")
-    },
+    components: { FullscreenNavbarItem, StandardNavItem },
     props: {
+      iconClasses: {
+        type: [Array, Object, String],
+        required: false,
+        default: undefined
+      },
       showFullscreenToggle: Boolean,
       showSidebarToggle: Boolean
     },

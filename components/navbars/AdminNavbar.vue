@@ -10,7 +10,7 @@
     </b-navbar-nav>
 
     <!-- Right navbar links -->
-    <secondary-navbar-nav class="ml-auto" />
+    <standard-navbar-nav class="ml-auto" />
   </b-navbar>
   <!-- /.navbar -->
 </template>
@@ -21,7 +21,7 @@
     components: {
       FullscreenNavbarItem: () => import("./navbar-items/FullscreenNavbarItem.vue"),
       LogoutNavbarItem: () => import("./navbar-items/LogoutNavbarItem.vue"),
-      SecondaryNavbarNav: () => import("./navbar-navs/SecondaryNavbarNav")
+      StandardNavbarNav: () => import("./navbar-navs/StandardNavbarNav")
     },
     computed: {
       /**

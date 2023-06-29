@@ -1,34 +1,56 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <b-navbar type="light" variant="light">
-    <b-container style="max-height: 60px">
-      <b-navbar-brand class="p-0" :to="{ name: 'index' }">
-        <site-logo />
-      </b-navbar-brand>
-      <b-navbar-nav>
-        <b-nav-item v-if="false" :to="{ name: 'index' }">{{ $t("NAV__HOME") }}</b-nav-item>
-      </b-navbar-nav>
-      <secondary-navbar-nav class="ml-auto" />
-    </b-container>
+  <b-navbar
+    v-bind="$attrs"
+    id="frontend-navbar"
+    class="px-0 px-good-6 py-3 border-bottom border-success"
+    toggleable="md"
+    :type="type"
+  >
+    <b-navbar-brand class="py-0 px-2" :to="{ name: 'index' }">
+      <site-logo :color="logoColor" />
+    </b-navbar-brand>
+
+    <nav-business-details :class="['d-none d-tiny-flex flex-fill flex-column']" />
+
+    <b-navbar-toggle target="nav-collapse" class="mx-2 text-primary py-2 border-0">
+      <fa-icon icon="bars" />
+    </b-navbar-toggle>
+
+    <b-collapse id="nav-collapse" is-nav>
+      <standard-navbar-nav class="ml-auto pt-3 pt-md-0 px-4 p-xl-0" />
+    </b-collapse>
   </b-navbar>
 </template>
 
 <script>
+  import NavBusinessDetails from "./nav-sections/NavBusinessDetails";
+  import StandardNavbarNav from "./navbar-navs/StandardNavbarNav";
+
   export default {
     name: "SiteNavbar",
     components: {
+      NavBusinessDetails,
       SiteLogo: () => import("~/components/SiteLogo"),
-      SecondaryNavbarNav: () => import("./navbar-navs/SecondaryNavbarNav.vue")
+      StandardNavbarNav
+    },
+    inheritAttrs: false,
+    props: {
+      iconClasses: {
+        type: String,
+        required: false,
+        default: undefined
+      },
+      logoColor: {
+        type: String,
+        required: false,
+        default: undefined
+      },
+      type: {
+        type: String,
+        required: false,
+        default: "dark"
+      }
     }
   };
 </script>
-
-<style lang="scss">
-  // #frontend-navbar {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 100%;
-  //   background-color: rgba(0, 0, 0, 0.8);
-  // }
-</style>
