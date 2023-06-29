@@ -284,7 +284,8 @@ export default {
   i18n,
   modules: [
     ...nuxtModules.map(module => `@nuxtjs/${module}`),
-    ...communityModules
+    ...communityModules,
+    "~/modules/spatial.utils"
     // https://go.nuxtjs.dev/content
     // "@nuxt/content"
   ],
