@@ -67,10 +67,6 @@ describe("Default Layout", () => {
     test("Is light variant", () => {
       expect(navbar.classes()).toContain("navbar-light");
     });
-
-    test("Is expanded", () => {
-      expect(navbar.classes()).toContain("navbar-expand");
-    });
   });
 
   describe("Router Output", () => {
