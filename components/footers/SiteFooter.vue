@@ -1,21 +1,15 @@
 <template>
   <footer id="site-footer">
     <b-container fluid>
-      <b-row class="py-3" style="border-top: 2px solid #28a744">
+      <b-row class="py-3 bg-gray-100" style="border-top: 2px solid #28a744">
         <b-col>
           <b-container>
             <b-row class="align-items-center">
-              <b-col
-                class="d-flex flex-column flex-lg-row align-items-center text-center text-md-left"
-                cols="12"
-                md="4"
-                order="2"
-                order-md="1"
-              >
-                <site-logo class="mr-md-3 mb-3 mb-md-0" color="#1D1D1D" />
-                <h5>© GoTrash Ltd 2023.</h5>
+              <b-col class="text-center" cols="12" md="12" order="2" order-md="1">
+                <h5 class="my-2">© GoTrash Ltd 2023.</h5>
               </b-col>
               <b-col
+                v-if="false"
                 class="text-center text-md-right mb-3 mb-md-0 d-flex align-items-center justify-content-center justify-content-md-end"
                 order="1"
                 order-md="2"
@@ -41,11 +35,3 @@
     </b-container>
   </footer>
 </template>
-
-<script>
-  export default {
-    components: {
-      SiteLogo: () => import("~/components/SiteLogo")
-    }
-  };
-</script>
