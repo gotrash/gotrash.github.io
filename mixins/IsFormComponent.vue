@@ -3,6 +3,13 @@
 
   export default {
     mixins: [validationMixin],
+    props: {
+      isDisabled: Boolean,
+      isBusy: Boolean,
+      showCancel: Boolean,
+      showReset: Boolean,
+      hideSubmit: Boolean
+    },
     computed: {
       form: {
         get() {
@@ -15,20 +22,14 @@
     },
     methods: {
       async onCancel(evt) {
-        if (evt) {
-          evt.stopPropagation();
-          evt.preventDefault();
-        }
+        if (evt) this.stopPrevent(evt);
 
         await this.onReset();
 
         this.$emit("cancel");
       },
       async onReset(evt) {
-        if (evt) {
-          evt.stopPropagation();
-          evt.preventDefault();
-        }
+        if (evt) this.stopPrevent(evt);
 
         await new Promise(resolve => {
           this.$nextTick(() => {
@@ -41,10 +42,7 @@
         this.$emit("reset");
       },
       onSubmit(evt) {
-        if (evt) {
-          evt.stopPropagation();
-          evt.preventDefault();
-        }
+        if (evt) this.stopPrevent(evt);
 
         this.$v.form.$touch();
 

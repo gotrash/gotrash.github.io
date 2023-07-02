@@ -2,9 +2,11 @@
   export default {
     props: {
       value: {
-        type: [Array, Number, Object, String],
+        type: [Array, Boolean, Number, Object, String],
         required: false,
-        default: null
+        default() {
+          return null;
+        }
       }
     },
     computed: {
