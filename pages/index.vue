@@ -37,6 +37,7 @@
 
 <script>
   import FrontpageAppLinksSection from "~/components/sections/FrontpageAppLinksSection";
+  import FrontpageBlogSection from "~/components/sections/FrontpageBlogSection";
   import FrontpageSocialLinksSection from "~/components/sections/FrontpageSocialLinksSection";
   import FrontpageUsefulLinksSection from "~/components/sections/FrontpageUsefulLinksSection";
   import PostcodeChecker from "~/components/PostcodeChecker";
@@ -47,6 +48,7 @@
     auth: false,
     components: {
       FrontpageAppLinksSection,
+      FrontpageBlogSection,
       FrontpageSocialLinksSection,
       FrontpageUsefulLinksSection,
       PostcodeChecker,
