@@ -261,3 +261,14 @@ body {
     padding: 11px 16px;
   }
 }
+
+.bg-overlay {
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: auto;
+  top: 0px;
+  left: 0px;
+  background: rgba(0, 0, 0, 0.7);
+}
