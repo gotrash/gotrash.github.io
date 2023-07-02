@@ -31,6 +31,6 @@
     left: 0;
     width: 100%;
     z-index: 999999;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.55);
   }
 </style>

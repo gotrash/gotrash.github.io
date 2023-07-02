@@ -1,7 +1,7 @@
 <template>
   <div id="default-page-layout">
     <FrontendNavbar id="frontend-navbar" icon-classes="text-black" type="light" variant="light" />
-    <Nuxt style="min-height: calc(100vh - 56px)" />
+    <Nuxt style="min-height: calc(100vh - 167px)" />
     <site-footer />
   </div>
 </template>
