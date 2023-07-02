@@ -1,9 +1,6 @@
 <template>
   <div>
-    <p v-if="!hideMessage">
-      {{ $t("MSG__CHECK_FOR_PROVIDERS_COVERING_YOUR_AREA") }}
-    </p>
-    <b-alert class="text-center" :show="noProviders" variant="danger" dismissible @dismissed="onAlertDismissed">
+    <b-alert class="text-center mb-4" :show="noProviders" variant="danger">
       <h4 class="mb-2">
         <u>{{ $t("FRONTEND.LABEL.NO_PROVIDERS_ALERT") }}</u>
       </h4>
@@ -11,6 +8,9 @@
         {{ $t("FRONTEND.MESSAGE.POSTCODE_CHECKER_NO_PROVIDERS") }}
       </p>
     </b-alert>
+    <p v-if="!hideMessage" class="mb-3">
+      {{ $t("MSG__CHECK_FOR_PROVIDERS_COVERING_YOUR_AREA") }}
+    </p>
     <simple-postcode-form ref="form" v-model="form" :busy="busy" @submit="checkPostcode" />
   </div>
 </template>
@@ -32,6 +32,9 @@
         noProviders: false
       };
     },
+    created() {
+      if (this.$route.query.noProviders) this.noProviders = true;
+    },
     mounted() {
       const lastCheckedPostcode = this.$storage.getUniversal("lastCheckedPostcode");
 
@@ -52,6 +55,8 @@
             .post("/check-postcode", { postcode })
             .then(({ data }) => {
               this.noProviders = !data;
+
+              this.$storage.setUniversal("hasProviders", data);
 
               this.$emit("postcode:checked", data);
 
