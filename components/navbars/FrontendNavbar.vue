@@ -6,6 +6,7 @@
     class="px-0 px-good-6 py-3 border-bottom border-success"
     toggleable="md"
     :type="type"
+    style="border-bottom-width: 4px !important"
   >
     <b-navbar-brand class="py-0 px-2" :to="{ name: 'index' }">
       <site-logo :color="logoColor" />
