@@ -9,6 +9,7 @@
         :id="`postcode-checker-postcode-input-${_uid}`"
         ref="postcode-input"
         v-model="model.postcode"
+        :disabled="busy"
         :form="`postcode-checker-form-${_uid}`"
         autocomplete="off"
         maxlength="8"
@@ -48,14 +49,13 @@
 </template>
 
 <script>
-  import { validationMixin } from "vuelidate";
   import { required, maxLength } from "vuelidate/lib/validators";
-  import { HasModel } from "~/mixins";
+  import { HasModel, IsFormComponent } from "~/mixins";
   import { IsUkPostcode } from "~/validators";
 
   export default {
     name: "SimplePostcodeForm",
-    mixins: [HasModel, validationMixin],
+    mixins: [HasModel, IsFormComponent],
     props: {
       busy: Boolean,
       value: {
