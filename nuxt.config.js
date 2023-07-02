@@ -295,7 +295,8 @@ export default {
     { src: "~/plugins/global-mixins" },
     { src: "~/plugins/global-components" },
     { src: "~/plugins/vuelidate" },
-    { src: "~/plugins/router" }
+    { src: "~/plugins/router" },
+    { src: "~/plugins/vue-carousel", mode: "client" }
     // { src: "~/plugins/google-maps.js", ssr: true }
   ],
   privateRuntimeConfig: {
