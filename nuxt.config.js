@@ -1,4 +1,5 @@
 import Path from "path";
+// import Fs from "fs";
 import Fiber from "fibers";
 import Sass from "sass";
 import i18n from "./lang/config";
@@ -28,7 +29,7 @@ export default {
       oidc: {
         scheme: "openIDConnect",
         endpoints: {
-          configuration: "http://localhost:9000/.well-known/openid-configuration"
+          configuration: "https://localhost:9000/.well-known/openid-configuration"
         },
         clientId: "messaging-client",
         clientSecret: "secret",
@@ -59,54 +60,16 @@ export default {
     retry: { retries: 10 }
   },
   bootstrapVue: { bootstrapCSS: false, bootstrapVueCSS: false },
+  // server: {
+  //   https: {
+  //     key: Fs.readFileSync(Path.resolve(__dirname, "server.key")),
+  //     cert: Fs.readFileSync(Path.resolve(__dirname, "server.crt"))
+  //   }
+  // },
   build: {
     analyze: false,
     babel: {
       babelrc: false
-      //     plugins: [
-      //       [
-      //         "module-resolver",
-      //         {
-      //           root: ["."],
-      //           alias: {
-      //             "@": ".",
-      //             "~": "."
-      //           }
-      //         }
-      //       ]
-      //     ],
-
-      //     presets(env) {
-      //       // const envTargets = {
-      //       //   client: { browsers: ["last 2 versions"], ie: 10 },
-      //       //   server: { node: "current" }
-      //       // };
-
-      //       return [
-      //         "@babel/preset-env",
-      //         [
-      //           "@nuxt/babel-preset-app",
-      //           {
-      //             corejs: 2,
-      //             loose: true,
-      //             targets: {
-      //               browsers: ["last 2 versions"],
-      //               node: "current"
-      //             },
-      //             useBuiltIns: "usage",
-      //             polyfills: [
-      //               "es.array.iterator",
-      //               "es.array.from",
-      //               "es.promise",
-      //               "es.promise.finally",
-      //               "es.object.assign",
-      //               "es.object.entries",
-      //               "es.map"
-      //             ]
-      //           }
-      //         ]
-      //       ];
-      //     }
     },
     html: {
       // minify: {
@@ -252,10 +215,6 @@ export default {
     icons: {
       brands: true,
       solid: true,
-      // if you have bought the Pro packages
-      // list the icons you want to add, not listed icons will be tree-shaked
-      // solid: ["faHome", "faHeart"],
-      // include all icons. But don't do this.
       regular: true
     }
   },
@@ -283,6 +242,7 @@ export default {
     titleTemplate: `%s - GoTrash`
   },
   i18n,
+  middleware: [],
   modules: [
     ...nuxtModules.map(module => `@nuxtjs/${module}`),
     ...communityModules,
@@ -320,7 +280,7 @@ export default {
     // see Proxy section
     // Proxies /foo to http://example.com/foo
     "/.well-known/openid-configuration": {
-      target: "http://localhost:9000/.well-known/openid-configuration"
+      target: "https://localhost:9000/.well-known/openid-configuration"
     }
   },
   publicRuntimeConfig: {
