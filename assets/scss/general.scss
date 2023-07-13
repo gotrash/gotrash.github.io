@@ -1,18 +1,18 @@
 // Bootstrap SCSS functions must be imported first
-@import "~bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/functions";
 
 @import "variables";
 
-// Now we get our Bootstrap variables, in order of presedence and after functions
-@import "~admin-lte/build/scss/bootstrap-variables";
-@import "~admin-lte/build/scss/variables";
-@import "~admin-lte/build/scss/variables-alt";
+// Now we get our Bootstrap variables, in order of precedence and after functions
+@import "node_modules/admin-lte/build/scss/bootstrap-variables";
+@import "node_modules/admin-lte/build/scss/variables";
+@import "node_modules/admin-lte/build/scss/variables-alt";
 
-// Now we get our Bootstrap variables, in order of presedence and after functions
-@import "~bootstrap/scss/variables";
+// Now we get our Bootstrap variables, in order of precedence and after functions
+@import "node_modules/bootstrap/scss/variables";
 
 // Bootstrap mixins, must be loaded after variables
-@import "~bootstrap/scss/mixins";
-@import "~admin-lte/build/scss/mixins";
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/admin-lte/build/scss/mixins";
 
-@import "~bootstrap-vue/src/variables";
+@import "node_modules/bootstrap-vue/src/variables";

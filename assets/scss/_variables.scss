@@ -60,12 +60,6 @@ $rgba-complement-2: rgba(243, 106, 92, 1);
 $rgba-complement-3: rgba(185, 39, 23, 1);
 $rgba-complement-4: rgba(147, 17, 3, 1);
 
-$primary: #28a744;
-$success: #28a744;
-$info: #237888;
-$warning: #dd8735;
-$danger: #dd4535;
-
 $white: #fff;
 $gray-100: #f8f9fa;
 $gray-200: #e9ecef;
@@ -77,6 +71,15 @@ $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
 $black: #000;
+
+$primary: #28a744;
+$success: #28a744;
+$info: #237888;
+$warning: #dd8735;
+$danger: #dd4535;
+$light: $gray-100;
+$medium: $gray-500;
+$dark: $gray-900;
 
 $theme-colors: ();
 $theme-colors: map-merge(
@@ -94,7 +97,10 @@ $theme-colors: map-merge(
     "gray-600": $gray-600,
     "gray-700": $gray-700,
     "gray-800": $gray-800,
-    "gray-900": $gray-900
+    "gray-900": $gray-900,
+    "light": $light,
+    "medium": $medium,
+    "dark": $dark
   ),
   $theme-colors
 );

@@ -15,7 +15,7 @@
     &.btn {
       &:hover {
         border-color: darken($color, 10%);
-        color: darken(color-yiq($color), 7.5%);
+        color: darken(color-contrast($color), 7.5%);
       }
 
       &:not(:disabled):not(.disabled):active,
@@ -24,7 +24,7 @@
       &.active {
         background-color: darken($color, 10%) !important;
         border-color: darken($color, 12.5%);
-        color: color-yiq(darken($color, 10%));
+        color: color-contrast(darken($color, 10%));
       }
     }
   }
@@ -37,13 +37,13 @@
 
     &,
     > a {
-      color: color-yiq($color) !important;
+      color: color-contrast($color) !important;
     }
 
     &.btn {
       &:hover {
         border-color: darken($color, 10%);
-        color: darken(color-yiq($color), 7.5%);
+        color: darken(color-contrast($color), 7.5%);
       }
 
       &:not(:disabled):not(.disabled):active,
@@ -52,7 +52,7 @@
       &.active {
         background-color: darken($color, 10%) !important;
         border-color: darken($color, 12.5%);
-        color: color-yiq(darken($color, 10%));
+        color: color-contrast(darken($color, 10%));
       }
     }
   }
@@ -75,22 +75,22 @@
 
 .bg-gray {
   background-color: $gray-500;
-  color: color-yiq($gray-500);
+  color: color-contrast($gray-500);
 }
 
 .bg-gray-light {
   background-color: lighten($gray-200, 3%);
-  color: color-yiq(lighten($gray-200, 3%)) !important;
+  color: color-contrast(lighten($gray-200, 3%)) !important;
 }
 
 .bg-black {
   background-color: $black;
-  color: color-yiq($black) !important;
+  color: color-contrast($black) !important;
 }
 
 .bg-white {
   background-color: $white;
-  color: color-yiq($white) !important;
+  color: color-contrast($white) !important;
 }
 
 // Gradient Background colors (theme colors)
@@ -146,7 +146,7 @@ a.text-muted:hover {
 [class*="accent-"] {
   @each $name, $color in $theme-colors {
     a.btn-#{$name} {
-      color: color-yiq($color);
+      color: color-contrast($color);
     }
   }
 }
@@ -191,7 +191,7 @@ a.text-muted:hover {
   [class*="accent-"] {
     @each $name, $color in $theme-colors-alt {
       a.btn-#{$name} {
-        color: color-yiq($color);
+        color: color-contrast($color);
       }
     }
   }
