@@ -1,5 +1,5 @@
 import Path from "path";
-// import Fs from "fs";
+import Fs from "fs";
 import Fiber from "fibers";
 import Sass from "sass";
 import i18n from "./lang/config";
@@ -23,34 +23,36 @@ const nuxtModules = [
 
 export default {
   auth: {
-    debug: true,
     plugins: [{ src: "~/plugins/axios" }, "~/plugins/auth.js"],
     strategies: {
       oidc: {
         scheme: "openIDConnect",
         endpoints: {
-          configuration: "https://localhost:9000/.well-known/openid-configuration"
+          configuration: "http://localhost:9000/.well-known/openid-configuration"
         },
         clientId: "messaging-client",
         clientSecret: "secret",
         grantType: "authorization_code",
         scope: "openid",
-        // state: "UNIQUE_AND_NON_GUESSABLE",
+        state: "UNIQUE_AND_NON_GUESSABLE",
         codeChallengeMethod: "S256",
-        responseMode: "offline",
-        logoutRedirectUri: "http://localhost:3000",
-        // acrValues: "",
-        autoLogout: false
+        responseMode: "",
+        logoutRedirectUri: "https://localhost:3000",
+        acrValues: "",
+        autoLogout: true
       }
     },
+    ignoreExceptions: true,
     resetOnError: true,
     redirect: {
-      login: "/login",
+      login: false,
       logout: "/",
-      callback: "/auth/authorized",
+      callback: "/callback",
       home: "/"
     },
-    watchLoggedIn: true
+    autoLogout: true,
+    watchLoggedIn: true,
+    defaultStrategy: "oidc"
   },
   axios: {
     baseURL: "http://localhost:8090",
@@ -60,12 +62,12 @@ export default {
     retry: { retries: 10 }
   },
   bootstrapVue: { bootstrapCSS: false, bootstrapVueCSS: false },
-  // server: {
-  //   https: {
-  //     key: Fs.readFileSync(Path.resolve(__dirname, "server.key")),
-  //     cert: Fs.readFileSync(Path.resolve(__dirname, "server.crt"))
-  //   }
-  // },
+  server: {
+    https: {
+      key: Fs.readFileSync(Path.resolve(__dirname, "server.key")),
+      cert: Fs.readFileSync(Path.resolve(__dirname, "server.crt"))
+    }
+  },
   build: {
     analyze: false,
     babel: {
