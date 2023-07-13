@@ -91,3 +91,13 @@ sw.*
 
 build
 !config/build*
+
+# Nuxt dev/build outputs
+.output
+.nitro
+.cache
+
+# Local env files
+.env
+.env.*
+!.env.example
