@@ -7,4 +7,14 @@ export default function ({ $axios }) {
     // Do something with request error
     return Promise.reject(error);
   });
+
+  $axios.onRequest(config => {
+    console.log("Request Config: %o", { ...config });
+  });
+
+  $axios.onResponse(response => {
+    if (process.client) {
+      console.log("Response: %o", response.data);
+    }
+  });
 }
