@@ -1,9 +1,15 @@
 {
   "name": "@gotrash/webapp",
-  "version": "0.2.0",
+  "description": "GoTrash JS app",
+  "main": "dist-electron/main.js",
   "private": true,
+  "version": "0.0.1-000000000",
+  "author": {
+    "email": "alex.scott@gotrash.co.uk",
+    "name": "Alex Scott",
+    "url": "https://gotrash.co.uk"
+  },
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
