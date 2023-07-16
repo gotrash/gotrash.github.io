@@ -1,3 +1,6 @@
-export const mutations = {};
-export const getters = {};
-export const actions = {};
+import { defineStore } from "pinia";
+
+export const useCounterStore = defineStore("counter", {
+  getters: {},
+  state: () => ({})
+});
