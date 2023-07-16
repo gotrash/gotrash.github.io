@@ -101,3 +101,4 @@ build
 .env
 .env.*
 !.env.example
+dist-electron/
