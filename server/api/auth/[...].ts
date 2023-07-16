@@ -2,44 +2,55 @@ import { NuxtAuthHandler } from "#auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 
+import console from "console";
+
 export default NuxtAuthHandler({
   debug: true,
+  origin: "http://localhost:3000",
+  baseURL: "http://localhost:3000",
   pages: {
     // Change the default behavior to use `/login` as the path for the sign-in page
     signIn: "/login"
   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log(
-        "Sign-in Callback - Params: { user: %o, account: %o, profile: %o, email: %o, credentials: %o }",
-        user,
-        account,
-        profile,
-        email,
-        credentials
-      );
+      // console.log(
+      //   "Sign-in Callback - Params: { user: %o, account: %o, profile: %o, email: %o, credentials: %o }",
+      //   user,
+      //   account,
+      //   profile,
+      //   email,
+      //   credentials
+      // );
       return true;
     },
-    async redirect({ url, baseUrl }) {
-      console.log("Redirect Callback - Params: { url: %o, baseUrl: %o }", url, baseUrl);
-      return baseUrl;
+    async redirect(r) {
+      // console.log("Redirect Callback - Params: { url: %o, baseUrl: %o }", url, baseUrl);
+      return r.baseUrl;
     },
-    async session({ session, token, user }) {
-      console.log("Session Callback - Params: { session: %o, token: %o, user: %o }", session, token, user);
+    async session(_session) {
+      // console.log("Session Callback: %o }", _session);
+      // the token object is what returned from the `jwt` callback, it has the `accessToken` that we assigned before
+      // Assign the accessToken to the `session` object, so it will be available on our app through `useSession` hooks
+      if (_session.token) {
+        _session.session.accessToken = _session.token.accessToken;
+      }
+      return _session;
 
-      return session;
+      return _session.session;
     },
-    async jwt({ token, user, account, profile, isNewUser }) {
-      console.log(
-        "JWT Callback - Params: { token: %o, user: %o, account: %o, profile: %o, isNewUser: %o }",
-        token,
-        user,
-        account,
-        profile,
-        isNewUser
-      );
+    jwt(jwt) {
+      console.log("JWT Callback: %o", jwt);
 
-      return token;
+      if (jwt.user?.id) jwt.token.name = jwt.user.id;
+
+      if (jwt?.account?.access_token) {
+        console.log("Access Token: %s", jwt.account.access_token);
+
+        jwt.token.accessToken = jwt.account.access_token;
+      }
+
+      return jwt.token;
     }
   },
   secret: "super-secret",
@@ -81,18 +92,15 @@ export default NuxtAuthHandler({
     }),
     {
       id: "oidc",
-      userinfo: "http://localhost:9000/userinfo",
-      token: "http://localhost:9000/oauth2/token",
       name: "Oidc",
       type: "oauth",
-      // idToken: true,
       clientId: "messaging-client",
       clientSecret: "secret",
       wellKnown: "http://localhost:9000/.well-known/openid-configuration",
       authorization: { params: { scope: "openid" } },
-      // idToken: true,
-      scope: ["openid, message.read"],
+      scope: "openid profile message.read",
       checks: ["pkce", "state"],
+      idToken: true,
       profile(profile) {
         console.log("Profile: %o", profile);
         return {
