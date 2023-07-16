@@ -1,9 +1,12 @@
 export default {
+  // For navbar simple text logo `strong` prefix
+  APP_NAME_START: 'Go',
+  APP_NAME_END: '{0}Trash',
   // Actions
   ACTION__CREATE_JOB: "Create Job",
   // General
   APP_NAME: "GoTrash",
-  APP_NAME_HTML: "<b>Go</b>Trash",
+  APP_NAME_HTML: "GoTrash",
   APP_NAME_LONG: "GoTrash UK",
   // Nav Links
   NAV__ADMIN_DASHBOARD: "Admin Dashboard",
@@ -103,17 +106,9 @@ export default {
   "AUTH.LABEL.UPDATE_PASSWORD": "Update Password",
   "AUTH.LABEL.USERNAME": "Username",
   "AUTH.MESSAGE.AUTHORIZING": "Authorizing",
-  "AUTH.MESSAGE.CONFIRM_FORGOT_PASSWORD": `
-    <p class="lead">
-      If we've found an account associated with the email address provided, then you will receive a password reset link
-      in your inbox shortly.
-    </p>
-
-    <p>
-      Sometimes the link can go to your spam/junk folder(s). If you're having issues finding the link
-      and you're sure you entered the correct email associated with your account, please check these folder(s).
-    </p>
-  `,
+  "AUTH.MESSAGE.CONFIRM_FORGOT_PASSWORD": `If we've found an account associated with the email address provided, then you will receive a password reset link
+      in your inbox shortly.  Sometimes the link can go to your spam/junk folder(s). If you're having issues finding the link
+      and you're sure you entered the correct email associated with your account, please check these folder(s).`,
   "AUTH.MESSAGE.FORGOT_PASSWORD": "You forgot your password? Here you can easily retrieve a new password.",
   "AUTH.MESSAGE.SIGN_IN": "Sign in to start your session",
   "AUTH.MESSAGE.RECOVER_PASSWORD":
@@ -199,8 +194,8 @@ export default {
   "JOBS.MESSAGE.IMAGES":
     "You should upload one or more images of the waste you're getting rid of. This allows providers to provide a better quote for your job, often meaning providers can carry out the job a little cheaper.",
   "JOBS.MESSAGE.SUMMARY": "Provide a brief summary explaining the waste you're getting rid of.",
-  "JOBS.MESSAGE.IS_BUSINESS": "Is the waste currently in posession of a business?",
-  "JOBS.MESSAGE.IS_RECYCLABLE": "Is the waste of a recycleable and/or reusable nature?",
+  "JOBS.MESSAGE.IS_BUSINESS": "Is the waste currently in possession of a business?",
+  "JOBS.MESSAGE.IS_RECYCLABLE": "Is the waste of a recyclable and/or reusable nature?",
   "JOBS.MESSAGE.IS_EASY_ACCESS": "Will the waste be easy to access when the provider collects it?",
   "JOBS.MESSAGE.IS_BUILDER_WASTE": "Does the waste include builder waste, such as rubble, cement, plasterboard, etc?",
   "JOBS.MESSAGE.LOAD_SIZE": "Please select the average size of the load.",
