@@ -1,5 +1,5 @@
 <template>
-  <div><h1>Forgot Password</h1></div>
+  <div><h1>Forgotten Password</h1></div>
 </template>
 
 <script setup>
@@ -7,3 +7,4 @@
     layout: "frontend"
   });
 </script>
+

@@ -3,7 +3,7 @@
     <div
       class="d-flex align-items-center pb-10 position-relative"
       :style="{
-        'background-image': `url(${require('~/assets/images/rubbish-truck.jpg')})`,
+        'background-image': `url(${headerBg})`,
         'background-size': 'cover',
         'background-position': 'center center',
         'background-attachment': 'fixed',
@@ -28,81 +28,64 @@
         </b-row>
       </b-container>
     </div>
-
-    <frontpage-app-links-section />
-    <frontpage-useful-links-section />
-    <frontpage-social-links-section />
+    <frontend-app-links-section />
+    <frontend-social-links-section />
+    <frontend-useful-links-section />
+    <site-footer />
   </div>
 </template>
 
+<script setup>
+  definePageMeta({
+    layout: "home"
+  });
+
+  useHead({
+    bodyAttrs: {
+      class: "floating-navbar"
+    }
+  });
+</script>
+
 <script>
-  import FrontpageAppLinksSection from "~/components/sections/FrontpageAppLinksSection";
-  import FrontpageBlogSection from "~/components/sections/FrontpageBlogSection";
-  import FrontpageSocialLinksSection from "~/components/sections/FrontpageSocialLinksSection";
-  import FrontpageUsefulLinksSection from "~/components/sections/FrontpageUsefulLinksSection";
+  import FrontendAppLinksSection from "~/components/sections/FrontpageAppLinksSection";
+  import FrontendSocialLinksSection from "~/components/sections/FrontpageSocialLinksSection";
+  import FrontendUsefulLinksSection from "~/components/sections/FrontpageUsefulLinksSection";
   import PostcodeChecker from "~/components/PostcodeChecker";
+  import SiteFooter from "~/components/footers/SiteFooter";
   import SiteLogo from "~/components/SiteLogo";
+  import headerBg from "~/assets/images/rubbish-truck.jpg";
 
   export default {
-    name: "HomePage",
-    auth: false,
     components: {
-      FrontpageAppLinksSection,
-      FrontpageBlogSection,
-      FrontpageSocialLinksSection,
-      FrontpageUsefulLinksSection,
+      FrontendAppLinksSection,
+      FrontendSocialLinksSection,
+      FrontendUsefulLinksSection,
       PostcodeChecker,
+      SiteFooter,
       SiteLogo
     },
-    layout: "home",
     data() {
       return {
-        currentstep: 1,
-
-        steps: [
-          {
-            id: 1,
-            title: "Personal",
-            icon: "user"
-          },
-          {
-            id: 2,
-            title: "Details",
-            icon: "th"
-          },
-          {
-            id: 3,
-            title: "Send",
-            icon: ["far", "paper-plane"]
-          }
-        ]
+        headerBg,
+        submitted: false
       };
     },
-    computed: {
-      height() {
-        if (!process.client) return null;
-
-        return window.innerHeight + "px";
-      }
-    },
-    mounted() {
-      this.$nextTick(() => {
-        this.$refs["postcode-checker"].focus();
-      });
-    },
     methods: {
-      onProvidersFound() {
-        this.$router.push({ name: "trash-something" });
+      onSubmit() {
+        this.submitted = true;
       },
-      onSubmit() {},
-      stepChanged(step) {
-        this.currentstep = step;
-      }
+      onProvidersFound() {}
     }
   };
 </script>
 
 <style lang="scss">
+  @import "node_modules/bootstrap/scss/functions";
+  @import "~/assets/scss/variables";
+  @import "node_modules/bootstrap/scss/variables";
+  @import "node_modules/bootstrap/scss/variables-dark";
+
   .custom-text-field {
     background-color: transparent;
     border: none;

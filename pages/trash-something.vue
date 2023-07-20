@@ -1,128 +1,95 @@
 <template>
-  <b-container class="py-3">
-    <b-row>
-      <b-col order="2" order-lg="1" cols="12" lg="3">
-        <b-card class="border border-success bg-gray-100" no-body>
-          <b-card-header header-class="border border-success" header-bg-variant="success">FAQs</b-card-header>
-          <b-card-body>
-            <pre>
-              <code>
-{{ job.toJson && job.toJson() || job }}
-              </code>
-            </pre>
-          </b-card-body>
-        </b-card>
-      </b-col>
-      <b-col order="1" order-lg="2" cols="12" lg="9">
-        <b-container v-if="false" fluid>
-          <b-row>
-            <b-col cols="12">
-              <h1>{{ $t("PAGE_TITLE__TRASH_SOMETHING") }}</h1>
-            </b-col>
-          </b-row>
-        </b-container>
-        <section>
-          <b-card class="border border-success bg-gray-100" no-body>
-            <b-card-header header-class="border border-success" header-bg-variant="success">
-              Create a Job
-            </b-card-header>
-            <b-card-body>
-              <job-form ref="form" v-model="job" show-cancel show-reset @submit="onSubmit" />
-            </b-card-body>
-          </b-card>
-        </section>
-      </b-col>
-    </b-row>
-  </b-container>
+  <div>
+    <div
+      class="d-flex align-items-center pb-10 position-relative"
+      :style="{
+        'background-image': `url(${headerBg})`,
+        'background-size': 'cover',
+        'background-position': 'center center',
+        'background-attachment': 'fixed',
+        'padding-top': '12.75rem'
+      }"
+    >
+      <div class="overlay"></div>
+      <b-container fluid>
+        <b-row>
+          <b-col cols="12" sm="6" offset-sm="3" lg="4" offset-lg="4">
+            <b-card
+              class="rounded-lg"
+              body-bg-variant="gray-300"
+              footer-bg-variant="light"
+              header-bg-variant="light"
+              style="max-width: 420px; margin: 0 auto 1rem"
+            >
+              <site-logo class="d-block mb-3 mx-auto" color="#1D1D1D" />
+              <postcode-checker ref="postcode-checker" @providers-found="onProvidersFound" />
+            </b-card>
+          </b-col>
+        </b-row>
+      </b-container>
+    </div>
+    <frontend-app-links-section />
+    <frontend-social-links-section />
+    <frontend-useful-links-section />
+    <site-footer />
+  </div>
 </template>
 
 <script>
-  import Job from "~/dto/JobDto";
-  import JobForm from "~/components/forms/JobForm";
+  import FrontendAppLinksSection from "~/components/sections/FrontpageAppLinksSection";
+  import FrontendSocialLinksSection from "~/components/sections/FrontpageSocialLinksSection";
+  import FrontendUsefulLinksSection from "~/components/sections/FrontpageUsefulLinksSection";
+  import SiteFooter from "~/components/footers/SiteFooter";
+  import SiteLogo from "~/components/SiteLogo";
+  import headerBg from "~/assets/images/rubbish-truck.jpg";
+
+  definePageMeta({
+    layout: "home"
+  });
+
   export default {
-    name: "TrashSomething",
-    components: { JobForm },
-    middleware: ["has-providers"],
+    components: {
+      FrontendAppLinksSection,
+      FrontendSocialLinksSection,
+      FrontendUsefulLinksSection,
+      SiteFooter,
+      SiteLogo
+    },
     data() {
       return {
-        job: new Job({
-          summary: "I'm a summary",
-          detailedDescription:
-            "I'm a very, very detailed description.  I'm such a good description, I should have an author tag.",
-          isRecyclable: true,
-          isBusiness: false,
-          isBuilderWaste: false,
-          isEasyAccess: true,
-          loadSize: "SMALL"
-        }),
-        jobTypes: null
+        headerBg,
+        submitted: false
       };
     },
-    fetch() {
-      const getJobTypes = this.$axios.get("/job-types/all").then(res => {
-        this.jobTypes = res.data;
-      });
-
-      return Promise.all([getJobTypes]);
-    },
     methods: {
-      onSubmit(job) {
-        this.$axios
-          .post("/jobs", job)
-          .then(res => {
-            console.log(res.data);
-
-            this.job = new Job(res.data);
-          })
-          .catch(error => {
-            if (error.response) {
-              // The request was made and the server responded with a status code
-              // that falls out of the range of 2xx
-              console.log(error.response.data);
-              console.log(error.response.status);
-              console.log(error.response.headers);
-            } else if (error.request) {
-              // The request was made but no response was received
-              // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-              // http.ClientRequest in node.js
-              console.log(error.request);
-            } else {
-              // Something happened in setting up the request that triggered an Error
-              console.log("Error", error.message);
-            }
-            console.log(error.config);
-          });
-      }
+      onSubmit() {
+        this.submitted = true;
+      },
+      onProvidersFound() {}
     }
   };
 </script>
 
 <style lang="scss">
-  .frontend-item-type-link {
-    display: flex;
-    flex-direction: column;
-    .frontend-item-type-icon-wrapper {
-      transition: 0.3s all;
-      border: 2px solid $primary;
-      border-radius: 50%;
-      margin: 0 auto;
-      text-align: center;
-      align-items: center;
-      color: #999;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      height: 100px;
-      justify-content: center;
-      margin: 0 auto 15px;
-      width: 100px;
-      > svg {
-        font-size: 3em;
-      }
-      &:focus,
-      &:hover {
-        color: $primary;
-      }
-    }
+  @import "node_modules/bootstrap/scss/functions";
+  @import "~/assets/scss/variables";
+  @import "node_modules/bootstrap/scss/variables";
+  @import "node_modules/bootstrap/scss/variables-dark";
+
+  .custom-text-field {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $dark;
+    border-radius: 0px;
+  }
+  .overlay {
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: auto;
+    top: 0px;
+    left: 0px;
+    background: rgba(0, 0, 0, 0.7); /*can be anything, of course*/
   }
 </style>

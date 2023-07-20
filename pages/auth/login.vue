@@ -1,87 +1,10 @@
 <template>
-  <div class="login-box">
-    <b-alert :show="error != null" variant="info" dismissible>
-      {{ error }}
-    </b-alert>
-
-    <b-card no-body class="card-outline card-primary">
-      <auth-card-header />
-      <b-card-body>
-        <b-alert variant="danger" :show="hasErrors">
-          <h2 v-if="$route.query.error">{{ $route.query.error }}</h2>
-          <p v-if="$route.query.error_description">{{ $route.query.error_description }}</p>
-        </b-alert>
-        <p class="login-box-msg">{{ $t("AUTH.MESSAGE.SIGN_IN") }}</p>
-
-        <!-- <login-form v-model="form" class="mb-3" @cancel="onCancel" @reset="onReset" @submit="onSubmit" /> -->
-        <b-btn @click="onSubmit">Submit</b-btn>
-
-        <div class="d-none social-auth-links text-center mt-2 mb-3">
-          <a href="#" class="btn btn-block btn-primary">
-            <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-          </a>
-          <a href="#" class="btn btn-block btn-danger">
-            <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-          </a>
-        </div>
-
-        <p class="mb-1 text-center">
-          <b-link :to="{ name: 'auth-forgot-password' }">{{ $t("AUTH.LABEL.FORGOT_PASSWORD") }}</b-link>
-        </p>
-        <p class="mb-0 text-center">
-          <b-link :to="{ name: 'auth-sign-up' }">{{ $t("AUTH.LABEL.SIGN_UP") }}</b-link>
-        </p>
-      </b-card-body>
-      <b-card-footer v-show="false"></b-card-footer>
-    </b-card>
-  </div>
+  <div><h1>Login</h1></div>
 </template>
 
-<script>
-  import HasFormData from "~/mixins/HasFormData";
-  import AuthDto from "~/dto/AuthDto";
-
-  export default {
-    name: "LoginPage",
-    components: {
-      AuthCardHeader: () => import("~/components/headers/AuthCardHeader"),
-      LoginForm: () => import("~/components/forms/LoginForm")
-    },
-    mixins: [HasFormData],
-    layout: "auth",
-    auth: "guest",
-    Dto: AuthDto,
-    data() {
-      return {};
-    },
-    computed: {
-      hasErrors() {
-        return Object.keys(this.$route.query).some(key => ["error", "error_description"].includes(key));
-      }
-    },
-    // watch: {
-    //   "form.rememberMe": {
-    //     handler(rememberMe) {
-    //       this.$storage.setUniversal("rememberMe", rememberMe);
-    //     }
-    //   }
-    // },
-    // mounted() {
-    //   this.form.rememberMe = this.$storage.getUniversal("rememberMe");
-    // },
-    methods: {
-      onCancel() {
-        this.onReset();
-
-        this.$router.push({ name: "index" });
-      },
-      onReset() {
-        // const { Dto } = this.$options;
-        // this.form = new Dto();
-      },
-      onSubmit() {
-        this.$auth.loginWith("oidc", { params: { scope: "openid" } });
-      }
-    }
-  };
+<script setup>
+  definePageMeta({
+    layout: "frontend"
+  });
 </script>
+

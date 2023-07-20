@@ -1,5 +1,7 @@
 <template>
-  <div><h1>Forgot Password</h1></div>
+  <main>
+    <ContentDoc :path="$route.params.slug.join('/')" />
+  </main>
 </template>
 
 <script setup>
