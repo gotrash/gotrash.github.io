@@ -2,10 +2,8 @@ import { NuxtAuthHandler } from "#auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github";
 
-import console from "console";
-
 export default NuxtAuthHandler({
-  debug: true,
+  debug: false,
   origin: "http://localhost:3000",
   baseURL: "http://localhost:3000",
   pages: {
@@ -28,27 +26,86 @@ export default NuxtAuthHandler({
       // console.log("Redirect Callback - Params: { url: %o, baseUrl: %o }", url, baseUrl);
       return r.baseUrl;
     },
-    async session(_session) {
-      // console.log("Session Callback: %o }", _session);
-      // the token object is what returned from the `jwt` callback, it has the `accessToken` that we assigned before
-      // Assign the accessToken to the `session` object, so it will be available on our app through `useSession` hooks
-      if (_session.token) {
-        _session.session.accessToken = _session.token.accessToken;
-      }
-      return _session;
+    async session({ session, token }) {
+      // console.log("Session: %o", session);
 
-      return _session.session;
+      if (!session.access_token && token?.access_token) {
+        session.access_token = token.access_token;
+      }
+
+      session.work = "Close";
+      session.user.name = token.sub;
+
+      if (token.error) session.error = token.error;
+
+      return { session, token };
     },
-    jwt(jwt) {
-      console.log("JWT Callback: %o", jwt);
+    async jwt(jwt) {
+      // console.log("JWT Callback Original: %o", jwt);
 
-      if (jwt.user?.id) jwt.token.name = jwt.user.id;
+      jwt.token.work = "JWT";
 
-      if (jwt?.account?.access_token) {
-        console.log("Access Token: %s", jwt.account.access_token);
-
-        jwt.token.accessToken = jwt.account.access_token;
+      if (jwt.account) {
+        jwt.token.email = jwt.account.email;
+        jwt.token.access_token = jwt.account.access_token;
+        if (jwt.account.id_token) jwt.token.id_token = jwt.account.id_token;
+        // if (jwt.account.refresh_token) jwt.token.refresh_token = jwt.account.refresh_token;
+        if (jwt.account.expires_at) jwt.token.expires_at = jwt.account.expires_at;
       }
+
+      if (jwt.profile) {
+        if (jwt.profile.roles) jwt.token.roles = jwt.profile.roles;
+      }
+
+      if (jwt.token?.expires_at * 1000 < Date.now()) {
+        // console.log("Access token expired");
+        // console.log({
+        //   client_id: "messaging-client",
+        //   client_secret: "secret",
+        //   grant_type: "refresh_token",
+        //   // client_id: process.env.GOOGLE_ID,
+        //   // client_secret: process.env.GOOGLE_SECRET,
+        //   refresh_token: jwt.token.refresh_token || ""
+        // });
+        try {
+          const url =
+            `http://localhost:9000/oauth2/token?` +
+            new URLSearchParams({
+              client_id: "messaging-client",
+              client_secret: "secret",
+              grant_type: "refresh_token",
+              refresh_token: jwt.token.refresh_token,
+              scope: "openid"
+            });
+
+          const response = await fetch(url, {
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            method: "POST"
+          });
+
+          const r = await response.json();
+
+          if (r.access_token) {
+            jwt.token.access_token = r.access_token;
+          }
+
+          if (r.refresh_token) {
+            jwt.token.refresh_token = r.refresh_token;
+          }
+
+          // console.log("JWT Token Refreshed: %o", jwt.token);
+        } catch (err) {
+          console.warn(err);
+        }
+      }
+      // if (jwt.user?.id) jwt.token.name = jwt.user.id;
+
+      // if (jwt?.account?.access_token) {
+      //   console.log("Access Token: %s", jwt.account.access_token);
+
+      //   jwt.token.accessToken = jwt.account.access_token;
+      // }
+      // console.log("JWT Callback Updated: %o", jwt);
 
       return jwt.token;
     }
@@ -97,12 +154,13 @@ export default NuxtAuthHandler({
       clientId: "messaging-client",
       clientSecret: "secret",
       wellKnown: "http://localhost:9000/.well-known/openid-configuration",
-      authorization: { params: { scope: "openid" } },
+      authorization: { params: { scope: "openid profile" } },
       scope: "openid profile message.read",
       checks: ["pkce", "state"],
       idToken: true,
-      profile(profile) {
+      profile(profile, ...args) {
         console.log("Profile: %o", profile);
+        console.log("Args: %o", args);
         return {
           id: profile.sub
           // name: profile.name,
