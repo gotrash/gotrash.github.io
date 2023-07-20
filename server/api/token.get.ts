@@ -2,5 +2,5 @@
 import { getToken } from "#auth";
 
 export default eventHandler(async event => {
-  return getToken({ event, raw: true });
+  return getToken({ event });
 });
