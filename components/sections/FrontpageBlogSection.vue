@@ -103,7 +103,7 @@
 </template>
 
 <script>
-  export default {
+  export default defineComponent({
     data() {
       return {
         slide: 0,
@@ -118,5 +118,5 @@
         this.sliding = false;
       }
     }
-  };
+  });
 </script>
