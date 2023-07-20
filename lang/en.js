@@ -1,7 +1,7 @@
 export default {
   // For navbar simple text logo `strong` prefix
-  APP_NAME_START: 'Go',
-  APP_NAME_END: '{0}Trash',
+  APP_NAME_START: "Go",
+  APP_NAME_END: "{0}Trash",
   // Actions
   ACTION__CREATE_JOB: "Create Job",
   // General
@@ -45,6 +45,7 @@ export default {
   NAV__PAYMENT_DETAILS: "Payment Details",
   NAV__PAYMENT_SETTINGS: "Payment Settings",
   NAV__PAYMENTS: "Payments",
+  NAV__PROFILE: "Profile",
   NAV__POSTCODE_AREAS: "Postcode Areas",
   NAV__POSTCODE_DISTRICTS: "Postcode Districts",
   NAV__POSTCODE_SECTORS: "Postcode Sectors",
