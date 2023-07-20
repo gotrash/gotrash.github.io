@@ -11,7 +11,7 @@
     <p v-if="!hideMessage" class="mb-3">
       {{ $t("MSG__CHECK_FOR_PROVIDERS_COVERING_YOUR_AREA") }}
     </p>
-    <simple-postcode-form ref="form" v-model="form" :busy="busy" @submit="checkPostcode" />
+    <simple-postcode-form ref="form" v-model="form" :busy="busy" @submit.stop.prevent="checkPostcode" />
   </div>
 </template>
 
@@ -36,9 +36,8 @@
       if (this.$route.query.noProviders) this.noProviders = true;
     },
     mounted() {
-      const lastCheckedPostcode = this.$storage.getUniversal("lastCheckedPostcode");
-
-      if (lastCheckedPostcode) this.form.postcode = lastCheckedPostcode;
+      // const lastCheckedPostcode = this.$storage.getUniversal("lastCheckedPostcode");
+      // if (lastCheckedPostcode) this.form.postcode = lastCheckedPostcode;
     },
     methods: {
       async checkPostcode() {
@@ -48,15 +47,14 @@
 
         await new Promise(resolve => setTimeout(resolve, 500));
 
-        this.$nextTick(() => {
-          this.$storage.setUniversal("lastCheckedPostcode", postcode);
+        this.$nextTick(async () => {
+          // this.$storage.setUniversal("lastCheckedPostcode", postcode);
 
-          this.$axios
-            .post("/check-postcode", { postcode })
+          await $fetch("http://localhost:8090/check-postcode", { body: { postcode }, method: "POST" })
             .then(({ data }) => {
               this.noProviders = !data;
 
-              this.$storage.setUniversal("hasProviders", data);
+              // this.$storage.setUniversal("hasProviders", data);
 
               this.$emit("postcode:checked", data);
 

@@ -1,19 +1,25 @@
 <template>
-  <b-nav-item v-bind="$attrs" active-class="active" :label="text" :to="to" @click="() => $emit('click')">
-    <fa-icon :icon="icon" :class="_iconClasses" /><span v-if="!hideText" class="d-inline d-md-none d-xl-inline">
-      {{ text }}</span
-    >
+  <b-nav-item v-bind="$attrs" active-class="active" :label="text" :to="to" @click="onClick">
+    <fa-icon v-if="icon" :icon="icon" :class="_iconClasses" />
+    <span v-if="!hideText" class="d-inline d-md-none d-xl-inline text-success">
+      <slot>{{ text }}</slot>
+    </span>
   </b-nav-item>
 </template>
 
-<script>
+<script lang="ts">
   export default {
     inheritAttrs: false,
+    emit: ["click"],
+    emits: ["click"],
     props: {
       hideText: Boolean,
       icon: {
         type: [Array, String],
-        required: true
+        required: false,
+        default() {
+          return undefined;
+        }
       },
       iconClasses: {
         type: [Array, Object, String],
@@ -22,11 +28,14 @@
       },
       text: {
         type: String,
-        required: true
+        required: false,
+        default() {
+          return "";
+        }
       },
       to: {
         type: [Object, String],
-        required: true
+        required: false
       }
     },
     computed: {
@@ -36,6 +45,11 @@
 
         if (Array.isArray(iconClasses)) return [standardClasses, ...iconClasses];
         else return [standardClasses, iconClasses];
+      }
+    },
+    methods: {
+      onClick(evt: any) {
+        this.$emit("click", evt);
       }
     }
   };

@@ -1,16 +1,17 @@
 <template>
-  <b-form :id="`postcode-checker-form-${_uid}`" @submit.stop.prevent="onSubmit">
+  <b-form :id="`postcode-checker-form-${_.uid}`" @submit.stop.prevent="onSubmit">
     <b-form-group
+      class="mb-3"
       :label="$t('GENERAL.LABEL.POSTCODE')"
       label-class="text-primary"
-      :label-for="`postcode-checker-postcode-input-${_uid}`"
+      :label-for="`postcode-checker-postcode-input-${_.uid}`"
     >
       <b-form-input
-        :id="`postcode-checker-postcode-input-${_uid}`"
+        :id="`postcode-checker-postcode-input-${_.uid}`"
         ref="postcode-input"
-        v-model="model.postcode"
+        v-model="form.postcode"
         :disabled="busy"
-        :form="`postcode-checker-form-${_uid}`"
+        :form="`postcode-checker-form-${_.uid}`"
         autocomplete="off"
         maxlength="8"
         name="postcode"
@@ -22,50 +23,60 @@
           'border-bottom': '2px solid #28a744',
           'border-radius': '0px'
         }"
-        :aria-describedby="`postcode-checker-postcode-input-${_uid}-live-feedback`"
+        :aria-describedby="`postcode-checker-postcode-input-${_.uid}-live-feedback`"
       />
 
-      <b-form-invalid-feedback :id="`postcode-checker-postcode-input-${_uid}-live-feedback`">
+      <b-form-invalid-feedback :id="`postcode-checker-postcode-input-${_.uid}-live-feedback`">
         {{ $t("POSTCODES.MESSAGE.INVALID_POSTCODE") }}
       </b-form-invalid-feedback>
     </b-form-group>
 
     <div class="d-flex align-items-center justify-content-end">
-      <b-btn
+      <b-button
         :disabled="disabled || busy"
         :title="disabled ? $t('FRONTEND.MESSAGE.POSTCODE_CHECKER_SUBMIT_DISABLED') : undefined"
         type="submit"
         :variant="disabled ? (busy ? 'transparent' : 'secondary') : 'primary'"
       >
-        <transition name="fade" mode="out-in">
-          <fa-icon v-if="busy" icon="spinner" class="fa-fw fa-spin text-success" />
-          <span v-else>
-            {{ $t("GENERAL.LABEL.SUBMIT") }}
-          </span>
-        </transition>
-      </b-btn>
+        <fa-icon v-if="busy" icon="spinner" class="fa-fw fa-spin text-success" />
+        <span v-else>
+          {{ $t("GENERAL.LABEL.SUBMIT") }}
+        </span>
+      </b-button>
     </div>
   </b-form>
 </template>
 
 <script>
-  import { required, maxLength } from "vuelidate/lib/validators";
-  import { HasModel, IsFormComponent } from "~/mixins";
+  import { useVuelidate } from "@vuelidate/core";
+  import { required, maxLength } from "@vuelidate/validators";
   import { IsUkPostcode } from "~/validators";
 
   export default {
-    name: "SimplePostcodeForm",
-    mixins: [HasModel, IsFormComponent],
-    props: {
-      busy: Boolean,
-      value: {
-        type: Object,
-        required: true,
-        validator: form => Object.prototype.hasOwnProperty.call(form, "postcode")
+    props: ["busy", "modelValue"],
+    setup() {
+      return {
+        v$: useVuelidate()
+      };
+    },
+    emits: ["update:modelValue", "submit"],
+    computed: {
+      disabled() {
+        const { busy, form } = this;
+
+        return busy || !IsUkPostcode(form.postcode);
+      },
+      form: {
+        get() {
+          return this.modelValue;
+        },
+        set(value) {
+          this.$emit("update:modelValue", value);
+        }
       }
     },
     validations: {
-      model: {
+      form: {
         postcode: {
           isPostcode: postcode => IsUkPostcode(postcode),
           required,
@@ -73,32 +84,26 @@
         }
       }
     },
-    computed: {
-      disabled() {
-        const { busy, model } = this;
-
-        return busy || !IsUkPostcode(model.postcode);
-      }
-    },
     methods: {
       focus() {
-        this.$nextTick(() => {
-          this.$refs["postcode-input"].focus();
-        });
+        this.$nextTick(this.$refs["postcode-input"].focus);
       },
-      onSubmit() {
-        this.$v.model.$touch();
+      validateState(name) {
+        const { $dirty, $error } = this.v$;
 
-        if (this.$v.model.$invalid) {
+        return $dirty ? !$error : null;
+      },
+      onSubmit(evt) {
+        if (evt?.preventDefault) evt.preventDefault();
+        if (evt?.stopPropagation) evt.stopPropagation();
+
+        this.v$.form.$touch();
+
+        if (this.v$.form.$invalid) {
           return;
         }
 
-        this.$emit("submit");
-      },
-      validateState(name) {
-        const { $dirty, $error } = this.$v.model[name];
-
-        return $dirty ? !$error : null;
+        this.$emit("submit", evt);
       }
     }
   };
