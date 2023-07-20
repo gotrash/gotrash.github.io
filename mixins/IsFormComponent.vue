@@ -1,8 +1,11 @@
 <script>
-  import { validationMixin } from "vuelidate";
+  import { useVuelidate } from "@vuelidate/core";
+  import { required, email } from "@vuelidate/validators";
 
   export default {
-    mixins: [validationMixin],
+    setup() {
+      return { v$: useVuelidate() };
+    },
     props: {
       isDisabled: Boolean,
       isBusy: Boolean,

@@ -124,8 +124,6 @@
         const { $createElement: h, $route, renderNavIcon, renderSidebarLink, renderText } = this;
         const { icon, items, route, text } = menuItem;
 
-        console.log(routeName);
-
         return h(
           "li",
           {

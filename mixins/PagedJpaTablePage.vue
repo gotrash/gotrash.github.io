@@ -75,7 +75,6 @@
       search: {
         handler(newValue, oldValue) {
           if (newValue !== oldValue) {
-            console.log("Sort By: { newValue: %o, oldValue: %o }", newValue, oldValue);
             if ([null, ""].includes(newValue)) {
               const query = { ...this.$route.query };
               if (Object.keys(query).includes("search")) delete query.search;
@@ -89,7 +88,6 @@
       sortBy: {
         handler(newValue, oldValue) {
           if (newValue !== oldValue) {
-            console.log("Sort By: { newValue: %o, oldValue: %o }", newValue, oldValue);
             if (newValue === null) {
               const query = { ...this.$route.query };
               if (Object.keys(query).includes("sortBy")) delete query.sortBy;
@@ -103,7 +101,6 @@
       sortDesc: {
         handler(newValue, oldValue) {
           if (newValue !== oldValue) {
-            console.log("Sort Desc: { newValue: %o, oldValue: %o }", newValue, oldValue);
             if (newValue === false) {
               const query = { ...this.$route.query };
               if (Object.keys(query).includes("sortDesc")) delete query.sortDesc;
@@ -116,31 +113,26 @@
       },
       "$route.query.perPage": {
         handler(newValue, oldValue) {
-          console.log("Per-page query updated: { newValue: %o, oldValue: %o }", newValue, oldValue);
           if (newValue !== oldValue) this.perPage = newValue || 20;
         }
       },
       "$route.query.search": {
         handler(newValue, oldValue) {
-          console.log("Search query updated: { newValue: %o, oldValue: %o }", newValue, oldValue);
           if (newValue !== oldValue) this.search = newValue || null;
         }
       },
       "$route.query.sortBy": {
         handler(newValue, oldValue) {
-          console.log("Sort-by query updated: { newValue: %o, oldValue: %o }", newValue, oldValue);
           if (newValue !== oldValue) this.sortBy = newValue || null;
         }
       },
       "$route.query.sortDesc": {
         handler(newValue, oldValue) {
-          console.log("Sort descending query updated: { newValue: %o, oldValue: %o }", newValue, oldValue);
           if (newValue !== oldValue) this.sortDesc = newValue || null;
         }
       },
       "$route.query.currentPage": {
         handler(newValue, oldValue) {
-          console.log("Current Page query updated: { newValue: %o, oldValue: %o }", newValue, oldValue);
           if (newValue !== oldValue && !newValue) this.currentPage = 1;
           else if (
             newValue !== oldValue &&
@@ -223,7 +215,6 @@
                             id: "sort-by-select",
                             on: {
                               input: value => {
-                                console.log("Received: %s", value);
                                 this.sortBy = value;
                               }
                             },
