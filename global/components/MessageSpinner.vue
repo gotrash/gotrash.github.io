@@ -1,10 +1,10 @@
 <template>
-  <div class="text-center text-primary">
+  <div class="text-center text-primary py-8">
     <slot v-if="!hideSpinner" name="spinner">
       <fa-icon :icon="icon" :class="[{ 'fa-spin': spinIcon }, 'fa-fw fa-3x mb-4']" />
     </slot>
 
-    <component :is="messageTag">{{ message }}<span v-if="!hideEllipsis">...</span></component>
+    <component :is="messageTag">{{ $t(message) }}<span v-if="!hideEllipsis">...</span></component>
   </div>
 </template>
 
@@ -24,7 +24,7 @@
         type: String,
         required: false,
         default() {
-          return this.$t("GENERAL.MESSAGE.LOADING");
+          return "GENERAL.MESSAGE.LOADING";
         }
       },
       messageTag: {
