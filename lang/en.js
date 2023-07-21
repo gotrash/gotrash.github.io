@@ -11,6 +11,7 @@ export default {
   // Nav Links
   NAV__ADMIN_DASHBOARD: "Admin Dashboard",
   NAV__ADMIN: "Admin",
+  NAV__ADDRESSES: "Addresses",
   NAV__BIDS: "Bids",
   NAV__BUSINESS: "Business",
   NAV__BUSINESS_DETAILS: "Business Details",
@@ -43,6 +44,7 @@ export default {
   NAV__OAUTH: "OAuth",
   NAV__PASSWORD_RESET_TOKENS: "Password Reset Tokens",
   NAV__PAYMENT_DETAILS: "Payment Details",
+  NAV__PAYMENT_METHODS: "Payment Methods",
   NAV__PAYMENT_SETTINGS: "Payment Settings",
   NAV__PAYMENTS: "Payments",
   NAV__PROFILE: "Profile",
