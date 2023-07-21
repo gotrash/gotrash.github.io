@@ -22,6 +22,8 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='htt
 @import "node_modules/bootstrap/scss/maps";
 @import "node_modules/bootstrap/scss/mixins";
 
+@import "./custom/images";
+
 // Hover mixin and `$enable-hover-media-query` are deprecated.
 //
 // Originally added during our alphas and maintained during betas, this mixin was
@@ -117,7 +119,7 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='htt
 // @import "node_modules/admin-lte/build/scss/preloader";
 @import "node_modules/admin-lte/build/scss/layout";
 @import "node_modules/admin-lte/build/scss/main-header";
-@import "node_modules/admin-lte/build/scss/brand";
+@import "./overrides/admin-lte/brand";
 @import "./overrides/admin-lte/main-sidebar";
 @import "node_modules/admin-lte/build/scss/sidebar-mini";
 // @import "node_modules/admin-lte/build/scss/control-sidebar";
