@@ -262,6 +262,8 @@ export default {
   "SERVICE_PROVIDERS.LABEL.TELEPHONE": "Telephone",
   "SERVICE_PROVIDERS.LABEL.TOWN": "Town",
   "SERVICE_PROVIDERS.LABEL.UPDATED_AT": "Updated At",
+  // User
+  "USER.LABEL.USER_PROFILE": "User Profile",
   // Verification Tokens
   "VERIFICATION_TOKENS.LABEL.EXPIRY_DATE": "Expiry Date",
   "VERIFICATION_TOKENS.LABEL.ID": "ID",
