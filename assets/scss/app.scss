@@ -117,7 +117,7 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='htt
 @import "node_modules/admin-lte/build/scss/root";
 @import "node_modules/admin-lte/build/scss/animation-effects";
 // @import "node_modules/admin-lte/build/scss/preloader";
-@import "node_modules/admin-lte/build/scss/layout";
+@import "./overrides/admin-lte/layout";
 @import "node_modules/admin-lte/build/scss/main-header";
 @import "./overrides/admin-lte/brand";
 @import "./overrides/admin-lte/main-sidebar";
