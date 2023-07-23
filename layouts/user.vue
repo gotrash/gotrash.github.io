@@ -47,7 +47,7 @@
         </nav>
       </div>
     </aside>
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="min-height: calc(100vh - 7.125rem)">
       <slot />
     </div>
 
