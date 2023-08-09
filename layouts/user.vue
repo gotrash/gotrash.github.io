@@ -8,6 +8,10 @@
         </b-nav-item>
         <b-nav-item :to="localePath({ name: 'index' })">Home</b-nav-item>
       </b-navbar-nav>
+      <!-- Right navbar links -->
+      <b-navbar-nav right>
+        <b-nav-item @click="signOut">{{ $t("NAV__LOGOUT") }}</b-nav-item>
+      </b-navbar-nav>
     </b-navbar>
     <aside class="main-sidebar sidebar-light-primary elevation-4">
       <b-link class="brand-link" :to="localePath({ name: 'index' })">
@@ -55,8 +59,19 @@
   </div>
 </template>
 
+<script setup>
+const { signOut } = useAuth();
+
+useHead({
+  bodyAttrs: {
+    class: 'sidebar-mini layout-fixed'
+  }
+})
+</script>
+
 <script>
 import AdminFooter from "~/components/footers/AdminFooter";
+
 export default {
   components: {
     AdminFooter,
@@ -65,11 +80,7 @@ export default {
     ControlSidebar: () => import("~/components/sidebars/ControlSidebar")
   },
   setup() {
-    useHead({
-      bodyAttrs: {
-        class: 'sidebar-mini layout-fixed'
-      }
-    })
+
   }
 }
 </script>
