@@ -21,6 +21,7 @@ export default {
   NAV__COUNTRIES: "Countries",
   NAV__DASHBOARD: "Dashboard",
   NAV__EDIT_COUNTRY: "Edit Country",
+  NAV__FEEDBACK: "Feedback",
   NAV__FILES: "Files",
   NAV__GEOGRAPHIC: "Geographic",
   NAV__HOME: "Home",
