@@ -38,6 +38,16 @@
               </b-link>
             </li>
             <li class="nav-item">
+              <b-link class="nav-link" active-class="active" exact :to="localePath({ name: 'user-feedback' })">
+                {{ $t("NAV__FEEDBACK") }}
+              </b-link>
+            </li>
+            <li class="nav-item">
+              <b-link class="nav-link" active-class="active" exact :to="localePath({ name: 'user-jobs' })">
+                {{ $t("NAV__JOBS") }}
+              </b-link>
+            </li>
+            <li class="nav-item">
               <b-link class="nav-link" active-class="active" exact :to="localePath({ name: 'user-addresses' })">
                 {{ $t("NAV__ADDRESSES") }}
               </b-link>
