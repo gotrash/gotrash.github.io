@@ -49,9 +49,10 @@
                   </b-col>
                 </b-row>
               </b-card-body>
-              <b-card-footer class="d-flex justify-content-end">
-                <div class="ml-auto">
-                  <b-button @click="onDeleteClicked(addressIndex)" class="btn btn-sm bg-danger me-2">
+              <b-card-footer>
+                <div class="ms-auto text-end">
+                  <b-button block @click="onDeleteClicked(addressIndex)"
+                    class="ms-auto d-block d-sm-inline btn btn-sm bg-danger me-0 me-sm-2 mb-2 mb-sm-0">
                     <fa-icon icon="trash" class="text-light" />
                   </b-button>
                   <b-link :to="localePath({ name: 'user-addresses-slug', params: { slug: address.id } })"
