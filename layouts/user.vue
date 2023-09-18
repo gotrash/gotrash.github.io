@@ -31,33 +31,23 @@
           </div>
         </div>
         <nav class="mt-2">
-          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item">
-              <b-link class="nav-link" active-class="active" exact :to="localePath({ name: 'user-profile' })">
-                {{ $t("NAV__PROFILE") }}
-              </b-link>
-            </li>
-            <li class="nav-item">
-              <b-link class="nav-link" active-class="active" exact :to="localePath({ name: 'user-feedback' })">
-                {{ $t("NAV__FEEDBACK") }}
-              </b-link>
-            </li>
-            <li class="nav-item">
-              <b-link class="nav-link" active-class="active" exact :to="localePath({ name: 'user-jobs' })">
-                {{ $t("NAV__JOBS") }}
-              </b-link>
-            </li>
-            <li class="nav-item">
-              <b-link class="nav-link" active-class="active" exact :to="localePath({ name: 'user-addresses' })">
-                {{ $t("NAV__ADDRESSES") }}
-              </b-link>
-            </li>
-            <li class="nav-item">
-              <b-link class="nav-link" active-class="active" exact :to="localePath({ name: 'user-payment-methods' })">
-                {{ $t("NAV__PAYMENT_METHODS") }}
-              </b-link>
-            </li>
-          </ul>
+          <b-nav class="mt-2 nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" pills>
+            <b-nav-item :to="localePath({ name: 'user-profile' })">
+              {{ $t("NAV__PROFILE") }}
+            </b-nav-item>
+            <b-nav-item :to="localePath({ name: 'user-feedback' })">
+              {{ $t("NAV__FEEDBACK") }}
+            </b-nav-item>
+            <b-nav-item :to="localePath({ name: 'user-jobs' })">
+              {{ $t("NAV__JOBS") }}
+            </b-nav-item>
+            <b-nav-item :to="localePath({ name: 'user-addresses' })">
+              {{ $t("NAV__ADDRESSES") }}
+            </b-nav-item>
+            <b-nav-item :to="localePath({ name: 'user-payment-methods' })">
+              {{ $t("NAV__PAYMENT_METHODS") }}
+            </b-nav-item>
+          </b-nav>
         </nav>
       </div>
     </aside>
