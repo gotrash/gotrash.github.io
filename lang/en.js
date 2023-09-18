@@ -69,6 +69,7 @@ export default {
   NAV__USER_PROFILE: "User Profile",
   NAV__USERS_DASHBOARD: "Users Dashboard",
   NAV__USERS: "Users",
+  NAV__USER_ADDRESSES: "User Addresses",
   NAV__VERIFICATION_TOKENS: "Verification Tokens",
   // Page Titles
   PAGE_TITLE__HOME: "Welcome to GoTrash",
@@ -87,6 +88,10 @@ export default {
     "Unfortunately we have no providers covering your area, please try again another time.",
   message: "hello i18n !!",
   // Addresses
+  "ADDRESSES.LABEL.ADDRESS": "Address",
+  "ADDRESSES.LABEL.DELETE_ADDRESS": "Delete Address",
+  "ADDRESSES.LABEL.EDIT_ADDRESS": "Edit Address",
+  "ADDRESSES.LABEL.USER_ADDRESSES": "User Addresses",
   "ADDRESSES.MESSAGE.LOADING": "Loading Addresses",
   // Auth
   "AUTH.ERROR.FORGOT_PASSWORD_EMAIL_REQUIRED":
