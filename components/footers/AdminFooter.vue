@@ -43,7 +43,7 @@ export default {
       this.setupListeners();
     });
   },
-  beforeDestroy() {
+  unmounted() {
     this.removeListeners();
   },
   methods: {
