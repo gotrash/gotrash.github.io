@@ -86,6 +86,8 @@ export default {
   "FRONTEND.MESSAGE.POSTCODE_CHECKER_NO_PROVIDERS":
     "Unfortunately we have no providers covering your area, please try again another time.",
   message: "hello i18n !!",
+  // Addresses
+  "ADDRESSES.MESSAGE.LOADING": "Loading Addresses",
   // Auth
   "AUTH.ERROR.FORGOT_PASSWORD_EMAIL_REQUIRED":
     "An email address is required so we can locate your account and send a password reset link",
