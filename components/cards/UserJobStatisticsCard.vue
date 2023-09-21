@@ -104,8 +104,6 @@ export default {
         lazy: true,
         server: false
       }).then(res => {
-        console.log("Feedback: %o", res.data);
-
         const d = { ...res.data.value }
 
         this.statistics = new UserFeedbackStatisticsDto({
@@ -125,10 +123,9 @@ export default {
         });
 
         this.err = null;
-        console.log("Success");
-      }).catch(err => {
-        console.log("An error occurred: %o", err);
-        this.err = err;
+      }).catch(_err => {
+        console.error(_err);
+        this.err = _err;
       }).finally(() => {
         this.loading = false;
       })

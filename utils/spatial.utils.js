@@ -1,6 +1,5 @@
 /* eslint-disable eqeqeq */
 import { flatten } from "lodash";
-import console from "console";
 
 export const recursiveGeoJsonFix = coordinates => {
   if (Array.isArray(coordinates)) {
@@ -45,7 +44,7 @@ export const removeGeoJsonDuplicates = (geoJson, i) => {
 
   if (repeats.length > 0) {
     console.log("REPEATS LEFT " + i);
-    console.log(repeats);
+    console.log("REPEATS: %o", repeats);
   }
 };
 

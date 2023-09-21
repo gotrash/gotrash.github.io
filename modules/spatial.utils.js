@@ -10,9 +10,6 @@ export default defineNuxtModule({
   },
   defaults: {},
   setup(moduleOptions, nuxt) {
-    console.log(Object.keys(nuxt.options));
-    console.log(nuxt.options.runtimeConfig);
-
     // Default runtimeConfig
     nuxt.options.runtimeConfig.spatialUtils = defu(nuxt.options.runtimeConfig?.spatialUtils || {}, {
       url: moduleOptions.url,
