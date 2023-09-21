@@ -71,7 +71,12 @@ export default {
   NAV__USERS: "Users",
   NAV__USER_ADDRESSES: "User Addresses",
   NAV__VERIFICATION_TOKENS: "Verification Tokens",
+  // Page Summaries
+  PAGE_SUMMARY__USER_FEEDBACKS: "This is a listing of the feedback you have left for your jobs",
+  PAGE_SUMMARY__USER_JOBS: "This is a listing of all the jobs you have created in reverse chronological order",
+  PAGE_SUMMARY__USER_PAYMENT_METHODS: "These are the payment methods you have setup",
   // Page Titles
+  PAGE_TITLE__FEEDBACK: "Feedback",
   PAGE_TITLE__HOME: "Welcome to GoTrash",
   PAGE_TITLE__LOGIN: "Login",
   PAGE_TITLE__SIGNUP: "Signup",
@@ -81,6 +86,9 @@ export default {
   PAGE_TITLE__POSTCODE_UNIT: "Postcode Unit | Postcode Units",
   PAGE_TITLE__FORGOT_PASSWORD: "Forgot Password",
   PAGE_TITLE__TRASH_SOMETHING: "Trash Something",
+  PAGE_TITLE__USER_FEEDBACKS: "Your Feedback",
+  PAGE_TITLE__USER_JOBS: "Your Jobs",
+  PAGE_TITLE__USER_PAYMENT_METHODS: "Payment Methods",
   MSG__CHECK_FOR_PROVIDERS_COVERING_YOUR_AREA: "Check for providers covering your area",
   "FRONTEND.LABEL.NO_PROVIDERS_ALERT": "No Providers",
   "FRONTEND.MESSAGE.POSTCODE_CHECKER_SUBMIT_DISABLED": "You must enter a valid UK postcode",
@@ -144,6 +152,8 @@ export default {
   "COUNTRIES.LABEL.TWO_LETTER_COUNTRY_CODE": "2-letter Country Code",
   "COUNTRIES.LABEL.UPDATED_AT": "Updated At",
   "COUNTRIES.PLACEHOLDER.PICK_A_CONTINENT": "Pick a continent",
+  // Feedback
+  "FEEDBACK.MESSAGE.LOADING": "Loading Feedback",
   // Files
   "FILES.LABEL.FILENAME": "Filename",
   "FILES.LABEL.ID": "ID",
@@ -213,6 +223,7 @@ export default {
   "JOBS.MESSAGE.DETAILED_DESCRIPTION":
     "You need to provide a detailed description of the waste your getting rid of.  Be as detailed as possible to allow the provider to quote properly.",
   "JOBS.INVALID.DETAILED_DESCRIPTION_REQUIRED": "You must provide a detailed description of your job requirements.",
+  "JOBS.MESSAGE.LOADING": "Loading Jobs",
   "JOBS.INVALID.DETAILED_DESCRIPTION_TOO_SHORT": "The job description must be at least 10 characters.",
   "JOBS.INVALID.DETAILED_DESCRIPTION_TOO_LONG": "The job description must be less than 1000 characters.",
   "JOBS.INVALID.SUMMARY_REQUIRED": "You must provide a brief summary of your job requirements.",
@@ -251,6 +262,8 @@ export default {
   "PASSWORD_RESET_TOKENS.LABEL.ID": "ID",
   "PASSWORD_RESET_TOKENS.LABEL.TOKEN": "Token",
   "PASSWORD_RESET_TOKENS.LABEL.USER": "User",
+  // Payment Methods
+  "PAYMENT_METHODS.MESSAGE.LOADING": "Loading Payment Methods",
   // Postcodes
   "POSTCODES.MESSAGE.INVALID_POSTCODE": "The postcode you have provided is not a valid UK postcode",
   // Service Providers
