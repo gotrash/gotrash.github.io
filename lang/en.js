@@ -263,6 +263,7 @@ export default {
   "PASSWORD_RESET_TOKENS.LABEL.TOKEN": "Token",
   "PASSWORD_RESET_TOKENS.LABEL.USER": "User",
   // Payment Methods
+  "PAYMENT_METHODS.MESSAGE.DELETING_PAYMENT_METHOD": "Deleting Payment Method",
   "PAYMENT_METHODS.MESSAGE.LOADING": "Loading Payment Methods",
   // Postcodes
   "POSTCODES.MESSAGE.INVALID_POSTCODE": "The postcode you have provided is not a valid UK postcode",
