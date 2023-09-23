@@ -63,7 +63,6 @@
           <dd>
             <b-button-group>
               <b-button @click="() => onDelete(paymentMethod.id)" class="text-danger">
-
                 <fa-icon icon="trash" class="fa-lg text-danger" />
               </b-button>
             </b-button-group>
@@ -71,8 +70,6 @@
         </dl>
       </b-col>
     </b-row>
-    <pre-code>
-      {{ paymentMethod }}</pre-code>
   </b-container>
 </template>
 
