@@ -74,6 +74,7 @@
     "js-cookie": "^3.0.5",
     "leaflet": "1.9.4",
     "lodash": "^4.17.21",
+    "maska": "^2.1.10",
     "mime-types": "^2.1.35",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.43",
