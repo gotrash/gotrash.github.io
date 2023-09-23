@@ -1,5 +1,5 @@
 export default class CardDetailsDto {
-  cvv = null;
+  cvc = null;
   cardNumber = null;
   expMonth = null;
   expYear = null;
