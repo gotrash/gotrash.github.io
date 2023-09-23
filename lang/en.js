@@ -272,6 +272,7 @@ export default {
   "PAYMENT_METHODS.LABEL.EXPIRY": "Expiry",
   "PAYMENT_METHODS.LABEL.NAME_ON_CARD": "Name On Card",
   "PAYMENT_METHODS.MESSAGE.DELETING_PAYMENT_METHOD": "Deleting Payment Method",
+  "PAYMENT_METHODS.MESSAGE.SAVING_PAYMENT_METHOD": "Saving Payment Method",
   "PAYMENT_METHODS.MESSAGE.LOADING": "Loading Payment Methods",
   // Postcodes
   "POSTCODES.MESSAGE.INVALID_POSTCODE": "The postcode you have provided is not a valid UK postcode",
