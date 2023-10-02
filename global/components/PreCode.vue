@@ -2,7 +2,7 @@
   <pre>
     <code>
       <slot>
-{{ modelValue }}
+{{ modelValue.toJSON && typeof modelValue.toJSON === "function" ? modelValue.toJSON() : modelValue }}
       </slot>
     </code>
   </pre>
