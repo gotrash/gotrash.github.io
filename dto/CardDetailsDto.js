@@ -1,4 +1,6 @@
-export default class CardDetailsDto {
+import BaseDto from "./BaseDto";
+
+export default class CardDetailsDto extends BaseDto {
   cvc = null;
   cardNumber = null;
   expMonth = null;
@@ -6,6 +8,8 @@ export default class CardDetailsDto {
   cardHoldersName = null;
 
   constructor(params = {}) {
+    super();
+
     this.cvc = params.cvc || null;
     this.cardHoldersName = params.cardHoldersName || null;
     this.cardNumber = params.cardNumber || null;
@@ -15,5 +19,11 @@ export default class CardDetailsDto {
 
   clone() {
     return new CardDetailsDto(this);
+  }
+
+  toJSON() {
+    const { cvc, cardNumber, expMonth, expYear, cardHoldersName } = this;
+
+    return { cvc, cardNumber, expMonth, expYear, cardHoldersName };
   }
 }
