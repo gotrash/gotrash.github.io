@@ -79,6 +79,7 @@
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.43",
     "nuxt-leaflet": "0.0.27",
+    "ofetch": "^1.3.3",
     "papaparse": "^5.4.1",
     "pinia": "^2.1.6",
     "pinia-orm": "^1.7.2",
