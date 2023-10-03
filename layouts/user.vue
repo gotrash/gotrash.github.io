@@ -14,11 +14,7 @@
       </b-navbar-nav>
     </b-navbar>
     <aside class="main-sidebar sidebar-light-primary elevation-4">
-      <b-link class="brand-link" :to="localePath({ name: 'index' })">
-        <span class="brand-text font-weight-light">
-          <b class="font-weight-bold">Go</b>Trash
-        </span>
-      </b-link>
+      <brand-link />
       <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
