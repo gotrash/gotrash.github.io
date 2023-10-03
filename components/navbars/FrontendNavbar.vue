@@ -1,11 +1,6 @@
 <template>
-  <b-navbar
-    id="frontend-navbar"
-    class="px-0 px-good-6 py-3 border-bottom border-success"
-    style="border-bottom-width: 4px !important"
-    toggleable="sm"
-    :type="'light'"
-  >
+  <b-navbar id="frontend-navbar" class="px-0 px-good-6 py-3 border-bottom border-success"
+    style="border-bottom-width: 4px !important" toggleable="md" :type="'light'">
     <b-navbar-brand class="py-0 px-2" :to="localePath({ name: 'index' })">
       <site-logo :color="logoColor" />
       <i18n-t v-if="false" keypath="APP_NAME_END" tag="span" for="APP_NAME_START">
@@ -21,7 +16,7 @@
         <standard-nav-item :to="localePath({ name: 'about' })" text="About" />
       </b-navbar-nav>
       <!-- Right aligned nav items -->
-      <b-navbar-nav class="ms-auto mb-2 mb-lg-0">
+      <b-navbar-nav class="ms-auto py-2">
         <standard-nav-item v-if="!authenticated" @click.stop.prevent="onSignIn">
           {{ $t("NAV__LOGIN") }}
         </standard-nav-item>
@@ -34,22 +29,19 @@
           <b-dropdown-item href="#">RU</b-dropdown-item>
           <b-dropdown-item href="#">FA</b-dropdown-item>
         </b-nav-item-dropdown>
-        <b-nav-item-dropdown v-if="authenticated" right no-caret auto-close>
+        <b-nav-item-dropdown align-end v-if="authenticated" no-caret auto-close>
           <!-- Using 'button-content' slot -->
           <template #button-content>
             <div class="text-success align-items-center d-flex">
-              <div v-if="data.user && data.user.image" class="user-panel">
-                <img class="img-circle elevation-2" :src="data.user.image" />
-              </div>
-              <em v-else>User</em>
-              <fa-icon class="ms-2" icon="angle-down" />
+              <img class="img-circle elevation-2" src="~/assets/images/user-placeholder.png" />
+              <!--  <fa-icon class="ms-2" icon="angle-down" />-->
             </div>
           </template>
-          <b-dropdown-item :to="localePath({ name: 'profile' })">{{ $t("NAV__PROFILE") }}</b-dropdown-item>
+          <b-dropdown-item :to="localePath({ name: 'user-profile' })">{{ $t("NAV__PROFILE") }}</b-dropdown-item>
           <b-dropdown-item @click.stop.prevent="signOut">Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
-      <b-nav-form class="d-flex">
+      <b-nav-form class="d-none">
         <b-form-input class="me-2" placeholder="Search" />
         <b-button type="submit" variant="outline-success">Search</b-button>
       </b-nav-form>
@@ -58,45 +50,45 @@
 </template>
 
 <script setup>
-  import { computed } from "vue";
-  const { status, data, lastRefreshedAt, signIn, signOut } = useAuth();
-  const headers = useRequestHeaders(["cookie"]);
-  const { data: token } = await useFetch("/api/token", { headers });
+import { computed } from "vue";
+const { status, data, lastRefreshedAt, signIn, signOut } = useAuth();
+const headers = useRequestHeaders(["cookie"]);
+const { data: token } = await useFetch("/api/token", { headers });
 
-  const authenticated = computed(() => {
-    return status.value === "authenticated";
-  });
+const authenticated = computed(() => {
+  return status.value === "authenticated";
+});
 
-  const onSignIn = () => signIn("oidc");
+const onSignIn = () => signIn("oidc");
 
-  const onSignOut = () => signOut("oidc");
+const onSignOut = () => signOut("oidc");
 
-  const props = defineProps({
-    iconClasses: {
-      type: String,
-      required: false,
-      default: undefined
-    },
-    logoColor: {
-      type: String,
-      required: false,
-      default: undefined
-    },
-    type: {
-      type: String,
-      required: false,
-      default() {
-        return "dark";
-      }
+const props = defineProps({
+  iconClasses: {
+    type: String,
+    required: false,
+    default: undefined
+  },
+  logoColor: {
+    type: String,
+    required: false,
+    default: undefined
+  },
+  type: {
+    type: String,
+    required: false,
+    default() {
+      return "dark";
     }
-  });
+  }
+});
 </script>
 
 <script>
-  import SiteLogo from "../SiteLogo";
-  import StandardNavItem from "./StandardNavItem.vue";
-  export default {
-    name: "SiteNavbar",
-    components: { SiteLogo, StandardNavItem }
-  };
+import SiteLogo from "../SiteLogo";
+import StandardNavItem from "./StandardNavItem.vue";
+export default {
+  name: "SiteNavbar",
+  components: { SiteLogo, StandardNavItem }
+};
 </script>

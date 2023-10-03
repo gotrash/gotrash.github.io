@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useCounterStore = defineStore("counter", {
+export const useLayoutStore = defineStore("layout", {
   actions: {},
   getters: {
     getHeight(state) {

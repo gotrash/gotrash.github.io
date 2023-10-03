@@ -22,6 +22,8 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='htt
 @import "node_modules/bootstrap/scss/maps";
 @import "node_modules/bootstrap/scss/mixins";
 
+@import "./custom/images";
+
 // Hover mixin and `$enable-hover-media-query` are deprecated.
 //
 // Originally added during our alphas and maintained during betas, this mixin was
@@ -115,21 +117,21 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='htt
 @import "node_modules/admin-lte/build/scss/root";
 @import "node_modules/admin-lte/build/scss/animation-effects";
 // @import "node_modules/admin-lte/build/scss/preloader";
-@import "node_modules/admin-lte/build/scss/layout";
+@import "./overrides/admin-lte/layout";
 @import "node_modules/admin-lte/build/scss/main-header";
-@import "node_modules/admin-lte/build/scss/brand";
+@import "./overrides/admin-lte/brand";
 @import "./overrides/admin-lte/main-sidebar";
 @import "node_modules/admin-lte/build/scss/sidebar-mini";
 // @import "node_modules/admin-lte/build/scss/control-sidebar";
 // @import "node_modules/admin-lte/build/scss/dropdown";
-// @import "node_modules/admin-lte/build/scss/navs";
-// @import "node_modules/admin-lte/build/scss/pagination";
+@import "node_modules/admin-lte/build/scss/navs";
+@import "node_modules/admin-lte/build/scss/pagination";
 // @import "node_modules/admin-lte/build/scss/forms";
 // @import "node_modules/admin-lte/build/scss/progress-bars";
-// @import "node_modules/admin-lte/build/scss/cards";
+@import "node_modules/admin-lte/build/scss/cards";
 // @import "node_modules/admin-lte/build/scss/modals";
 // @import "node_modules/admin-lte/build/scss/toasts";
-// @import "node_modules/admin-lte/build/scss/buttons";
+@import "./overrides/admin-lte/buttons";
 // @import "node_modules/admin-lte/build/scss/callout";
 // @import "node_modules/admin-lte/build/scss/alerts";
 // @import "node_modules/admin-lte/build/scss/table";
@@ -147,7 +149,7 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='htt
 // @import "node_modules/admin-lte/build/scss/pages/login_and_register";
 // @import "node_modules/admin-lte/build/scss/pages/404_500_errors";
 // @import "node_modules/admin-lte/build/scss/pages/invoice";
-// @import "node_modules/admin-lte/build/scss/pages/profile";
+@import "node_modules/admin-lte/build/scss/pages/profile";
 // @import "node_modules/admin-lte/build/scss/pages/e-commerce";
 // @import "node_modules/admin-lte/build/scss/pages/projects";
 // @import "node_modules/admin-lte/build/scss/pages/iframe";
@@ -182,6 +184,10 @@ body.full-height {
   #__layout {
     height: 100% !important;
   }
+}
+
+.pointer {
+  cursor: pointer
 }
 
 // #frontend-navbar {

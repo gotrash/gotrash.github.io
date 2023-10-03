@@ -8,52 +8,59 @@
 </template>
 
 <script>
-  export default {
-    name: "AdminFooter",
-    computed: {
-      footerHeight: {
-        get() {
-          return this.$store.getters("layout/getHeight")("footer");
-        },
-        set(height) {
-          this.$store.commit("layout/setHeight", { key: "footer", height });
-        }
+import { useLayoutStore } from "~/store/layout"
+
+export default {
+  name: "AdminFooter",
+  setup() {
+    const store = useLayoutStore();
+
+    return { store }
+  },
+  computed: {
+    footerHeight: {
+      get() {
+        return this.store.widths.footer;
       },
-      footerWidth: {
-        get() {
-          return this.$store.getters("layout/getWidth")("footer");
-        },
-        set(width) {
-          this.$store.commit("layout/setWidth", { key: "footer", width });
-        }
+      set(height) {
+        this.store.$patch({ heights: { footer: height } });
       }
     },
-    mounted() {
-      this.setHeight();
-      this.setWidth();
-
-      this.$nextTick(() => {
-        this.setupListeners();
-      });
-    },
-    beforeDestroy() {
-      this.removeListeners();
-    },
-    methods: {
-      removeListeners() {
-        window.removeEventListener("resize", this.setHeight);
-        window.removeEventListener("resize", this.setWidth);
+    footerWidth: {
+      get() {
+        return this.store.heights.footer;
       },
-      setHeight() {
-        this.footerHeight = this.$refs.footer.clientHeight + 1;
-      },
-      setWidth() {
-        this.footerWidth = this.$refs.footer.clientWidth;
-      },
-      setupListeners() {
-        window.addEventListener("resize", this.setHeight);
-        window.addEventListener("resize", this.setWidth);
+      set(width) {
+        this.store.$patch({ widths: { footer: width } });
       }
     }
-  };
+  },
+  mounted() {
+    this.setHeight();
+    this.setWidth();
+
+    this.$nextTick(() => {
+      this.setupListeners();
+    });
+  },
+  unmounted() {
+    this.removeListeners();
+  },
+  methods: {
+    removeListeners() {
+      window.removeEventListener("resize", this.setHeight);
+      window.removeEventListener("resize", this.setWidth);
+    },
+    setHeight() {
+      this.footerHeight = this.$refs.footer.clientHeight + 1;
+    },
+    setWidth() {
+      this.footerWidth = this.$refs.footer.clientWidth;
+    },
+    setupListeners() {
+      window.addEventListener("resize", this.setHeight);
+      window.addEventListener("resize", this.setWidth);
+    }
+  }
+};
 </script>

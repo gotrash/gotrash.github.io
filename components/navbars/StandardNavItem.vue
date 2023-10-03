@@ -1,7 +1,7 @@
 <template>
   <b-nav-item v-bind="$attrs" active-class="active" :label="text" :to="to" @click="onClick">
     <fa-icon v-if="icon" :icon="icon" :class="_iconClasses" />
-    <span v-if="!hideText" class="d-inline d-md-none d-xl-inline text-success">
+    <span v-if="!hideText" class="text-success">
       <slot>{{ text }}</slot>
     </span>
   </b-nav-item>

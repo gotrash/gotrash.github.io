@@ -18,16 +18,16 @@
 </template>
 
 <script>
-  import IsAdminLteLayout from "~/mixins/IsAdminLteLayout";
-  import menu from "~/menus/UsersSidebar";
+import IsAdminLteLayout from "~/mixins/IsAdminLteLayout";
+import menu from "~/menus/UsersSidebar";
 
-  export default {
-    name: "DefaultLayout",
-    extends: IsAdminLteLayout,
-    data() {
-      return {
-        menu
-      };
-    }
-  };
+export default {
+  name: "DefaultLayout",
+  extends: IsAdminLteLayout,
+  data() {
+    return {
+      menu
+    };
+  }
+};
 </script>
