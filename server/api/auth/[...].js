@@ -11,23 +11,12 @@ export default NuxtAuthHandler({
   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      // console.log(
-      //   "Sign-in Callback - Params: { user: %o, account: %o, profile: %o, email: %o, credentials: %o }",
-      //   user,
-      //   account,
-      //   profile,
-      //   email,
-      //   credentials
-      // );
       return true;
     },
     async redirect(r) {
-      // console.log("Redirect Callback - Params: { url: %o, baseUrl: %o }", url, baseUrl);
       return r.baseUrl;
     },
     async session({ session, token }) {
-      // console.log("Session: %o", session);
-
       if (!session.access_token && token?.access_token) {
         session.access_token = token.access_token;
       }
@@ -77,8 +66,8 @@ export default NuxtAuthHandler({
           if (r.refresh_token) {
             jwt.token.refresh_token = r.refresh_token;
           }
-        } catch (err) {
-          console.error("Couldn't Fetch: %o", err);
+        } catch (_err) {
+          console.error(_err);
         }
       }
 
