@@ -48,7 +48,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@googlemaps/markerclusterer": "^2.3.2",
     "@pinia-orm/nuxt": "^1.7.0",
-    "@sentry/browser": "^7.54.0",
+    "@sentry/browser": "^7.73.0",
     "@sentry/cli": "^2.19.1",
     "@sentry/tracing": "^7.57.0",
     "@sentry/vue": "^7.57.0",
