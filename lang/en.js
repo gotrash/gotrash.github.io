@@ -73,6 +73,8 @@ export default {
   NAV__VERIFICATION_TOKENS: "Verification Tokens",
   // Page Summaries
   PAGE_SUMMARY__USER_ADDRESSES: "These are all the addresses you have saved",
+  PAGE_SUMMARY__USER_ADDRESSES__ADD_ADDRESS:
+    "Use this page to add an address to GoTrash to use when booking jobs or adding billing information",
   PAGE_SUMMARY__USER_FEEDBACKS: "This is a listing of the feedback you have left for your jobs",
   PAGE_SUMMARY__USER_JOBS: "This is a listing of all the jobs you have created in reverse chronological order",
   PAGE_SUMMARY__USER_PAYMENT_METHODS: "These are the payment methods you have setup",
@@ -91,6 +93,7 @@ export default {
   PAGE_TITLE__USER_ADDRESSES: "Your Saved Addresses",
   PAGE_TITLE__USER_JOBS: "Your Jobs",
   PAGE_TITLE__USER_PAYMENT_METHODS: "Payment Methods",
+  PAGE_TITLE__USER_ADDRESSES__ADD_ADDRESS: "Add Address",
   MSG__CHECK_FOR_PROVIDERS_COVERING_YOUR_AREA: "Check for providers covering your area",
   "FRONTEND.LABEL.NO_PROVIDERS_ALERT": "No Providers",
   "FRONTEND.MESSAGE.POSTCODE_CHECKER_SUBMIT_DISABLED": "You must enter a valid UK postcode",
