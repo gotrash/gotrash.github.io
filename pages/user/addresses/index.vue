@@ -8,15 +8,15 @@
       </b-col>
     </b-row>
     <!-- Show the bar and button if we have addresses -->
-    <b-row v-if="addresses && addresses.length > 0">
+    <b-row v-if="data.content && data.content.length > 0">
       <b-col cols="12">
         <div class="mb-3 d-flex align-items-center justify-content-end bg-white p-2 rounded border">
-          <b-pagination :first-class="[totalPages === 0 || currentPage <= 1 ? 'd-none' : '']"
+          <b-pagination :disabled="pending" :first-class="[totalPages === 0 || currentPage <= 1 ? 'd-none' : '']"
             :prev-class="[totalPages === 0 || currentPage <= 1 ? 'd-none' : '']"
             :last-class="[totalPages === 0 || totalPages <= currentPage ? 'd-none' : '']"
             :next-class="[totalPages === 0 || totalPages <= currentPage ? 'd-none' : '']"
             :class="['mb-0 ms-auto me-2', { invisible: totalPages <= 1 }]" size="sm" :per-page="perPage"
-            :total-rows="totalRows" v-model="currentPage" />
+            :total-rows="totalElements" v-model="currentPage" />
           <b-button-group>
             <b-button @click="onAddAddress" variant="success" class="text-white">
               {{ $t("USER_ADDRESSES.LABEL.ADD_NEW_ADDRESS") }}
@@ -25,21 +25,20 @@
         </div>
       </b-col>
     </b-row>
-    <!-- If we have an error or we're loading, saving or deleting, show an alert to the user -->
-    <b-row v-if="loading || saving || deleting || err">
+    <!-- If we have an error or we're loading data, show an alert to the user -->
+    <b-row v-if="error || pending">
       <b-col cols="12">
-        <message-spinner v-if="loading || saving || deleting">
-          {{ $t(`USER_ADDRESSES.MESSAGE.${saving ? 'SAVING_ADDRESS' : deleting ? 'DELETING_ADDRESS' :
-            'LOADING_ADDRESSES'}`) }}
+        <message-spinner v-if="pending">
+          {{ $t(`USER_ADDRESSES.MESSAGE.LOADING_ADDRESSES`) }}
         </message-spinner>
-        <error-alert v-else-if="err" :error="err" />
+        <error-alert v-else-if="error" :error="error" />
       </b-col>
     </b-row>
     <!-- Main Content -->
     <template v-else>
       <b-row>
         <!-- If we don't have any addresses, show the alternative UI -->
-        <b-col v-if="!addresses || addresses.length <= 0" cols="12">
+        <b-col v-if="!data.content || data.content.length <= 0" cols="12">
           <div class="d-flex align-items-center justify-content-around w-100" style="min-height: 400px">
             <div class="text-center" style="line-height: 1.6; max-width: 600px">
               <div class="fs-5 mb-4">
@@ -56,109 +55,113 @@
         </b-col>
         <template v-else>
           <!-- If we have addresses, loop over them and show a user address card for each -->
-          <b-col cols="12" lg="6" xl="4" class="mb-2" v-for="address in addresses"
+          <b-col cols="12" md="6" lg="4" xl="3" class="mb-2" v-for="address in data.content"
             :key="`payment-method-column-${address.id}`">
-            <user-address-card :address="address" />
+            <user-address-card @deleted="onAddressDeleted" :address="address" />
           </b-col>
         </template>
       </b-row>
     </template>
-    <add-edit-credit-card-modal ref="addEditCreditCardModal" />
   </b-container>
 </template>
 
 <script setup>
-import { v4 } from "uuid"
-import AddEditCreditCardModal from "~/components/modals/AddEditCreditCardModal"
-import UserAddressCard from "~/components/cards/UserAddressesCard"
+// Component imports
+import UserAddressCard from '~/components/cards/UserAddressCard';
+
+// Using define page meta, we specify our page options such as layout, keep alive, etc.
+definePageMeta({
+  layout: "user",
+  keepalive: false,
+});
+
+// Reactive data refs
+const
+  currentPage = ref(1),
+  totalElements = ref(0),
+  totalPages = ref(0),
+  perPage = ref(20);
+
+// Page functions
+const onAddAddress = () => { }
+const onAddressDeleted = () => { }
+const onDeleteAddress = () => { }
+
+const { getSession } = useAuth();
 
 const config = useRuntimeConfig();
-const adding = ref(false);
-const deleting = ref(false);
-const err = ref(null);
-const addresses = ref([]);
-const loading = ref(true);
-const saving = ref(false);
-const perPage = ref(20);
-const totalPages = ref(0);
-const totalRows = ref(0);
-const currentPage = ref(1)
+const session = await getSession();
 
-definePageMeta({
-  layout: "user"
-});
-
-const onAddAddress = () => {
-  // addEditCreditCardModal.value.show()
-  adding.value = true
-}
-
-const onDelete = paymentMethodId => {
-  deleting.value = true;
-
-  const { getSession } = useAuth();
-
-  getSession().then(session => {
-    useApi(`/user/addresses`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${session?.session?.access_token}`
-      },
-      body: { paymentMethodId }
-    }).then(async (res) => {
-      addresses.value = res.data.value.content;
-      perPage.value = res.data.value.size;
-      currentPage.value = res.data.value.number + 1;
-      totalRows.value = res.data.value.totalElements;
-      totalPages.value = res.data.value.totalPages;
-
-      err.value = null;
-    }).catch(_err => {
-      console.error(_err)
-      err.value = _err;
-    }).finally(() => {
-      deleting.value = false;
-
-      onGetData();
-    })
-  })
-}
-
-const onGetData = async () => {
-  loading.value = true;
-  const { getSession } = useAuth();
-  const session = await getSession();
-
-  useFetch(`/user/addresses`, {
-    key: v4(),
-    baseURL: config.public.apiUrl,
-    lazy: true,
-    server: false,
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${session?.session?.access_token}`
-    },
-    query: {
-      page: currentPage.value
-    },
-  }).then(async (res) => {
-    console.log(res)
-    addresses.value = res.data.value.content;
-    perPage.value = res.data.value.size;
-    currentPage.value = res.data.value.number + 1;
-    totalRows.value = res.data.value.totalElements;
-    totalPages.value = res.data.value.totalPages;
-
-    err.value = null;
-  }).catch(_err => {
-    console.error(_err)
-    err.value = _err;
-  }).finally(() => {
-    loading.value = false;
-  })
-}
+const { data, pending, error } = await useFetch(
+  '/user/addresses', {
+  baseURL: config.public.apiUrl,
+  headers: {
+    Authorization: `Bearer ${session?.session?.access_token}`
+  },
+  lazy: true,
+  immediate: true,
+  server: false,
+  default: () => {
+    return {
+      content: [],
+      size: 0,
+      number: 0,
+      totalElements: 0,
+      totalPages: 0
+    }
+  },
+  pick: ["content"],
+  query: {
+    page: currentPage,
+    perPage: perPage
+  },
+  onResponse: res => {
+    totalElements.value = res.response._data.totalElements
+    totalPages.value = res.response._data.totalPages
+  }
+})
 
 onActivated(() => {
-  onGetData();
-});
+  currentPage.value = 1;
+})
+
+onDeactivated(() => {
+  totalElements.value = 0;
+  totalPages.value = 0
+})
+
+watch(currentPage, () => {
+  try {
+    const route = useRoute()
+    const queryPage = route.query.page;
+
+    if (currentPage.value && (queryPage === undefined || (!isNaN(queryPage) && queryPage !== currentPage.value))) {
+      const router = useRouter();
+      router.push({ ...route, query: { ...route.query, page: currentPage.value > 1 ? currentPage.value : undefined } })
+    }
+  } catch (_err) {
+    console.error(_err);
+  }
+})
+
+const route = useRoute();
+
+watch(
+  // Watcher getter must be a reactive value or a getter function. As `route` is not reactive a proper reactive value,
+  // we can use a getter function to make it so.
+  () => route.query.page,
+  // Handler function needs to update current page value based off URL query parameter `page`
+  (page) => {
+    const _queryPage = parseInt(parseFloat(page || 1));
+
+    if (_queryPage !== currentPage.value) {
+      currentPage.value = _queryPage;
+    }
+  },
+  // Watcher options
+  {
+    deep: false,
+    immediate: true
+  }
+)
 </script>
