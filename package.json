@@ -122,7 +122,7 @@
     "@types/node": "^18.16.19",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
-    "@unhead/schema-org": "^0.6.0",
+    "@unhead/schema-org": "^1.7.4",
     "@vueuse/core": "^10.2.1",
     "@vueuse/nuxt": "^10.2.1",
     "bootstrap": "^5.3.2",
