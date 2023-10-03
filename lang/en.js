@@ -71,7 +71,15 @@ export default {
   NAV__USERS: "Users",
   NAV__USER_ADDRESSES: "User Addresses",
   NAV__VERIFICATION_TOKENS: "Verification Tokens",
+  // Page Summaries
+  PAGE_SUMMARY__USER_ADDRESSES: "These are all the addresses you have saved",
+  PAGE_SUMMARY__USER_ADDRESSES__ADD_ADDRESS:
+    "Use this page to add an address to GoTrash to use when booking jobs or adding billing information",
+  PAGE_SUMMARY__USER_FEEDBACKS: "This is a listing of the feedback you have left for your jobs",
+  PAGE_SUMMARY__USER_JOBS: "This is a listing of all the jobs you have created in reverse chronological order",
+  PAGE_SUMMARY__USER_PAYMENT_METHODS: "These are the payment methods you have setup",
   // Page Titles
+  PAGE_TITLE__FEEDBACK: "Feedback",
   PAGE_TITLE__HOME: "Welcome to GoTrash",
   PAGE_TITLE__LOGIN: "Login",
   PAGE_TITLE__SIGNUP: "Signup",
@@ -81,6 +89,11 @@ export default {
   PAGE_TITLE__POSTCODE_UNIT: "Postcode Unit | Postcode Units",
   PAGE_TITLE__FORGOT_PASSWORD: "Forgot Password",
   PAGE_TITLE__TRASH_SOMETHING: "Trash Something",
+  PAGE_TITLE__USER_FEEDBACKS: "Your Feedback",
+  PAGE_TITLE__USER_ADDRESSES: "Your Saved Addresses",
+  PAGE_TITLE__USER_JOBS: "Your Jobs",
+  PAGE_TITLE__USER_PAYMENT_METHODS: "Payment Methods",
+  PAGE_TITLE__USER_ADDRESSES__ADD_ADDRESS: "Add Address",
   MSG__CHECK_FOR_PROVIDERS_COVERING_YOUR_AREA: "Check for providers covering your area",
   "FRONTEND.LABEL.NO_PROVIDERS_ALERT": "No Providers",
   "FRONTEND.MESSAGE.POSTCODE_CHECKER_SUBMIT_DISABLED": "You must enter a valid UK postcode",
@@ -144,6 +157,8 @@ export default {
   "COUNTRIES.LABEL.TWO_LETTER_COUNTRY_CODE": "2-letter Country Code",
   "COUNTRIES.LABEL.UPDATED_AT": "Updated At",
   "COUNTRIES.PLACEHOLDER.PICK_A_CONTINENT": "Pick a continent",
+  // Feedback
+  "FEEDBACK.MESSAGE.LOADING": "Loading Feedback",
   // Files
   "FILES.LABEL.FILENAME": "Filename",
   "FILES.LABEL.ID": "ID",
@@ -174,6 +189,9 @@ export default {
   "GENERAL.LABEL.SORT_DESC": "Sort Desc",
   "GENERAL.LABEL.SORT": "Sort",
   "GENERAL.LABEL.SUBMIT": "Submit",
+  "GENERAL.LABEL.CREATED_AT": "Created At",
+  "GENERAL.LABEL.DELETED_AT": "Deleted At",
+  "GENERAL.LABEL.UPDATED_AT": "Updated At",
   "GENERAL.MESSAGE.DOWNLOAD_FOR_BENEFITS": "Download the app from the app store for job update notifications and more",
   "GENERAL.MESSAGE.LOADING": "Loading",
   "GENERAL.MESSAGE.THANK_YOU": "Thank You!!",
@@ -213,6 +231,7 @@ export default {
   "JOBS.MESSAGE.DETAILED_DESCRIPTION":
     "You need to provide a detailed description of the waste your getting rid of.  Be as detailed as possible to allow the provider to quote properly.",
   "JOBS.INVALID.DETAILED_DESCRIPTION_REQUIRED": "You must provide a detailed description of your job requirements.",
+  "JOBS.MESSAGE.LOADING": "Loading Jobs",
   "JOBS.INVALID.DETAILED_DESCRIPTION_TOO_SHORT": "The job description must be at least 10 characters.",
   "JOBS.INVALID.DETAILED_DESCRIPTION_TOO_LONG": "The job description must be less than 1000 characters.",
   "JOBS.INVALID.SUMMARY_REQUIRED": "You must provide a brief summary of your job requirements.",
@@ -251,6 +270,18 @@ export default {
   "PASSWORD_RESET_TOKENS.LABEL.ID": "ID",
   "PASSWORD_RESET_TOKENS.LABEL.TOKEN": "Token",
   "PASSWORD_RESET_TOKENS.LABEL.USER": "User",
+  // Payment Methods
+  "PAYMENT_METHODS.LABEL.ADD_CARD_DETAILS": "Add Card Details",
+  "PAYMENT_METHODS.LABEL.ADD_NEW_CARD_DETAILS": "Add New Card Details",
+  "PAYMENT_METHODS.LABEL.CARD_NUMBER": "Card Number",
+  "PAYMENT_METHODS.LABEL.CVV": "CVV",
+  "PAYMENT_METHODS.LABEL.EXP_MONTH": "Exp Month",
+  "PAYMENT_METHODS.LABEL.EXP_YEAR": "Exp Year",
+  "PAYMENT_METHODS.LABEL.EXPIRY": "Expiry",
+  "PAYMENT_METHODS.LABEL.NAME_ON_CARD": "Name On Card",
+  "PAYMENT_METHODS.MESSAGE.DELETING_PAYMENT_METHOD": "Deleting Payment Method",
+  "PAYMENT_METHODS.MESSAGE.SAVING_PAYMENT_METHOD": "Saving Payment Method",
+  "PAYMENT_METHODS.MESSAGE.LOADING": "Loading Payment Methods",
   // Postcodes
   "POSTCODES.MESSAGE.INVALID_POSTCODE": "The postcode you have provided is not a valid UK postcode",
   // Service Providers
@@ -272,6 +303,16 @@ export default {
   "SERVICE_PROVIDERS.LABEL.UPDATED_AT": "Updated At",
   // User
   "USER.LABEL.USER_PROFILE": "User Profile",
+  // User Addresses
+  "USER_ADDRESSES.LABEL.ADD_NEW_ADDRESS": "Add New Address",
+  "USER_ADDRESSES.LABEL.DELETE_ADDRESS": "Delete Address",
+  "USER_ADDRESSES.LABEL.VIEW_ADDRESS": "View Address",
+  "USER_ADDRESSES.LABEL.ADDRESS": "Address",
+  "USER_ADDRESSES.MESSAGE.DELETING_ADDRESS": "Deleting Address",
+  "USER_ADDRESSES.MESSAGE.SAVING_ADDRESS": "Saving Address",
+  "USER_ADDRESSES.MESSAGE.VERIFYING_ADDRESS": "Verifying Address",
+  "USER_ADDRESSES.MESSAGE.LOADING_ADDRESS": "Loading Address",
+  "USER_ADDRESSES.MESSAGE.LOADING_ADDRESSES": "Loading Addresses",
   // Verification Tokens
   "VERIFICATION_TOKENS.LABEL.EXPIRY_DATE": "Expiry Date",
   "VERIFICATION_TOKENS.LABEL.ID": "ID",
