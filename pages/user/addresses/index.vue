@@ -10,6 +10,7 @@
     <!-- Show the bar and button if we have addresses -->
     <b-row v-if="data.content && data.content.length > 0">
       <b-col cols="12">
+
         <div class="mb-3 d-flex align-items-center justify-content-end bg-white p-2 rounded border">
           <b-pagination :disabled="pending" :first-class="[totalPages === 0 || currentPage <= 1 ? 'd-none' : '']"
             :prev-class="[totalPages === 0 || currentPage <= 1 ? 'd-none' : '']"
@@ -71,19 +72,21 @@ import UserAddressCard from '~/components/cards/UserAddressCard';
 
 // Using define page meta, we specify our page options such as layout, keep alive, etc.
 definePageMeta({
-  layout: "user",
-  keepalive: false,
+  layout: "user"
 });
 
 // Reactive data refs
-const
-  currentPage = ref(1),
-  totalElements = ref(0),
-  totalPages = ref(0),
-  perPage = ref(20);
+const perPage = ref(20);
+const totalPages = ref(0);
+const totalElements = ref(0);
+const currentPage = ref(1);
 
 // Page functions
-const onAddAddress = () => { }
+const onAddAddress = () => {
+  // addEditCreditCardModal.value.show()
+  adding.value = true
+}
+
 const onAddressDeleted = () => { }
 const onDeleteAddress = () => { }
 
@@ -99,7 +102,6 @@ const { data, pending, error } = await useFetch(
     Authorization: `Bearer ${session?.session?.access_token}`
   },
   lazy: true,
-  immediate: true,
   server: false,
   default: () => {
     return {
@@ -110,7 +112,6 @@ const { data, pending, error } = await useFetch(
       totalPages: 0
     }
   },
-  pick: ["content"],
   query: {
     page: currentPage,
     perPage: perPage
@@ -121,16 +122,8 @@ const { data, pending, error } = await useFetch(
   }
 })
 
-onActivated(() => {
-  currentPage.value = 1;
-})
-
-onDeactivated(() => {
-  totalElements.value = 0;
-  totalPages.value = 0
-})
-
 watch(currentPage, () => {
+  console.log("Attempting to set route for current page")
   try {
     const route = useRoute()
     const queryPage = route.query.page;
@@ -142,7 +135,7 @@ watch(currentPage, () => {
   } catch (_err) {
     console.error(_err);
   }
-})
+}, { deep: true, flush: "post", immediate: true })
 
 const route = useRoute();
 
@@ -158,10 +151,7 @@ watch(
       currentPage.value = _queryPage;
     }
   },
-  // Watcher options
-  {
-    deep: false,
-    immediate: true
-  }
+  { immediate: true },
 )
+
 </script>
