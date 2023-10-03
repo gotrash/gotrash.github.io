@@ -1,9 +1,7 @@
 import BaseAuditableDto from "./BaseAuditableDto";
+import UserProfileRoleDto from "./UserProfileRoleDto";
 
 export default class UserProfileDto extends BaseAuditableDto {
-  // ID
-  id = null;
-
   // Address
   addressLineOne = "";
   addressLineTwo = "";
@@ -11,10 +9,9 @@ export default class UserProfileDto extends BaseAuditableDto {
   county = "";
   postcode = "";
 
-  // Name
-  firstName = "";
-  middleNames = "";
-  lastName = "";
+  // User Data
+  name = "";
+  userAddresses = ["One", "Two", "Three", "Four", "Five"];
 
   // Contact Details
   email = "";
@@ -27,10 +24,7 @@ export default class UserProfileDto extends BaseAuditableDto {
   constructor(data = {}) {
     super(data);
 
-    if (data) {
-      // ID
-      if (Object.prototype.hasOwnProperty.call(data, "id") && !isNaN(data.id)) this.id = parseInt(parseFloat(data.id));
-
+    if (data && typeof data === "object") {
       // Address
       if (Object.prototype.hasOwnProperty.call(data, "addressLineOne") && typeof data.addressLineOne === "string")
         this.addressLineOne = data.addressLineOne;
@@ -43,12 +37,13 @@ export default class UserProfileDto extends BaseAuditableDto {
         this.postcode = data.postcode;
 
       // Name
-      if (Object.prototype.hasOwnProperty.call(data, "firstName") && typeof data.firstName === "string")
-        this.firstName = data.firstName;
-      if (Object.prototype.hasOwnProperty.call(data, "middleNames") && typeof data.middleNames === "string")
-        this.middleNames = data.middleNames;
-      if (Object.prototype.hasOwnProperty.call(data, "lastName") && typeof data.lastName === "string")
-        this.lastName = data.lastName;
+      if (Object.prototype.hasOwnProperty.call(data, "name") && typeof data.name === "string") this.name = data.name;
+      if (
+        Object.prototype.hasOwnProperty.call(data, "userAddresses") &&
+        Array.isArray(data?.userAddresses) &&
+        data.userAddresses.length > 0
+      )
+        this.userAddresses = data.userAddresses;
 
       // Contact Details
       if (Object.prototype.hasOwnProperty.call(data, "email") && typeof data.email === "string")
@@ -59,8 +54,13 @@ export default class UserProfileDto extends BaseAuditableDto {
         this.mobile = data.mobile;
 
       // Access Control
-      if (Object.prototype.hasOwnProperty.call(data, "roles") && Array.isArray(data?.roles)) this.roles = data.roles;
+      if (Object.prototype.hasOwnProperty.call(data, "roles") && Array.isArray(data?.roles))
+        this.roles = data.roles.map(role => (role instanceof UserProfileRoleDto ? role : new UserProfileRoleDto(role)));
     }
+  }
+
+  clone() {
+    return new UserProfileDto(this, this.debug);
   }
 
   toJSON() {
@@ -69,9 +69,8 @@ export default class UserProfileDto extends BaseAuditableDto {
       id,
 
       // Name
-      firstName,
-      middleNames,
-      lastName,
+      name,
+      userAddresses,
 
       // Address
       addressLineOne,
@@ -98,9 +97,8 @@ export default class UserProfileDto extends BaseAuditableDto {
       id,
 
       // Name
-      firstName,
-      middleNames,
-      lastName,
+      name,
+      userAddresses,
 
       // Address
       addressLineOne,
