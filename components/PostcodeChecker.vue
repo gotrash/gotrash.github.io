@@ -63,8 +63,8 @@ export default {
               this.$emit("providers-found");
             }
           })
-          .catch(err => {
-            console.error(err);
+          .catch(_err => {
+            console.error(_err);
             this.busy = false;
             this.focus();
           })
