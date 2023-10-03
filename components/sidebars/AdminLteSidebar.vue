@@ -61,7 +61,7 @@ export default {
     renderBrandLink() {
       const h = this.$createElement;
 
-      return h("b-link", { class: "brand-link", props: { to: { name: "index" } } }, [
+      return h("b-link", { class: "brand-link text-center", props: { to: { name: "index" } } }, [
         // h("img", {
         //   class: "brand-image img-circle elevation-3",
         //   domProps: { alt: "GoTrash Logo", src: "dist/img/AdminLTELogo.png" },

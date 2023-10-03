@@ -72,11 +72,11 @@ $gray-800: #343a40;
 $gray-900: #212529;
 $black: #000;
 
-$primary: #28a744;
-$success: #28a744;
-$info: #237888;
-$warning: #dd8735;
-$danger: #dd4535;
+$primary: $color-primary-0;
+$success: $color-primary-0;
+$info: $color-secondary-1-0;
+$warning: $color-secondary-2-0;
+$danger: $color-complement-0;
 $light: $gray-100;
 $medium: $gray-500;
 $dark: $gray-900;
