@@ -10,8 +10,14 @@
     <!-- Show the bar and button if we have addresses -->
     <b-row v-if="addresses && addresses.length > 0">
       <b-col cols="12">
-        <div class="mb-3 d-flex justify-content-end bg-white p-2 rounded border">
-          <b-button-group class="ms-auto">
+        <div class="mb-3 d-flex align-items-center justify-content-end bg-white p-2 rounded border">
+          <b-pagination :first-class="[totalPages === 0 || currentPage <= 1 ? 'd-none' : '']"
+            :prev-class="[totalPages === 0 || currentPage <= 1 ? 'd-none' : '']"
+            :last-class="[totalPages === 0 || totalPages <= currentPage ? 'd-none' : '']"
+            :next-class="[totalPages === 0 || totalPages <= currentPage ? 'd-none' : '']"
+            :class="['mb-0 ms-auto me-2', { invisible: totalPages <= 1 }]" size="sm" :per-page="perPage"
+            :total-rows="totalRows" v-model="currentPage" />
+          <b-button-group>
             <b-button @click="onAddAddress" variant="success" class="text-white">
               {{ $t("USER_ADDRESSES.LABEL.ADD_NEW_ADDRESS") }}
             </b-button>
