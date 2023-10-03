@@ -1,5 +1,6 @@
 <template>
-  <b-alert :variant="variant" v-model="dismissibleAlert" class="text-center" dismissible>
+  <b-alert :variant="variant" @close="onClose" @closed="onClosed" @close-countdown="onCloseCountdown"
+    v-model="dismissibleAlert" class="text-center" :dismissible="dismissible">
     <div v-if="icon">
       <fa-icon :icon="icon" :class="['fa-3x mb-3', iconClasses]" />
     </div>
@@ -12,6 +13,17 @@
 
 <script setup>
 const dismissibleAlert = ref(true)
+const emit = defineEmits(["close", "closed", "close-countdown"])
+
+const onClose = () => {
+  emit("close")
+}
+const onClosed = () => {
+  emit("closed")
+}
+const onCloseCountdown = value => {
+  emit("close-countdown", value)
+}
 
 const props = defineProps({
   icon: {
