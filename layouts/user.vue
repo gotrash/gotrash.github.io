@@ -14,11 +14,7 @@
       </b-navbar-nav>
     </b-navbar>
     <aside class="main-sidebar sidebar-light-primary elevation-4">
-      <b-link class="brand-link" :to="localePath({ name: 'index' })">
-        <span class="brand-text font-weight-light">
-          <b class="font-weight-bold">Go</b>Trash
-        </span>
-      </b-link>
+      <brand-link />
       <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
@@ -32,19 +28,19 @@
         </div>
         <nav class="mt-2">
           <b-nav class="mt-2 nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" pills>
-            <b-nav-item :to="localePath({ name: 'user-profile' })">
+            <b-nav-item exact-active-class="text-light" :to="localePath({ name: 'user-profile' })">
               {{ $t("NAV__PROFILE") }}
             </b-nav-item>
-            <b-nav-item :to="localePath({ name: 'user-feedback' })">
+            <b-nav-item exact-active-class="text-light" :to="localePath({ name: 'user-feedback' })">
               {{ $t("NAV__FEEDBACK") }}
             </b-nav-item>
-            <b-nav-item :to="localePath({ name: 'user-jobs' })">
+            <b-nav-item exact-active-class="text-light" :to="localePath({ name: 'user-jobs' })">
               {{ $t("NAV__JOBS") }}
             </b-nav-item>
-            <b-nav-item :to="localePath({ name: 'user-addresses' })">
+            <b-nav-item exact-active-class="text-light" :to="localePath({ name: 'user-addresses' })">
               {{ $t("NAV__ADDRESSES") }}
             </b-nav-item>
-            <b-nav-item :to="localePath({ name: 'user-payment-methods' })">
+            <b-nav-item exact-active-class="text-light" :to="localePath({ name: 'user-payment-methods' })">
               {{ $t("NAV__PAYMENT_METHODS") }}
             </b-nav-item>
           </b-nav>

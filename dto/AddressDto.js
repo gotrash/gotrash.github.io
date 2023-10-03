@@ -9,6 +9,7 @@ export default class AddressDto extends BaseDto {
   country = null;
   latitude = null;
   longitude = null;
+  googlePlaceId = null;
 
   constructor(data = {}) {
     super();
@@ -21,6 +22,7 @@ export default class AddressDto extends BaseDto {
     if (data?.country) this.country = data.country;
     if (data?.latitude) this.latitude = data.latitude;
     if (data?.longitude) this.longitude = data.longitude;
+    if (data?.googlePlaceId) this.googlePlaceId = data.googlePlaceId;
   }
 
   clone() {
@@ -29,7 +31,8 @@ export default class AddressDto extends BaseDto {
 
   equals(obj) {
     if (!(obj instanceof AddressDto)) throw new TypeError("Must be an instance of `AddressDto`");
-    const { addressLineOne, addressLineTwo, town, county, postcode, country, latitude, longitude } = this;
+    const { addressLineOne, addressLineTwo, googlePlaceId, town, county, postcode, country, latitude, longitude } =
+      this;
 
     return (
       addressLineOne === obj.addressLineOne &&
@@ -39,13 +42,15 @@ export default class AddressDto extends BaseDto {
       postcode === obj.postcode &&
       country === obj.country &&
       latitude === obj.latitude &&
-      longitude === obj.longitude
+      longitude === obj.longitude &&
+      googlePlaceId === obj.googlePlaceId
     );
   }
 
   toJSON() {
-    const { addressLineOne, addressLineTwo, town, county, postcode, country, latitude, longitude } = this;
+    const { addressLineOne, addressLineTwo, town, county, postcode, country, latitude, longitude, googlePlaceId } =
+      this;
 
-    return { addressLineOne, addressLineTwo, town, county, postcode, country, latitude, longitude };
+    return { addressLineOne, addressLineTwo, town, county, postcode, country, latitude, longitude, googlePlaceId };
   }
 }
