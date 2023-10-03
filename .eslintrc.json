@@ -9,5 +9,10 @@
     "@typescript-eslint/strict-boolean-expressions": "off",
     "no-console": "off"
   },
+  "globals": {
+    "useAuth": true,
+    "useFetch": true,
+    "useRuntimeConfig": true
+  },
   "ignorePatterns": ["src/**/*.test.ts", "src/frontend/generated/*"]
 }

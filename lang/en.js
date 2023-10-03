@@ -72,6 +72,9 @@ export default {
   NAV__USER_ADDRESSES: "User Addresses",
   NAV__VERIFICATION_TOKENS: "Verification Tokens",
   // Page Summaries
+  PAGE_SUMMARY__USER_ADDRESSES: "These are all the addresses you have saved",
+  PAGE_SUMMARY__USER_ADDRESSES__ADD_ADDRESS:
+    "Use this page to add an address to GoTrash to use when booking jobs or adding billing information",
   PAGE_SUMMARY__USER_FEEDBACKS: "This is a listing of the feedback you have left for your jobs",
   PAGE_SUMMARY__USER_JOBS: "This is a listing of all the jobs you have created in reverse chronological order",
   PAGE_SUMMARY__USER_PAYMENT_METHODS: "These are the payment methods you have setup",
@@ -87,8 +90,10 @@ export default {
   PAGE_TITLE__FORGOT_PASSWORD: "Forgot Password",
   PAGE_TITLE__TRASH_SOMETHING: "Trash Something",
   PAGE_TITLE__USER_FEEDBACKS: "Your Feedback",
+  PAGE_TITLE__USER_ADDRESSES: "Your Saved Addresses",
   PAGE_TITLE__USER_JOBS: "Your Jobs",
   PAGE_TITLE__USER_PAYMENT_METHODS: "Payment Methods",
+  PAGE_TITLE__USER_ADDRESSES__ADD_ADDRESS: "Add Address",
   MSG__CHECK_FOR_PROVIDERS_COVERING_YOUR_AREA: "Check for providers covering your area",
   "FRONTEND.LABEL.NO_PROVIDERS_ALERT": "No Providers",
   "FRONTEND.MESSAGE.POSTCODE_CHECKER_SUBMIT_DISABLED": "You must enter a valid UK postcode",
@@ -184,6 +189,9 @@ export default {
   "GENERAL.LABEL.SORT_DESC": "Sort Desc",
   "GENERAL.LABEL.SORT": "Sort",
   "GENERAL.LABEL.SUBMIT": "Submit",
+  "GENERAL.LABEL.CREATED_AT": "Created At",
+  "GENERAL.LABEL.DELETED_AT": "Deleted At",
+  "GENERAL.LABEL.UPDATED_AT": "Updated At",
   "GENERAL.MESSAGE.DOWNLOAD_FOR_BENEFITS": "Download the app from the app store for job update notifications and more",
   "GENERAL.MESSAGE.LOADING": "Loading",
   "GENERAL.MESSAGE.THANK_YOU": "Thank You!!",
@@ -295,6 +303,16 @@ export default {
   "SERVICE_PROVIDERS.LABEL.UPDATED_AT": "Updated At",
   // User
   "USER.LABEL.USER_PROFILE": "User Profile",
+  // User Addresses
+  "USER_ADDRESSES.LABEL.ADD_NEW_ADDRESS": "Add New Address",
+  "USER_ADDRESSES.LABEL.DELETE_ADDRESS": "Delete Address",
+  "USER_ADDRESSES.LABEL.VIEW_ADDRESS": "View Address",
+  "USER_ADDRESSES.LABEL.ADDRESS": "Address",
+  "USER_ADDRESSES.MESSAGE.DELETING_ADDRESS": "Deleting Address",
+  "USER_ADDRESSES.MESSAGE.SAVING_ADDRESS": "Saving Address",
+  "USER_ADDRESSES.MESSAGE.VERIFYING_ADDRESS": "Verifying Address",
+  "USER_ADDRESSES.MESSAGE.LOADING_ADDRESS": "Loading Address",
+  "USER_ADDRESSES.MESSAGE.LOADING_ADDRESSES": "Loading Addresses",
   // Verification Tokens
   "VERIFICATION_TOKENS.LABEL.EXPIRY_DATE": "Expiry Date",
   "VERIFICATION_TOKENS.LABEL.ID": "ID",
