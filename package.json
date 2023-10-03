@@ -161,6 +161,7 @@
     "nuxt-security": "^0.14.4",
     "nuxt-simple-sitemap": "^3.3.4",
     "nuxt-swiper": "^1.2.2",
+    "postcss": ">=8.4.31",
     "prettier": "^3.0.3",
     "require-extension-hooks": "^0.3.3",
     "require-extension-hooks-babel": "^1.0.0",
