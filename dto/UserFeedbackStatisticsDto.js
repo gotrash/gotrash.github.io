@@ -11,7 +11,6 @@ export default class UserFeedbackStatisticsDto extends BaseDto {
     super(data);
 
     if (data) {
-      console.log("UserFeedbackStatisticsDto: %o", data);
       if (data?.three)
         this.three =
           data.three instanceof UserFeedbackStatisticDto ? data.three : new UserFeedbackStatisticDto(data.three);

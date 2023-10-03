@@ -1,0 +1,206 @@
+{
+  "payment-methods": [
+    {
+      "cardNumber": "4242424242424242",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Visa"
+    },
+    {
+      "cardNumber": "4000056655665556",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Visa (Debit)"
+    },
+    {
+      "cardNumber": "5555555555554444",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Mastercard"
+    },
+    {
+      "cardNumber": "2223003122003222",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Mastercard (2-series)"
+    },
+    {
+      "cardNumber": "5200828282828210",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Mastercard (Debit)"
+    },
+    {
+      "cardNumber": "5105105105105100",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Mastercard (Pre-paid)"
+    },
+    {
+      "cardNumber": "378282246310005",
+      "cvc": "1234",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "American Express"
+    },
+    {
+      "cardNumber": "371449635398431",
+      "cvc": "1234",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "American Express"
+    },
+    {
+      "cardNumber": "6011111111111117",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Discover"
+    },
+    {
+      "cardNumber": "6011000990139424",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Discover"
+    },
+    {
+      "cardNumber": "6011981111111113",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Discover (Debit)"
+    },
+    {
+      "cardNumber": "3056930009020004",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Diners Club"
+    }
+  ],
+  "successful-payment-methods": [
+    {
+      "cardNumber": "4000008260000000",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Visa UK"
+    },
+    {
+      "cardNumber": "4000058260000005",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Visa (Debit) UK"
+    },
+    {
+      "cardNumber": "5555558265554449",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Mastercard UK"
+    }
+  ],
+  "declining-payment-methods": [
+    {
+      "cardNumber": "4000000000000002",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Generic Decline"
+    },
+    {
+      "cardNumber": "4000000000009995",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Insufficient Funds"
+    },
+    {
+      "cardNumber": "4000000000009987",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Lost Card"
+    },
+    {
+      "cardNumber": "4000000000009979",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Stolen Card"
+    },
+    {
+      "cardNumber": "4000000000000069",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Expired Card"
+    },
+    {
+      "cardNumber": "4000000000000127",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Incorrect CVC"
+    },
+    {
+      "cardNumber": "4000000000000119",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Processing Error"
+    },
+    {
+      "cardNumber": "4242424242424241",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Incorrect Number"
+    },
+    {
+      "cardNumber": "4000000000000341",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "For Customer Object"
+    }
+  ],
+  "disputed-payment-methods": [
+    {
+      "cardNumber": "4000000000000259",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Fraudulent"
+    },
+    {
+      "cardNumber": "4000000000002685",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Not Received"
+    },
+    {
+      "cardNumber": "4000000000001976",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Inquiry"
+    },
+    {
+      "cardNumber": "4000000000005423",
+      "cvc": "123",
+      "expMonth": "12",
+      "expYear": "2034",
+      "label": "Fraud Warning"
+    }
+  ]
+}
