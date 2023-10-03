@@ -1,5 +1,5 @@
 <template>
-  <b-container class="rounded border bg-light p-3 pt-4" fluid>
+  <b-container fluid>
     <b-row class="align-items-end">
       <b-col cols="12" md="6" class="text-center text-md-start">
         <svg width="144" height="48" viewBox="0 0 72 24" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@
             <strong class=" mb-1 d-block text-center text-sm-start d-sm-inline">Address Line One</strong>
             <br class="d-none d-sm-block" />
             <fa-icon :icon="paymentMethod.card.checks.addressPostcalCodeCheck ? 'check' : 'times'"
-              :class="['fa-lg fa-fw ms-auto me-auto me-sm-2 me-md-3 d-block d-sm-inline', paymentMethod.card.checks.addressPostalCodeCheck ? 'text-success' : 'text-danger']" />
+              :class="['fa-lg fa-fw ms-auto me-auto me-sm-2 me-md-3 d-block d-sm-inline', !paymentMethod.card.checks.addressPostalCodeCheck ? 'text-success' : 'text-danger']" />
             <strong class=" mb-1 d-block text-center text-sm-start d-sm-inline">Postcode</strong>
             <br class="d-none d-sm-block" />
             <fa-icon :icon="paymentMethod.card.checks.cvcCheck ? 'check' : 'times'"
@@ -76,6 +76,7 @@
 <script setup>
 import { nextTick } from 'vue';
 const description = ref("");
+const userAddresses = ref(null);
 const editing = ref(false);
 const saving = ref(false);
 const field = ref(null)
