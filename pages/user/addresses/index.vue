@@ -84,7 +84,10 @@ const currentPage = ref(1);
 // Page functions
 const onAddAddress = () => {
   // addEditCreditCardModal.value.show()
-  adding.value = true
+  const router = useRouter();
+  const localePath = useLocalePath();
+
+  router.push(localePath({ name: "user-addresses-new" }))
 }
 
 const onAddressDeleted = () => { }
