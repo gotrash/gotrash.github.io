@@ -1,9 +1,9 @@
 <template>
   <pre>
     <code>
-      <slot>
+<slot>
 {{ modelValue.toJSON && typeof modelValue.toJSON === "function" ? modelValue.toJSON() : modelValue }}
-      </slot>
+</slot>
     </code>
   </pre>
 </template>
