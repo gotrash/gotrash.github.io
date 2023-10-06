@@ -24,9 +24,10 @@
     </b-card-body>
     <b-card-footer class="p-2">
       <div class="ms-auto text-end">
-        <b-button :title="$t('USER_ADDRESSES.LABEL.DELETE_ADDRESS')" block @click="onDeleteClicked(address)"
+        <b-button :disabled="deleting" :title="$t('USER_ADDRESSES.LABEL.DELETE_ADDRESS')" block
+          @click="onDeleteClicked(address)"
           class="ms-auto d-block d-sm-inline btn btn-sm bg-danger me-0 me-sm-2 mb-2 mb-sm-0">
-          <fa-icon icon="trash" class="text-light" />
+          <fa-icon :icon="deleting ? 'spinner' : 'trash'" :class="{ 'text-light fa-fw': true, 'fa-spin': deleting }" />
         </b-button>
         <b-link :title="$t('USER_ADDRESSES.LABEL.VIEW_ADDRESS')"
           :to="localePath({ name: 'user-addresses-slug', params: { slug: address.id } })"
@@ -41,6 +42,11 @@
 <script setup>
 import { addressFormatter, dateFormatter } from '@/utils/formatters';
 
+const deleting = ref(false)
+const loading = ref(false)
+
+const emit = defineEmits(["delete", "deleted"])
+
 const props = defineProps({
   address: {
     type: Object,
@@ -49,6 +55,29 @@ const props = defineProps({
 })
 
 const onDeleteClicked = address => {
-  console.log("Deleting: %o", address)
+  emit("delete", address)
+  deleting.value = true
+
+  const { getSession } = useAuth();
+
+  getSession().then(async session => {
+    return useApi(`/user/addresses`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${session?.session?.access_token}`
+      },
+      body: { id: address.id }
+    }).then(() => {
+      // TODO: Insert toast here
+      // TODO: Remove console log when toast is inserted
+      console.log("Address %s deleted", address.id)
+    }).catch((_err) => {
+      console.error(_err)
+      // TODO: Insert toast here
+    }).finally(() => {
+      deleting.value = false
+      emit("deleted", address)
+    })
+  })
 }
 </script>
