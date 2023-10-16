@@ -1,38 +1,48 @@
-import { ofetch } from "ofetch";
+import { defu } from "defu";
+import { StatusCodes } from "http-status-codes";
 
-export const useApi = (url, opts) => {
+export function useApi(url, options = {}) {
   const config = useRuntimeConfig();
 
-  return ofetch.create({
-    baseURL: config.public.apiUrl,
-    lazy: true,
-    server: false,
-    async onRequest(req) {
+  const defaults = {
+    baseURL: config.baseUrl ?? config.public.apiUrl ?? "http://localhost:8090",
+    // cache request
+    key: url,
+    // Request Options
+    // lazy: true,
+    // server: false,
+    onRequest(_ctx) {
       // Log request
-      console.log("[fetch request]", req.request, req.options);
-      // Add `?t=1640125211170` to query search params
-      // req.options.query = req.options.query || {};
-      // req.options.query.t = new Date();
+      console.log("[fetch request]", _ctx.request, _ctx.options);
     },
-    async onRequestError(req) {
+    onRequestError(_ctx) {
       // Log error
-      console.log("[fetch request error]", req.request, req.error, req.options);
+      console.log("[fetch request error]", _ctx.request, _ctx.error);
     },
-    async onResponse(res) {
-      // Log response
-      console.log("[fetch response]", res.request, res.response.status, res.response.body, res.options);
-      return Promise.resolve(res);
-    },
-    async onResponseError(res) {
-      // Log error
-      console.log("[fetch response error]", res.request, res.response.status, res.response.body, res.options);
-    }
-  })(url, opts);
-  // const config = useRuntimeConfig();
-  // // eslint-disable-next-line no-undef
-  // const { fetch } = useNuxtApp();
-  // return fetch.create({
-  //   baseURL: config.public.apiUrl,
+    onResponse(_ctx) {
+      // _ctx.response._data = new myBusinessResponse(_ctx.response._data)
 
-  // });
-};
+      _ctx.response.status = StatusCodes.UNAUTHORIZED;
+
+      throw new Error();
+    },
+    onResponseError(_ctx) {
+      // throw new myBusinessError()
+
+      // Log error
+      console.log("[fetch response error]", _ctx.request, _ctx.response.status, _ctx.response.body);
+      if (_ctx.response?.status === StatusCodes.UNAUTHORIZED) {
+        // const { signIn } = useAuth();
+
+        // signIn("oidc");
+
+        console.log("Unauthorized");
+      }
+    }
+  };
+
+  // for nice deep defaults, please use unjs/defu
+  const params = defu(options, defaults);
+
+  return useFetch(url, params);
+}
