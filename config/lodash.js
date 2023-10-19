@@ -1,5 +1,5 @@
 export default {
-  prefix: false && "_",
+  prefix: "_",
   prefixSkip: "is",
   upperAfterPrefix: false,
   exclude: ["map"],
