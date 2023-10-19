@@ -1,17 +1,29 @@
-FROM node:14.18.1
-ARG TEST=VAR
+# syntax = docker/dockerfile:1
+ARG NODE_VERSION=lts
+FROM node:${NODE_VERSION} as base
 
-RUN mkdir /app
+ARG PORT=3000
+ENV NODE_ENV=production
+
 WORKDIR /app
-COPY package.json ./
-COPY package-lock.json ./
-COPY .npmrc ./
-COPY . ./
-RUN npm install
+
+# Build
+FROM base as build
+
+COPY --link package.json package-lock.json .
+RUN npm install --production=false
+
+COPY --link . .
+
 RUN npm run build
+RUN npm prune
 
-EXPOSE 5000
-ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=5000
+# Run
+FROM base as run
+ENV PORT=$PORT
 
-CMD npm run start
+COPY --from=build /app/.output /app/.output
+# Optional, only needed if you rely on unbundled dependencies
+# COPY --from=build /app/node_modules /app/node_modules
+
+CMD [ "node", ".output/server/index.mjs" ]
