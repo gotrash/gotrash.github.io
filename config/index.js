@@ -17,7 +17,7 @@ export { default as lodash } from "./lodash";
 export { default as mapbox } from "./mapbox";
 export { default as modules } from "./modules";
 export { default as nitro } from "./nitro";
-// export { default as plugins } from "./plugins";
+export { default as plugins } from "./plugins";
 export { default as robots } from "./robots";
 export { default as runtimeConfig } from "./runtimeConfig";
 export { default as sourcemap } from "./sourcemap";
