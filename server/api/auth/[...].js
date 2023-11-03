@@ -5,8 +5,8 @@ const config = useRuntimeConfig();
 
 export default NuxtAuthHandler({
   debug: false,
-  origin: "http://localhost:3000",
-  baseURL: "http://localhost:3000",
+  // origin: "http://localhost:3000",
+  // baseURL: "http://localhost:3000",
   pages: {
     // Change the default behavior to use `/login` as the path for the sign-in page
     signIn: "/login"
@@ -89,7 +89,7 @@ export default NuxtAuthHandler({
       type: "oauth",
       clientId: "messaging-client",
       clientSecret: "secret",
-      wellKnown: "http://localhost:9000/.well-known/openid-configuration",
+      wellKnown: `${config.public.authUrl}/.well-known/openid-configuration`,
       authorization: { params: { scope: "openid profile" } },
       scope: "openid profile message.read",
       checks: ["pkce", "state"],
