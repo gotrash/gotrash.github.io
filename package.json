@@ -32,6 +32,7 @@
     "test:plugins": "jest ./test/plugins"
   },
   "overrides": {
+    "next-auth": "4.22.5",
     "vue": "latest"
   },
   "lint-staged": {
@@ -138,7 +139,6 @@
     "json-loader": "^0.5.7",
     "lint-staged": "^13.2.2",
     "mapbox-gl": "^2.15.0",
-    "next-auth": "4.22.3",
     "nuxt": "^3.7.3",
     "nuxt-bugsnag": "^7.0.0",
     "nuxt-gtag": "^1.1.1",
