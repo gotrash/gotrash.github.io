@@ -10,7 +10,7 @@ export const recursiveGeoJsonFix = coordinates => {
       } else if (i < coordinates.length - 1) {
         // In a point
         while (coordinates[i][0] == coordinates[i + 1][0] && coordinates[i][1] == coordinates[i + 1][1]) {
-          console.log(coordinates.splice(i + 1, 1));
+          coordinates.splice(i + 1, 1);
         }
       }
     });
@@ -37,15 +37,7 @@ export const findDuplicateGeoJsonCoordinates = coordinates => {
 };
 
 export const removeGeoJsonDuplicates = (geoJson, i) => {
-  console.log("REPEATS REMOVED " + i);
   recursiveGeoJsonFix(geoJson.coordinates);
-
-  const repeats = findDuplicateGeoJsonCoordinates(geoJson.coordinates);
-
-  if (repeats.length > 0) {
-    console.log("REPEATS LEFT " + i);
-    console.log("REPEATS: %o", repeats);
-  }
 };
 
 export default {
