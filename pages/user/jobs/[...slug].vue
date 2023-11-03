@@ -77,8 +77,8 @@ const onDeleteLocation = async id => {
     }
   }).then(async () => {
     await onGetData();
-  }).catch(err => {
-    console.error(err);
+  }).catch(_err => {
+    console.error(_err);
   }).finally(() => {
     deleting.value = false;
   })
@@ -114,17 +114,12 @@ const onGetData = async () => {
     })
     .then(() => {
     })
-    .catch(err => {
-      console.log("An error occurred");
-      err.value = err;
+    .catch(_err => {
+      console.error(_err);
+      err.value = _err;
     })
     .finally(() => {
       loading.value = false;
-      nextTick(() => {
-        console.log(addresses.value.length)
-        console.log(addresses.value[0])
-
-      })
     });
 };
 

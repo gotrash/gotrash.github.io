@@ -1,53 +1,87 @@
 <template>
-  <message-spinner v-if="loading || err">Loading</message-spinner>
-  <b-container class="py-3" v-else fluid>
+  <b-container class="p-3" fluid>
     <b-row>
-      <b-col cols="12">
-        <b-card no-body class="mb-3" footer-class="text-right">
-          <b-card-header class="d-flex align-items-center pe-2 py-2">
-            <div>
-              {{ $t("NAV__JOBS") }}
-            </div>
-            <b-pagination :first-class="[totalPages === 0 || currentPage <= 1 ? 'd-none' : '']"
-              :prev-class="[totalPages === 0 || currentPage <= 1 ? 'd-none' : '']"
-              :last-class="[totalPages === 0 || totalPages <= currentPage ? 'd-none' : '']"
-              :next-class="[totalPages === 0 || totalPages <= currentPage ? 'd-none' : '']"
-              :class="['mb-0 ms-auto', { invisible: totalPages <= 1 }]" size="sm" :per-page="perPage"
-              :total-rows="totalElements" v-model="currentPage" />
-          </b-card-header>
-          <b-card-body>
-            <b-table :tbody-tr-class="() => 'pointer'" :fields="fields" :items="jobs" @row-clicked="onRowClicked" hover
-              responsive show-empty>
-              <template v-slot:cell(isBuilderWaste)="data">
-                <fa-icon icon="check" class="fa-lg text-success" />
-              </template>
-              <template v-slot:cell(isBusiness)="data">
-                <fa-icon icon="check" class="fa-lg text-success" />
-              </template>
-              <template v-slot:cell(isEasyAccess)="data">
-                <fa-icon icon="check" class="fa-lg text-success" />
-              </template>
-              <template v-slot:cell(isRecyclable)="data">
-                <fa-icon icon="check" class="fa-lg text-success" />
-              </template>
-              <template v-slot:cell(feedback)="data">
-                <fa-icon icon="check" class="fa-lg text-success" />
-              </template>
-            </b-table>
-          </b-card-body>
-          <b-card-footer class="text-end">
-            <b-button-group class="ms-auto">
-              <b-button variant="outline-danger" @click="onCancel">Cancel</b-button>
-              <b-button variant="outline-warning" @click="onReset">Reset</b-button>
-              <b-button variant="outline-primary" @click="onCreateJob">CreateJob</b-button>
-              <b-button variant="outline-primary" @click="onClearData">Clear Data</b-button>
-              <b-button variant="outline-primary" @click="onGetData">Get Data</b-button>
-              <b-button variant="outline-primary" @click="onRefresh">Refresh</b-button>
-            </b-button-group>
-          </b-card-footer>
-        </b-card>
+      <b-col cols="12" class="text-center mb-4">
+        <page-title>{{ $t("PAGE_TITLE__USER_JOBS") }}</page-title>
+        <page-summary>{{ $t("PAGE_SUMMARY__USER_JOBS") }}</page-summary>
       </b-col>
     </b-row>
+    <b-row v-if="!loading && !err && totalPages > 1">
+      <b-col cols="12" class="mb-3">
+        <b-pagination align="end" :first-class="[totalPages === 0 || currentPage <= 1 ? 'd-none' : '']"
+          :prev-class="[totalPages === 0 || currentPage <= 1 ? 'd-none' : '']"
+          :last-class="[totalPages === 0 || totalPages <= currentPage ? 'd-none' : '']"
+          :next-class="[totalPages === 0 || totalPages <= currentPage ? 'd-none' : '']"
+          :class="['mb-0 ms-auto', { invisible: totalPages <= 1 }]" size="sm" :per-page="perPage"
+          :total-rows="totalElements" v-model="currentPage" />
+      </b-col>
+    </b-row>
+    <b-row v-if="loading || err">
+      <b-col cols="12">
+        <message-spinner v-if="loading">
+          {{ $t("JOBS.MESSAGE.LOADING") }}
+        </message-spinner>
+        <error-alert v-else-if="err" :error="err" />
+      </b-col>
+    </b-row>
+    <template v-else>
+      <b-row v-for="job in jobs" :key="`job-row-${job.id}`" class="mb-3">
+        <b-col cols="12">
+          <b-container class="border border-2 bg-white py-2" fluid>
+            <b-row>
+              <b-col cols="12">
+                <div class="d-flex w-100">
+                  <div>
+                    <div>ID: {{ job.id }}</div>
+                    <div>Job Type: {{ job.jobType || 'Unknown' }}</div>
+                    <div>Feedback: {{ job.feedback || 'None Left' }}</div>
+                    <div>Load Size: {{ $t(`LOAD_SIZES.LABEL.${job.loadSize}`) }}</div>
+                    <div>Summary: {{ job.summary }}</div>
+                    <div>Detailed Description: {{ job.detailedDescription }}</div>
+                    <div>Bids: {{ (job.bids || []).length }}</div>
+                  </div>
+                  <div>
+                    <div>
+                      Builder Waste <fa-icon :icon="job.isBuilderWaste ? 'check' : 'times'"
+                        :class="['fa-lg', job.isBuilderWaste ? 'text-success' : 'text-danger']" />
+                    </div>
+                    <div>
+                      Business <fa-icon :icon="job.isBusiness ? 'check' : 'times'"
+                        :class="['fa-lg', job.isBusiness ? 'text-success' : 'text-danger']" />
+                    </div>
+                    <div>
+                      Easy Access <fa-icon :icon="job.isEasyAccess ? 'check' : 'times'"
+                        :class="['fa-lg', job.isEasyAccess ? 'text-success' : 'text-danger']" />
+                    </div>
+                    <div>
+                      Recyclable <fa-icon :icon="job.isRecyclable ? 'check' : 'times'"
+                        :class="['fa-lg', job.isRecyclable ? 'text-success' : 'text-danger']" />
+                    </div>
+                  </div>
+                </div>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col cols="12" sm="6">Start Date Required: <small>{{ job.startDateRequired || 'No Start Date Provided'
+              }}</small></b-col>
+              <b-col cols="12" sm="6">End Date Required: <small>{{ job.endDateRequired || 'No End Date Provided'
+              }}</small></b-col>
+            </b-row>
+            <b-row class="pt-4">
+              <b-col cols="12" sm="6">
+                <div>Created At: <small>{{ job.createdAt || 'Not Created' }}</small></div>
+                <div>Updated At: <small>{{ job.updatedAt || 'Not Updated' }}</small></div>
+                <div>Last Accessed At: <small>{{ job.lastAccessedAt || 'Unknown' }}</small></div>
+              </b-col>
+              <b-col cols="12" sm="6">
+                <div>Published At: <small>{{ job.publishedAt || 'Not Published' }}</small></div>
+                <div>Completed At: <small>{{ job.completedAt || 'Incomplete' }}</small></div>
+              </b-col>
+            </b-row>
+          </b-container>
+        </b-col>
+      </b-row>
+    </template>
   </b-container>
 </template>
 
@@ -61,7 +95,7 @@ const config = useRuntimeConfig();
 const err = ref(null);
 const jobs = ref([]);
 const loading = ref(false);
-const perPage = ref(20);
+const perPage = ref(15);
 const totalPages = ref(0);
 const totalElements = ref(0);
 const currentPage = ref(1);
@@ -74,49 +108,8 @@ const dateFormatter = dateValue => {
   return format(new Date(dateValue), DateTimeFormats.DISPLAY_DATE)
 }
 
-const fields = [
-  // { key: "id" },
-  // { key: "creator" },
-  // { key: "assignee" },
-  { key: "summary" },
-  // { key: "detailedDescription" },
-  { key: "jobType" },
-  { key: "feedback", label: "Has Feedback", formatter: value => !!value, tdClass: "text-center", thClass: "text-center" },
-  { key: "isBuilderWaste", label: "Builder Waste", formatter: value => !!value, tdClass: "text-center", thClass: "text-center" },
-  { key: "isBusiness", label: "Business", formatter: value => !!value, tdClass: "text-center", thClass: "text-center" },
-  { key: "isEasyAccess", label: "Easy Access", formatter: value => !!value, tdClass: "text-center", thClass: "text-center" },
-  { key: "isRecyclable", label: "Recyclable", formatter: value => !!value, tdClass: "text-center", thClass: "text-center" },
-  { key: "createdAt", formatter: dateFormatter, tdClass: "text-center", thClass: "text-center" },
-  { key: "updatedAt", formatter: dateFormatter, tdClass: "text-center", thClass: "text-center" },
-  { key: "actions", label: "" }
-]
-
-const onCancel = () => {
-  const router = useRouter()
-
-  router.push(this.useLocalePath({ name: "user-jobs" }))
-}
-
-const onClearData = () => {
-  try {
-    loading.value = true;
-
-    jobs.value = []
-  } finally {
-    loading.value = false
-  }
-}
-
 const onCreateJob = () => {
   console.log("Creating Job")
-}
-
-const onRefresh = evt => {
-  console.log(evt)
-}
-
-const onReset = () => {
-  jobs.value = [];
 }
 
 const onRowClicked = row => {
@@ -140,7 +133,19 @@ const onGetData = async () => {
     lazy: true,
     server: false,
     query: {
-      page: currentPage.value
+      page: currentPage.value,
+      perPage: perPage.value
+    },
+    transform: (data) => {
+      return {
+        ...data,
+        content: data.content?.map(job => {
+          return {
+            ...job,
+            updatedAt: format(new Date(job.updatedAt), DateTimeFormats.DISPLAY_DATE)
+          }
+        })
+      }
     }
   }).then(async (res) => {
     jobs.value = res.data.value.content;
@@ -151,9 +156,11 @@ const onGetData = async () => {
     currentPage.value = res.data.value.number + 1;
 
     err.value = null;
-  }).catch(err => {
-    console.log("An error occurred: %o", err);
-    err.value = err;
+
+    // throw new Error("Test Error")
+  }).catch(_err => {
+    console.error(_err)
+    err.value = _err;
   }).finally(() => {
     loading.value = false;
   })
@@ -161,9 +168,9 @@ const onGetData = async () => {
 onActivated(() => {
   const route = useRoute();
   currentPage.value = route?.query?.page || 1;
-});
 
-onGetData();
+  onGetData();
+});
 
 watch(currentPage, (newPage, oldPage) => {
   if (oldPage !== newPage) {
@@ -177,3 +184,9 @@ watch(currentPage, (newPage, oldPage) => {
 })
 </script>
 
+<script>
+import { v4 } from "uuid";
+export default {
+  key: v4()
+}
+</script>
