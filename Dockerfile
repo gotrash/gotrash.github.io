@@ -4,6 +4,7 @@ FROM node:${NODE_VERSION} as base
 
 ARG PORT=3000
 ENV NODE_ENV=production
+ENV AUTH_ORIGIN=http://localhost:3000
 
 WORKDIR /app
 
@@ -21,6 +22,7 @@ RUN npm prune
 # Run
 FROM base as run
 ENV PORT=$PORT
+ENV AUTH_ORIGIN=$AUTH_ORIGIN
 
 COPY --from=build /app/.output /app/.output
 # Optional, only needed if you rely on unbundled dependencies
