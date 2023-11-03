@@ -1,12 +1,8 @@
 <template>
   <b-container class="p-3">
     <!-- Page Title Area -->
-    <b-row>
-      <b-col cols="12" class="text-center mb-4">
-        <page-title>{{ $t("PAGE_TITLE__USER_ADDRESSES") }}</page-title>
-        <page-summary>{{ $t("PAGE_SUMMARY__USER_ADDRESSES") }}</page-summary>
-      </b-col>
-    </b-row>
+    <page-title-row :title="$t('PAGE_TITLE__USER_ADDRESSES')" :summary="$t('PAGE_SUMMARY__USER_ADDRESSES')" />
+
     <!-- Show the bar and button if we have addresses -->
     <b-row v-if="data.content && data.content.length > 0">
       <b-col cols="12">
@@ -27,16 +23,10 @@
       </b-col>
     </b-row>
     <!-- If we have an error or we're loading data, show an alert to the user -->
-    <b-row v-if="error || pending">
-      <b-col cols="12">
-        <message-spinner v-if="pending">
-          {{ $t(`USER_ADDRESSES.MESSAGE.LOADING_ADDRESSES`) }}
-        </message-spinner>
-        <error-alert v-else-if="error" :error="error" />
-      </b-col>
-    </b-row>
+    <page-status-row :error="error" :busy="pending" :busyMessage="$t(`USER_ADDRESSES.MESSAGE.LOADING_ADDRESSES`)" />
+
     <!-- Main Content -->
-    <template v-else>
+    <template v-if="!error && !pending">
       <b-row>
         <!-- If we don't have any addresses, show the alternative UI -->
         <b-col v-if="!data.content || data.content.length <= 0" cols="12">
@@ -94,18 +84,13 @@ const onAddressDeleted = () => { }
 const onDeleteAddress = () => { }
 
 const { getSession } = useAuth();
+let session = await getSession();
 
-const config = useRuntimeConfig();
-const session = await getSession();
-
-const { data, pending, error } = await useFetch(
+const { data, pending, error, execute, refresh } = await useApi(
   '/user/addresses', {
-  baseURL: config.public.apiUrl,
   headers: {
     Authorization: `Bearer ${session?.session?.access_token}`
   },
-  lazy: true,
-  server: false,
   default: () => {
     return {
       content: [],
@@ -119,10 +104,10 @@ const { data, pending, error } = await useFetch(
     page: currentPage,
     perPage: perPage
   },
-  onResponse: res => {
-    totalElements.value = res.response._data.totalElements
-    totalPages.value = res.response._data.totalPages
-  }
+  onResponse: data => {
+    totalElements.value = data.response._data.totalElements
+    totalPages.value = data.response._data.totalPages
+  },
 })
 
 watch(currentPage, () => {
@@ -156,5 +141,13 @@ watch(
   },
   { immediate: true },
 )
+
+onActivated(async () => {
+  // loading.value = false;
+  const { getSession } = useAuth();
+  session = await getSession();
+
+  execute();
+})
 
 </script>
