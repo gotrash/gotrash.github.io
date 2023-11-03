@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:1
-ARG NODE_VERSION=lts
+ARG NODE_VERSION=18
 FROM node:${NODE_VERSION} as base
 
 ARG PORT=3000
@@ -17,7 +17,7 @@ RUN npm install --production=false
 COPY --link . .
 
 RUN npm run build
-RUN npm prune
+# RUN npm prune
 
 # Run
 FROM base as run
