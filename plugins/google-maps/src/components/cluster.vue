@@ -4,7 +4,8 @@
   </div>
 </template>
 <script>
-import { MarkerClusterer } from "@googlemaps/markerclusterer";
+import pkg from '@googlemaps/markerclusterer'
+const { MarkerClusterer } = pkg
 import buildComponent from './build-component.js'
 
 const props = {
@@ -77,8 +78,8 @@ export default buildComponent({
   name: 'cluster',
   ctr: () => {
     if (typeof MarkerClusterer === 'undefined') {
-      const errorMessage = 'MarkerClusterer is not installed!';
-      console.error(errorMessage);
+      const errorMessage = 'MarkerClusterer is not installed!'
+      console.error(errorMessage)
       throw new Error(errorMessage)
     }
     return MarkerClusterer
@@ -110,7 +111,6 @@ export default buildComponent({
         }
       })
     }
-
 
     if (this.$clusterObject) {
       this.$clusterObject.clearMarkers()
