@@ -18,12 +18,10 @@
       <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img class="img-circle elevation-2" alt="User Image" src="~/assets/images/user-placeholder.png" />
+            <img class="img-circle elevation-2" alt="User Image" src="/images/user-placeholder.png" />
           </div>
           <div class="info">
-            <span class="d-block">
-              User Name
-            </span>
+            <span class="d-block"> User Name </span>
           </div>
         </div>
         <nav class="mt-2">
@@ -56,27 +54,25 @@
 </template>
 
 <script setup>
-const { signOut } = useAuth();
+  const { signOut } = useAuth();
 
-useHead({
-  bodyAttrs: {
-    class: 'sidebar-mini layout-fixed'
-  }
-})
+  useHead({
+    bodyAttrs: {
+      class: "sidebar-mini layout-fixed"
+    }
+  });
 </script>
 
 <script>
-import AdminFooter from "~/components/footers/AdminFooter";
+  import AdminFooter from "~/components/footers/AdminFooter";
 
-export default {
-  components: {
-    AdminFooter,
-    AdminNavbar: () => import("~/components/navbars/AdminNavbar"),
-    AdminLteSidebar: () => import("~/components/sidebars/AdminLteSidebar"),
-    ControlSidebar: () => import("~/components/sidebars/ControlSidebar")
-  },
-  setup() {
-
-  }
-}
+  export default {
+    components: {
+      AdminFooter,
+      AdminNavbar: () => import("~/components/navbars/AdminNavbar"),
+      AdminLteSidebar: () => import("~/components/sidebars/AdminLteSidebar"),
+      ControlSidebar: () => import("~/components/sidebars/ControlSidebar")
+    },
+    setup() {}
+  };
 </script>
