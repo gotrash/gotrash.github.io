@@ -1,4 +1,6 @@
 <script>
+  import { h } from "vue";
+
   export default {
     layout: "admin",
     data() {
@@ -155,6 +157,9 @@
       if (sortDesc) this.sortDesc = true;
     },
     methods: {
+      scopedTableSlots() {
+        return null;
+      },
       onRowClick(data) {
         const key = this.$options.idKey || "id";
         this.$router.push({
@@ -185,8 +190,6 @@
           });
       },
       renderFilterCard() {
-        const h = this.$createElement.bind(this);
-
         return h(
           "b-card",
           {
@@ -326,7 +329,6 @@
       },
       renderHeader() {
         const { currentPage: value, pageTitle, perPage, totalRows } = this;
-        const h = this.$createElement.bind(this);
 
         const headerComponents = [h("b-card-title", pageTitle)];
 
@@ -359,7 +361,6 @@
       },
       renderTable() {
         const { renderHeader } = this;
-        const h = this.$createElement.bind(this);
 
         return h(
           "b-card",
@@ -407,7 +408,7 @@
         );
       }
     },
-    render(h) {
+    render() {
       const cards = [];
 
       if (this.$options.showFilters) cards.push(this.renderFilterCard());
