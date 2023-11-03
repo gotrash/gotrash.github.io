@@ -2,7 +2,7 @@ export default [
   ["@bootstrap-vue-next/nuxt", { composables: true }],
   // https://github.com/dargmuesli/nuxt-cookie-control
   "@dargmuesli/nuxt-cookie-control",
-  // "@nuxt/content",
+  "@nuxt/content",
   "@nuxt/devtools",
   // https://devtools.nuxtjs.org/module/ui-kit
   // "@nuxt/devtools-ui-kit",
