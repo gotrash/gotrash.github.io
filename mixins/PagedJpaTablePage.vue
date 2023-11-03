@@ -1,5 +1,6 @@
 <script>
   import { h } from "vue";
+  import * as Bootstrap from "bootstrap-vue-next";
 
   export default {
     layout: "admin",
@@ -191,17 +192,17 @@
       },
       renderFilterCard() {
         return h(
-          "b-card",
+          Bootstrap.BCard,
           {
             props: { bodyBgVariant: "white", headerBgVariant: "white", footerBgVariant: "white", noBody: true }
           },
-          [
-            h("b-card-body", [
-              h("b-form", [
-                h("b-form-row", [
-                  h("b-col", { class: "my-1", props: { lg: 6 } }, [
+          () => [
+            h(Bootstrap.BCardBody, [
+              h(Bootstrap.BForm, [
+                h(Bootstrap.BRow, [
+                  h(Bootstrap.BCol, { class: "my-1", props: { lg: 6 } }, [
                     h(
-                      "b-form-group",
+                      Bootstrap.BFormGroup,
                       {
                         class: "mb-0",
                         props: {
@@ -213,8 +214,8 @@
                         }
                       },
                       [
-                        h("b-input-group", { size: "sm" }, [
-                          h("b-form-select", {
+                        h(Bootstrap.BInputGroup, { size: "sm" }, [
+                          h(Bootstrap.BFormSelect, {
                             id: "sort-by-select",
                             on: {
                               input: value => {
@@ -227,7 +228,7 @@
                               value: this.sortBy
                             }
                           }),
-                          h("b-form-select", {
+                          h(Bootstrap.BFormSelect, {
                             on: {
                               input: value => (this.sortDesc = value)
                             },
@@ -242,9 +243,9 @@
                       ]
                     )
                   ]),
-                  h("b-col", { class: "my-1", props: { lg: 6 } }, [
+                  h(Bootstrap.BCol, { class: "my-1", props: { lg: 6 } }, [
                     h(
-                      "b-form-group",
+                      Bootstrap.BFormGroup,
                       {
                         class: "mb-0",
                         props: {
@@ -256,8 +257,8 @@
                         }
                       },
                       [
-                        h("b-input-group", { size: "sm" }, [
-                          h("b-form-input", {
+                        h(Bootstrap.BInputGroup, { size: "sm" }, [
+                          h(Bootstrap.BFormInput, {
                             id: "search-input",
                             on: {
                               update: value => (this.search = value)
@@ -270,9 +271,9 @@
                               value: this.search
                             }
                           }),
-                          h("b-input-group-append", [
+                          h(Bootstrap.BInputGroupAppend, [
                             h(
-                              "b-button",
+                              Bootstrap.BButton,
                               {
                                 on: {
                                   click: () => {
@@ -291,9 +292,9 @@
                       ]
                     )
                   ]),
-                  h("b-col", { class: "my-1", props: { lg: 6 } }, [
+                  h(Bootstrap.BCol, { class: "my-1", props: { lg: 6 } }, [
                     h(
-                      "b-form-group",
+                      Bootstrap.BFormGroup,
                       {
                         class: "mb-0",
                         props: {
@@ -307,7 +308,7 @@
                         }
                       },
                       [
-                        h("b-form-select", {
+                        h(Bootstrap.BFormSelect, {
                           id: "per-page-select",
                           on: {
                             input: value => (this.perPage = value)
@@ -356,7 +357,7 @@
         }
 
         return h("b-card-header", {}, [
-          h("div", { class: "d-flex align-items-center justify-content-between" }, headerComponents)
+          h("div", { class: "d-flex align-items-center justify-content-between" }, () => headerComponents)
         ]);
       },
       renderTable() {

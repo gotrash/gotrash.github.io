@@ -1,4 +1,5 @@
 <script>
+  import { useLayoutStore } from "~/store/layout";
   export default {
     components: {
       AdminFooter: () => import("~/components/footers/AdminFooter"),
@@ -34,34 +35,52 @@
         }
       },
       controlSidebarHeight() {
-        return this.$store.getters["layout/getHeight"]("controlSidebar");
+        const store = useLayoutStore();
+
+        return store.getHeight("controlSidebar");
       },
       footerHeight() {
-        return this.$store.getters["layout/getHeight"]("footer");
+        const store = useLayoutStore();
+
+        return store.getHeight("footer");
       },
       headerHeight() {
-        return this.$store.getters["layout/getHeight"]("header");
+        const store = useLayoutStore();
+
+        return store.getHeight("header");
       },
       maxHeight() {
-        return this.$store.getters["layout/getMaxHeight"];
+        const store = useLayoutStore();
+
+        return store.getMaxHeight;
       },
       sidebarHeight() {
-        return this.$store.getters["layout/getHeight"]("sidebar");
+        const store = useLayoutStore();
+
+        return store.getHeight("sidebar");
       },
       windowHeight: {
         get() {
-          return this.$store.getters["layout/getHeight"]("window");
+          const store = useLayoutStore();
+
+          return store.getHeight("window");
         },
         set(height) {
-          this.$store.commit("layout/setHeight", { key: "window", height });
+          const store = useLayoutStore();
+
+          store.heights.window = height;
         }
       },
       windowWidth: {
         get() {
-          return this.$store.getters["layout/getWidth"]("window");
+          const store = useLayoutStore();
+
+          return store.getWidth("window");
         },
         set(width) {
-          this.$store.commit("layout/setWidth", { key: "window", width });
+          const store = useLayoutStore();
+
+          store.widths.window = width;
         }
       }
     },
