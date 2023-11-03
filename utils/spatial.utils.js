@@ -1,7 +1,5 @@
-/* eslint-disable eqeqeq */
-import _ from lodash;
+const _ = await import("lodash");
 const flatten = _.flatten;
-
 export const recursiveGeoJsonFix = coordinates => {
   if (Array.isArray(coordinates)) {
     coordinates.forEach((coord, i) => {
@@ -39,10 +37,4 @@ export const findDuplicateGeoJsonCoordinates = coordinates => {
 
 export const removeGeoJsonDuplicates = (geoJson, i) => {
   recursiveGeoJsonFix(geoJson.coordinates);
-};
-
-export default {
-  findDuplicateGeoJsonCoordinates,
-  recursiveGeoJsonFix,
-  removeGeoJsonDuplicates
 };
