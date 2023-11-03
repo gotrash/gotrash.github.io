@@ -10,7 +10,7 @@
           'background-attachment': 'fixed'
         }"
       >
-        <div class="overlay"></div>
+        <div class="overlay" style="top: 0; bottom: 0; left: 0; right: 0"></div>
         <b-container :style="{ 'padding-top': '6.4rem' }" fluid>
           <b-row :style="{ 'min-height': '50.0vh' }">
             <b-col
