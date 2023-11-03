@@ -1,6 +1,8 @@
 import { NuxtAuthHandler } from "#auth";
 import GithubProvider from "next-auth/providers/github";
 
+const config = useRuntimeConfig();
+
 export default NuxtAuthHandler({
   debug: false,
   origin: "http://localhost:3000",
@@ -43,7 +45,7 @@ export default NuxtAuthHandler({
       if (jwt.token?.expires_at * 1000 < Date.now()) {
         try {
           const url =
-            `http://localhost:9000/oauth2/token?` +
+            `${config.public.authUrl}/oauth2/token?` +
             new URLSearchParams({
               client_id: "messaging-client",
               client_secret: "secret",
