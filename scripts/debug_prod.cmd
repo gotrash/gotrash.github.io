@@ -1,6 +1,6 @@
 @echo off
 
-set API_URL="api.gotrash.co.uk"
-set AUTH_URL="auth.gotrash.co.uk"
+set API_URL="https://api.gotrash.co.uk"
+set AUTH_URL="https://auth.gotrash.co.uk"
 
 npm run dev

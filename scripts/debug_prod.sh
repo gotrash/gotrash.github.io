@@ -1,5 +1,5 @@
 #!/bin/bash
 
-API_URL="api.gotrash.co.uk" \
-  AUTH_URL="auth.gotrash.co.uk" \
+API_URL="https://api.gotrash.co.uk" \
+  AUTH_URL="https://auth.gotrash.co.uk" \
   npm run dev
