@@ -122,12 +122,3 @@
     }
   };
 </script>
-
-<style lang="scss">
-  .custom-text-field {
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid $white;
-    border-radius: 0px;
-  }
-</style>
