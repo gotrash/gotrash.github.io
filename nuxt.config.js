@@ -1,5 +1,5 @@
 import {
-  plugins,
+  // plugins,
   auth,
   bootstrapVueNext,
   build,
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
   mapbox,
   modules,
   nitro,
-  plugins,
+  // plugins,
   robots,
   runtimeConfig,
   security: {},

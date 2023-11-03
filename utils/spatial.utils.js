@@ -1,5 +1,6 @@
 /* eslint-disable eqeqeq */
-import { flatten } from "lodash";
+const _ = require("lodash");
+const flatten = _.flatten;
 
 export const recursiveGeoJsonFix = coordinates => {
   if (Array.isArray(coordinates)) {
