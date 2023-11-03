@@ -96,7 +96,7 @@ export default {
       const { getSession } = useAuth();
       const session = await getSession();
 
-      useFetch("http://localhost:8090/user/feedback/statistics", {
+      useApi("http://localhost:8090/user/feedback/statistics", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${session?.session?.access_token}`

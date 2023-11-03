@@ -11,12 +11,12 @@
             <img
               class="mx-sm-1 d-block d-sm-inline-block mx-auto mb-2 mb-sm-0"
               style="max-width: 160px"
-              src="~/assets/images/google-play-badge.png"
+              src="/images/google-play-badge.png"
             />
             <img
               class="mx-sm-1 d-block d-sm-inline-block mx-auto mb-2 mb-sm-0"
               style="max-width: 160px"
-              src="~/assets/images/google-play-badge.png"
+              src="/images/google-play-badge.png"
             />
           </div>
         </b-col>

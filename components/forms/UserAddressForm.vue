@@ -2,12 +2,13 @@
   <b-form @submit.stop.prevent="onSubmit">
     <b-row>
       <b-col cols="12" md="6">
-        <b-form-group class="mb-3" :label="$t('USER_ADDRESSES.LABEL.LABEL')">
+        <b-form-group :label="$t('USER_ADDRESSES.LABEL.LABEL')">
           <b-form-input class="mb-2" v-model="address.label" />
           <b-form-text>{{ $t("USER_ADDRESSES.FIELD_TEXT.LABEL") }}</b-form-text>
         </b-form-group>
       </b-col>
     </b-row>
+    <hr />
     <b-row>
       <b-col cols="12" lg="6" order="2" order-lg="1">
         <b-form-group class="mb-2" :label="$t('USER_ADDRESSES.LABEL.MAP')">
@@ -46,7 +47,7 @@
 
         <b-form-group v-if="showDebug" class="mb-2" :label="$t('GENERAL.LABEL.DEBUG')">
           <pre-code>
-            {{ address }}
+            {{ address.toJSON ? address.toJSON() : address }}
           </pre-code>
         </b-form-group>
       </b-col>
