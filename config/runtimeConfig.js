@@ -1,10 +1,16 @@
 export default {
+  authUrl: process.env.AUTH_URL,
+  apiUrl: process.env.API_URL,
+  baseUrl: process.env.BASE_URL,
+  auth: {
+    origin: process.env.AUTH_ORIGIN
+  },
   public: {
-    authUrl: process.env.AUTH_URL || "http://localhost:9000",
-    apiUrl: process.env.API_URL || "http://localhost:8090",
-    baseURL: process.env.BASE_URL || "http://localhost:8090",
+    authUrl: process.env.AUTH_URL,
+    apiUrl: process.env.API_URL,
+    baseUrl: process.env.BASE_URL,
     auth: {
-      origin: process.env.AUTH_ORIGIN || "http://localhost:3000"
+      origin: process.env.AUTH_ORIGIN
     }
   }
 };
