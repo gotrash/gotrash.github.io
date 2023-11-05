@@ -3,22 +3,25 @@ import GithubProvider from "next-auth/providers/github";
 
 const config = useRuntimeConfig();
 
+console.log(`${config.public.authUrl}/.well-known/openid-configuration`);
+
 export default NuxtAuthHandler({
-  debug: false,
-  // origin: "http://localhost:3000",
-  // baseURL: "http://localhost:3000",
+  debug: true,
   pages: {
     // Change the default behavior to use `/login` as the path for the sign-in page
     signIn: "/login"
   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
+      console.log("User: %o; Account: %o; Profile: %o; Email: %s; Credentials: %o");
       return true;
     },
     async redirect(r) {
+      console.log("Redirect: %o;", r);
       return r.baseUrl;
     },
     async session({ session, token }) {
+      console.log("Session: %o; Token: %o;");
       if (!session.access_token && token?.access_token) {
         session.access_token = token.access_token;
       }
@@ -31,6 +34,7 @@ export default NuxtAuthHandler({
       return { session, token };
     },
     async jwt(jwt) {
+      console.log("JWT: %o", jwt);
       if (jwt.account) {
         jwt.token.email = jwt.account.email;
         jwt.token.access_token = jwt.account.access_token;
@@ -94,7 +98,10 @@ export default NuxtAuthHandler({
       scope: "openid profile message.read",
       checks: ["pkce", "state"],
       idToken: true,
+      signinUrl: `${config.public.authUrl}/api/auth/signin/oidc`,
+      callbackUrl: `${config.public.authUrl}/api/auth/signin/oidc`,
       profile(profile, ...args) {
+        console.log("Profile: %o; Args: %o", profile, args);
         return {
           id: profile.sub
           // name: profile.name,
