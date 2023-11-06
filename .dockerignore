@@ -8,7 +8,9 @@
 /electron
 /scripts
 /test
+!/test/_data
 SECURITY.md
 README.md
 server.crt
 server.key
+/admin-lte
