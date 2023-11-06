@@ -98,8 +98,8 @@ export default NuxtAuthHandler({
       scope: "openid profile message.read",
       checks: ["pkce", "state"],
       idToken: true,
-      signinUrl: `${config.public.authUrl}/api/auth/signin/oidc`,
-      callbackUrl: `${config.public.authUrl}/api/auth/signin/oidc`,
+      // signinUrl: `${config.public.authUrl}/api/auth/signin/oidc`,
+      // callbackUrl: `${config.public.authUrl}/api/auth/signin/oidc`,
       profile(profile, ...args) {
         console.log("Profile: %o; Args: %o", profile, args);
         return {
