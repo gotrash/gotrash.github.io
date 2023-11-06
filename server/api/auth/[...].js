@@ -13,11 +13,18 @@ export default NuxtAuthHandler({
   },
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log("User: %o; Account: %o; Profile: %o; Email: %s; Credentials: %o");
+      console.log(
+        "User: %o; Account: %o; Profile: %o; Email: %s; Credentials: %o",
+        user,
+        account,
+        profile,
+        email,
+        credentials
+      );
+
       return true;
     },
     async redirect(r) {
-      console.log("Redirect: %o;", r);
       return r.baseUrl;
     },
     async session({ session, token }) {
@@ -26,7 +33,6 @@ export default NuxtAuthHandler({
         session.access_token = token.access_token;
       }
 
-      session.work = "Close";
       session.user.name = token.sub;
 
       if (token.error) session.error = token.error;
