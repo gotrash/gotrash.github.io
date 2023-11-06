@@ -21,7 +21,7 @@ export default NuxtAuthHandler({
       return r.baseUrl;
     },
     async session({ session, token }) {
-      console.log("Session: %o; Token: %o;");
+      console.log("Session: %o; Token: %o;", session, token);
       if (!session.access_token && token?.access_token) {
         session.access_token = token.access_token;
       }
