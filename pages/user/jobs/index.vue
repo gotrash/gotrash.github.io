@@ -233,17 +233,11 @@
   });
 
   onBeforeRouteLeave((to, from) => {
-    if (pageWatcher) {
-      console.log("Stopping Page Watcher: %o", pageWatcher);
-      // Stop watching the current page for a value change
-      pageWatcher();
-    }
+    // Stop watching the current page for a value change
+    if (pageWatcher) pageWatcher();
 
-    if (routeWatcher) {
-      console.log("Stopping Route Watcher: %o", routeWatcher);
-      // Stop watching the route (browser URL) for updates
-      routeWatcher();
-    }
+    // Stop watching the route (browser URL) for updates
+    if (routeWatcher) routeWatcher();
 
     return true;
   });
