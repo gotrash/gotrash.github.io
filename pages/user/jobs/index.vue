@@ -186,11 +186,8 @@
   let pageWatcher = null,
     routeWatcher = null;
 
-  onActivated(() => {
+  const _setupPageWatcher = () => {
     const route = useRoute();
-    currentPage.value = parseInt(parseFloat(route?.query?.page || 1));
-
-    _onGetData();
 
     // Setup a watcher to monitor the current page value.  If the value updates, we should update the URL and fetch the
     // the data from the API.
@@ -205,6 +202,10 @@
 
       router.push({ ...route, query: { page: currentPage.value > 1 ? currentPage.value : undefined } });
     });
+  };
+
+  const _setupRouteWatcher = () => {
+    const route = useRoute();
 
     routeWatcher = watch(
       () => route.query,
@@ -218,13 +219,32 @@
       },
       { deep: true, immediate: false }
     );
+  };
+
+  onActivated(() => {
+    const route = useRoute();
+    currentPage.value = parseInt(parseFloat(route?.query?.page || 1));
+
+    _onGetData();
+
+    _setupPageWatcher();
+
+    _setupRouteWatcher();
   });
 
-  onBeforeRouteLeave(() => {
-    // Stop watching the current page for a value change
-    pageWatcher?.stop();
+  onBeforeRouteLeave((to, from) => {
+    if (pageWatcher) {
+      console.log("Stopping Page Watcher: %o", pageWatcher);
+      // Stop watching the current page for a value change
+      pageWatcher();
+    }
 
-    // Stop watching the route (browser URL) for updates
-    routeWatcher?.stop();
+    if (routeWatcher) {
+      console.log("Stopping Route Watcher: %o", routeWatcher);
+      // Stop watching the route (browser URL) for updates
+      routeWatcher();
+    }
+
+    return true;
   });
 </script>
