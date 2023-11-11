@@ -1,4 +1,5 @@
 export { default as DateTimeFormats } from "./DateTimeFormats";
+export { default as FilterOptions } from "./FilterOptions";
 export { default as LoadSizes } from "./LoadSizes";
 export { default as MaxFieldLengths } from "./MaxFieldLengths";
 export { default as MinFieldLengths } from "./MinFieldLengths";
