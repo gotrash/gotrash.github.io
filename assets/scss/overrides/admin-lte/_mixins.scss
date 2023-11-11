@@ -2,16 +2,16 @@
 // General: Mixins
 //
 
-@import "node_modules/admin-lte/build/scss/mixins/animations";
-@import "node_modules/admin-lte/build/scss/mixins/scrollbar";
+@import "../../vendor/admin-lte/mixins/animations";
+@import "../../vendor/admin-lte/mixins/scrollbar";
 @import "mixins/cards";
-@import "node_modules/admin-lte/build/scss/mixins/sidebar";
-@import "node_modules/admin-lte/build/scss/mixins/navbar";
-@import "node_modules/admin-lte/build/scss/mixins/accent";
-@import "node_modules/admin-lte/build/scss/mixins/custom-forms";
+@import "../../vendor/admin-lte/mixins/sidebar";
+@import "../../vendor/admin-lte/mixins/navbar";
+@import "../../vendor/admin-lte/mixins/accent";
+@import "../../vendor/admin-lte/mixins/custom-forms";
 @import "mixins/backgrounds";
-@import "node_modules/admin-lte/build/scss/mixins/dark-mode";
-@import "node_modules/admin-lte/build/scss/mixins/direct-chat";
-@import "node_modules/admin-lte/build/scss/mixins/toasts";
-@import "node_modules/admin-lte/build/scss/mixins/touch-support";
-@import "node_modules/admin-lte/build/scss/mixins/miscellaneous";
+@import "../../vendor/admin-lte/mixins/dark-mode";
+@import "../../vendor/admin-lte/mixins/direct-chat";
+@import "../../vendor/admin-lte/mixins/toasts";
+@import "../../vendor/admin-lte/mixins/touch-support";
+@import "../../vendor/admin-lte/mixins/miscellaneous";

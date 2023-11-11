@@ -15,9 +15,9 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='htt
 @import "node_modules/bootstrap/scss/variables-dark";
 
 // @import "node_modules/admin-lte/build/scss/bootstrap-variables";
-@import "node_modules/admin-lte/build/scss/variables";
-@import "node_modules/admin-lte/build/scss/variables-alt";
-@import "node_modules/admin-lte/build/scss/mixins";
+@import "./vendor/admin-lte/variables";
+@import "./vendor/admin-lte/variables-alt";
+@import "./vendor/admin-lte/mixins";
 
 @import "node_modules/bootstrap/scss/maps";
 @import "node_modules/bootstrap/scss/mixins";
@@ -114,21 +114,21 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='htt
  */
 // @import "~admin-lte/build/scss/mixins";
 
-@import "node_modules/admin-lte/build/scss/root";
-@import "node_modules/admin-lte/build/scss/animation-effects";
+@import "./vendor/admin-lte/root";
+@import "./vendor/admin-lte/animation-effects";
 // @import "node_modules/admin-lte/build/scss/preloader";
 @import "./overrides/admin-lte/layout";
-@import "node_modules/admin-lte/build/scss/main-header";
+@import "./vendor/admin-lte/main-header";
 @import "./overrides/admin-lte/brand";
 @import "./overrides/admin-lte/main-sidebar";
-@import "node_modules/admin-lte/build/scss/sidebar-mini";
+@import "./vendor/admin-lte/sidebar-mini";
 // @import "node_modules/admin-lte/build/scss/control-sidebar";
 // @import "node_modules/admin-lte/build/scss/dropdown";
-@import "node_modules/admin-lte/build/scss/navs";
-@import "node_modules/admin-lte/build/scss/pagination";
+@import "./vendor/admin-lte/navs";
+@import "./vendor/admin-lte/pagination";
 // @import "node_modules/admin-lte/build/scss/forms";
 // @import "node_modules/admin-lte/build/scss/progress-bars";
-@import "node_modules/admin-lte/build/scss/cards";
+@import "./vendor/admin-lte/cards";
 // @import "node_modules/admin-lte/build/scss/modals";
 // @import "node_modules/admin-lte/build/scss/toasts";
 @import "./overrides/admin-lte/buttons";
@@ -137,8 +137,8 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='htt
 // @import "node_modules/admin-lte/build/scss/table";
 // @import "node_modules/admin-lte/build/scss/carousel";
 // @import "node_modules/admin-lte/build/scss/close";
-@import "node_modules/admin-lte/build/scss/small-box";
-@import "node_modules/admin-lte/build/scss/info-box";
+@import "./vendor/admin-lte/small-box";
+@import "./vendor/admin-lte/info-box";
 // @import "node_modules/admin-lte/build/scss/timeline";
 // @import "node_modules/admin-lte/build/scss/products";
 // @import "node_modules/admin-lte/build/scss/direct-chat";
@@ -149,17 +149,17 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='htt
 // @import "node_modules/admin-lte/build/scss/pages/login_and_register";
 // @import "node_modules/admin-lte/build/scss/pages/404_500_errors";
 // @import "node_modules/admin-lte/build/scss/pages/invoice";
-@import "node_modules/admin-lte/build/scss/pages/profile";
+@import "./vendor/admin-lte/pages/profile";
 // @import "node_modules/admin-lte/build/scss/pages/e-commerce";
 // @import "node_modules/admin-lte/build/scss/pages/projects";
 // @import "node_modules/admin-lte/build/scss/pages/iframe";
 // @import "node_modules/admin-lte/build/scss/pages/kanban";
 // @import "node_modules/admin-lte/build/scss/parts/plugins";
 // @import "node_modules/admin-lte/build/scss/parts/miscellaneous";
-@import "node_modules/admin-lte/build/scss/miscellaneous";
-@import "node_modules/admin-lte/build/scss/print";
-@import "node_modules/admin-lte/build/scss/text";
-@import "node_modules/admin-lte/build/scss/elevation";
+@import "./vendor/admin-lte/miscellaneous";
+@import "./vendor/admin-lte/print";
+@import "./vendor/admin-lte/text";
+@import "./vendor/admin-lte/elevation";
 @import "overrides/admin-lte/colors";
 
 // .b-pagination {
