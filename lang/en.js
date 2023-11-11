@@ -64,6 +64,7 @@ export default {
   NAV__SERVICES: "Services",
   NAV__SETTINGS: "Settings",
   NAV__SIGNUP: "Signup",
+  NAV__SYSTEM_ADMIN: "System Admin",
   NAV__USER_LOCATIONS: "User Locations",
   NAV__USER: "User",
   NAV__USER_PROFILE: "User Profile",
@@ -72,15 +73,19 @@ export default {
   NAV__USER_ADDRESSES: "User Addresses",
   NAV__VERIFICATION_TOKENS: "Verification Tokens",
   // Page Summaries
-  PAGE_SUMMARY__USER_ADDRESSES: "These are all the addresses you have saved",
+  PAGE_SUMMARY__ADMIN_CONTINENTS: "This is where the data for continents is managed for the global GoTrash system.",
+  PAGE_SUMMARY__ADMIN_COUNTRIES: "This is where the system-wide country data and availability is managed.",
+  PAGE_SUMMARY__USER_ADDRESSES: "These are all the addresses you have saved.",
   PAGE_SUMMARY__USER_ADDRESSES__ADD_ADDRESS:
-    "Use this page to add an address to GoTrash to use when booking jobs or adding billing information",
+    "Use this page to add an address to GoTrash to use when booking jobs or adding billing information.",
   PAGE_SUMMARY__USER_ADDRESSES__EDIT_ADDRESS:
     "Although the information you can edit is limited, you can use this page to update information about your address.",
-  PAGE_SUMMARY__USER_FEEDBACKS: "This is a listing of the feedback you have left for your jobs",
-  PAGE_SUMMARY__USER_JOBS: "This is a listing of all the jobs you have created in reverse chronological order",
-  PAGE_SUMMARY__USER_PAYMENT_METHODS: "These are the payment methods you have setup",
+  PAGE_SUMMARY__USER_FEEDBACKS: "This is a listing of the feedback you have left for your jobs.",
+  PAGE_SUMMARY__USER_JOBS: "This is a listing of all the jobs you have created in reverse chronological order.",
+  PAGE_SUMMARY__USER_PAYMENT_METHODS: "These are the payment methods you have setup.",
   // Page Titles
+  PAGE_TITLE__ADMIN_CONTINENTS: "Continents",
+  PAGE_TITLE__ADMIN_COUNTRIES: "Countries",
   PAGE_TITLE__FEEDBACK: "Feedback",
   PAGE_TITLE__HOME: "Welcome to GoTrash",
   PAGE_TITLE__LOGIN: "Login",
