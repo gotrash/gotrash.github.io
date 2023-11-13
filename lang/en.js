@@ -20,6 +20,7 @@ export default {
   NAV__CONTINENTS: "Continents",
   NAV__COUNTRIES: "Countries",
   NAV__DASHBOARD: "Dashboard",
+  NAV__DATABASE: "Database",
   NAV__EDIT_COUNTRY: "Edit Country",
   NAV__FEEDBACK: "Feedback",
   NAV__FILES: "Files",
@@ -54,6 +55,10 @@ export default {
   NAV__POSTCODE_SECTORS: "Postcode Sectors",
   NAV__POSTCODE_UNITS: "Postcode Units",
   NAV__POSTCODES: "Postcodes",
+  NAV__POSTCODES__AREAS: "Areas",
+  NAV__POSTCODES__DISTRICTS: "Districts",
+  NAV__POSTCODES__SECTORS: "Sectors",
+  NAV__POSTCODES__UNITS: "Units",
   NAV__PRIVILEGE_TYPES: "Privilege Types",
   NAV__PRIVILEGES: "Privileges",
   NAV__REGISTERED_CLIENTS: "Registered Clients",
@@ -75,6 +80,9 @@ export default {
   // Page Summaries
   PAGE_SUMMARY__ADMIN_CONTINENTS: "This is where the data for continents is managed for the global GoTrash system.",
   PAGE_SUMMARY__ADMIN_COUNTRIES: "This is where the system-wide country data and availability is managed.",
+  PAGE_SUMMARY__ADMIN_POSTCODES: "This is where we can manage the postcode availability within GoTrash.",
+  PAGE_SUMMARY__ADMIN_DATABASE:
+    "This is where you can find all of the database change logs and associated database functionality.",
   PAGE_SUMMARY__USER_ADDRESSES: "These are all the addresses you have saved.",
   PAGE_SUMMARY__USER_ADDRESSES__ADD_ADDRESS:
     "Use this page to add an address to GoTrash to use when booking jobs or adding billing information.",
@@ -86,10 +94,12 @@ export default {
   // Page Titles
   PAGE_TITLE__ADMIN_CONTINENTS: "Continents",
   PAGE_TITLE__ADMIN_COUNTRIES: "Countries",
+  PAGE_TITLE__ADMIN_DATABASE: "Database",
   PAGE_TITLE__FEEDBACK: "Feedback",
   PAGE_TITLE__HOME: "Welcome to GoTrash",
   PAGE_TITLE__LOGIN: "Login",
   PAGE_TITLE__SIGNUP: "Signup",
+  PAGE_TITLE__ADMIN_POSTCODES: "Postcodes",
   PAGE_TITLE__POSTCODE_AREA: "Postcode Area | Postcode Areas",
   PAGE_TITLE__POSTCODE_DISTRICT: "Postcode District | Postcode Districts",
   PAGE_TITLE__POSTCODE_SECTOR: "Postcode Sector | Postcode Sectors",
@@ -188,6 +198,7 @@ export default {
   "GENERAL.LABEL.FORM_NONE": "--- None ---",
   "GENERAL.LABEL.INITIAL_SORT": "Initial Sort",
   "GENERAL.LABEL.LOGOUT": "Logout",
+  "GENERAL.LABEL.MORE_INFO": "More Info",
   "GENERAL.LABEL.PER_PAGE": "Per Page",
   "GENERAL.LABEL.POSTCODE": "Postcode",
   "GENERAL.LABEL.RESET": "Reset",
@@ -294,6 +305,10 @@ export default {
   "PAYMENT_METHODS.MESSAGE.SAVING_PAYMENT_METHOD": "Saving Payment Method",
   "PAYMENT_METHODS.MESSAGE.LOADING": "Loading Payment Methods",
   // Postcodes
+  "POSTCODES.LABEL.AREAS": "Areas",
+  "POSTCODES.LABEL.DISTRICTS": "Districts",
+  "POSTCODES.LABEL.SECTORS": "Sectors",
+  "POSTCODES.LABEL.UNITS": "Units",
   "POSTCODES.MESSAGE.INVALID_POSTCODE": "The postcode you have provided is not a valid UK postcode",
   // Service Providers
   "SERVICE_PROVIDERS.LABEL.ADDRESS": "Address",
