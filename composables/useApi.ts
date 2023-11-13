@@ -18,7 +18,7 @@ export async function useApi<T>(url: string | (() => string), options: UseFetchO
 
     // set user token if connected
     headers: {
-      Authorization: `Bearer ${session?.session?.access_token}`
+      Authorization: `Bearer ${session?.token?.access_token}`
     },
     lazy: true,
     server: false
