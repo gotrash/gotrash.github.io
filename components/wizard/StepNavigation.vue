@@ -1,6 +1,12 @@
 <template>
   <ol class="step-indicator">
-    <li is="step-navigation-step" v-for="step in steps" :key="step.id" :step="step" :currentstep="currentstep"></li>
+    <component
+      :is="'step-navigation-step'"
+      v-for="step in steps"
+      :key="step.id"
+      :step="step"
+      :currentstep="currentstep"
+    />
   </ol>
 </template>
 

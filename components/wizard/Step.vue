@@ -30,6 +30,7 @@
         }
       }
     },
+    emits: ["step-change"],
     computed: {
       active() {
         return this.step.id === this.currentstep;
