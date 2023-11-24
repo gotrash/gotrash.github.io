@@ -16,73 +16,73 @@
 </template>
 
 <script>
-import SimplePostcodeForm from "~/components/forms/SimplePostcodeForm";
+  import SimplePostcodeForm from "~/components/forms/SimplePostcodeForm";
 
-export default {
-  components: { SimplePostcodeForm },
-  emits: ["postcode:checked", "providers-found"],
-  props: {
-    hideMessage: Boolean
-  },
-  data() {
-    return {
-      busy: false,
-      form: {
-        postcode: null
-      },
-      noProviders: false
-    };
-  },
-  created() {
-    if (this.$route.query.noProviders) this.noProviders = true;
-  },
-  mounted() {
-    // const lastCheckedPostcode = this.$storage.getUniversal("lastCheckedPostcode");
-    // if (lastCheckedPostcode) this.form.postcode = lastCheckedPostcode;
-  },
-  methods: {
-    async checkPostcode() {
-      this.busy = true;
-      this.noProviders = false;
-      const { postcode } = this.form;
+  export default {
+    components: { SimplePostcodeForm },
+    props: {
+      hideMessage: Boolean
+    },
+    emits: ["postcode:checked", "providers-found"],
+    data() {
+      return {
+        busy: false,
+        form: {
+          postcode: null
+        },
+        noProviders: false
+      };
+    },
+    created() {
+      if (this.$route.query.noProviders) this.noProviders = true;
+    },
+    mounted() {
+      // const lastCheckedPostcode = this.$storage.getUniversal("lastCheckedPostcode");
+      // if (lastCheckedPostcode) this.form.postcode = lastCheckedPostcode;
+    },
+    methods: {
+      async checkPostcode() {
+        this.busy = true;
+        this.noProviders = false;
+        const { postcode } = this.form;
 
-      await new Promise(resolve => setTimeout(resolve, 500));
+        await new Promise(resolve => setTimeout(resolve, 500));
 
-      this.$nextTick(async () => {
-        // this.$storage.setUniversal("lastCheckedPostcode", postcode);
+        this.$nextTick(async () => {
+          // this.$storage.setUniversal("lastCheckedPostcode", postcode);
 
-        await $fetch("http://localhost:8090/check-postcode", { body: { postcode }, method: "POST" })
-          .then((res) => {
-            this.noProviders = !res;
+          await $fetch("http://localhost:8090/check-postcode", { body: { postcode }, method: "POST" })
+            .then(res => {
+              this.noProviders = !res;
 
-            // this.$storage.setUniversal("hasProviders", data);
+              // this.$storage.setUniversal("hasProviders", data);
 
-            this.$emit("postcode:checked", res);
+              this.$emit("postcode:checked", res);
 
-            if (res) {
-              this.$emit("providers-found");
-            }
-          })
-          .catch(_err => {
-            console.error(_err);
-            this.busy = false;
-            this.focus();
-          })
-          .finally(() => {
-            this.$nextTick(() => {
+              if (res) {
+                this.$emit("providers-found");
+              }
+            })
+            .catch(_err => {
+              console.error(_err);
               this.busy = false;
+              this.focus();
+            })
+            .finally(() => {
+              this.$nextTick(() => {
+                this.busy = false;
+              });
             });
-          });
-      });
-    },
-    focus() {
-      this.$nextTick(() => {
-        this.$refs.form.focus();
-      });
-    },
-    onAlertDismissed() {
-      this.noProviders = false;
+        });
+      },
+      focus() {
+        this.$nextTick(() => {
+          this.$refs.form.focus();
+        });
+      },
+      onAlertDismissed() {
+        this.noProviders = false;
+      }
     }
-  }
-};
+  };
 </script>

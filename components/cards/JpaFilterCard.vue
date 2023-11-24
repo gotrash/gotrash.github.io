@@ -35,6 +35,7 @@
         required: true
       }
     },
+    emits: ["update:per-page", "update:search", "update:sort-by", "update:sort-desc"],
     computed: {
       _perPage: {
         get() {

@@ -9,5 +9,5 @@
 </template>
 
 <script setup>
-const props = defineProps(["modelValue"])
+  defineProps(["modelValue"]);
 </script>

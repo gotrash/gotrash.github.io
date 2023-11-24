@@ -73,6 +73,7 @@ typings/
 
 # nuxt.js build output
 .nuxt
+.output
 
 # Nuxt generate
 dist
@@ -95,4 +96,14 @@ sw.*
 # Vim swap files
 *.swp
 
+# Static Files
 static/
+
+# VS Code Settings
+.vscode
+
+# Vendor Assets
+assets/**/vendor
+
+# Copy of pages folder
+pages copy/

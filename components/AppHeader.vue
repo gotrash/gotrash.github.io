@@ -3,7 +3,7 @@
 </template>
 
 <script>
-export default {
-  name: "AppHeader"
-}
+  export default {
+    name: "AppHeader"
+  };
 </script>

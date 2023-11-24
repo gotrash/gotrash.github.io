@@ -1,4 +1,4 @@
-import { isEqual } from "lodash";
+import isEqual from "lodash/isEqual";
 import BaseEntity from "./BaseEntity";
 import JobItem from "./JobItem";
 import JobType from "./JobType";

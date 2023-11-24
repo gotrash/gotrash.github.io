@@ -1,5 +1,5 @@
 <template>
-  <component class="mb-3" @delete="onDelete" :is="component" :payment-method="paymentMethod" />
+  <component :is="component" class="mb-3" :payment-method="paymentMethod" @delete="onDelete" />
 </template>
 
 <script setup>

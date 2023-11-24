@@ -1,5 +1,5 @@
 <template>
-  <b-card bodyBgVariant="white" headerBgVariant="white" footerBgVariant="white" no-body>
+  <b-card body-bg-variant="white" header-bg-variant="white" footer-bg-variant="white" no-body>
     <b-card-body>
       <b-form>
         <b-row>
@@ -15,9 +15,9 @@
               <b-input-group size="sm">
                 <b-form-select id="sort-by-select" v-model="_sortBy" :options="sortByOptions" size="sm"></b-form-select>
                 <b-form-select
-                  :disabled="!sortBy"
                   id="sort-by-select"
                   v-model="_sortDesc"
+                  :disabled="!sortBy"
                   :options="sortDescOptions"
                   size="sm"
                 ></b-form-select>
@@ -43,15 +43,7 @@
                   type="search"
                 />
                 <b-input-group-append>
-                  <b-button
-                    :disabled="!search"
-                    @click="
-                      () => {
-                        search = '';
-                      }
-                    "
-                    size="sm"
-                  >
+                  <b-button :disabled="!search" size="sm" @click="$emit('update:search', '')">
                     {{ $t("GENERAL.LABEL.CLEAR") }}
                   </b-button>
                 </b-input-group-append>
@@ -87,8 +79,13 @@
   import { FilterOptions } from "~/constants";
 
   const props = defineProps({
+    hideSearch: Boolean,
+    hideShowDeleted: Boolean,
+    hideSortBy: Boolean,
+    hideStatus: Boolean,
     perPage: Number,
     search: [Number, String],
+    softDeletes: Boolean,
     sortBy: [Number, String],
     sortByOptions: Array,
     sortDesc: Boolean,

@@ -1,12 +1,23 @@
 {
-  "env": { "node": true },
-  "root": false,
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": { "project": ["./tsconfig.json"] },
+  "env": { "browser": true, "node": true },
+  "root": true,
+  "extends": [
+    "@nuxtjs/eslint-config-typescript",
+    // "eslint:recommended",
+    // "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser"
+    // "project": ["./tsconfig.json"]
+  },
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
     "@typescript-eslint/strict-boolean-expressions": "off",
+    "vue/require-prop-types": "off",
+    "vue/require-default-prop": "off",
+    "vue/no-v-html": "off",
     "no-console": "off"
   },
   "globals": {
@@ -14,5 +25,5 @@
     "useFetch": true,
     "useRuntimeConfig": true
   },
-  "ignorePatterns": ["src/**/*.test.ts", "src/frontend/generated/*"]
+  "ignorePatterns": ["src/**/*.test.ts", "src/frontend/generated/*", "assets/**/vendor", "pages copy"]
 }

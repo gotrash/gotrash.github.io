@@ -10,15 +10,15 @@
 </template>
 
 <script>
-export default {
-  props: {
-    text: {
-      type: String,
-      required: false,
-      default() {
-        return null
+  export default {
+    props: {
+      text: {
+        type: String,
+        required: false,
+        default() {
+          return null;
+        }
       }
     }
-  }
-}
+  };
 </script>

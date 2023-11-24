@@ -1,5 +1,5 @@
 import {
-  auth,
+  // auth,
   bootstrapVueNext,
   build,
   colorMode,
@@ -31,7 +31,6 @@ console.log(process.env.NODE_ENV);
 export default defineNuxtConfig({
   "google-adsense": googleAdsense,
   vite,
-  auth,
   bootstrapVueNext,
   build,
   colorMode,

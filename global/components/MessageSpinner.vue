@@ -5,44 +5,45 @@
     </slot>
 
     <component :is="messageTag">
-      <slot>{{ $t(message) }}</slot><span v-if="!hideEllipsis">...</span>
+      <slot>{{ $t(message) }}</slot
+      ><span v-if="!hideEllipsis">...</span>
     </component>
   </div>
 </template>
 
 <script>
-export default {
-  props: {
-    hideEllipsis: Boolean,
-    hideSpinner: Boolean,
-    icon: {
-      type: [Array, String],
-      required: false,
-      default() {
-        return "spinner";
-      }
-    },
-    message: {
-      type: String,
-      required: false,
-      default() {
-        return "GENERAL.MESSAGE.LOADING";
-      }
-    },
-    messageTag: {
-      type: String,
-      required: false,
-      default() {
-        return "h1";
-      }
-    },
-    spinIcon: {
-      type: Boolean,
-      required: false,
-      default() {
-        return true;
+  export default {
+    props: {
+      hideEllipsis: Boolean,
+      hideSpinner: Boolean,
+      icon: {
+        type: [Array, String],
+        required: false,
+        default() {
+          return "spinner";
+        }
+      },
+      message: {
+        type: String,
+        required: false,
+        default() {
+          return "GENERAL.MESSAGE.LOADING";
+        }
+      },
+      messageTag: {
+        type: String,
+        required: false,
+        default() {
+          return "h1";
+        }
+      },
+      spinIcon: {
+        type: Boolean,
+        required: false,
+        default() {
+          return true;
+        }
       }
     }
-  }
-};
+  };
 </script>
