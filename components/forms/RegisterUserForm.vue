@@ -81,6 +81,7 @@
           Object.prototype.hasOwnProperty.call(obj, "confirmPassword")
       }
     },
+    emits: ["input", "submit"],
     computed: {
       form: {
         get() {

@@ -43,6 +43,7 @@
         }
       }
     },
+    emits: ["update:zoom"],
     computed: {
       _zoom: {
         get() {

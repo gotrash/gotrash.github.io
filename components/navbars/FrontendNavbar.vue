@@ -28,13 +28,13 @@
         <standard-nav-item v-if="!authenticated" :to="localePath({ name: 'auth-sign-up' })">
           {{ $t("NAV__SIGNUP") }}
         </standard-nav-item>
-        <b-nav-item-dropdown class="text-success" v-if="false" text="Lang" right>
+        <b-nav-item-dropdown v-if="false" class="text-success" text="Lang" right>
           <b-dropdown-item href="#">EN</b-dropdown-item>
           <b-dropdown-item href="#">ES</b-dropdown-item>
           <b-dropdown-item href="#">RU</b-dropdown-item>
           <b-dropdown-item href="#">FA</b-dropdown-item>
         </b-nav-item-dropdown>
-        <b-nav-item-dropdown align-end v-if="authenticated" no-caret auto-close>
+        <b-nav-item-dropdown v-if="authenticated" align-end no-caret auto-close>
           <!-- Using 'button-content' slot -->
           <template #button-content>
             <div class="text-success align-items-center d-flex">
@@ -42,7 +42,8 @@
               <!--  <fa-icon class="ms-2" icon="angle-down" />-->
             </div>
           </template>
-          <b-dropdown-item :to="localePath({ name: 'user-profile' })">{{ $t("NAV__PROFILE") }}</b-dropdown-item>
+          <b-dropdown-item :to="localePath({ name: 'admin' })">{{ $t("NAV__SYSTEM_ADMIN") }}</b-dropdown-item>
+          <b-dropdown-item :to="localePath({ name: 'user' })">{{ $t("NAV__DASHBOARD") }}</b-dropdown-item>
           <b-dropdown-item @click.stop.prevent="signOut">Sign Out</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
@@ -56,9 +57,12 @@
 
 <script setup>
   import { computed } from "vue";
-  const { status, data, lastRefreshedAt, signIn, signOut } = useAuth();
-  const headers = useRequestHeaders(["cookie"]);
-  const { data: token } = await useFetch("/api/token", { headers });
+</script>
+
+<script>
+  import SiteLogo from "../SiteLogo";
+  import StandardNavItem from "./StandardNavItem.vue";
+  const { status, signIn, signOut } = useAuth();
 
   const authenticated = computed(() => {
     return status.value === "authenticated";
@@ -66,9 +70,7 @@
 
   const onSignIn = () => signIn("oidc");
 
-  const onSignOut = () => signOut("oidc");
-
-  const props = defineProps({
+  defineProps({
     iconClasses: {
       type: String,
       required: false,
@@ -87,11 +89,6 @@
       }
     }
   });
-</script>
-
-<script>
-  import SiteLogo from "../SiteLogo";
-  import StandardNavItem from "./StandardNavItem.vue";
   export default {
     name: "SiteNavbar",
     components: { SiteLogo, StandardNavItem }

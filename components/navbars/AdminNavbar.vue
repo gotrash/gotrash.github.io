@@ -19,8 +19,6 @@
   export default {
     name: "AdminNavbar",
     components: {
-      FullscreenNavbarItem: () => import("./navbar-items/FullscreenNavbarItem.vue"),
-      LogoutNavbarItem: () => import("./navbar-items/LogoutNavbarItem.vue"),
       StandardNavbarNav: () => import("./navbar-navs/StandardNavbarNav")
     },
     computed: {
@@ -62,7 +60,7 @@
         this.setupListeners();
       });
     },
-    beforeDestroy() {
+    beforeUnmount() {
       this.removeListeners();
     },
     methods: {

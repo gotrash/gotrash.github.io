@@ -9,14 +9,14 @@
       <fa-icon icon="angle-left" class="right sidebar-dropdown-icon" />
     </a>
     <b-collapse
+      :id="`sidebar-dropdown-${section}-collapse`"
+      :visible="isOpen"
+      class="nav"
+      tag="ul"
       @hide="emit('hide')"
       @hidden="emit('hidden')"
       @show="emit('show')"
       @shown="emit('shown')"
-      :visible="isOpen"
-      class="nav"
-      tag="ul"
-      :id="`sidebar-dropdown-${section}-collapse`"
     >
       <slot>
         <sidebar-dropdown-item
@@ -32,11 +32,10 @@
 
 <script setup>
   import SidebarDropdownItem from "./SidebarDropdownItem.vue";
-  import { vBToggle } from "bootstrap-vue-next";
 
   const isOpen = ref(false);
 
-  const emit = defineEmits(["hide", "hidden"]);
+  const emit = defineEmits(["hide", "hidden", "show", "shown"]);
 
   const props = defineProps({
     label: {

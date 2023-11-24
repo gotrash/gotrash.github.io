@@ -126,8 +126,6 @@
     // $each
   } from "vuelidate/lib/validators";
   import FrontendFormCheckbox from "./fields/FrontendFormCheckbox";
-  import FrontendFormFile from "./fields/FrontendFormFile";
-  import FrontendFormInput from "./fields/FrontendFormInput";
   import FrontendFormSelect from "./fields/FrontendFormSelect";
   import FrontendFormTextarea from "./fields/FrontendFormTextarea";
   import { FrontendFormGroupAttributes, FrontendFormTextAttributes, LoadSizes } from "~/constants";
@@ -135,17 +133,16 @@
 
   export default {
     name: "JobForm",
-    FormTextAttributes: FrontendFormTextAttributes,
-    FormGroupAttributes: FrontendFormGroupAttributes,
     components: {
       FrontendFormCheckbox,
-      FrontendFormFile,
       FrontendFormSelect,
-      FrontendFormInput,
       FrontendFormTextarea
     },
-    LoadSizes,
     mixins: [HasModel, IsFormComponent],
+    emits: ["submit"],
+    FormTextAttributes: FrontendFormTextAttributes,
+    FormGroupAttributes: FrontendFormGroupAttributes,
+    LoadSizes,
     validations: {
       form: {
         detailedDescription: {

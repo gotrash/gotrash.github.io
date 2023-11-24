@@ -1,9 +1,9 @@
 <template>
-
+  <h1>Copy of Simple Postcode Form</h1>
 </template>
 
 <script>
-  import { required, maxLength } from '@vuelidate/validators';
+  import { required, maxLength } from "@vuelidate/validators";
   import { HasModel, IsFormComponent } from "~/mixins";
   import { IsUkPostcode } from "~/validators";
 
@@ -18,6 +18,7 @@
         validator: form => Object.prototype.hasOwnProperty.call(form, "postcode")
       }
     },
+    emits: ["submit"],
     validations: {
       model: {
         postcode: {
@@ -41,8 +42,7 @@
         }
 
         this.$emit("submit");
-      },
-
+      }
     }
   };
 </script>

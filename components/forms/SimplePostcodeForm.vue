@@ -54,12 +54,12 @@
 
   export default {
     props: ["busy", "modelValue"],
+    emits: ["update:modelValue", "submit"],
     setup() {
       return {
         v$: useVuelidate()
       };
     },
-    emits: ["update:modelValue", "submit"],
     computed: {
       disabled() {
         const { busy, form } = this;
@@ -88,7 +88,7 @@
       focus() {
         this.$nextTick(this.$refs["postcode-input"].focus);
       },
-      validateState(name) {
+      validateState() {
         const { $dirty, $error } = this.v$;
 
         return $dirty ? !$error : null;

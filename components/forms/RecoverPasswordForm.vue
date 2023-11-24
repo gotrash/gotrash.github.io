@@ -63,6 +63,7 @@
           Object.prototype.hasOwnProperty.call(obj, "password")
       }
     },
+    emits: ["input", "submit"],
     data() {
       return {
         showPassword: false,
