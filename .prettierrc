@@ -4,7 +4,6 @@
   "cursorOffset": -1,
   "endOfLine": "auto",
   "htmlWhitespaceSensitivity": "css",
-  "jsxBracketSameLine": false,
   "jsxSingleQuote": false,
   "printWidth": 120,
   "proseWrap": "preserve",
@@ -15,6 +14,5 @@
   "tabWidth": 2,
   "trailingComma": "none",
   "useTabs": false,
-  "vueIndentScriptAndStyle": true,
-  "editorconfig": true
+  "vueIndentScriptAndStyle": true
 }

@@ -111,7 +111,7 @@
 
   &:active,
   &:focus {
-    @include box-shadow(inset 0 3px 5px rgba($black, .125));
+    @include box-shadow(inset 0 3px 5px rgba($black, 0.125));
   }
 
   // The badge
@@ -130,7 +130,7 @@
   @include button-size($button-padding-y-xs, $button-padding-x-xs, $button-font-size-xs, $button-border-radius-xs);
 }
 
-@include dark-mode () {
+@include dark-mode() {
   .btn-default,
   .btn-app {
     background-color: lighten($dark, 2.5%);

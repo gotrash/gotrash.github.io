@@ -4,12 +4,8 @@
   "compilerOptions": {
     "types": ["@intlify/unplugin-vue-i18n/messages"],
     "paths": {
-      "@/*": [
-        "./*"
-       ],
-       "~/*": [
-        "./*"
-       ]
-     }
+      "@/*": ["./*"],
+      "~/*": ["./*"]
+    }
   }
 }
