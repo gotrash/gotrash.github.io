@@ -1,47 +1,52 @@
 import { NuxtAuthHandler } from "#auth";
-import GithubProvider from "next-auth/providers/github";
-
-const config = useRuntimeConfig();
-
-console.log(`${config.public.authUrl}/.well-known/openid-configuration`);
 
 export default NuxtAuthHandler({
-  debug: true,
+  debug: false,
   pages: {
     // Change the default behavior to use `/login` as the path for the sign-in page
-    signIn: "/login"
+    signIn: "/login",
+    signOut: "/"
   },
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      console.log(
-        "User: %o; Account: %o; Profile: %o; Email: %s; Credentials: %o",
-        user,
-        account,
-        profile,
-        email,
-        credentials
-      );
+    // async signIn({ user, account, profile, email, credentials }) {
+    //   console.log("Sign-in Callback");
 
-      return true;
-    },
-    async redirect(r) {
+    //   // console.log(
+    //   //   "User: %o; Account: %o; Profile: %o; Email: %s; Credentials: %o",
+    //   //   user,
+    //   //   account,
+    //   //   profile,
+    //   //   email,
+    //   //   credentials
+    //   // );
+
+    //   return true;
+    // },
+    redirect(r) {
+      // console.log("Redirect Callback");
+
       return r.baseUrl;
     },
-    async session({ session, token }) {
-      console.log("Session: %o; Token: %o;", session, token);
-      if (!session.access_token && token?.access_token) {
-        session.access_token = token.access_token;
-      }
-
+    session({ session, token }) {
       session.user.name = token.sub;
+      session.user.email = token.sub;
+      session.user.image = null;
+      session.userId = parseInt(parseFloat(token.id));
 
       if (token.error) session.error = token.error;
+
+      // console.log("Session: %o; Token: %o;", session, token);
 
       return { session, token };
     },
     async jwt(jwt) {
-      console.log("JWT: %o", jwt);
+      // console.log("JWT Callback");
+
+      const config = useRuntimeConfig();
+
+      // console.log("JWT: %o", jwt);
       if (jwt.account) {
+        jwt.token.id = jwt.profile ? parseInt(parseFloat(jwt.profile.userId)) : null;
         jwt.token.email = jwt.account.email;
         jwt.token.access_token = jwt.account.access_token;
         if (jwt.account.refresh_token) jwt.token.refresh_token = jwt.account.refresh_token;
@@ -86,28 +91,25 @@ export default NuxtAuthHandler({
       return jwt.token;
     }
   },
-  secret: "super-secret",
+  secret: useRuntimeConfig().public.authSecret,
   providers: [
     // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
-    GithubProvider.default({
-      clientId: "67459753ac6cc1d52410",
-      clientSecret: "2a05d2e5c2262c26a20796d3638483dff3738e77"
-    }),
     {
       id: "oidc",
-      name: "Oidc",
+      name: "OpenID Connect",
       type: "oauth",
+      version: "2.0",
       clientId: "messaging-client",
       clientSecret: "secret",
-      wellKnown: `${config.public.authUrl}/.well-known/openid-configuration`,
+      wellKnown: `${useRuntimeConfig().public.authUrl}/.well-known/openid-configuration`,
       authorization: { params: { scope: "openid profile" } },
       scope: "openid profile message.read",
       checks: ["pkce", "state"],
       idToken: true,
-      // signinUrl: `${config.public.authUrl}/api/auth/signin/oidc`,
-      // callbackUrl: `${config.public.authUrl}/api/auth/signin/oidc`,
-      profile(profile, ...args) {
-        console.log("Profile: %o; Args: %o", profile, args);
+      // signinUrl: `${useRuntimeConfig().public.authUrl}/api/auth/signin/oidc`,
+      // callbackUrl: `${useRuntimeConfig().public.authUrl}/api/auth/signin/oidc`,
+      profile(profile) {
+        // console.log("Profile: %o; Args: %o", profile, args);
         return {
           id: profile.sub
           // name: profile.name,
