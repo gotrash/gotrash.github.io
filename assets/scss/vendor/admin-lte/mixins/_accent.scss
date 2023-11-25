@@ -24,7 +24,7 @@
       &:active,
       &.active {
         background-color: $color;
-        color: color-yiq($color);
+        color: color-contrast($color);
       }
     }
 
@@ -35,7 +35,7 @@
       }
 
       &::after {
-        $new-color: color-yiq($color);
+        $new-color: color-contrast($color);
         background-image: str-replace($custom-checkbox-indicator-icon-checked, str-replace(#{$custom-control-indicator-checked-color}, "#", "%23"), str-replace(#{$new-color}, "#", "%23"));
       }
     }
