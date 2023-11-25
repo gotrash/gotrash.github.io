@@ -9,6 +9,7 @@
         }
       }
     },
+    emits: ["input"],
     computed: {
       model: {
         get() {

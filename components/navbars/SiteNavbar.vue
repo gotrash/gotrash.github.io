@@ -33,7 +33,7 @@
         >
       </template>
       <b-nav-dropdown v-if="showLanguageSwitcher" id="nav--lang-dropdown" toggle-class="nav-link-custom" right>
-        <template slot="text">
+        <template #text>
           {{ $t("NAV__LANG") }}
         </template>
         <b-dropdown-item

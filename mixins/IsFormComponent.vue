@@ -1,17 +1,17 @@
 <script>
   import { useVuelidate } from "@vuelidate/core";
-  import { required, email } from "@vuelidate/validators";
 
   export default {
-    setup() {
-      return { v$: useVuelidate() };
-    },
     props: {
       isDisabled: Boolean,
       isBusy: Boolean,
       showCancel: Boolean,
       showReset: Boolean,
       hideSubmit: Boolean
+    },
+    emits: ["input", "cancel", "reset", "submit"],
+    setup() {
+      return { v$: useVuelidate() };
     },
     computed: {
       form: {

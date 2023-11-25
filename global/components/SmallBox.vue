@@ -19,7 +19,7 @@
         type: String,
         required: false,
         default() {
-          return "dark";
+          return "primary";
         }
       },
       icon: {

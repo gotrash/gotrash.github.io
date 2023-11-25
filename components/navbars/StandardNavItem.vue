@@ -10,8 +10,6 @@
 <script lang="ts">
   export default {
     inheritAttrs: false,
-    emit: ["click"],
-    emits: ["click"],
     props: {
       hideText: Boolean,
       icon: {
@@ -35,9 +33,13 @@
       },
       to: {
         type: [Object, String],
-        required: false
+        required: false,
+        default() {
+          return null;
+        }
       }
     },
+    emits: ["click"],
     computed: {
       _iconClasses() {
         const { iconClasses } = this;

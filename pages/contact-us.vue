@@ -43,7 +43,7 @@
   import headerBg from "~/assets/images/rubbish-truck.jpg";
 
   definePageMeta({
-    layout: "home",
+    layout: "home"
   });
 
   export default {
