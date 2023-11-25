@@ -34,18 +34,20 @@
           <b-dropdown-item href="#">RU</b-dropdown-item>
           <b-dropdown-item href="#">FA</b-dropdown-item>
         </b-nav-item-dropdown>
-        <b-nav-item-dropdown v-if="authenticated" align-end no-caret auto-close>
-          <!-- Using 'button-content' slot -->
-          <template #button-content>
-            <div class="text-success align-items-center d-flex">
-              <img class="img-circle elevation-2" src="/images/user-placeholder.png" />
-              <!--  <fa-icon class="ms-2" icon="angle-down" />-->
-            </div>
-          </template>
-          <b-dropdown-item :to="localePath({ name: 'admin' })">{{ $t("NAV__SYSTEM_ADMIN") }}</b-dropdown-item>
-          <b-dropdown-item :to="localePath({ name: 'user' })">{{ $t("NAV__DASHBOARD") }}</b-dropdown-item>
-          <b-dropdown-item @click.stop.prevent="signOut">Sign Out</b-dropdown-item>
-        </b-nav-item-dropdown>
+        <client-only>
+          <b-nav-item-dropdown v-if="authenticated" align-end no-caret auto-close>
+            <!-- Using 'button-content' slot -->
+            <template #button-content>
+              <div class="text-success align-items-center d-flex">
+                <img class="img-circle elevation-2" src="/images/user-placeholder.png" />
+                <!--  <fa-icon class="ms-2" icon="angle-down" />-->
+              </div>
+            </template>
+            <b-dropdown-item :to="localePath({ name: 'admin' })">{{ $t("NAV__SYSTEM_ADMIN") }}</b-dropdown-item>
+            <b-dropdown-item :to="localePath({ name: 'users' })">{{ $t("NAV__DASHBOARD") }}</b-dropdown-item>
+            <b-dropdown-item @click.stop.prevent="signOut">Sign Out</b-dropdown-item>
+          </b-nav-item-dropdown>
+        </client-only>
       </b-navbar-nav>
       <b-nav-form class="d-none">
         <b-form-input class="me-2" placeholder="Search" />
@@ -57,11 +59,6 @@
 
 <script setup>
   import { computed } from "vue";
-</script>
-
-<script>
-  import SiteLogo from "../SiteLogo";
-  import StandardNavItem from "./StandardNavItem.vue";
   const { status, signIn, signOut } = useAuth();
 
   const authenticated = computed(() => {
@@ -89,6 +86,12 @@
       }
     }
   });
+</script>
+
+<script>
+  import SiteLogo from "../SiteLogo";
+  import StandardNavItem from "./StandardNavItem.vue";
+
   export default {
     name: "SiteNavbar",
     components: { SiteLogo, StandardNavItem }
