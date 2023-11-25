@@ -1,5 +1,5 @@
 <template>
-  <ContentDoc :style="{ 'padding-top': '6.4rem', 'min-height': '72vh' }" tag="main">
+  <ContentDoc :style="{ 'min-height': '72vh' }" tag="main">
     <template #not-found>
       <div
         class="position-relative"
@@ -50,10 +50,10 @@
   import FrontendAppLinksSection from "~/components/sections/FrontpageAppLinksSection";
   import FrontendSocialLinksSection from "~/components/sections/FrontpageSocialLinksSection";
   import FrontendUsefulLinksSection from "~/components/sections/FrontpageUsefulLinksSection";
-  import SiteFooter from "~/components/footers/SiteFooter";
+  import SiteFooter from "~/components/layout/SiteFooter";
   import SiteLogo from "~/components/SiteLogo";
   import headerBg from "~/assets/images/rubbish-truck.jpg";
   definePageMeta({
-    layout: "home"
+    layout: "default"
   });
 </script>
