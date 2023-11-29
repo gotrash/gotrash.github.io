@@ -1,6 +1,10 @@
 export default defineI18nConfig(() => ({
-  warnHtmlInMessage: "off",
+  warnHtmlInMessage: false,
   warnHtmlMessage: false,
   legacy: false,
-  globalInjection: true
+  globalInjection: true,
+  strictMessage: false,
+  compilation: {
+    strictMessage: false
+  }
 }));

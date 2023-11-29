@@ -103,3 +103,4 @@ build
 !.env.example
 dist-electron/
 pages copy/
+!pages/admin/coverage
