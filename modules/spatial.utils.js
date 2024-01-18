@@ -3,6 +3,10 @@
 import defu from "defu";
 import path from "path";
 import { defineNuxtModule, addPlugin } from "nuxt/kit";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineNuxtModule({
   meta: {
