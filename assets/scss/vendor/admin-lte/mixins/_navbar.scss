@@ -6,7 +6,7 @@
 @mixin navbar-variant($name, $color) {
   .navbar-#{$name} {
     background-color: $color;
-    color: color-contrast($color);
+    color: color-yiq($color);
 
     &.navbar-light {
       .form-control-navbar {

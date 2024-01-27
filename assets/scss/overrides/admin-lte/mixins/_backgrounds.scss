@@ -44,8 +44,7 @@
       }
 
       &:hover {
-        background: $color linear-gradient(180deg, mix($body-bg, darken($color, 7.5%), 15%), darken($color, 7.5%))
-          repeat-x !important;
+        background: $color linear-gradient(180deg, mix($body-bg, darken($color, 7.5%), 15%), darken($color, 7.5%)) repeat-x !important;
         border-color: darken($color, 10%);
         color: darken(color-contrast($color), 7.5%);
       }
@@ -54,8 +53,7 @@
       &:not(:disabled):not(.disabled).active,
       &:active,
       &.active {
-        background: $color linear-gradient(180deg, mix($body-bg, darken($color, 10%), 15%), darken($color, 10%))
-          repeat-x !important;
+        background: $color linear-gradient(180deg, mix($body-bg, darken($color, 10%), 15%), darken($color, 10%)) repeat-x !important;
         border-color: darken($color, 12.5%);
         color: color-contrast(darken($color, 10%));
       }

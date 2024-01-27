@@ -9,7 +9,7 @@
 
     &,
     > a {
-      color: color-contrast($color) !important;
+      color: color-yiq($color) !important;
     }
 
     &.btn {
