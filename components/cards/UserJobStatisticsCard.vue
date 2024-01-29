@@ -122,8 +122,9 @@
         this.loading = true;
         const { getSession } = useAuth();
         const session = await getSession();
+        const config = useRuntimeConfig();
 
-        useApi("http://localhost:8090/user/feedback/statistics", {
+        useApi(`${config.public.apiUrl}/user/feedback/statistics`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${session?.session?.access_token}`

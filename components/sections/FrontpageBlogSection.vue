@@ -111,10 +111,10 @@
       };
     },
     methods: {
-      onSlideStart() {
+      onSlideStart(slide) {
         this.sliding = true;
       },
-      onSlideEnd() {
+      onSlideEnd(slide) {
         this.sliding = false;
       }
     }

@@ -129,27 +129,27 @@
 </template>
 
 <script>
-  export default {
-    computed: {
-      controlSidebarHeight: {
-        get() {
-          return this.$store.getters("layout/getHeight")("controlSidebar");
-        },
-        set(height) {
-          this.$store.commit("layout/setHeight", { key: "controlSidebar", height });
-        }
+export default {
+  computed: {
+    controlSidebarHeight: {
+      get() {
+        return this.$store.getters("layout/getHeight")("controlSidebar");
       },
-      controlSidebarWidth: {
-        get() {
-          return this.$store.getters("layout/getWidth")("controlSidebar");
-        },
-        set(width) {
-          this.$store.commit("layout/setWidth", { key: "controlSidebar", width });
-        }
+      set(height) {
+        this.$store.commit("layout/setHeight", { key: "controlSidebar", height });
       }
     },
-    mounted() {
-      this.controlSidebarHeight = this.$refs.content.clientHeight;
+    controlSidebarWidth: {
+      get() {
+        return this.$store.getters("layout/getWidth")("controlSidebar");
+      },
+      set(width) {
+        this.$store.commit("layout/setWidth", { key: "controlSidebar", width });
+      }
     }
-  };
+  },
+  mounted() {
+    this.controlSidebarHeight = this.$refs.content.clientHeight;
+  }
+};
 </script>

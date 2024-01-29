@@ -9,24 +9,24 @@
 </template>
 
 <script setup>
-  defineProps({
-    error: {
-      type: [Object, String, Boolean, null],
-      required: false,
-      default() {
-        return null;
-      }
-    },
-    busy: {
-      type: Boolean,
-      required: false,
-      default() {
-        return null;
-      }
-    },
-    busyMessage: {
-      type: String,
-      required: true
+defineProps({
+  error: {
+    type: [Object, String, Boolean, null],
+    required: false,
+    default() {
+      return null
     }
-  });
+  },
+  busy: {
+    type: Boolean,
+    required: false,
+    default() {
+      return null
+    }
+  },
+  busyMessage: {
+    type: String,
+    required: true
+  }
+})
 </script>

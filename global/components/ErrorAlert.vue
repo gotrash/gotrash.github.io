@@ -5,20 +5,20 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      error: {
-        type: [Error, String],
-        required: false,
-        default() {
-          return null;
-        }
-      }
-    },
-    computed: {
-      showError() {
-        return this.error !== null;
+export default {
+  props: {
+    error: {
+      type: [Error, String],
+      required: false,
+      default() {
+        return null
       }
     }
-  };
+  },
+  computed: {
+    showError() {
+      return this.error !== null
+    }
+  }
+}
 </script>

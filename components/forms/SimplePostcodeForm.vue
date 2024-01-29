@@ -88,7 +88,7 @@
       focus() {
         this.$nextTick(this.$refs["postcode-input"].focus);
       },
-      validateState() {
+      validateState(name) {
         const { $dirty, $error } = this.v$;
 
         return $dirty ? !$error : null;

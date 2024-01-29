@@ -2,7 +2,6 @@ import type { UseFetchOptions } from "nuxt/app";
 import { FilterOptions } from "@/constants";
 import type { Ref } from "vue";
 import { defu } from "defu";
-import { TableField } from "bootstrap-vue-next";
 
 const ENABLED = "enabled";
 const DISABLED = "disabled";
@@ -88,7 +87,7 @@ export class JpaPageOptions implements IJpaPageOptions {
   }
 }
 
-export function useJpa<T>(fields: Array<TableField>): IJpaPageData<T> {
+export function useJpa<T>(url: string | (() => string), options: UseFetchOptions<T> = {}): IJpaPageData<T> {
   // These reactive references are to hold the page state and any error message(s) we may have.
   const err: Ref<string | object | null> = ref(null);
   const loading: Ref<boolean> = ref(false);

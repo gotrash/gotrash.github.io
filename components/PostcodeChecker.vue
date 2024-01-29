@@ -45,13 +45,14 @@
         this.busy = true;
         this.noProviders = false;
         const { postcode } = this.form;
+        const config = useRuntimeConfig();
 
         await new Promise(resolve => setTimeout(resolve, 500));
 
         this.$nextTick(async () => {
           // this.$storage.setUniversal("lastCheckedPostcode", postcode);
 
-          await $fetch("http://localhost:8090/check-postcode", { body: { postcode }, method: "POST" })
+          await $fetch(`${config.public.apiUrl}/check-postcode`, { params: { postcode } })
             .then(res => {
               this.noProviders = !res;
 

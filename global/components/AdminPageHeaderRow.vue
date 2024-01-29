@@ -1,8 +1,8 @@
 <script>
   import { BRow, BCol } from "bootstrap-vue-next";
-  import { h } from "vue";
   import PageSummary from "./PageSummary.vue";
   import PageTitle from "./PageTitle.vue";
+  import { h } from "vue";
 
   export default {
     props: {

@@ -19,13 +19,19 @@
                 <div>
                   <div>
                     <div>
-                      <div><b class="h6">Company No:</b> <span class="font-weight-bolder">12345678</span></div>
+                      <div>
+                        <b class="h6">Company No:</b> <span class="font-weight-bolder">12345678</span>
+                      </div>
                     </div>
                     <div>
-                      <div><b class="h6">VAT No:</b> <span class="font-weight-bolder">123 4567 89</span></div>
+                      <div>
+                        <b class="h6">VAT No:</b> <span class="font-weight-bolder">123 4567 89</span>
+                      </div>
                     </div>
                     <div>
-                      <div><b class="h6">Waste Licence ID:</b> <span class="font-weight-bolder">ABCD12345</span></div>
+                      <div>
+                        <b class="h6">Waste Licence ID:</b> <span class="font-weight-bolder">ABCD12345</span>
+                      </div>
                     </div>
                   </div>
                 </div>
