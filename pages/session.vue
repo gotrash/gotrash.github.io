@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-  const { status, data, lastRefreshedAt, getCsrfToken, getProviders, getSession } = useAuth();
+  const { status, data, lastRefreshedAt, getCsrfToken, getProviders, getSession, signIn, signOut } = useAuth();
   const csrf = await getCsrfToken();
   const providers = await getProviders();
   const session = await getSession();

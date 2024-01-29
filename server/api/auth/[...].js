@@ -22,12 +22,12 @@ export default NuxtAuthHandler({
 
     //   return true;
     // },
-    redirect(r) {
+    async redirect(r) {
       // console.log("Redirect Callback");
 
       return r.baseUrl;
     },
-    session({ session, token }) {
+    async session({ session, token }) {
       session.user.name = token.sub;
       session.user.email = token.sub;
       session.user.image = null;
@@ -108,7 +108,7 @@ export default NuxtAuthHandler({
       idToken: true,
       // signinUrl: `${useRuntimeConfig().public.authUrl}/api/auth/signin/oidc`,
       // callbackUrl: `${useRuntimeConfig().public.authUrl}/api/auth/signin/oidc`,
-      profile(profile) {
+      profile(profile, ...args) {
         // console.log("Profile: %o; Args: %o", profile, args);
         return {
           id: profile.sub

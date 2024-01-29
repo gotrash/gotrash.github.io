@@ -34,7 +34,6 @@
 </template>
 
 <script setup>
-  import MessageSpinner from "~/global/components/MessageSpinner";
   import { format } from "date-fns";
   import { DateTimeFormats, FilterOptions } from "~/constants";
 

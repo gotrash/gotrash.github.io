@@ -1,35 +1,35 @@
 <template>
-    <message-spinner v-if="loading">Loading</message-spinner>
-    <b-container class="py-3" v-else fluid>
-      <b-row>
-        <b-col cols="12" sm="10" md="8" xl="6" offset-sm="1" offset-md="2" offset-xl="3">
-          <pre v-if="user && showProfile">
+  <message-spinner v-if="loading">Loading</message-spinner>
+  <b-container v-else class="py-3" fluid>
+    <b-row>
+      <b-col cols="12" sm="10" md="8" xl="6" offset-sm="1" offset-md="2" offset-xl="3">
+        <pre v-if="user && showProfile">
             <code>
   {{ user }}
             </code>
           </pre>
-          <pre v-if="err">
+        <pre v-if="err">
             <code>
   {{ err }}
             </code>
           </pre>
-          <pre v-if="token">
+        <pre v-if="token">
             <code>
   {{ token }}
             </code>
           </pre>
-          <b-button @click="onToggleProfile">Toggle Profile</b-button>
-          <b-button @click="onClearData">Clear Data</b-button>
-          <b-button @click="onGetData">Get Data</b-button>
-        </b-col>
-      </b-row>
-    </b-container>
+        <b-button @click="onToggleProfile">Toggle Profile</b-button>
+        <b-button @click="onClearData">Clear Data</b-button>
+        <b-button @click="onGetData">Get Data</b-button>
+      </b-col>
+    </b-row>
+  </b-container>
 </template>
 
 <script setup>
   definePageMeta({
     layout: "user"
-  })
+  });
   let showProfile = ref(false);
   let err = ref(null);
   let loading = ref(false);
@@ -56,8 +56,9 @@
     loading.value = true;
     const { getSession } = useAuth();
     const session = await getSession();
+    const config = useRuntimeConfig();
 
-    useFetch("http://localhost:9000/userinfo", {
+    useFetch(`${config.public.authUrl}/userinfo`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${session?.session?.access_token}`
@@ -83,12 +84,12 @@
 </script>
 
 <script>
-import MessageSpinner from "~/global/components/MessageSpinner";
+  import MessageSpinner from "~/global/components/MessageSpinner";
 
-export default {
-  layout: "user",
-  components: {
-    MessageSpinner
-  }
-}
+  export default {
+    components: {
+      MessageSpinner
+    },
+    layout: "user"
+  };
 </script>

@@ -6,8 +6,7 @@
           <b-card-header>Addresses</b-card-header>
         </b-card>
         <b-container class="p-0" fluid>
-          <GMapAutocomplete placeholder="This is a placeholder" @place_changed="setPlace">
-          </GMapAutocomplete>
+          <GMapAutocomplete placeholder="This is a placeholder" @place_changed="setPlace"> </GMapAutocomplete>
           <message-spinner v-if="loading || deleting">{{ deleting ? "Deleting" : "Loading" }}...</message-spinner>
           <b-row v-else-if="addresses && showProfile">
             <b-col v-for="(add, addIndex) in addresses.value" :key="addIndex" cols="12" md="6" lg="4" xl="3">
@@ -27,20 +26,20 @@
                       <div v-if="add.county">{{ add.county }},<br /></div>
                       <div>{{ add.postcode }}.<br /><br /></div>
 
-                      <div v-if="add.latitude || add.longitude">{{ add.latitude || add.longitude }}<span
-                          v-if="add.longitude && add.latitude">/{{ add.longitude }}</span> <br /><br /></div>
+                      <div v-if="add.latitude || add.longitude">
+                        {{ add.latitude || add.longitude
+                        }}<span v-if="add.longitude && add.latitude">/{{ add.longitude }}</span> <br /><br />
+                      </div>
 
                       {{ add.enabled ? "Enabled" : "" }}
                     </address>
-                    <div class="mb-3" v-if="add.country">
+                    <div v-if="add.country" class="mb-3">
                       {{ add.country.countryName }} ({{ add.country.twoLetterCountryCode }})
                     </div>
                   </div>
-
                 </b-card-body>
               </b-card>
             </b-col>
-
           </b-row>
         </b-container>
       </b-col>
@@ -53,88 +52,91 @@
 </template>
 
 <script setup>
-import MessageSpinner from "~/global/components/MessageSpinner";
-definePageMeta({
-  layout: "user"
-})
+  import MessageSpinner from "~/global/components/MessageSpinner";
+  definePageMeta({
+    layout: "user"
+  });
 
-let showProfile = ref(true);
-let err = ref(null);
-let deleting = ref(false);
-let loading = ref(false);
-let addresses = ref([]);
+  let showProfile = ref(true);
+  let err = ref(null);
+  let deleting = ref(false);
+  let loading = ref(false);
+  let addresses = ref([]);
 
-const onDeleteLocation = async id => {
-  deleting.value = true;
+  const onDeleteLocation = async id => {
+    deleting.value = true;
 
-  const { getSession } = useAuth();
-  const session = await getSession();
+    const { getSession } = useAuth();
+    const session = await getSession();
+    const config = useRuntimeConfig();
 
-  await useFetch(`http://localhost:8090/user/locations/${id}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${session?.session?.access_token}`
+    await useFetch(`${config.public.apiUrl}/user/locations/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${session?.session?.access_token}`
+      }
+    })
+      .then(async () => {
+        await onGetData();
+      })
+      .catch(_err => {
+        console.error(_err);
+      })
+      .finally(() => {
+        deleting.value = false;
+      });
+  };
+
+  const onToggleProfile = () => {
+    showProfile.value = !showProfile.value;
+
+    if (!showProfile.value && (!addresses.value || user === "null")) {
+      onGetData();
     }
-  }).then(async () => {
-    await onGetData();
-  }).catch(_err => {
-    console.error(_err);
-  }).finally(() => {
-    deleting.value = false;
-  })
-}
+  };
 
-const onToggleProfile = () => {
-  showProfile.value = !showProfile.value;
+  const onClearData = () => {
+    addresses.value = [];
+  };
 
-  if (!showProfile.value && (!addresses.value || user === "null")) {
-    onGetData();
-  }
-};
+  const onGetData = async () => {
+    loading.value = true;
+    const { getSession } = useAuth();
+    const session = await getSession();
 
-const onClearData = () => {
-  addresses.value = [];
-};
-
-const onGetData = async () => {
-  loading.value = true;
-  const { getSession } = useAuth();
-  const session = await getSession();
-
-  useFetch("http://localhost:8090/user/locations", {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${session?.session?.access_token}`
-    }
-  })
-    .then(res => {
-      addresses.value = res?.data === "null" ? [] : res.data;
-
-      err.value = null;
+    useFetch(`${config.public.apiUrl}/user/locations`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${session?.session?.access_token}`
+      }
     })
-    .then(() => {
-    })
-    .catch(_err => {
-      console.error(_err);
-      err.value = _err;
-    })
-    .finally(() => {
-      loading.value = false;
-    });
-};
+      .then(res => {
+        addresses.value = res?.data === "null" ? [] : res.data;
 
-onGetData();
+        err.value = null;
+      })
+      .then(() => {})
+      .catch(_err => {
+        console.error(_err);
+        err.value = _err;
+      })
+      .finally(() => {
+        loading.value = false;
+      });
+  };
+
+  onGetData();
 </script>
 
 <script>
-export default {
-  methods: {
-    onLogThis() {
-      console.log(this.$bvModal);
-    },
-    setPlace(place) {
-      console.log("Place: %o", place);
+  export default {
+    methods: {
+      onLogThis() {
+        console.log(this.$bvModal);
+      },
+      setPlace(place) {
+        console.log("Place: %o", place);
+      }
     }
-  }
-}
+  };
 </script>
