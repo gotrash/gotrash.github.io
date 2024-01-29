@@ -14,6 +14,7 @@
     "preview": "nuxt preview",
     "generate": "nuxt generate",
     "dev": "nuxt dev --trace-warnings",
+    "dev:host": "nuxt dev --host --trace-warnings",
     "lint:css": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path .gitignore",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .lintignore .",
     "lint:prettier": "prettier --check .",
