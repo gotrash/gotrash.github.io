@@ -20,7 +20,6 @@ export default [
   "@pinia/nuxt",
   // "@pinia-orm/nuxt",
   "@sidebase/nuxt-auth",
-  "@sidebase/nuxt-session",
   // https://vueuse.org/guide/#nuxt
   // "@vueuse/nuxt",
   // https://nuxt.com/modules/dayjs
