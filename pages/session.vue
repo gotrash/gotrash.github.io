@@ -23,14 +23,6 @@
               </code>
             </pre>
           </dd>
-          <dt>Providers</dt>
-          <dd>
-            <pre>
-              <code>
-                {{ providers }}
-              </code>
-            </pre>
-          </dd>
           <dt>Session</dt>
           <dd>
             <pre>
