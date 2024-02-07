@@ -40,19 +40,9 @@
       </div>
     </template>
   </ContentDoc>
-  <frontend-app-links-section />
-  <frontend-social-links-section />
-  <frontend-useful-links-section />
-  <SiteFooter />
 </template>
 
 <script setup>
-  import FrontendAppLinksSection from "~/components/sections/FrontpageAppLinksSection";
-  import FrontendSocialLinksSection from "~/components/sections/FrontpageSocialLinksSection";
-  import FrontendUsefulLinksSection from "~/components/sections/FrontpageUsefulLinksSection";
-  import SiteFooter from "~/components/layout/SiteFooter";
-  import SiteLogo from "~/components/SiteLogo";
-  import headerBg from "~/assets/images/rubbish-truck.jpg";
   definePageMeta({
     layout: "default"
   });
