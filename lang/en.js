@@ -84,6 +84,7 @@ export default {
   PAGE_SUMMARY__ADMIN_DATABASE:
     "This is where you can find all of the database change logs and associated database functionality.",
   PAGE_SUMMARY__USER_ADDRESSES: "These are all the addresses you have saved.",
+  PAGE_SUMMARY__USER_PROFILE: "",
   PAGE_SUMMARY__USER_ADDRESSES__ADD_ADDRESS:
     "Use this page to add an address to GoTrash to use when booking jobs or adding billing information.",
   PAGE_SUMMARY__USER_ADDRESSES__EDIT_ADDRESS:
@@ -106,10 +107,12 @@ export default {
   PAGE_TITLE__POSTCODE_UNIT: "Postcode Unit | Postcode Units",
   PAGE_TITLE__FORGOT_PASSWORD: "Forgot Password",
   PAGE_TITLE__TRASH_SOMETHING: "Trash Something",
-  PAGE_TITLE__USER_FEEDBACKS: "Your Feedback",
-  PAGE_TITLE__USER_ADDRESSES: "Your Saved Addresses",
+  PAGE_TITLE__USER_FEEDBACK: "Your Feedback",
   PAGE_TITLE__USER_JOBS: "Your Jobs",
-  PAGE_TITLE__USER_PAYMENT_METHODS: "Payment Methods",
+  PAGE_TITLE__USER_PROFILE: "Profile",
+  PAGE_TITLE__USER_ADDRESSES: "Your Addresses",
+  PAGE_TITLE__USER_PAYMENT_METHODS: "Your Payment Methods",
+  // PAGE_TITLE__USER_PAYMENT_METHODS: "Payment Methods",
   PAGE_TITLE__USER_ADDRESSES__ADD_ADDRESS: "Add Address",
   PAGE_TITLE__USER_ADDRESSES__EDIT_ADDRESS: "Edit Address",
   MSG__CHECK_FOR_PROVIDERS_COVERING_YOUR_AREA: "Check for providers covering your area",
@@ -208,6 +211,7 @@ export default {
   "GENERAL.LABEL.SORT_DESC": "Sort Desc",
   "GENERAL.LABEL.SORT": "Sort",
   "GENERAL.LABEL.SUBMIT": "Submit",
+  "GENERAL.LABEL.USER_AVATAR": "User Avatar",
   "GENERAL.LABEL.CREATED_AT": "Created At",
   "GENERAL.LABEL.DELETED_AT": "Deleted At",
   "GENERAL.LABEL.UPDATED_AT": "Updated At",
