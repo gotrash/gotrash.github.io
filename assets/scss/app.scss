@@ -133,13 +133,13 @@ $custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,<svg xmlns='htt
 // @import "node_modules/admin-lte/build/scss/toasts";
 @import "./overrides/admin-lte/buttons";
 // @import "node_modules/admin-lte/build/scss/callout";
-// @import "node_modules/admin-lte/build/scss/alerts";
+// @import "./vendor/admin-lte/alerts";
 // @import "node_modules/admin-lte/build/scss/table";
 // @import "node_modules/admin-lte/build/scss/carousel";
 // @import "node_modules/admin-lte/build/scss/close";
 @import "./vendor/admin-lte/small-box";
 @import "./vendor/admin-lte/info-box";
-// @import "node_modules/admin-lte/build/scss/timeline";
+@import "./vendor/admin-lte/timeline";
 // @import "node_modules/admin-lte/build/scss/products";
 // @import "node_modules/admin-lte/build/scss/direct-chat";
 // @import "node_modules/admin-lte/build/scss/users-list";
