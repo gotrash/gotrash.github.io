@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useCounterStore = defineStore("counter", {
+export const useUserStore = defineStore("user", {
   getters: {
     shouldRememberUser(state) {
       return state.rememberMe;
