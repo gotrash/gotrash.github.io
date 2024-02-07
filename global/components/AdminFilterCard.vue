@@ -43,7 +43,15 @@
                   type="search"
                 />
                 <b-input-group-append>
-                  <b-button :disabled="!search" size="sm" @click="$emit('update:search', '')">
+                  <b-button
+                    :disabled="!search"
+                    size="sm"
+                    @click="
+                      () => {
+                        search = '';
+                      }
+                    "
+                  >
                     {{ $t("GENERAL.LABEL.CLEAR") }}
                   </b-button>
                 </b-input-group-append>
