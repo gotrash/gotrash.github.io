@@ -332,6 +332,13 @@ export default {
   "SERVICE_PROVIDERS.LABEL.TOWN": "Town",
   "SERVICE_PROVIDERS.LABEL.UPDATED_AT": "Updated At",
   // User
+  "USER.LABEL.ACTIVITY": "Activity",
+  "USER.LABEL.ADDRESSES": "Addresses",
+  "USER.LABEL.ADD_ADDRESS": "Add Address",
+  "USER.LABEL.PAYMENT_METHODS": "Payment Methods",
+  "USER.LABEL.ADD_PAYMENT_METHOD": "Add Payment Method",
+  "USER.LABEL.SETTINGS": "Settings",
+  "USER.LABEL.TIMELINE": "Timeline",
   "USER.LABEL.USER_PROFILE": "User Profile",
   // User Addresses
   "USER_ADDRESSES.LABEL.ADD_NEW_ADDRESS": "Add New Address",
