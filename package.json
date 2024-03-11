@@ -42,7 +42,7 @@
     "*.**": "prettier --check --ignore-unknown"
   },
   "dependencies": {
-    "@bootstrap-vue-next/nuxt": "^0.16.1",
+    "@bootstrap-vue-next/nuxt": "^0.16.6",
     "@dargmuesli/nuxt-cookie-control": "^6.4.3",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
@@ -65,17 +65,17 @@
     "@sentry/cli": "^2.19.1",
     "@sentry/tracing": "^7.57.0",
     "@sentry/vue": "^7.57.0",
-    "@sidebase/nuxt-auth": "^0.6.7",
+    "@sidebase/nuxt-auth": "^0.7.0",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
     "animate.css": "^4.1.1",
     "babel-plugin-module-resolver": "^5.0.0",
     "body-parser": "^1.20.2",
     "bootstrap": "^5.3.2",
-    "bootstrap-vue-next": "^0.16.1",
+    "bootstrap-vue-next": "^0.16.6",
     "date-fns": "^2.30.0",
     "file-saver": "^2.0.5",
-    "firebase": "^10.0.0",
+    "firebase": "^10.8.1",
     "geojson": "^0.5.0",
     "http-status-codes": "^2.3.0",
     "leaflet": "1.9.4",
@@ -91,7 +91,7 @@
     "requrl": "^3.0.2",
     "sass": "^1.69.4",
     "sass-loader": "^13.3.2",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
@@ -109,8 +109,8 @@
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "@unhead/schema-org": "^1.7.4",
-    "@vueuse/core": "^10.7.2",
-    "@vueuse/nuxt": "^10.7.2",
+    "@vueuse/core": "^10.9.0",
+    "@vueuse/nuxt": "^10.9.0",
     "cross-env": "^7.0.3",
     "dayjs-nuxt": "^1.1.2",
     "eslint": "^8.54.0",
@@ -133,10 +133,10 @@
     "json-loader": "^0.5.7",
     "lint-staged": "^13.2.2",
     "mapbox-gl": "^2.15.0",
-    "nuxt": "^3.10.1",
+    "nuxt": "^3.10.3",
     "nuxt-bugsnag": "^7.0.0",
     "nuxt-gtag": "^1.1.1",
-    "nuxt-icon": "^0.5.0",
+    "nuxt-icon": "^0.6.9",
     "nuxt-lodash": "^2.5.0",
     "nuxt-mapbox": "^1.4.4",
     "nuxt-module-feed": "^1.0.3",
@@ -151,7 +151,7 @@
     "stylelint-config-standard": "^33.0.0",
     "tsutils": "^3.21.0",
     "typescript": "~5.2.0",
-    "vite-plugin-electron": "^0.28.1",
+    "vite-plugin-electron": "^0.28.2",
     "vite-plugin-electron-renderer": "^0.14.5"
   }
 }
