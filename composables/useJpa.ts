@@ -51,6 +51,7 @@ export interface IJpaPageData<T> {
   _getQuery: Function;
   _catchError: Function;
   _processResponse: Function;
+  _setLoading: Function;
 }
 
 interface IClassDiffValue {
@@ -87,7 +88,7 @@ export class JpaPageOptions implements IJpaPageOptions {
   }
 }
 
-export function useJpa<T>(url: string | (() => string), options: UseFetchOptions<T> = {}): IJpaPageData<T> {
+export function useJpa<T>(): IJpaPageData<T> {
   // These reactive references are to hold the page state and any error message(s) we may have.
   const err: Ref<string | object | null> = ref(null);
   const loading: Ref<boolean> = ref(false);
