@@ -27,35 +27,37 @@ export default NuxtAuthHandler({
 
       return r.baseUrl;
     },
-    async session({ session, token }) {
-      session.user.name = token.sub;
-      session.user.email = token.sub;
-      session.user.image = null;
-      session.userId = parseInt(parseFloat(token.id));
-
-      if (token.error) session.error = token.error;
-
-      // console.log("Session: %o; Token: %o;", session, token);
-
-      return { session, token };
+    async session(data) {
+      //   data.session.user.name = data.token.name;
+      //   data.session.userId = parseInt(parseFloat(data.token.id));
+      //   if (data.token.error) data.session.error = data.token.error;
+      // console.log("Session Callback: %o", data);
+      //   console.log("Session: %o; Token: %o;", session, token);
+      return data;
     },
     async jwt(jwt) {
-      // console.log("JWT Callback");
-
+      // console.log("JWT Callback:%o", Object.keys(jwt));
+      // console.log("JWT Token: %o", jwt.token);
+      // console.log("JWT Session: %o", jwt.session);
+      //   console.log("JWT Account: %o", jwt.account);
+      //   console.log("JWT Profile: %o", jwt.profile);
+      //   console.log("JWT IsNewUser: %o", jwt.isNewUser);
+      //   console.log("JWT Trigger: %o", jwt.trigger);
       const config = useRuntimeConfig();
-
-      // console.log("JWT: %o", jwt);
       if (jwt.account) {
-        jwt.token.id = jwt.profile ? parseInt(parseFloat(jwt.profile.userId)) : null;
-        jwt.token.email = jwt.account.email;
+        //   //   console.log("JWT Account: %o", jwt.account);
+        //   //   jwt.token.id = jwt.profile ? parseInt(parseFloat(jwt.profile.userId)) : null;
+        //   //   jwt.token.email = jwt.account.email;
+        // jwt.token.id = jwt.profile ? parseInt(parseFloat(jwt.profile.userId)) : null;
+        // jwt.token.email = jwt.account.email;
         jwt.token.access_token = jwt.account.access_token;
         if (jwt.account.refresh_token) jwt.token.refresh_token = jwt.account.refresh_token;
         if (jwt.account.expires_at) jwt.token.expires_at = jwt.account.expires_at;
       }
 
-      // if (jwt.profile) {
-      //   if (jwt.profile.roles) jwt.token.roles = jwt.profile.roles;
-      // }
+      //   // // if (jwt.profile) {
+      //   // //   if (jwt.profile.roles) jwt.token.roles = jwt.profile.roles;
+      //   // // }
 
       if (jwt.token?.expires_at * 1000 < Date.now()) {
         try {
@@ -108,13 +110,15 @@ export default NuxtAuthHandler({
       idToken: true,
       // signinUrl: `${useRuntimeConfig().public.authUrl}/api/auth/signin/oidc`,
       // callbackUrl: `${useRuntimeConfig().public.authUrl}/api/auth/signin/oidc`,
-      profile(profile, ...args) {
-        // console.log("Profile: %o; Args: %o", profile, args);
+      profile(profile, tokenSet) {
+        console.log("Profile: %o; Token Set: %o", profile, tokenSet);
+
         return {
-          id: profile.sub
-          // name: profile.name,
-          // email: profile.email,
-          // image: profile.picture
+          id: profile.userId,
+          name: profile.name,
+          sub: profile.sub,
+          roles: profile.roles,
+          image: profile.image
         };
       }
     }
