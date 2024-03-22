@@ -26,8 +26,6 @@ import {
   vite
 } from "./config";
 
-console.log(process.env.NODE_ENV);
-
 export default defineNuxtConfig({
   "google-adsense": googleAdsense,
   vite,
