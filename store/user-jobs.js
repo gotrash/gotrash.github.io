@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const useJobsStore = defineStore("jobs", {
+export const useUserJobsStore = defineStore("user-jobs", {
   actions: {
     async FETCH_JOBS(_options = {}) {
       const defaults = {
