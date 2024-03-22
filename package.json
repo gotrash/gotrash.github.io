@@ -3,6 +3,7 @@
   "description": "GoTrash JS app",
   "main": "dist-electron/main.js",
   "private": true,
+  "type": "module",
   "version": "0.0.1-000000000",
   "author": {
     "email": "alex.scott@gotrash.co.uk",
