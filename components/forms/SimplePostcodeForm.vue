@@ -33,10 +33,10 @@
 
     <div class="d-flex align-items-center justify-content-end">
       <b-button
-        :disabled="disabled || busy"
-        :title="disabled ? $t('FRONTEND.MESSAGE.POSTCODE_CHECKER_SUBMIT_DISABLED') : undefined"
+        :disabled="isDisabled || busy"
+        :title="isDisabled ? $t('FRONTEND.MESSAGE.POSTCODE_CHECKER_SUBMIT_DISABLED') : undefined"
         type="submit"
-        :variant="disabled ? (busy ? 'transparent' : 'secondary') : 'primary'"
+        :variant="isDisabled ? (busy ? 'transparent' : 'secondary') : 'primary'"
       >
         <fa-icon v-if="busy" icon="spinner" class="fa-fw fa-spin text-success" />
         <span v-else>
@@ -53,7 +53,7 @@
   import { IsUkPostcode } from "~/validators";
 
   export default {
-    props: ["busy", "modelValue"],
+    props: ["busy", "disabled", "modelValue"],
     emits: ["update:modelValue", "submit"],
     setup() {
       return {
@@ -61,10 +61,10 @@
       };
     },
     computed: {
-      disabled() {
-        const { busy, form } = this;
+      isDisabled() {
+        const { busy, disabled, form } = this;
 
-        return busy || !IsUkPostcode(form.postcode);
+        return busy || disabled || !IsUkPostcode(form.postcode);
       },
       form: {
         get() {
