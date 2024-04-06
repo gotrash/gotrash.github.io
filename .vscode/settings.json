@@ -3,6 +3,7 @@
     "defu",
     "nsis",
     "nuxt",
-    "Pinia"
+    "Pinia",
+    "Vuelidate"
   ]
 }
