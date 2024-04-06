@@ -1,4 +1,6 @@
 <script>
+  let routeName = null;
+
   export default {
     computed: {
       sidebarHeight: {
@@ -18,6 +20,9 @@
         }
       }
     },
+    created() {
+      routeName = this.$route.name;
+    },
     mounted() {
       this.setHeight();
       this.setWidth();
@@ -26,6 +31,8 @@
     },
     unmounted() {
       this.removeListeners();
+
+      routeName = null;
     },
     methods: {
       removeListeners() {
@@ -196,7 +203,7 @@
           h("div", { class: "image" }, [
             h("img", {
               class: "img-circle elevation-2",
-              domProps: { alt: "User Image", src: require("../../../../../../images/user-placeholder.png") }
+              domProps: { alt: "User Image", src: require("/images/user-placeholder.png") }
             }),
             h("div", { class: "info" }, [h("a", { class: "d-block", domProps: { href: "#" } }, [this.$auth.user.sub])])
           ])
