@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+const config = useRuntimeConfig();
 
 export const useUserStore = defineStore("user", {
   actions: {
@@ -30,7 +31,22 @@ export const useUserStore = defineStore("user", {
       // If the data contains a link to a profile picture
       if (session?.session?.user?.image) {
         // We use the `useApi` composable (ignoring the stupid Nuxt warning about the component already being mounted)
-        useApi(session.session.user.image, { responseType: "blob" })
+        useFetch(session.session.user.image, {
+          responseType: "blob",
+          baseURL: config.public.apiUrl ?? "http://localhost:8090",
+          // this overrides the default key generation, which includes a hash of
+          // url, method, headers, etc. - this should be used with care as the key
+          // is how Nuxt decides how responses should be deduplicated between
+          // client and server
+          key: "user-profile-picture",
+          server: true,
+          lazy: false,
+
+          // set user token if connected
+          headers: {
+            Authorization: `Bearer ${session?.token?.access_token}`
+          }
+        })
           .then(res => {
             // We take the response which is a blob and load it into the image tags 'src' attribute using an Object URL
             this.LOAD_PROFILE_PICTURE_BLOB(res.data.value);
