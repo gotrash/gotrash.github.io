@@ -3,6 +3,7 @@
     <b-row>
       <b-col cols="12">
         <dl>
+          <b-button @click="doGetSession">Get Session</b-button>
           <dt>Last Refreshed At</dt>
           <dd>{{ lastRefreshedAt }}</dd>
           <dt>CSRF Token</dt>
@@ -38,8 +39,13 @@
 </template>
 
 <script setup>
-  const { status, data, lastRefreshedAt, getCsrfToken, getProviders, getSession, signIn, signOut } = useAuth();
+  const { status, data, lastRefreshedAt, getCsrfToken, getSession } = useAuth();
   const csrf = await getCsrfToken();
-  const providers = await getProviders();
-  const session = await getSession();
+  const session = ref({});
+
+  const doGetSession = async () => {
+    session.value = await getSession();
+  };
+
+  await doGetSession();
 </script>
