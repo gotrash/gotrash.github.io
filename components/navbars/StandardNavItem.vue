@@ -11,7 +11,6 @@
   export default {
     inheritAttrs: false,
     emit: ["click"],
-    emits: ["click"],
     props: {
       hideText: Boolean,
       icon: {
@@ -38,6 +37,7 @@
         required: false
       }
     },
+    emits: ["click"],
     computed: {
       _iconClasses() {
         const { iconClasses } = this;
