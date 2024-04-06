@@ -28,31 +28,17 @@
         </b-row>
       </b-container>
     </div>
-    <frontend-app-links-section />
-    <frontend-social-links-section />
-    <frontend-useful-links-section />
-    <site-footer />
   </div>
 </template>
 
 <script>
-  import FrontendAppLinksSection from "~/components/sections/FrontpageAppLinksSection";
-  import FrontendSocialLinksSection from "~/components/sections/FrontpageSocialLinksSection";
-  import FrontendUsefulLinksSection from "~/components/sections/FrontpageUsefulLinksSection";
-  import SiteFooter from "~/components/footers/SiteFooter";
   import headerBg from "~/assets/images/rubbish-truck.jpg";
 
   definePageMeta({
-    layout: "home",
+    layout: "home"
   });
 
   export default {
-    components: {
-      FrontendAppLinksSection,
-      FrontendSocialLinksSection,
-      FrontendUsefulLinksSection,
-      SiteFooter
-    },
     data() {
       return {
         headerBg,
