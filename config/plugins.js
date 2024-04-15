@@ -1,1 +1,6 @@
-export default ["~/plugins/directives"];
+export default [
+  "~/plugins/directives"
+  // "~/plugins/fontawesome",
+  // "~/plugins/google-maps/index.js"
+  // "~/plugins/maska.ts"
+];
