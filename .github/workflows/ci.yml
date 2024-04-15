@@ -3,12 +3,12 @@ name: ci
 on:
   push:
     branches:
-      - main
-      - master
+      - test
+      - test
   pull_request:
     branches:
-      - main
-      - master
+      - test
+      - test
 
 jobs:
   ci:
