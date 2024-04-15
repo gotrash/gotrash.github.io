@@ -55,7 +55,7 @@
     "@sentry/browser": "^7.73.0",
     "@sentry/cli": "^2.19.1",
     "@sentry/tracing": "^7.57.0",
-    "@sentry/vue": "^7.57.0",
+    "@sentry/vue": "^7.110.1",
     "@sidebase/nuxt-auth": "^0.7.1",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
