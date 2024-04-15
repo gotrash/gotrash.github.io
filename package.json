@@ -85,7 +85,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.7.2",
+    "@commitlint/cli": "^19.2.2",
     "@commitlint/config-conventional": "^17.6.5",
     "@nuxt/content": "^2.12.0",
     "@nuxt/devtools": "^1.0.8",
