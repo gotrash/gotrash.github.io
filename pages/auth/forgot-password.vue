@@ -1,9 +1,0 @@
-<template>
-  <div><h1>Forgot Password</h1></div>
-</template>
-
-<script setup>
-  definePageMeta({
-    layout: "frontend"
-  });
-</script>
