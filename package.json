@@ -81,7 +81,7 @@
     "portal-vue": "^3.0.0",
     "requrl": "^3.0.2",
     "sass": "^1.69.4",
-    "sass-loader": "^13.3.2",
+    "sass-loader": "^14.2.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
