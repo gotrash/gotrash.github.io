@@ -1,0 +1,2 @@
+import{o as a,z as n,w as s,a as t,d as c,an as r}from"./entry.BFDvwfm_.js";import{_}from"./_plugin-vue_export-helper.DlAUqK2U.js";const l={},d=t("span",{class:"brand-text font-weight-light"},[t("b",{class:"font-weight-bold"},"Go"),c("Trash ")],-1);function i(e,f){const o=r;return a(),n(o,{class:"brand-link text-center",to:e.localePath({name:"index"})},{default:s(()=>[d]),_:1},8,["to"])}const p=_(l,[["render",i]]);export{p as default};
+//# sourceMappingURL=BrandLink.GeABVvRs.js.map
