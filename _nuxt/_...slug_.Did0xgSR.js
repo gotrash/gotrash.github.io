@@ -1,2 +1,0 @@
-import t from"./ContentDoc.DSc2YIUf.js";import{c as r,a as e,o as m}from"./entry.B53Zpzy5.js";import"./ContentRenderer.3Zh-ZTtS.js";import"./ContentRendererMarkdown.vue.B_Hp0X7V.js";import"./index.BsYmvPZw.js";import"./preview.CLIqEmU5.js";import"./ContentQuery.CL0rvmT-.js";import"./asyncData.Bz5XyNBy.js";import"./query.CWb0mrRX.js";const k={__name:"[...slug]",setup(n){return(p,c)=>{const o=t;return m(),r("main",null,[e(o)])}}};export{k as default};
-//# sourceMappingURL=_...slug_.Did0xgSR.js.map

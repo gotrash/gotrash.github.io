@@ -1,2 +1,0 @@
-import{S as c,I as i,n as p,o as s,c as n,d as u,a2 as t}from"./entry.ChS0ey12.js";const f=["id"],l=["href"],_=c({__name:"ProseH1",props:{id:{}},setup(a){const r=a,{headings:o}=i().public.mdc,d=p(()=>{var e;return r.id&&((e=o==null?void 0:o.anchorLinks)==null?void 0:e.h1)});return(e,m)=>(s(),n("h1",{id:e.id},[u(d)?(s(),n("a",{key:0,href:`#${e.id}`},[t(e.$slots,"default")],8,l)):t(e.$slots,"default",{key:1})],8,f))}});export{_ as default};
-//# sourceMappingURL=ProseH1.D1mqIXwv.js.map

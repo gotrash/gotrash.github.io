@@ -1,1 +1,0 @@
-{"version":3,"file":"ProseCodeInline.r-2HwFAA.js","sources":["../../../../node_modules/@nuxt/content/dist/runtime/components/Prose/ProseCodeInline.vue"],"sourcesContent":["<template>\n  <code><slot /></code>\n</template>\n"],"names":["_cache","_openBlock","_createElementBlock"],"mappings":"0IACuBA,EAAA,QAAPC,EAAA,EAAAC,EAAA,OAAA,KAAA","x_google_ignoreList":[0]}
