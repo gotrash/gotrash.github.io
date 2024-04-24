@@ -1,0 +1,1 @@
+{"version":3,"file":"DPtUU4NZ.js","sources":["../../../../node_modules/@gotrash/uk-waste-exemptions/index.js"],"sourcesContent":["module.exports = require('./waste-exemptions.json');"],"names":["ukWasteExemptions","require$$0"],"mappings":"89OAAA,IAAAA,EAAiBC;;;","x_google_ignoreList":[0]}
