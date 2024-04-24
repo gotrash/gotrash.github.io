@@ -1,2 +1,0 @@
-import t from"./BKRhVtwZ.js";import{_ as r}from"./DlAUqK2U.js";import{c as e,d as n,o as _}from"./BubXd-D0.js";import"./BabI1gxO.js";import"./0RDsh7hU.js";import"./BsYmvPZw.js";import"./qdACaTuF.js";import"./CocmVaFx.js";import"./DMaT7thd.js";import"./CgDzrzpC.js";const c={};function m(p,i){const o=t;return _(),e("main",null,[n(o)])}const h=r(c,[["render",m]]);export{h as default};
-//# sourceMappingURL=8NxXaXzq.js.map
