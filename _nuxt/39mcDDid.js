@@ -1,0 +1,2 @@
+import{o,y as n,e as s,a as t,B as c,U as r}from"./BAIuu_LX.js";import{_ as l}from"./DlAUqK2U.js";const _={},i=t("span",{class:"brand-text font-weight-light"},[t("b",{class:"font-weight-bold"},"Go"),c("Trash ")],-1);function d(e,f){const a=r;return o(),n(a,{class:"brand-link text-center",to:e.localePath({name:"index"})},{default:s(()=>[i]),_:1},8,["to"])}const p=l(_,[["render",d]]);export{p as default};
+//# sourceMappingURL=39mcDDid.js.map
