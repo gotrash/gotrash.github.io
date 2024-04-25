@@ -1,0 +1,2 @@
+import{_ as a}from"./sF_bD1Hx.js";import{Y as o,o as n,b as s,w as f,a5 as u}from"./8JN2QOq-.js";const l=o({__name:"ProseA",props:{href:{type:String,default:""},target:{type:String,default:void 0,required:!1}},setup(e){return(t,_)=>{const r=a;return n(),s(r,{href:e.href,target:e.target},{default:f(()=>[u(t.$slots,"default")]),_:3},8,["href","target"])}}});export{l as default};
+//# sourceMappingURL=B7zGROQZ.js.map
