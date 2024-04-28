@@ -1,2 +1,0 @@
-import{Z as o,i as s,o as n,b as r,d as e,e as a,a as t}from"./Ci8zh_Mh.js";const c={key:0},i=t("code",null,"script",-1),d=t("code",null,"ProseScript",-1),f=o({__name:"ProseScript",props:{src:{type:String,default:""}},setup(l){return(_,m)=>s(!1)?(n(),r("div",c,[e(" Rendering the "),i,e(" element is dangerous and is disabled by default. Consider implementing your own "),d,e(" element to have control over script rendering. ")])):a("",!0)}});export{f as default};
-//# sourceMappingURL=D66tB-KU.js.map
