@@ -1,0 +1,1 @@
+{"version":3,"file":"CC7D5923.js","sources":["../../../../constants/AllowedIconSizes.js"],"sourcesContent":["export default [\"xs\", \"sm\", \"lg\", \"2x\", \"3x\", \"5x\", \"7x\", \"10x\"];\n"],"names":["AllowedIconSizes"],"mappings":"AAAA,MAAAA,EAAe,CAAC,KAAM,KAAM,KAAM,KAAM,KAAM,KAAM,KAAM,KAAK"}
