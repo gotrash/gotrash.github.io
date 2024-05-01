@@ -1,1 +1,0 @@
-{"version":3,"file":"Czp2jtnD.js","sources":["../../../../virtual:public?%2Fimages%2Fgoogle-play-badge.png"],"sourcesContent":["import { publicAssetsURL } from '#internal/nuxt/paths';export default publicAssetsURL(\"/images/google-play-badge.png\")"],"names":["publicAssetsURL"],"mappings":"obAAsEA,EAAgB,+BAA+B"}
