@@ -1,2 +1,0 @@
-import r from"./C1ufcJgx.js";import{a1 as o,a7 as u,h as f,l as c}from"./Cno3Cb5p.js";const i=o({name:"Markdown",extends:r,setup(t){const{parent:e}=c(),{between:n,default:a}=u(),s=f(()=>typeof t.unwrap=="string"?t.unwrap.split(" "):["*"]);return{fallbackSlot:a,tags:s,between:n,parent:e}}});export{i as default};
-//# sourceMappingURL=CylR-JY2.js.map
