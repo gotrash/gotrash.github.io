@@ -1,0 +1,2 @@
+import{_ as a}from"./BLNq-Peu.js";import{a1 as o,o as n,c as s,w as f,ad as c}from"./BxvWE4Mc.js";const i=o({__name:"ProseA",props:{href:{type:String,default:""},target:{type:String,default:void 0,required:!1}},setup(e){return(t,u)=>{const r=a;return n(),s(r,{href:e.href,target:e.target},{default:f(()=>[c(t.$slots,"default")]),_:3},8,["href","target"])}}});export{i as default};
+//# sourceMappingURL=CeoHqS_9.js.map
