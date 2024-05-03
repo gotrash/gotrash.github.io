@@ -1,2 +1,0 @@
-import{W as t,a5 as r}from"./v7zpT3vM.js";import s from"./BkKnwUcY.js";const a={class:"mt-2 nav-sidebar flex-column","data-widget":"treeview",role:"menu","data-accordion":"false",pills:!0},o=e=>({route:{name:e.route},textTranslation:e.text}),m=e=>t(s,o(e)),c=e=>e.map(n=>m(n)),d=e=>t(r,a,()=>c(e)),l={props:{menu:Array},render(){const{menu:e}=this;return t("nav",{class:"mt-2"},d(e))}};export{l as default};
-//# sourceMappingURL=8PEfUIX1.js.map
