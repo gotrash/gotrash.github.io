@@ -1,0 +1,1 @@
+{"version":3,"file":"CMyPXEhO.js","sources":["../../../../layouts/lte.vue"],"sourcesContent":["<template>\n    <NuxtPage />\n</template>\n\n<script setup>\n    useHead({\n      bodyAttrs: {\n        class: 'sidebar-mini layout-fixed'\n      }\n    })\n</script>"],"names":["useHead"],"mappings":"kFAKI,OAAAA,EAAQ,CACN,UAAW,CACT,MAAO,2BACR,CACP,CAAK"}
